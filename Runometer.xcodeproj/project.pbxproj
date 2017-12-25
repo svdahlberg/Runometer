@@ -10,6 +10,7 @@
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
 		B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956751FA4934B002DC83E /* CoreDataStack.swift */; };
+		B2528DEF1FF114C400FE3364 /* RunRatingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DEE1FF114C400FE3364 /* RunRatingPageViewController.swift */; };
 		B25FE7A21F88BCAC001B1BF1 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */; };
 		B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */; };
 		B25FE7A81F88E661001B1BF1 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */; };
@@ -43,7 +44,7 @@
 		B2B055251F80D7B800292EB3 /* Run.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2B055241F80D7B800292EB3 /* Run.storyboard */; };
 		B2B055281F80E24E00292EB3 /* RunTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B055271F80E24E00292EB3 /* RunTracker.swift */; };
 		B2B1B18F1FC994DC00C579FE /* RunometerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B18E1FC994DC00C579FE /* RunometerView.swift */; };
-		B2B1B1911FC997A200C579FE /* RunRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1901FC997A200C579FE /* RunRatingView.swift */; };
+		B2B1B1911FC997A200C579FE /* RunRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1901FC997A200C579FE /* RunRatingViewController.swift */; };
 		B2B1B1941FC9B7E500C579FE /* RunRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1931FC9B7E500C579FE /* RunRating.swift */; };
 		B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */; };
 		B2B1B1981FCA2B0E00C579FE /* RunServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */; };
@@ -86,6 +87,7 @@
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
 		B24956751FA4934B002DC83E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B2528DEE1FF114C400FE3364 /* RunRatingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingPageViewController.swift; sourceTree = "<group>"; };
 		B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
 		B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 		B2B055241F80D7B800292EB3 /* Run.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Run.storyboard; sourceTree = "<group>"; };
 		B2B055271F80E24E00292EB3 /* RunTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTracker.swift; sourceTree = "<group>"; };
 		B2B1B18E1FC994DC00C579FE /* RunometerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunometerView.swift; sourceTree = "<group>"; };
-		B2B1B1901FC997A200C579FE /* RunRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingView.swift; sourceTree = "<group>"; };
+		B2B1B1901FC997A200C579FE /* RunRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingViewController.swift; sourceTree = "<group>"; };
 		B2B1B1931FC9B7E500C579FE /* RunRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRating.swift; sourceTree = "<group>"; };
 		B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingTests.swift; sourceTree = "<group>"; };
 		B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunServiceTests.swift; sourceTree = "<group>"; };
@@ -312,7 +314,8 @@
 		B2B1B1921FC997AA00C579FE /* Run Rating */ = {
 			isa = PBXGroup;
 			children = (
-				B2B1B1901FC997A200C579FE /* RunRatingView.swift */,
+				B2528DEE1FF114C400FE3364 /* RunRatingPageViewController.swift */,
+				B2B1B1901FC997A200C579FE /* RunRatingViewController.swift */,
 				B2B1B18E1FC994DC00C579FE /* RunometerView.swift */,
 			);
 			path = "Run Rating";
@@ -481,6 +484,7 @@
 			files = (
 				B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */,
 				B27F63511FA5BFA400C2116F /* PastRunTableViewCell.swift in Sources */,
+				B2528DEF1FF114C400FE3364 /* RunRatingPageViewController.swift in Sources */,
 				B2A9311A1FADCA77006FEACB /* RunService.swift in Sources */,
 				B2B055281F80E24E00292EB3 /* RunTracker.swift in Sources */,
 				B2F1C7191FC05660001AC4DF /* SplitTimesViewController.swift in Sources */,
@@ -512,7 +516,7 @@
 				B2B054F21F80C55600292EB3 /* AppDelegate.swift in Sources */,
 				B27F63581FA5E69700C2116F /* RunDataSummaryView.swift in Sources */,
 				B25FE7B01F8A3A9C001B1BF1 /* PaceCalculator.swift in Sources */,
-				B2B1B1911FC997A200C579FE /* RunRatingView.swift in Sources */,
+				B2B1B1911FC997A200C579FE /* RunRatingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
