@@ -14,6 +14,7 @@ class RunRatingView: UIView {
     var run: Run? {
         didSet {
             guard let run = run,
+                let distance = DistanceFormatter.format(distance: run.distance),
                 let allRuns = RunService.savedRuns(),
                 let runsWithSimilarDistances = RunService.savedRuns(withDifferenceInDistanceSmallerThanOrEqualTo: AppConfiguration().distanceUnit.meters, toDistanceOf: run) else {
                 return
@@ -21,10 +22,8 @@ class RunRatingView: UIView {
             let allDistances = allRuns.map { $0.distance }
             let distanceRating = RunRating.distanceRating(for: run.distance, comparedTo: allDistances)
             runometerView.percentage = distanceRating
-            
-            let averagePacesWithSimilarDistances = runsWithSimilarDistances.map { $0.averagePace() }
-            let averagePaceRating = RunRating.timeRating(for: run.averagePace(), comparedTo: averagePacesWithSimilarDistances)
-//            runometerView.percentage = averagePaceRating
+            runometerView.value = distance
+            runometerView.unitName = AppConfiguration().distanceUnit.symbol
         }
     }
     

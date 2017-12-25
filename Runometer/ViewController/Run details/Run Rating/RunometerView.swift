@@ -18,6 +18,10 @@ import UIKit
     @IBInspectable let gradientStartColor: UIColor = .red
     @IBInspectable let gradientMiddleColor: UIColor = .yellow
     @IBInspectable let gradientEndColor: UIColor = .green
+    @IBInspectable var textColor: UIColor = .darkGray
+    
+    var value: String?
+    var unitName: String?
     
     /// The percentage to fill the meter with, represented by a number between 0 and 1.
     var percentage: CGFloat = 0 {
@@ -33,6 +37,8 @@ import UIKit
         backgroundPath.stroke()
         maskShape.add(drawAnimation, forKey: nil)
         gradientLayer.mask = maskShape
+        addSubview(valueLabel)
+        addSubview(unitLabel)
     }
     
     // MARK: Private properties
@@ -123,6 +129,42 @@ import UIKit
         animation.toValue = 1
         animation.duration = 1
         return animation
+    }()
+    
+    
+    // MARK: Labels
+
+    private lazy var valueLabelWidth: CGFloat = { return radius/2 }()
+    private lazy var valueLabelHeight: CGFloat = { return valueLabelFont.lineHeight }()
+    private lazy var unitLabelWidth: CGFloat = { return radius/2 }()
+    private let unitLabelHeight: CGFloat = 25
+    private let valueLabelFont: UIFont = .boldSystemFont(ofSize: 70)
+    private let unitLabelFont: UIFont = .systemFont(ofSize: 30)
+    
+    private lazy var valueLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: bounds.midX - valueLabelWidth/2, y: arcCenter.y - valueLabelHeight + unitLabelHeight, width: valueLabelWidth, height: valueLabelHeight))
+        if let value = value {
+            label.text = value
+        }
+        label.textColor = textColor
+        label.textAlignment = .center
+        label.font = valueLabelFont
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 2 / label.font.pointSize
+        return label
+    }()
+    
+    private lazy var unitLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: bounds.midX - unitLabelWidth/2, y: arcCenter.y + unitLabelHeight, width: unitLabelWidth, height: unitLabelHeight))
+        if let unitName = unitName {
+            label.text = unitName
+        }
+        label.textColor = textColor
+        label.textAlignment = .center
+        label.font = unitLabelFont
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 2 / label.font.pointSize
+        return label
     }()
     
 }
