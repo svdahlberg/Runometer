@@ -59,6 +59,7 @@ class RunTracker: NSObject {
         locationManager.delegate = self
         locationManager.activityType = .fitness
         locationManager.distanceFilter = RunTrackerConfiguration.distanceFilter
+        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     func requestAuthorization() {
