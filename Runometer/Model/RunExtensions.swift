@@ -102,7 +102,6 @@ extension Run {
     }
     
     func averagePace(speedUnit: SpeedUnit = AppConfiguration().speedUnit) -> Seconds {
-        print(PaceCalculator.pace(fromDistance: distance, time: Seconds(duration), outputUnit: speedUnit))
         return PaceCalculator.pace(fromDistance: distance, time: Seconds(duration), outputUnit: speedUnit)
     }
 }
