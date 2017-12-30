@@ -137,9 +137,9 @@ import UIKit
     private lazy var valueLabelWidth: CGFloat = { return radius/2 }()
     private lazy var valueLabelHeight: CGFloat = { return valueLabelFont.lineHeight }()
     private lazy var unitLabelWidth: CGFloat = { return radius/2 }()
-    private let unitLabelHeight: CGFloat = 25
-    private let valueLabelFont: UIFont = .boldSystemFont(ofSize: 70)
-    private let unitLabelFont: UIFont = .systemFont(ofSize: 30)
+    private lazy var unitLabelHeight: CGFloat = { return unitLabelFont.lineHeight }()
+    private let valueLabelFont: UIFont = .monospacedDigitSystemFont(ofSize: 70, weight: .black)
+    private let unitLabelFont: UIFont = .systemFont(ofSize: 17)
     
     private lazy var valueLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: bounds.midX - valueLabelWidth/2, y: arcCenter.y - valueLabelHeight + unitLabelHeight, width: valueLabelWidth, height: valueLabelHeight))

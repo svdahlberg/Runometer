@@ -29,12 +29,13 @@
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIz-Hs-WZo">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <connections>
                                                             <segue destination="5vc-Qf-oLh" kind="embed" identifier="RunRatingPageViewControllerEmbedSegueIdentifier" id="1AE-0J-z7Y"/>
                                                         </connections>
                                                     </containerView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="LIz-Hs-WZo" secondAttribute="trailing" id="0Gp-jt-RjB"/>
                                                     <constraint firstAttribute="height" constant="300" id="8A3-3n-Qp2"/>
@@ -163,7 +164,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="gvH-Qs-m0M" secondAttribute="trailing" id="1jh-16-bj3"/>
                                             <constraint firstAttribute="trailing" secondItem="ipf-RH-h4O" secondAttribute="trailing" id="BKd-g2-tPY"/>
@@ -224,6 +225,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bth-SY-Ejq">
+                                <rect key="frame" x="16" y="354" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8k-kX-aOZ" customClass="RunometerView" customModule="Runometer" customModuleProvider="target">
                                 <rect key="frame" x="8" y="16" width="359" height="359"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -232,16 +239,20 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="R8k-kX-aOZ" firstAttribute="centerX" secondItem="eGa-TQ-GBG" secondAttribute="centerX" id="Fit-XR-T4R"/>
+                            <constraint firstItem="bth-SY-Ejq" firstAttribute="leading" secondItem="iBS-KE-w8R" secondAttribute="leading" constant="16" id="TII-Co-jkf"/>
                             <constraint firstItem="R8k-kX-aOZ" firstAttribute="top" secondItem="iBS-KE-w8R" secondAttribute="top" constant="16" id="WYK-aR-fD8"/>
+                            <constraint firstItem="iBS-KE-w8R" firstAttribute="trailing" secondItem="bth-SY-Ejq" secondAttribute="trailing" constant="16" id="rfK-U2-mFN"/>
+                            <constraint firstItem="iBS-KE-w8R" firstAttribute="bottom" secondItem="bth-SY-Ejq" secondAttribute="bottom" id="uNN-2C-tJR"/>
                             <constraint firstItem="iBS-KE-w8R" firstAttribute="bottom" secondItem="R8k-kX-aOZ" secondAttribute="bottom" id="yUj-87-JP5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iBS-KE-w8R"/>
                     </view>
                     <size key="freeformSize" width="375" height="375"/>
                     <connections>
+                        <outlet property="ratingDescriptionLabel" destination="bth-SY-Ejq" id="eIT-tU-oZu"/>
                         <outlet property="runometerView" destination="R8k-kX-aOZ" id="BJv-iK-bB7"/>
                     </connections>
                 </viewController>

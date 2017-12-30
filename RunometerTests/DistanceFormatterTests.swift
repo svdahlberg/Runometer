@@ -26,4 +26,8 @@ class DistanceFormatterTests: XCTestCase {
         XCTAssertEqual("1", distance)
     }
     
+    func testFormatDistanceReturnsOnePointFiveIfDistanceIs1500AndOutputUnitIsKilometers() {
+        let distance = DistanceFormatter.format(distance: 1500, outputUnit: .kilometers)
+        XCTAssertEqual("1.5", distance)
+    }
 }

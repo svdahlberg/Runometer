@@ -19,7 +19,7 @@ class PastRunsViewControlller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        runs = RunService.savedRuns()
+        runs = RunService().savedRuns()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,7 +49,7 @@ extension PastRunsViewControlller: UITableViewDelegate, UITableViewDataSource {
         case .delete:
             guard let run = runs?[indexPath.row] else { return }
             RunService.delete(run)
-            runs = RunService.savedRuns()
+            runs = RunService().savedRuns()
         default:
             return
         }

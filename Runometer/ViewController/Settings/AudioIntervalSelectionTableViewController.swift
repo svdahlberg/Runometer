@@ -15,7 +15,7 @@ class AudioIntervalSelectionTableViewController: UITableViewController {
     private var intervalUnitName: String {
         switch AppConfiguration().audioTrigger {
         case .time: return "minutes"
-        case .distance: return AppConfiguration().distanceUnit.name.lowercased()
+        case .distance: return AppConfiguration().distanceUnit.name
         }
     }
     

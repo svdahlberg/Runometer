@@ -24,7 +24,7 @@ extension SplitTimesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "splitTimeTableViewCellReuseIdentifier", for: indexPath)
-        cell.textLabel?.text = "\(AppConfiguration().distanceUnit.name) \(indexPath.row + 1)"
+        cell.textLabel?.text = "\(AppConfiguration().distanceUnit.name.capitalized) \(indexPath.row + 1)"
         cell.detailTextLabel?.text = splitTimes?[indexPath.row]
         return cell
     }

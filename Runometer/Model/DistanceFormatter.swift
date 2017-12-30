@@ -15,5 +15,14 @@ struct DistanceFormatter {
         numberFormatter.maximumFractionDigits = 2
         return numberFormatter.string(from: NSNumber(value: convertedDistance))
     }
+    
+    static func formatWithLongUnitName(distance: Meters, outputUnit: DistanceUnit = AppConfiguration().distanceUnit) -> String? {
+        guard let value = format(distance: distance, outputUnit: outputUnit) else {
+            return nil
+        }
+        
+        let outputUnitName = distance == outputUnit.meters ? outputUnit.name : outputUnit.nameInPlural
+        return "\(value) \(outputUnitName)"
+    }
 }
 

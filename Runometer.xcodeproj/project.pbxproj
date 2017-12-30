@@ -7,10 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBD1FF26F8800220C14 /* RunsMock.swift */; };
+		B2043EC01FF2A97300220C14 /* RunServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBF1FF2A97300220C14 /* RunServiceMocks.swift */; };
+		B22B3D051FF58B5D0040928A /* AppConfigurationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */; };
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
 		B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956751FA4934B002DC83E /* CoreDataStack.swift */; };
 		B2528DEF1FF114C400FE3364 /* RunRatingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DEE1FF114C400FE3364 /* RunRatingPageViewController.swift */; };
+		B2528DF11FF19BEE00FE3364 /* RunStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF01FF19BEE00FE3364 /* RunStatistics.swift */; };
+		B2528DF31FF19DC800FE3364 /* RunStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF21FF19DC800FE3364 /* RunStatisticsTests.swift */; };
+		B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF41FF2470B00FE3364 /* DistancesMock.swift */; };
+		B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF61FF2477200FE3364 /* DurationsMock.swift */; };
+		B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */; };
 		B25FE7A21F88BCAC001B1BF1 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */; };
 		B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */; };
 		B25FE7A81F88E661001B1BF1 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */; };
@@ -84,10 +92,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B2043EBD1FF26F8800220C14 /* RunsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunsMock.swift; sourceTree = "<group>"; };
+		B2043EBF1FF2A97300220C14 /* RunServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunServiceMocks.swift; sourceTree = "<group>"; };
+		B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationMock.swift; sourceTree = "<group>"; };
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
 		B24956751FA4934B002DC83E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B2528DEE1FF114C400FE3364 /* RunRatingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingPageViewController.swift; sourceTree = "<group>"; };
+		B2528DF01FF19BEE00FE3364 /* RunStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatistics.swift; sourceTree = "<group>"; };
+		B2528DF21FF19DC800FE3364 /* RunStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsTests.swift; sourceTree = "<group>"; };
+		B2528DF41FF2470B00FE3364 /* DistancesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancesMock.swift; sourceTree = "<group>"; };
+		B2528DF61FF2477200FE3364 /* DurationsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationsMock.swift; sourceTree = "<group>"; };
+		B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingDescription.swift; sourceTree = "<group>"; };
 		B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
 		B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
@@ -203,6 +219,8 @@
 				B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */,
 				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
 				B2B1B1931FC9B7E500C579FE /* RunRating.swift */,
+				B2528DF01FF19BEE00FE3364 /* RunStatistics.swift */,
+				B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +302,7 @@
 				B25FE7AB1F8A33B0001B1BF1 /* PaceFormatterTests.swift */,
 				B25FE7B31F8A513D001B1BF1 /* DistanceFormatterTests.swift */,
 				B25FE7B51F8A514B001B1BF1 /* TimeFormatterTests.swift */,
+				B2528DF21FF19DC800FE3364 /* RunStatisticsTests.swift */,
 				B2B0550B1F80C55600292EB3 /* Info.plist */,
 			);
 			path = RunometerTests;
@@ -335,6 +354,11 @@
 			isa = PBXGroup;
 			children = (
 				B2F1C72C1FC17EE5001AC4DF /* SettingsMock.swift */,
+				B2528DF41FF2470B00FE3364 /* DistancesMock.swift */,
+				B2528DF61FF2477200FE3364 /* DurationsMock.swift */,
+				B2043EBD1FF26F8800220C14 /* RunsMock.swift */,
+				B2043EBF1FF2A97300220C14 /* RunServiceMocks.swift */,
+				B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -495,6 +519,7 @@
 				B2C260FF1FA5FD3100E69E9D /* MKMapViewExtensions.swift in Sources */,
 				B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */,
 				B2B1B18F1FC994DC00C579FE /* RunometerView.swift in Sources */,
+				B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
 				B2F1C7331FC19ABD001AC4DF /* AppConfiguration.swift in Sources */,
 				B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */,
@@ -505,6 +530,7 @@
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */,
 				B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */,
+				B2528DF11FF19BEE00FE3364 /* RunStatistics.swift in Sources */,
 				B2F1C7221FC0BDC8001AC4DF /* Settings.swift in Sources */,
 				B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */,
 				B2F1C7241FC0CE16001AC4DF /* AudioTrigger.swift in Sources */,
@@ -527,17 +553,23 @@
 				B2C261071FA6299900E69E9D /* CoreDataHelper.swift in Sources */,
 				B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */,
 				B2A9311C1FAF0553006FEACB /* MKMapViewExtensionsTests.swift in Sources */,
+				B2043EC01FF2A97300220C14 /* RunServiceMocks.swift in Sources */,
 				B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */,
 				B2F1C7351FC19B6C001AC4DF /* AppConfigurationTests.swift in Sources */,
+				B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */,
 				B2A931241FAF11CE006FEACB /* MKCoordinateRegionExtensionsTests.swift in Sources */,
+				B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */,
 				B25FE7AC1F8A33B0001B1BF1 /* PaceFormatterTests.swift in Sources */,
+				B2528DF31FF19DC800FE3364 /* RunStatisticsTests.swift in Sources */,
 				B2B1B1981FCA2B0E00C579FE /* RunServiceTests.swift in Sources */,
+				B22B3D051FF58B5D0040928A /* AppConfigurationMock.swift in Sources */,
 				B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */,
 				B2A931201FAF06F7006FEACB /* MKPolylineExtensionTests.swift in Sources */,
 				B2F1C7391FC1A7D5001AC4DF /* DoubleExtensionsTests.swift in Sources */,
 				B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */,
 				B2F1C72D1FC17EE5001AC4DF /* SettingsMock.swift in Sources */,
 				B25FE7B41F8A513D001B1BF1 /* DistanceFormatterTests.swift in Sources */,
+				B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -66,4 +66,9 @@ class AppConfigurationTests: XCTestCase {
         XCTAssertEqual(sut.mileIntervals, sut.audioIntervals)
     }
     
+    func testRunRatingRangeHasLowerBoundZeroPointOneAndUpperBoundOne() {
+        XCTAssertEqual(0.01, sut.runRatingRange.lowerBound)
+        XCTAssertEqual(1, sut.runRatingRange.upperBound)
+    }
+    
 }

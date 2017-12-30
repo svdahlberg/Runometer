@@ -22,7 +22,7 @@ struct RunRating {
         return 1 - timeRating
     }
     
-    private static func rating(for value: Double, comparedTo values: [Double], minimumRating: CGFloat = 0, maximumRating: CGFloat = 1) -> CGFloat? {
+    private static func rating(for value: Double, comparedTo values: [Double], minimumRating: CGFloat, maximumRating: CGFloat) -> CGFloat? {
         guard !values.isEmpty else { return nil }
         let sortedValues = values.sorted { $0 < $1 }
         

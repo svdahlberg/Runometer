@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import CoreGraphics
 
-struct AppConfiguration {
+class AppConfiguration {
     let settings: SettingsProvider
     
     init(settings: SettingsProvider = Settings.shared) {
@@ -65,4 +66,6 @@ struct AppConfiguration {
             return timeIntervals
         }
     }
+    
+    var runRatingRange: ClosedRange<CGFloat> = 0.01...1
 }
