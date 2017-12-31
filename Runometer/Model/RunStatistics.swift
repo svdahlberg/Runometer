@@ -96,12 +96,12 @@ class RunStatistics {
     
     private func statisticsText<T: Numeric & Comparable>(for value: T, comparedTo averageValue: T, withinDistanceRange range: ClosedRange<Meters>? = nil, using statisticsTexts: StatisticsTexts) -> String? {
         let lengthOfRunString = rangeString(range: range)
-        guard value != averageValue else {
-            return statisticsTexts.middleValueText.replacingOccurrences(of: "[Y]", with: lengthOfRunString ?? "")
-        }
         let differenceBetweenValueAndAverageValue = value < averageValue ? averageValue - value : value - averageValue
-        let unsubstitutedText = value < averageValue ? statisticsTexts.smallValueText : statisticsTexts.largeValueText
         let substitutes = ["[X]" : format(value: differenceBetweenValueAndAverageValue) ?? "", "[Y]" : lengthOfRunString ?? ""]
+        guard value != averageValue else {
+            return substitute(valuesIn: statisticsTexts.middleValueText, with: substitutes)
+        }
+        let unsubstitutedText = value < averageValue ? statisticsTexts.smallValueText : statisticsTexts.largeValueText
         return substitute(valuesIn: unsubstitutedText, with: substitutes)
     }
     
