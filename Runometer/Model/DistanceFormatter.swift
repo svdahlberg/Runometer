@@ -13,6 +13,9 @@ struct DistanceFormatter {
         let convertedDistance = distance.convert(to: outputUnit)
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
+        if distance < 10 {
+            numberFormatter.maximumFractionDigits = 4
+        }
         return numberFormatter.string(from: NSNumber(value: convertedDistance))
     }
     

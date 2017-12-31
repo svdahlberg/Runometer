@@ -13,13 +13,14 @@ class RunRatingPageViewController: UIPageViewController {
     var run: Run?
     
     private lazy var runRatingViewControllers: [RunRatingViewController] = {
-        guard let distanceRatingViewController = averageDistanceRatingViewController,
-            let paceRatingViewController = paceRatingViewController
+        guard let distanceRatingViewController = distanceRatingViewController,
+            let paceRatingViewController = paceRatingViewController,
+            let timeRatingViewController = timeRatingViewController
         else {
             return []
         }
         
-        return [distanceRatingViewController, paceRatingViewController]
+        return [distanceRatingViewController, timeRatingViewController, paceRatingViewController]
     }()
     
     override func viewDidLoad() {
@@ -34,31 +35,48 @@ class RunRatingPageViewController: UIPageViewController {
         }
     }
     
-    private lazy var averageDistanceRatingViewController: RunRatingViewController? = {
+    private lazy var distanceRatingViewController: RunRatingViewController? = {
         guard let run = run,
             let formattedDistance = DistanceFormatter.format(distance: run.distance),
-            let allRuns = RunService().savedRuns() else {
+            let statisticsText = RunStatistics().allDistancesStatisticsText(for: run.distance),
+            let runs = RunService().savedRuns() else {
                 return nil
         }
         
-        let allDistances = allRuns.map { $0.distance }
+        let allDistances = runs.map { $0.distance }
         let distanceRating = RunRating.distanceRating(for: run.distance, comparedTo: allDistances)
-        let statisticsText = RunStatistics.averageDistanceStatisticsText(for: run.distance)
         return runRatingViewController(percentage: distanceRating, value: formattedDistance, unitName: AppConfiguration().distanceUnit.symbol, ratingInformation: statisticsText)
+    }()
+    
+    private lazy var timeRatingViewController: RunRatingViewController? = {
+        guard
+            let run = run,
+            let formattedTime = TimeFormatter.format(time: Seconds(run.duration)),
+            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters)),
+            let timeRatingStatisticsText = RunStatistics().averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters))
+            else {
+                return nil
+        }
+        
+        let times = runsWithSimilarDistances.map { Seconds($0.duration) }
+        let timeRating = RunRating.timeRating(for: Seconds(run.duration), comparedTo: times)
+
+        return runRatingViewController(percentage: timeRating, value: formattedTime, unitName: "Time", ratingInformation: timeRatingStatisticsText)
     }()
     
     private lazy var paceRatingViewController: RunRatingViewController? = {
         guard
             let run = run,
             let formattedPace = PaceFormatter.pace(fromDistance: run.distance, time: Seconds(run.duration)),
-            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters))
+            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters)),
+            let paceRatingStatisticsText = RunStatistics().averagePaceStatisticsText(for: run.averagePace())
             else {
                 return nil
         }
         
         let paces = runsWithSimilarDistances.map { $0.averagePace() }
         let paceRating = RunRating.timeRating(for: run.averagePace(), comparedTo: paces)
-        let paceRatingStatisticsText = RunStatistics.averagePaceStatisticsText(for: run.averagePace())
+
         return runRatingViewController(percentage: paceRating, value: formattedPace, unitName: AppConfiguration().speedUnit.symbol, ratingInformation: paceRatingStatisticsText)
     }()
     

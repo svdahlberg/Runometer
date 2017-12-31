@@ -11,85 +11,109 @@ import CoreGraphics
 
 class RunStatistics {
     
-    class func allDistancesStatisticsText(for distance: Meters, outputUnit: DistanceUnit = AppConfiguration().distanceUnit, runService: RunService = RunService()) -> String {
-        
-        guard let allRuns = runService.savedRuns(), !allRuns.isEmpty else {
-            return "Your longest run!"
-        }
-        let distances = allRuns.map { $0.distance }.sorted()
-        
-        if let longestDistance = distances.last, distance == longestDistance {
-            let secondLongestIndex = distances.index(before: distances.count - 1)
-            let secondLongestDistance = distances[secondLongestIndex]
-            if let formattedDistanceBetweenLongestAndSecondLongest = DistanceFormatter.formatWithLongUnitName(distance: distance - secondLongestDistance, outputUnit: outputUnit), (distance - secondLongestDistance) > 1 {
-                return "Your longest run by \(formattedDistanceBetweenLongestAndSecondLongest)!"
+    private let appConfiguration: AppConfiguration
+    private let runService: RunService
+    
+    init(appConfiguration: AppConfiguration = AppConfiguration(), runService: RunService = RunService()) {
+        self.appConfiguration = appConfiguration
+        self.runService = runService
+    }
+    
+    // MARK: Public methods
+    
+    func allDistancesStatisticsText(for distance: Meters) -> String? {
+        guard let allRuns = runService.savedRuns(), allRuns.count > 1 else { return "Your longest run!" }
+        let distances = allRuns.map { $0.distance }
+        return statisticsText(for: distance, comparedTo: distances, using: allDistancesStatisticsTexts)
+    }
+    
+    func allTimesStatisticsText(for time: Seconds) -> String? {
+        guard let allRuns = runService.savedRuns(), allRuns.count > 1 else { return "Your longest run!" }
+        let times = allRuns.map { Seconds($0.duration) }
+        return statisticsText(for: time, comparedTo: times, using: allTimesStatisticsTexts)
+    }
+
+    func allPacesStatisticsText(for pace: Seconds) -> String? {
+        guard let allRuns = runService.savedRuns(), allRuns.count > 1 else { return "Your fastest pace!" }
+        let paces = allRuns.map { Pace(integerLiteral: $0.averagePace()) }
+        return statisticsText(for: Pace(integerLiteral: pace), comparedTo: paces, using: allPacesStatisticsTexts)
+    }
+    
+    func averagePaceStatisticsText(for pace: Seconds, withinDistanceRange range: ClosedRange<Meters>) -> String? {
+        guard let averagePace = runService.averagePaceOfSavedRuns(withinDistanceRange: range) else { return nil }
+        return statisticsText(for: pace, comparedTo: averagePace, withinDistanceRange: range, using: averagePaceForSimilarRunsStatisticsTexts)
+    }
+    
+    func averagePaceStatisticsText(for pace: Seconds) -> String? {
+        guard let averagePace = runService.averagePaceOfSavedRuns() else { return nil }
+        return statisticsText(for: Pace(integerLiteral: pace), comparedTo: Pace(integerLiteral: averagePace), using: averagePaceStatisticsTexts)
+    }
+    
+    func averageTimeStatisticsText(for time: Seconds, withinDistanceRange range: ClosedRange<Meters>) -> String? {
+        guard let averageTime = runService.averageTimeOfSavedRuns(withinDistanceRange: range) else { return nil }
+        return statisticsText(for: time, comparedTo: averageTime, withinDistanceRange: range, using: averageTimeForSimilarRunsStatisticsTexts)
+    }
+    
+    func averageTimeStatisticsText(for time: Seconds) -> String? {
+        guard let averageTime = runService.averageTimeOfSavedRuns() else { return nil }
+        return statisticsText(for: time, comparedTo: averageTime, using: averageTimeStatisticsTexts)
+    }
+    
+    func averageDistanceStatisticsText(for distance: Meters) -> String? {
+        guard let averageDistance = runService.averageDistanceOfSavedRuns() else { return nil }
+        return statisticsText(for: distance, comparedTo: averageDistance, using: averageDistanceStatisticsTexts)
+    }
+
+    
+    // MARK: Private methods
+    
+    private func statisticsText<T: Numeric & Comparable & Equatable>(for value: T, comparedTo values: [T], using statisticsTexts: StatisticsTexts) -> String? {
+        let sortedValues = values.sorted()
+        if let largestValue = sortedValues.last, value == largestValue {
+            let secondLargestIndex = max(sortedValues.index(before: sortedValues.count - 1), 0)
+            let secondLargestValue = sortedValues[secondLargestIndex]
+            if let formattedDifference = format(value: value - secondLargestValue) {
+                return statisticsTexts.largeValueText.replacingOccurrences(of: "[X]", with: formattedDifference)
             } else {
-                return "Your longest run!"
+                return nil
             }
         }
-        else if let shortestDistance = distances.first, distance == shortestDistance {
-            let secondShortestIndex = distances.index(after: 0)
-            let secondShortestDistance = distances[secondShortestIndex]
-            if let formattedDistanceBetweenShortestAndSecondShortest = DistanceFormatter.formatWithLongUnitName(distance: secondShortestDistance - distance, outputUnit: outputUnit), (secondShortestDistance - distance) > 1 {
-                return "Your shortest run by \(formattedDistanceBetweenShortestAndSecondShortest)!"
+        else if let smallestValue = sortedValues.first, value == smallestValue {
+            let secondSmallestIndex = sortedValues.index(after: 0)
+            let secondSmallestValue = sortedValues[secondSmallestIndex]
+            if let formattedDifference = format(value: secondSmallestValue - value) {
+                return statisticsTexts.smallValueText.replacingOccurrences(of: "[X]", with: formattedDifference)
             } else {
-                return "Your shortest run!"
+                return nil
             }
         }
-        else if let longestDistance = distances.last, let shorterThanLongestDistance = DistanceFormatter.formatWithLongUnitName(distance: longestDistance - distance, outputUnit: outputUnit) {
-            return "\(shorterThanLongestDistance) shorter than your farthest run."
+        else if let largestValue = sortedValues.last, let formattedDifference = format(value: largestValue - value) {
+            return statisticsTexts.middleValueText.replacingOccurrences(of: "[X]", with: formattedDifference)
         }
         
-        return ""
+        return nil
     }
     
-    
-    
-    
-    
-    class func averagePaceStatisticsText(for pace: Seconds, withinDistanceRange range: ClosedRange<Meters>, appConfiguration: AppConfiguration = AppConfiguration(), runService: RunService = RunService()) -> String {
-        guard let averagePace = runService.averagePaceOfSavedRuns(withinDistanceRange: range) else { return "" }
-        return statisticsText(for: pace, comparedTo: averagePace, withinDistanceRange: range, using: averagePaceForSimilarRunsStatisticsTexts, appConfiguration: appConfiguration)
-    }
-    
-    class func averageTimeStatisticsText(for time: Seconds, withinDistanceRange range: ClosedRange<Meters>, appConfiguration: AppConfiguration = AppConfiguration(), runService: RunService = RunService()) -> String {
-        guard let averageTime = runService.averageTimeOfSavedRuns(withinDistanceRange: range) else { return "" }
-        return statisticsText(for: time, comparedTo: averageTime, withinDistanceRange: range, using: averageTimeForSimilarRunsStatisticsTexts, appConfiguration: appConfiguration)
-    }
-    
-    class func averageDistanceStatisticsText(for distance: Meters, runService: RunService = RunService(), appConfiguration: AppConfiguration = AppConfiguration()) -> String {
-        guard let averageDistance = runService.averageDistanceOfSavedRuns() else { return "" }
-        return statisticsText(for: distance, comparedTo: averageDistance, using: averageDistanceStatisticsTexts, appConfiguration: appConfiguration)
-    }
-    
-    class func averageTimeStatisticsText(for time: Seconds, runService: RunService = RunService(), appConfiguration: AppConfiguration = AppConfiguration()) -> String {
-        guard let averageTime = runService.averageTimeOfSavedRuns() else { return "" }
-        return statisticsText(for: time, comparedTo: averageTime, using: averageTimeStatisticsTexts, appConfiguration: appConfiguration)
-    }
-    
-    class func averagePaceStatisticsText(for pace: Seconds, runService: RunService = RunService(), appConfiguration: AppConfiguration = AppConfiguration()) -> String {
-        guard let averagePace = runService.averagePaceOfSavedRuns() else { return "" }
-        return statisticsText(for: Pace(integerLiteral: pace), comparedTo: Pace(integerLiteral: averagePace), using: averagePaceStatisticsTexts, appConfiguration: appConfiguration)
-    }
-    
-    
-    
-    private class func statisticsText<T: Numeric & Comparable>(for value: T, comparedTo averageValue: T, withinDistanceRange range: ClosedRange<Meters>? = nil, using statisticsTexts: StatisticsTexts, appConfiguration: AppConfiguration) -> String {
-        let lengthOfRunString = rangeString(range: range, distanceUnit: appConfiguration.distanceUnit)
-        if value < averageValue {
-            if let formattedDifference = format(value: averageValue - value, appConfiguration: appConfiguration) {
-                return statisticsTexts.lessThanAverage.replacingOccurrences(of: "[X]", with: formattedDifference).replacingOccurrences(of: "[Y]", with: lengthOfRunString ?? "")
-            } else { return "" }
-        } else if value > averageValue {
-            if let formattedDifference = format(value: value - averageValue, appConfiguration: appConfiguration) {
-                return statisticsTexts.moreThanAverage.replacingOccurrences(of: "[X]", with: formattedDifference).replacingOccurrences(of: "[Y]", with: lengthOfRunString ?? "")
-            } else { return "" }
+    private func statisticsText<T: Numeric & Comparable>(for value: T, comparedTo averageValue: T, withinDistanceRange range: ClosedRange<Meters>? = nil, using statisticsTexts: StatisticsTexts) -> String? {
+        let lengthOfRunString = rangeString(range: range)
+        guard value != averageValue else {
+            return statisticsTexts.middleValueText.replacingOccurrences(of: "[Y]", with: lengthOfRunString ?? "")
         }
-        
-        return statisticsTexts.sameAsAverage.replacingOccurrences(of: "[Y]", with: lengthOfRunString ?? "")
+        let differenceBetweenValueAndAverageValue = value < averageValue ? averageValue - value : value - averageValue
+        let unsubstitutedText = value < averageValue ? statisticsTexts.smallValueText : statisticsTexts.largeValueText
+        let substitutes = ["[X]" : format(value: differenceBetweenValueAndAverageValue) ?? "", "[Y]" : lengthOfRunString ?? ""]
+        return substitute(valuesIn: unsubstitutedText, with: substitutes)
     }
     
-    private class func format<T>(value: T, appConfiguration: AppConfiguration) -> String? {
+    private func substitute(valuesIn text: String, with substitutes: [String : String]) -> String {
+        var newText = text
+        for (key, value) in substitutes {
+            newText = newText.replacingOccurrences(of: "\(key)", with: value)
+        }
+        return newText
+    }
+    
+    private func format<T>(value: T) -> String? {
         switch value {
         case let meters as Meters:
             return DistanceFormatter.formatWithLongUnitName(distance: meters, outputUnit: appConfiguration.distanceUnit)
@@ -104,38 +128,44 @@ class RunStatistics {
         }
     }
     
-    private class func rangeString(range: ClosedRange<Meters>?, distanceUnit: DistanceUnit) -> String? {
+    private func rangeString(range: ClosedRange<Meters>?) -> String? {
         guard let range = range, let formattedLowerBound = DistanceFormatter.format(distance: range.lowerBound),
             let formattedUpperBound = DistanceFormatter.format(distance: range.upperBound) else {
                 return nil
         }
         
-        return "\(formattedLowerBound) - \(formattedUpperBound) \(distanceUnit.symbol)"
+        return "\(formattedLowerBound) - \(formattedUpperBound) \(appConfiguration.distanceUnit.symbol)"
     }
     
-    struct StatisticsTexts {
-        let lessThanAverage: String
-        let moreThanAverage: String
-        let sameAsAverage: String
+    private struct StatisticsTexts {
+        let smallValueText: String
+        let largeValueText: String
+        let middleValueText: String
     }
     
-    static let averagePaceStatisticsTexts = StatisticsTexts(lessThanAverage: "[X] faster than your average pace!",
-                                                     moreThanAverage: "[X] slower than your average pace!",
-                                                     sameAsAverage: "As fast as your average pace.")
-    static let averageTimeStatisticsTexts = StatisticsTexts(lessThanAverage: "[X] shorter than your average run!",
-                                                            moreThanAverage: "[X] longer than your average run!",
-                                                            sameAsAverage: "As long as your average run.")
-    static let averageDistanceStatisticsTexts = StatisticsTexts(lessThanAverage: "[X] shorter than your average run!",
-                                                                moreThanAverage: "[X] longer than your average run!",
-                                                                sameAsAverage: "As long as your average run.")
-    static let averageTimeForSimilarRunsStatisticsTexts = StatisticsTexts(lessThanAverage: "[X] shorter than your average [Y] run.",
-                                                            moreThanAverage: "[X] longer than your average [Y] run.",
-                                                            sameAsAverage: "As long as your average [Y] run.")
-    static let averagePaceForSimilarRunsStatisticsTexts = StatisticsTexts(lessThanAverage: "[X] faster than your average pace for [Y] runs!",
-                                                            moreThanAverage: "[X] slower than your average pace for [Y] runs!",
-                                                            sameAsAverage: "As fast as your average paced [Y] run.")
-    
+    private let averagePaceStatisticsTexts = StatisticsTexts(smallValueText: "[X] faster than your average pace!",
+                                                     largeValueText: "[X] slower than your average pace!",
+                                                     middleValueText: "As fast as your average pace.")
+    private let averageTimeStatisticsTexts = StatisticsTexts(smallValueText: "[X] shorter than your average run!",
+                                                            largeValueText: "[X] longer than your average run!",
+                                                            middleValueText: "As long as your average run.")
+    private let averageDistanceStatisticsTexts = StatisticsTexts(smallValueText: "[X] shorter than your average run!",
+                                                                largeValueText: "[X] longer than your average run!",
+                                                                middleValueText: "As long as your average run.")
+    private let averageTimeForSimilarRunsStatisticsTexts = StatisticsTexts(smallValueText: "[X] shorter than your average [Y] run.",
+                                                            largeValueText: "[X] longer than your average [Y] run.",
+                                                            middleValueText: "As long as your average [Y] run.")
+    private let averagePaceForSimilarRunsStatisticsTexts = StatisticsTexts(smallValueText: "[X] faster than your average pace for [Y] runs!",
+                                                            largeValueText: "[X] slower than your average pace for [Y] runs!",
+                                                            middleValueText: "As fast as your average paced [Y] run.")
+    private let allDistancesStatisticsTexts = StatisticsTexts(smallValueText: "Your shortest run by [X]!",
+                                                              largeValueText: "Your longest run by [X]!",
+                                                              middleValueText: "[X] shorter than your farthest run.")
+    private let allTimesStatisticsTexts = StatisticsTexts(smallValueText: "Your shortest run by [X]!",
+                                                              largeValueText: "Your longest run by [X]!",
+                                                              middleValueText: "[X] shorter than your longest run.")
+    private let allPacesStatisticsTexts = StatisticsTexts(smallValueText: "Your fastest pace by [X]!",
+                                                              largeValueText: "Your slowest pace by [X]!",
+                                                              middleValueText: "[X] slower than your fastest pace.")
     
 }
-
-

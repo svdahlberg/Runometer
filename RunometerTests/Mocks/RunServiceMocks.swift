@@ -36,3 +36,9 @@ class RunServiceMockWithShortestRunOneMeterShorterThanNextShortestRun: RunServic
         return runs
     }
 }
+
+class RunServiceMockWithOneSavedRun: RunService {
+    override func savedRuns() -> [Run]? {
+        return [Run.runsMock(context: context).first!]
+    }
+}
