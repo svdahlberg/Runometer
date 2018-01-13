@@ -163,6 +163,24 @@ class RunTests: XCTestCase {
         XCTAssertEqual(360, run.averagePace())
     }
     
+    func testSimilarRunsRangeForTwoKilometerRunReturnsLowerBoundOneKilometerAndUpperBoundThreeKilometers() {
+        let context = CoreDataHelper.inMemoryManagedObjectContext()!
+        let run = Run(context: context)
+        run.distance = 2000
+        let range = run.similarRunsRange(distanceUnit: .kilometers)
+        XCTAssertEqual(1000, range.lowerBound)
+        XCTAssertEqual(3000, range.upperBound)
+    }
+    
+    func testSimilarRunsRangeFor500MeterRunReturnsLowerBoundZeroKilometerAndUpperBoundTwoKilometers() {
+        let context = CoreDataHelper.inMemoryManagedObjectContext()!
+        let run = Run(context: context)
+        run.distance = 500
+        let range = run.similarRunsRange(distanceUnit: .kilometers)
+        XCTAssertEqual(0, range.lowerBound)
+        XCTAssertEqual(2000, range.upperBound)
+    }
+    
 }
 
 // MARK: Mocks

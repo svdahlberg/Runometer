@@ -52,8 +52,8 @@ class RunRatingPageViewController: UIPageViewController {
         guard
             let run = run,
             let formattedTime = TimeFormatter.format(time: Seconds(run.duration)),
-            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters)),
-            let timeRatingStatisticsText = RunStatistics().averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters))
+            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: run.similarRunsRange()),
+            let timeRatingStatisticsText = RunStatistics().averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: run.similarRunsRange())
             else {
                 return nil
         }
@@ -68,7 +68,7 @@ class RunRatingPageViewController: UIPageViewController {
         guard
             let run = run,
             let formattedPace = PaceFormatter.pace(fromDistance: run.distance, time: Seconds(run.duration)),
-            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: (run.distance - AppConfiguration().distanceUnit.meters)...(run.distance + AppConfiguration().distanceUnit.meters)),
+            let runsWithSimilarDistances = RunService().savedRuns(withinDistanceRange: run.similarRunsRange()),
             let paceRatingStatisticsText = RunStatistics().averagePaceStatisticsText(for: run.averagePace())
             else {
                 return nil

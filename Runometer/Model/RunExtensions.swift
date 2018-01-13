@@ -104,4 +104,15 @@ extension Run {
     func averagePace(speedUnit: SpeedUnit = AppConfiguration().speedUnit) -> Seconds {
         return PaceCalculator.pace(fromDistance: distance, time: Seconds(duration), outputUnit: speedUnit)
     }
+    
+    func similarRunsRange(distanceUnit: DistanceUnit = AppConfiguration().distanceUnit) -> ClosedRange<Meters> {
+        let lowerBound = max(distance - distanceUnit.meters, 0)
+        var upperBound = distance + distanceUnit.meters
+        if lowerBound == 0 {
+            upperBound += distanceUnit.meters - distance
+        }
+        
+        return lowerBound...upperBound
+    }
+    
 }

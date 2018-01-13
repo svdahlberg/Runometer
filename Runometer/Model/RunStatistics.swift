@@ -97,7 +97,7 @@ class RunStatistics {
     private func statisticsText<T: Numeric & Comparable>(for value: T, comparedTo averageValue: T, withinDistanceRange range: ClosedRange<Meters>? = nil, using statisticsTexts: StatisticsTexts) -> String? {
         let lengthOfRunString = rangeString(range: range)
         let differenceBetweenValueAndAverageValue = value < averageValue ? averageValue - value : value - averageValue
-        let substitutes = ["[X]" : format(value: differenceBetweenValueAndAverageValue) ?? "", "[Y]" : lengthOfRunString ?? ""]
+        let substitutes = ["[X]" : format(value: differenceBetweenValueAndAverageValue), "[Y]" : lengthOfRunString]
         guard value != averageValue else {
             return substitute(valuesIn: statisticsTexts.middleValueText, with: substitutes)
         }
@@ -105,10 +105,10 @@ class RunStatistics {
         return substitute(valuesIn: unsubstitutedText, with: substitutes)
     }
     
-    private func substitute(valuesIn text: String, with substitutes: [String : String]) -> String {
+    private func substitute(valuesIn text: String, with substitutes: [String : String?]) -> String {
         var newText = text
         for (key, value) in substitutes {
-            newText = newText.replacingOccurrences(of: "\(key)", with: value)
+            newText = newText.replacingOccurrences(of: "\(key)", with: value ?? "")
         }
         return newText
     }

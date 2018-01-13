@@ -70,5 +70,7 @@ class AppConfigurationTests: XCTestCase {
         XCTAssertEqual(0.01, sut.runRatingRange.lowerBound)
         XCTAssertEqual(1, sut.runRatingRange.upperBound)
     }
+ 
+
     
 }

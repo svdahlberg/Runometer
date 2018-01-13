@@ -68,4 +68,5 @@ class AppConfiguration {
     }
     
     var runRatingRange: ClosedRange<CGFloat> = 0.01...1
+    
 }
