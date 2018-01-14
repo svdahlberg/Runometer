@@ -20,4 +20,9 @@ extension Run {
             Run(context: context, distance: 10000, time: 3000, locationSegments: [], date: Date(timeIntervalSince1970: 2)) // average pace: 300 seconds
         ]
     }
+    
+    class func runMock(context: NSManagedObjectContext) -> Run {
+        return Run(context: context, distance: 5000, time: 1500, locationSegments: [], date: Date(timeIntervalSince1970: 2)) // average pace: 300
+    }
+    
 }
