@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 
 enum AudioFeedbackType {
     case distance(String?), time(String?), pace(String?)
@@ -29,15 +30,21 @@ enum AudioFeedbackType {
 struct AudioFeedback {
     
     private let appConfiguration: AppConfiguration
-    private let run: Run
+    private let distance: Meters
+    private let time: Seconds
+    private let speechSynthesizer: AVSpeechSynthesizer
     
-    init(appConfiguration: AppConfiguration = AppConfiguration(), run: Run) {
+    init(appConfiguration: AppConfiguration = AppConfiguration(), distance: Meters, time: Seconds) {
         self.appConfiguration = appConfiguration
-        self.run = run
+        self.distance = distance
+        self.time = time
+        self.speechSynthesizer = AVSpeechSynthesizer()
     }
     
     func speak() {
-        
+        guard let text = text else { return }
+        let utterance = AVSpeechUtterance(string: text)
+        speechSynthesizer.speak(utterance)
     }
     
     var text: String? {
@@ -46,15 +53,16 @@ struct AudioFeedback {
     }
     
     private var audioFeedbackTypes: [AudioFeedbackType] {
-        let formattedTime = TimeFormatter.format(time: Seconds(run.duration), unitStyle: .full, zeroFormattingBehavior: .dropAll)
-        let formattedDistance = DistanceFormatter.formatWithLongUnitName(distance: run.distance)
-        let formattedPace = PaceFormatter.formatUsingLongUnitName(pace: run.averagePace())
+        let formattedTime = TimeFormatter.format(time: time, unitStyle: .full, zeroFormattingBehavior: .dropAll)
+        let formattedDistance = DistanceFormatter.formatWithLongUnitName(distance: distance)
+        let pace = PaceCalculator.pace(fromDistance: distance, time: time, outputUnit: appConfiguration.speedUnit)
+        let formattedPace = PaceFormatter.formatUsingLongUnitName(pace: pace)
         
-        let time: AudioFeedbackType? = appConfiguration.shouldGiveTimeAudioFeedback ? .time(formattedTime) : nil
-        let distance: AudioFeedbackType? = appConfiguration.shouldGiveDistanceAudioFeedback ? .distance(formattedDistance) : nil
-        let pace: AudioFeedbackType? = appConfiguration.shouldGiveAveragePaceAudioFeedback ? .pace(formattedPace) : nil
+        let timeFeedback: AudioFeedbackType? = appConfiguration.shouldGiveTimeAudioFeedback ? .time(formattedTime) : nil
+        let distanceFeedback: AudioFeedbackType? = appConfiguration.shouldGiveDistanceAudioFeedback ? .distance(formattedDistance) : nil
+        let paceFeedback: AudioFeedbackType? = appConfiguration.shouldGiveAveragePaceAudioFeedback ? .pace(formattedPace) : nil
     
-        return [time, distance, pace].flatMap { $0 }
+        return [timeFeedback, distanceFeedback, paceFeedback].flatMap { $0 }
     }
     
 }

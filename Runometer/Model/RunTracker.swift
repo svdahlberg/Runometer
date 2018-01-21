@@ -18,10 +18,10 @@ struct RunTrackerConfiguration {
 }
 
 protocol RunTrackerDelegate: class {
-    func willUpdateLocations(withLocations locations: [CLLocation])
-    func didUpdateDistance(_ distance: Meters)
-    func didUpdateTime(_ time: Seconds)
-    func didReachCheckpoint(_ checkpoint: Checkpoint)
+    func runTracker(_ runTracker: RunTracker, willAdd locations: [CLLocation])
+    func runTracker(_ runTracker: RunTracker, didUpdate distance: Meters)
+    func runTracker(_ runTracker: RunTracker, didUpdate time: Seconds)
+    func runTracker(_ runTracker: RunTracker, didReach checkpoint: Checkpoint)
 }
 
 class RunTracker: NSObject {
@@ -32,17 +32,22 @@ class RunTracker: NSObject {
     }
     private(set) var distance: Meters {
         didSet {
-            delegate?.didUpdateDistance(distance)
+            delegate?.runTracker(self, didUpdate: distance)
             updateCheckpoint()
+            audioFeedbackController.distance = distance
         }
     }
     private(set) var time: Seconds {
-        didSet { delegate?.didUpdateTime(time) }
+        didSet {
+            delegate?.runTracker(self, didUpdate: time)
+            audioFeedbackController.time = time
+        }
     }
     private let locationManager: CLLocationManager
     private var timer: Timer?
     private var nextChekpointDistance: Meters
     private var checkpoints: [Checkpoint]
+    private var audioFeedbackController: AudioFeedbackController
     private var timeSinceLastCheckpoint: Seconds {
         guard let lastCheckpoint = checkpoints.last else { return time }
         return time - lastCheckpoint.time
@@ -55,6 +60,7 @@ class RunTracker: NSObject {
         time = 0
         checkpoints = []
         nextChekpointDistance = RunTrackerConfiguration.distanceBetweenCheckpoints
+        audioFeedbackController = AudioFeedbackController()
         super.init()
         locationManager.delegate = self
         locationManager.activityType = .fitness
@@ -93,7 +99,7 @@ class RunTracker: NSObject {
     private func updateCheckpoint() {
         guard distance > nextChekpointDistance, let lastLocation = runSegments.last?.last else { return }
         let checkpoint = Checkpoint(distance: nextChekpointDistance, time: time, location: lastLocation, timeSinceLastCheckpoint: timeSinceLastCheckpoint)
-        delegate?.didReachCheckpoint(checkpoint)
+        delegate?.runTracker(self, didReach: checkpoint)
         nextChekpointDistance += RunTrackerConfiguration.distanceBetweenCheckpoints
         checkpoints.append(checkpoint)
     }
@@ -105,13 +111,16 @@ class RunTracker: NSObject {
 
 extension RunTracker: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let newLocations = locations.filter { $0.horizontalAccuracy < RunTrackerConfiguration.horizontalAccuracyFilter && abs($0.timestamp.timeIntervalSinceNow) < RunTrackerConfiguration.timeSinceLastLocationFilter }
+        let newLocations = locations.filter {
+            $0.horizontalAccuracy < RunTrackerConfiguration.horizontalAccuracyFilter &&
+                abs($0.timestamp.timeIntervalSinceNow) < RunTrackerConfiguration.timeSinceLastLocationFilter
+        }
         updateDistance(fromNewLocations: newLocations)
-        delegate?.willUpdateLocations(withLocations: newLocations)
-        addLocations(newLocations)
+        delegate?.runTracker(self, willAdd: newLocations)
+        add(newLocations)
     }
     
-    private func addLocations(_ locations: [CLLocation]) {
+    private func add(_ locations: [CLLocation]) {
         guard !runSegments.isEmpty else { return }
         runSegments[currentRunSegmentIndex].append(contentsOf: locations)
     }

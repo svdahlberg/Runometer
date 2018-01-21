@@ -90,7 +90,7 @@ class RunViewController: UIViewController {
 }
 
 extension RunViewController: RunTrackerDelegate {
-    func willUpdateLocations(withLocations locations: [CLLocation]) {
+    func runTracker(_ runTracker: RunTracker, willAdd locations: [CLLocation]) {
         guard let lastLocation = runTracker.runSegments.last?.last else { return }
         var coordinates = [lastLocation.coordinate]
         let newCoordinates = locations.map { $0.coordinate }
@@ -99,15 +99,15 @@ extension RunViewController: RunTrackerDelegate {
         mapView.centerOnUser()
     }
     
-    func didUpdateDistance(_ distance: Meters) {
+    func runTracker(_ runTracker: RunTracker, didUpdate distance: Meters) {
         hudView.distance = distance
     }
     
-    func didUpdateTime(_ time: Seconds) {
+    func runTracker(_ runTracker: RunTracker, didUpdate time: Seconds) {
         hudView.time = time
     }
     
-    func didReachCheckpoint(_ checkpoint: Checkpoint) {
+    func runTracker(_ runTracker: RunTracker, didReach checkpoint: Checkpoint) {
         let checkPointAnnotation = CheckpointAnnotation(checkpoint: checkpoint)
         mapView.addAnnotation(checkPointAnnotation)
     }

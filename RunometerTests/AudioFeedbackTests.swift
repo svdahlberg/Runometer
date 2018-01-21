@@ -8,21 +8,16 @@
 
 import XCTest
 @testable import Runometer
-import CoreData
 
 class AudioFeedbackTests: XCTestCase {
     
-    private func audioFeedback(context: NSManagedObjectContext) -> AudioFeedback {
-        let appConfigurationMock = AppConfigurationMock()
+    func testText_withThreeAudioFeedbackTypes_ReturnsCorrectlyFormattedText() {
         
-        let runMock = Run.runMock(context: context)
-        return AudioFeedback(appConfiguration: appConfigurationMock, run: runMock)
+        let audioFeedback = AudioFeedback(appConfiguration: AppConfigurationMock(), distance: 5000, time: 1500)
+        
+        XCTAssertEqual("Time: 25 minutes, Distance: 5 kilometers, Average pace: 5 minutes per kilometer", audioFeedback.text)
     }
     
-    func testText_withThreeAudioFeedbackTypes_ReturnsCorrectlyFormattedTextToSpeak() {
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let sut = audioFeedback(context: context)
-        XCTAssertEqual("Time: 25 minutes, Distance: 5 kilometers, Average pace: 5 minutes per kilometer", sut.text)
-    }
     
 }
+
