@@ -11,22 +11,10 @@ import Foundation
 struct AudioFeedbackController {
     
     private let appConfiguration: AppConfiguration
+
+    private(set) var valueAtLastAudioFeedback: Double
     
-    private var trigger: AudioTrigger {
-        return appConfiguration.audioTrigger
-    }
-    
-    private var audioFeedbackInterval: Double {
-        switch trigger {
-        case .time:
-            return appConfiguration.audioTimingInterval * 60
-        case .distance:
-            return appConfiguration.audioTimingInterval * appConfiguration.distanceUnit.meters
-        }
-    }
-    
-    private var valueAtLastAudioFeedback: Double
-    private lazy var valueAtNextAudioFeedback: Double = audioFeedbackInterval
+    private(set) lazy var valueAtNextAudioFeedback: Double = audioFeedbackInterval
     
     var distance: Meters {
         didSet {
@@ -53,6 +41,19 @@ struct AudioFeedbackController {
         distance = 0
         time = 0
         valueAtLastAudioFeedback = 0
+    }
+    
+    private var trigger: AudioTrigger {
+        return appConfiguration.audioTrigger
+    }
+    
+    private var audioFeedbackInterval: Double {
+        switch trigger {
+        case .time:
+            return appConfiguration.audioTimingInterval * 60
+        case .distance:
+            return appConfiguration.audioTimingInterval * appConfiguration.distanceUnit.meters
+        }
     }
     
     private mutating func speak() {
