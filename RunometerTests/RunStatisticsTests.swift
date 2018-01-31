@@ -67,13 +67,13 @@ class RunStatisticsTests: XCTestCase {
     func testAverageTimeStatisticsText_withAverageTimeFasterThanAverageTimeOfSavedRuns_returnsFasterThanAverageTimeText() {
         let averageTime = 1520
         let statisticsText = sut.averageTimeStatisticsText(for: averageTime)
-        XCTAssertEqual(statisticsText, "1:40 shorter than your average run!")
+        XCTAssertEqual(statisticsText, "1 minute, 40 seconds shorter than your average run!")
     }
 
     func testAverageTimeStatisticsText_withAverageTimeSlowerThanAverageTimeOfSavedRuns_returnsSlowerThanAverageTimeText() {
         let averageTime = 1720
         let statisticsText = sut.averageTimeStatisticsText(for: averageTime)
-        XCTAssertEqual(statisticsText, "1:40 longer than your average run!")
+        XCTAssertEqual(statisticsText, "1 minute, 40 seconds longer than your average run!")
     }
 
     func testAverageTimeStatisticsText_withAverageTImeTheSameAsAverageTImeOfSavedRuns_returnsSameAverageTimeText() {
@@ -87,14 +87,14 @@ class RunStatisticsTests: XCTestCase {
         let averageTime = 2300
         let range = Meters(6000)...Meters(10000)
         let statisticsText = sut.averageTimeStatisticsText(for: averageTime, withinDistanceRange: range)
-        XCTAssertEqual(statisticsText, "1:40 shorter than your average 6 - 10 km run.")
+        XCTAssertEqual(statisticsText, "1 minute, 40 seconds shorter than your average 6 - 10 km run.")
     }
 
     func testAverageTimeStatisticsTextForRunWithinRange_withTimeSlowerThanAverageTimeOfRunsWithinRange_returnsSlowerThanAverageTimeText() {
         let averageTime = 2500
         let range = Meters(6000)...Meters(10000)
         let statisticsText = sut.averageTimeStatisticsText(for: averageTime, withinDistanceRange: range)
-        XCTAssertEqual(statisticsText, "1:40 longer than your average 6 - 10 km run.")
+        XCTAssertEqual(statisticsText, "1 minute, 40 seconds longer than your average 6 - 10 km run.")
     }
 
     func testAverageTimeStatisticsTextForRunWithinRange_withTimeEqualToAverageTimeOfRunsWithinRange_returnsSameAsAverageTimeText() {
@@ -180,19 +180,19 @@ class RunStatisticsTests: XCTestCase {
     func testAllTimesStatisticsText_withFastestTime_returnsFastestRunString() {
         let time: Seconds = 200
         let statisticsText = sut.allTimesStatisticsText(for: time)
-        XCTAssertEqual(statisticsText, "Your shortest run by 21:40!")
+        XCTAssertEqual(statisticsText, "Your shortest run by 21 minutes, 40 seconds!")
     }
     
     func testAllTimesStatisticsText_withLongestTime_returnsLongestRunString() {
         let time: Seconds = 3000
         let statisticsText = sut.allTimesStatisticsText(for: time)
-        XCTAssertEqual(statisticsText, "Your longest run by 20!")
+        XCTAssertEqual(statisticsText, "Your longest run by 20 minutes!")
     }
     
     func testAllTimesStatisticsText_withTimeBetweenFastestAndLongestTime_returnsAmountOfTimeShorterThanLongestRun() {
         let time: Seconds = 1500
         let statisticsText = sut.allTimesStatisticsText(for: time)
-        XCTAssertEqual(statisticsText, "25 shorter than your longest run.")
+        XCTAssertEqual(statisticsText, "25 minutes shorter than your longest run.")
     }
     
     func testAllTimesStatisticsText_withOneSavedRun_returnsLongestRunText() {

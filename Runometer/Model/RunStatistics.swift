@@ -41,7 +41,7 @@ class RunStatistics {
     
     func averagePaceStatisticsText(for pace: Seconds, withinDistanceRange range: ClosedRange<Meters>) -> String? {
         guard let averagePace = runService.averagePaceOfSavedRuns(withinDistanceRange: range) else { return nil }
-        return statisticsText(for: pace, comparedTo: averagePace, withinDistanceRange: range, using: averagePaceForSimilarRunsStatisticsTexts)
+        return statisticsText(for: Pace(integerLiteral: pace), comparedTo: Pace(integerLiteral: averagePace), withinDistanceRange: range, using: averagePaceForSimilarRunsStatisticsTexts)
     }
     
     func averagePaceStatisticsText(for pace: Seconds) -> String? {
@@ -122,7 +122,7 @@ class RunStatistics {
             return PaceFormatter.format(pace: pace.magnitude, outputUnit: appConfiguration.speedUnit)
         case is Seconds:
             guard let time = value as? Seconds else { return nil }
-            return TimeFormatter.format(time: time, unitStyle: .positional, zeroFormattingBehavior: .dropAll)
+            return TimeFormatter.format(time: time, unitStyle: .full, zeroFormattingBehavior: .dropAll)
         default:
             return nil
         }
