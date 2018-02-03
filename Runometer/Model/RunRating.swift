@@ -19,7 +19,7 @@ struct RunRating {
         let value = Double(duration)
         let values = durations.map { Double($0) }
         guard let timeRating = rating(for: value, comparedTo: values, minimumRating: minimumRating, maximumRating: maximumRating) else { return 0 }
-        return 1 - timeRating
+        return max(1 - timeRating, minimumRating)
     }
     
     private static func rating(for value: Double, comparedTo values: [Double], minimumRating: CGFloat, maximumRating: CGFloat) -> CGFloat? {

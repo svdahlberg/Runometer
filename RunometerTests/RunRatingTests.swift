@@ -71,11 +71,11 @@ class RunRatingTests: XCTestCase {
         XCTAssertEqual(1, timeRating)
     }
 
-    func testTimeRatingReturnsZeroIfPaceOfRunIsTheSlowestOutOfRuns() {
+    func testTimeRatingReturnsMinimumRatingIfPaceOfRunIsTheSlowestOutOfRuns() {
         let durations = Seconds.durationsMock()
         let duration = durations.last!
-        let timeRating = RunRating.timeRating(for: duration, comparedTo: durations)
-        XCTAssertEqual(0, timeRating)
+        let timeRating = RunRating.timeRating(for: duration, comparedTo: durations, minimumRating: 0.1, maximumRating: 1)
+        XCTAssertEqual(0.1, timeRating)
     }
     
     func testTimeRatingReturnsZeroPointFiveIfRunHasAveragePaceThatIsTheSameAsTheAverageAveragePaceRuns() {
