@@ -11,6 +11,7 @@ import MapKit
 
 class RunDetailsViewController: UIViewController {
 
+    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var runDataSummaryView: RunDataSummaryView!
     @IBOutlet private weak var runSummaryMapView: RunSummaryMapView!
 
@@ -25,6 +26,8 @@ class RunDetailsViewController: UIViewController {
         if let navigationController = navigationController, navigationController.viewControllers.count == 1 {
             addCLoseBarButtonItem()
         }
+        
+        setupDateLabel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,6 +50,16 @@ class RunDetailsViewController: UIViewController {
         dismiss(animated: true) {
             presentingViewController?.dismiss(animated: true)
         }
+    }
+    
+    private func setupDateLabel() {
+        guard let date = run?.timestamp else { return }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        let dateText = dateFormatter.string(from: date)
+        
+        
+        dateLabel.text = dateText
     }
     
 }

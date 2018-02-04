@@ -13,7 +13,6 @@ protocol SettingsProvider {
     var audioFeedbackDistance: Bool? { get set }
     var audioFeedbackTime: Bool? { get set }
     var audioFeedbackAveragePace: Bool? { get set }
-    var audioFeedbackSplitPace: Bool? { get set }
     var audioTrigger: AudioTrigger? { get set }
     var audioTimingInterval: Double? { get set }
 }
@@ -27,7 +26,6 @@ struct Settings: SettingsProvider {
         case audioFeedbackDistance = "audioFeedbackDistance"
         case audioFeedbackTime = "audioFeedbackTime"
         case audioFeedbackAveragePace = "audioFeedbackAveragePace"
-        case audioFeedbackSplitPace = "audioFeedbackSplitPace"
         case audioTrigger = "audioTrigger"
         case audioTimingInterval = "audioTimingInterval"
     }
@@ -57,11 +55,6 @@ struct Settings: SettingsProvider {
     var audioFeedbackAveragePace: Bool? {
         get { return userDefaults.object(forKey: UserDefaultKey.audioFeedbackAveragePace.rawValue) as? Bool }
         set { userDefaults.set(newValue, forKey: UserDefaultKey.audioFeedbackAveragePace.rawValue) }
-    }
-    
-    var audioFeedbackSplitPace: Bool? {
-        get { return userDefaults.object(forKey: UserDefaultKey.audioFeedbackSplitPace.rawValue) as? Bool }
-        set { userDefaults.set(newValue, forKey: UserDefaultKey.audioFeedbackSplitPace.rawValue) }
     }
     
     var audioTrigger: AudioTrigger? {

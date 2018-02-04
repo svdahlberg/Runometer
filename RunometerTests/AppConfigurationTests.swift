@@ -38,12 +38,8 @@ class AppConfigurationTests: XCTestCase {
         XCTAssertTrue(sut.shouldGiveAveragePaceAudioFeedback)
     }
     
-    func testShouldGiveSplitPaceAudioFeedbackReturnsFalseIfValueInSettingsIsNil() {
-        XCTAssertFalse(sut.shouldGiveSplitPaceAudioFeedback)
-    }
-    
     func testAudioTimingIntervalReturns5IfAudioTimingINtervalInSettingsIsNilAndAudioTriggerIsTime() {
-        let settingsMock = SettingsMock(distanceUnit: nil, audioFeedbackDistance: nil, audioFeedbackTime: nil, audioFeedbackAveragePace: nil, audioFeedbackSplitPace: nil, audioTrigger: .time, audioTimingInterval: nil)
+        let settingsMock = SettingsMock(distanceUnit: nil, audioFeedbackDistance: nil, audioFeedbackTime: nil, audioFeedbackAveragePace: nil, audioTrigger: .time, audioTimingInterval: nil)
         sut = AppConfiguration(settings: settingsMock)
         XCTAssertEqual(5, sut.audioTimingInterval)
     }
@@ -53,7 +49,7 @@ class AppConfigurationTests: XCTestCase {
     }
     
     func testAudioIntervalsReturnsTimeIntervalsIfAudioTriggerIsTime() {
-        let sut = AppConfiguration(settings: SettingsMock(distanceUnit: nil, audioFeedbackDistance: nil, audioFeedbackTime: nil, audioFeedbackAveragePace: nil, audioFeedbackSplitPace: nil, audioTrigger: .time, audioTimingInterval: nil))
+        let sut = AppConfiguration(settings: SettingsMock(distanceUnit: nil, audioFeedbackDistance: nil, audioFeedbackTime: nil, audioFeedbackAveragePace: nil, audioTrigger: .time, audioTimingInterval: nil))
         XCTAssertEqual(sut.timeIntervals, sut.audioIntervals)
     }
     
@@ -62,7 +58,7 @@ class AppConfigurationTests: XCTestCase {
     }
     
     func testAudioIntervalsReturnsMilesIntervalsIfAudioTriggerIsDistanceAndDistanceUnitIsMiles() {
-        let sut = AppConfiguration(settings: SettingsMock(distanceUnit: .miles, audioFeedbackDistance: nil, audioFeedbackTime: nil, audioFeedbackAveragePace: nil, audioFeedbackSplitPace: nil, audioTrigger: .distance, audioTimingInterval: nil))
+        let sut = AppConfiguration(settings: SettingsMock(distanceUnit: .miles, audioFeedbackDistance: nil, audioFeedbackTime: nil, audioFeedbackAveragePace: nil, audioTrigger: .distance, audioTimingInterval: nil))
         XCTAssertEqual(sut.mileIntervals, sut.audioIntervals)
     }
     

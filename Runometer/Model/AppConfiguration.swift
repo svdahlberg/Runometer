@@ -45,10 +45,6 @@ class AppConfiguration {
         return settings.audioFeedbackAveragePace ?? true
     }
     
-    var shouldGiveSplitPaceAudioFeedback: Bool {
-        return settings.audioFeedbackSplitPace ?? false
-    }
-    
     var audioTimingInterval: Double {
         let defaultValue = audioTrigger == .time ? 5.0 : 1.0
         return settings.audioTimingInterval ?? defaultValue

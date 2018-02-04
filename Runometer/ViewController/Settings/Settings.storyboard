@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IXe-8W-4OO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IXe-8W-4OO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -157,42 +157,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="48" id="Ay4-HZ-1W6">
-                                        <rect key="frame" x="0.0" y="295.5" width="375" height="48"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ay4-HZ-1W6" id="6gc-WC-y7f">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Split Pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ji7-qp-7Tp">
-                                                    <rect key="frame" x="16" y="13" width="76" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E51-kd-TWd">
-                                                    <rect key="frame" x="310" y="8" width="51" height="31"/>
-                                                    <color key="tintColor" red="0.26274509800000001" green="0.74901960779999999" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="onTintColor" red="0.26274509800000001" green="0.74901960779999999" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <connections>
-                                                        <action selector="didToggleAudioSplitPaceSwitch:" destination="IXe-8W-4OO" eventType="valueChanged" id="NFJ-Qs-nkf"/>
-                                                    </connections>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="E51-kd-TWd" firstAttribute="trailing" secondItem="6gc-WC-y7f" secondAttribute="trailingMargin" id="C1Q-cY-1hm"/>
-                                                <constraint firstItem="Ji7-qp-7Tp" firstAttribute="leading" secondItem="6gc-WC-y7f" secondAttribute="leadingMargin" id="LdR-uZ-YfA"/>
-                                                <constraint firstAttribute="centerY" secondItem="E51-kd-TWd" secondAttribute="centerY" constant="0.25" id="To0-O0-8Xq"/>
-                                                <constraint firstAttribute="centerY" secondItem="Ji7-qp-7Tp" secondAttribute="centerY" id="n79-vE-DRL"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Auidio Timing" id="dGD-Ui-jJK">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="48" id="hZe-4I-MJz">
-                                        <rect key="frame" x="0.0" y="391.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="343.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hZe-4I-MJz" id="HJ1-Eu-pbl">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
@@ -226,14 +196,14 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="yLv-Qr-LN1"/>
                                                     <exclude reference="5Za-va-Vng"/>
+                                                    <exclude reference="yLv-Qr-LN1"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="48" id="L5P-n8-9Vq">
-                                        <rect key="frame" x="0.0" y="439.5" width="375" height="48"/>
+                                        <rect key="frame" x="0.0" y="391.5" width="375" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L5P-n8-9Vq" id="tty-Ll-c1h">
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="47.5"/>
@@ -277,7 +247,6 @@
                     <connections>
                         <outlet property="audioAveragePaceSwitch" destination="PNh-ce-72f" id="ytb-EZ-sSZ"/>
                         <outlet property="audioDistanceSwitch" destination="Aan-Eb-8U0" id="kx1-nx-24B"/>
-                        <outlet property="audioSplitPaceSwitch" destination="E51-kd-TWd" id="KXA-ae-7Gd"/>
                         <outlet property="audioTimeSwitch" destination="wQu-bz-RJ5" id="lzk-89-Rdb"/>
                         <outlet property="audioTimingIntervalLabel" destination="hsZ-nh-xFP" id="ggj-Jx-wAW"/>
                         <outlet property="audioTriggerSegmentedControl" destination="1fV-FA-ZMc" id="RsU-zC-tTw"/>

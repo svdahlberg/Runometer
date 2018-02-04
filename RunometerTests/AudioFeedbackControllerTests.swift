@@ -58,7 +58,7 @@ class AudioFeedbackControllerTests: XCTestCase {
 
 extension AudioFeedbackControllerTests {
     private func appConfigurationMock(audioTrigger: AudioTrigger) -> AppConfiguration {
-        let settingsMock = SettingsMock(distanceUnit: .kilometers, audioFeedbackDistance: true, audioFeedbackTime: true, audioFeedbackAveragePace: true, audioFeedbackSplitPace: false, audioTrigger: audioTrigger, audioTimingInterval: 1)
+        let settingsMock = SettingsMock(distanceUnit: .kilometers, audioFeedbackDistance: true, audioFeedbackTime: true, audioFeedbackAveragePace: true, audioTrigger: audioTrigger, audioTimingInterval: 1)
         return AppConfiguration(settings: settingsMock)
     }
 }

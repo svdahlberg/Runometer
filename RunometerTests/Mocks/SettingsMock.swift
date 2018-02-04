@@ -14,7 +14,6 @@ struct SettingsMock: SettingsProvider {
     var audioFeedbackDistance: Bool?
     var audioFeedbackTime: Bool?
     var audioFeedbackAveragePace: Bool?
-    var audioFeedbackSplitPace: Bool?
     var audioTrigger: AudioTrigger?
     var audioTimingInterval: Double?
 }

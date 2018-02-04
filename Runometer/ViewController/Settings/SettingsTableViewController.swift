@@ -13,7 +13,6 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet private weak var audioDistanceSwitch: UISwitch!
     @IBOutlet private weak var audioTimeSwitch: UISwitch!
     @IBOutlet private weak var audioAveragePaceSwitch: UISwitch!
-    @IBOutlet private weak var audioSplitPaceSwitch: UISwitch!
     @IBOutlet private weak var audioTriggerSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var audioTimingIntervalLabel: UILabel!
     
@@ -23,7 +22,6 @@ class SettingsTableViewController: UITableViewController {
         audioDistanceSwitch.isOn = AppConfiguration().shouldGiveDistanceAudioFeedback
         audioTimeSwitch.isOn = AppConfiguration().shouldGiveTimeAudioFeedback
         audioAveragePaceSwitch.isOn = AppConfiguration().shouldGiveAveragePaceAudioFeedback
-        audioSplitPaceSwitch.isOn = AppConfiguration().shouldGiveSplitPaceAudioFeedback
         audioTriggerSegmentedControl.selectedSegmentIndex = AppConfiguration().audioTrigger == .distance ? 0 : 1
     }
     
@@ -59,10 +57,6 @@ class SettingsTableViewController: UITableViewController {
         Settings.shared.audioFeedbackAveragePace = sender.isOn
     }
     
-    @IBAction private func didToggleAudioSplitPaceSwitch(_ sender: UISwitch) {
-        Settings.shared.audioFeedbackSplitPace = sender.isOn
-    }
-    
     @IBAction private func didChangeValueOfAudioTriggerSegmentedControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0: Settings.shared.audioTrigger = .distance
@@ -82,7 +76,7 @@ extension SettingsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return 1
-        case 1: return 4
+        case 1: return 3
         case 2: return 2
         default: return 0
         }
