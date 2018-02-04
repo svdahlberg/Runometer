@@ -18,14 +18,14 @@ struct RunRating {
     static func timeRating(for duration: Seconds, comparedTo durations: [Seconds], minimumRating: CGFloat = 0.01, maximumRating: CGFloat = 1) -> CGFloat {
         let value = Double(duration)
         let values = durations.map { Double($0) }
-        guard let timeRating = rating(for: value, comparedTo: values, minimumRating: minimumRating, maximumRating: maximumRating) else { return 0 }
+        guard let timeRating = rating(for: value, comparedTo: values, minimumRating: maximumRating, maximumRating: minimumRating) else { return 0 }
         guard values.count > 1 else { return maximumRating }
-        return max(1 - timeRating, minimumRating)
+        return timeRating
     }
     
     private static func rating(for value: Double, comparedTo values: [Double], minimumRating: CGFloat, maximumRating: CGFloat) -> CGFloat? {
         guard !values.isEmpty else { return nil }
-        let sortedValues = values.sorted { $0 < $1 }
+        let sortedValues = values.sorted(by: <)
         
         if let highestValue = sortedValues.last, value == highestValue {
             return maximumRating
