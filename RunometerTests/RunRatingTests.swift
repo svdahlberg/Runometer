@@ -56,6 +56,13 @@ class RunRatingTests: XCTestCase {
         XCTAssertEqual(0.75, distanceRating)
     }
     
+    func testDistanceRatingReturnsMaximumRatingIfDistanceIsTheOnlyDistance() {
+        let distances = [Meters.distancesMock().first!]
+        let distance = distances.first!
+        let distanceRating = RunRating.distanceRating(for: distance, comparedTo: distances, minimumRating: 0, maximumRating: 1)
+        XCTAssertEqual(1, distanceRating)
+    }
+    
     // MARK: Time Rating
     func testTimeRatingReturnsZeroIfRunsIsEmpty() {
         let durations = [Seconds]()
@@ -97,5 +104,12 @@ class RunRatingTests: XCTestCase {
         let duration = durations[6]
         let timeRating = RunRating.timeRating(for: duration, comparedTo: durations, minimumRating: 0, maximumRating: 1)
         XCTAssertEqual(0.25, timeRating)
+    }
+    
+    func testTimeRatingReturnsMaximumRatingIfDurationIsTheOnlyDuration() {
+        let durations = [Seconds.durationsMock().first!]
+        let duration = durations.first!
+        let timeRating = RunRating.timeRating(for: duration, comparedTo: durations, minimumRating: 0, maximumRating: 1)
+        XCTAssertEqual(1, timeRating)
     }
 }

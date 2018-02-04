@@ -19,6 +19,7 @@ struct RunRating {
         let value = Double(duration)
         let values = durations.map { Double($0) }
         guard let timeRating = rating(for: value, comparedTo: values, minimumRating: minimumRating, maximumRating: maximumRating) else { return 0 }
+        guard values.count > 1 else { return maximumRating }
         return max(1 - timeRating, minimumRating)
     }
     
@@ -26,14 +27,14 @@ struct RunRating {
         guard !values.isEmpty else { return nil }
         let sortedValues = values.sorted { $0 < $1 }
         
+        if let highestValue = sortedValues.last, value == highestValue {
+            return maximumRating
+        }
+        
         if let lowestValue = sortedValues.first, value == lowestValue {
             return minimumRating
         }
         
-        if let longestDistance = sortedValues.last, value == longestDistance {
-            return maximumRating
-        }
-          
         let averageValue = values.reduce(0, +) / Double(values.count)
         if value == averageValue {
             return average(of: maximumRating, and: minimumRating)

@@ -33,6 +33,8 @@ class RunSummaryMapView: UIView {
         }
     }
     
+    
+    
 }
 
 extension RunSummaryMapView: MKMapViewDelegate {
