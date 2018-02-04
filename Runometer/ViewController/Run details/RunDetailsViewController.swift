@@ -21,6 +21,10 @@ class RunDetailsViewController: UIViewController {
 
         runDataSummaryView.run = run
         runSummaryMapView.run = run
+        
+        if let navigationController = navigationController, navigationController.viewControllers.count == 1 {
+            addCLoseBarButtonItem()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,6 +34,18 @@ class RunDetailsViewController: UIViewController {
         
         if let runRatingPageViewController = segue.destination as? RunRatingPageViewController {
             runRatingPageViewController.run = run
+        }
+    }
+    
+    private func addCLoseBarButtonItem() {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonPressed))
+        navigationItem.leftBarButtonItem = barButtonItem
+    }
+    
+    @objc private func doneButtonPressed() {
+        let presentingViewController = navigationController?.presentingViewController
+        dismiss(animated: true) {
+            presentingViewController?.dismiss(animated: true)
         }
     }
     

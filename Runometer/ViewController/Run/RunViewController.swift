@@ -83,7 +83,8 @@ class RunViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let runDetailsViewController = segue.destination as? RunDetailsViewController {
+        if let navigationController = segue.destination as? UINavigationController,
+            let runDetailsViewController = navigationController.viewControllers.first as? RunDetailsViewController {
             runDetailsViewController.run = sender as? Run
         }
     }

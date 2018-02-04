@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z52-RH-7uy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z52-RH-7uy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,10 +63,10 @@
             </objects>
             <point key="canvasLocation" x="-143.19999999999999" y="168.6656671664168"/>
         </scene>
-        <!--RunDetails-->
+        <!--RunDetailsViewController-->
         <scene sceneID="jDf-Dw-32J">
             <objects>
-                <viewControllerPlaceholder storyboardName="RunDetails" id="b7D-IZ-csj" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="RunDetailsViewController" storyboardName="RunDetails" referencedIdentifier="RunDetailsViewController" id="b7D-IZ-csj" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eM3-Gf-fU8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="525" y="168"/>
