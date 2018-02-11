@@ -181,31 +181,91 @@
                                     <action selector="resumeButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="PKe-sP-Zs2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5A-X2-pxu">
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DLf-lv-Jmx">
                                 <rect key="frame" x="335" y="36" width="24" height="24"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="MyZ-pW-OGh">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5A-X2-pxu" userLabel="Settings">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                            <state key="normal" image="settingsButton"/>
+                                            <connections>
+                                                <segue destination="kka-cm-msg" kind="presentation" id="BeJ-DB-4TQ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="P5A-X2-pxu" secondAttribute="trailing" id="4wB-6d-bbr"/>
+                                        <constraint firstItem="P5A-X2-pxu" firstAttribute="leading" secondItem="MyZ-pW-OGh" secondAttribute="leading" id="9te-9q-RKj"/>
+                                        <constraint firstAttribute="bottom" secondItem="P5A-X2-pxu" secondAttribute="bottom" id="GeA-qs-5NV"/>
+                                        <constraint firstItem="P5A-X2-pxu" firstAttribute="top" secondItem="MyZ-pW-OGh" secondAttribute="top" id="oh3-gm-yP7"/>
+                                    </constraints>
+                                </view>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="7KT-BE-4td"/>
-                                    <constraint firstAttribute="width" constant="24" id="CTI-6Q-Ocf"/>
+                                    <constraint firstAttribute="width" constant="24" id="9dX-eB-LkC"/>
+                                    <constraint firstAttribute="height" constant="24" id="kIn-xy-Ex1"/>
                                 </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" backgroundImage="settingsButton"/>
-                                <connections>
-                                    <segue destination="kka-cm-msg" kind="presentation" id="BeJ-DB-4TQ"/>
-                                </connections>
-                            </button>
+                                <blurEffect style="dark"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="em4-vc-zm6">
+                                <rect key="frame" x="16" y="36" width="24" height="24"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BVd-yM-nf0">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FG9-e4-5J3" userLabel="Close">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <state key="normal" image="close"/>
+                                            <connections>
+                                                <action selector="closeButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="XmM-sg-TGJ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="FG9-e4-5J3" secondAttribute="bottom" id="EsZ-lb-Pns"/>
+                                        <constraint firstItem="FG9-e4-5J3" firstAttribute="top" secondItem="BVd-yM-nf0" secondAttribute="top" id="GoB-du-ww9"/>
+                                        <constraint firstItem="FG9-e4-5J3" firstAttribute="leading" secondItem="BVd-yM-nf0" secondAttribute="leading" id="PbU-Gs-SYY"/>
+                                        <constraint firstAttribute="trailing" secondItem="FG9-e4-5J3" secondAttribute="trailing" id="cJX-3i-YOd"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="NcC-Ph-AJU"/>
+                                    <constraint firstAttribute="width" constant="24" id="lhA-Ns-y3Z"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="leading" secondItem="kOW-d0-MaH" secondAttribute="leading" id="00h-Q5-brO"/>
                             <constraint firstItem="kOW-d0-MaH" firstAttribute="bottom" secondItem="JSN-3x-jq6" secondAttribute="bottom" constant="100" id="2Sc-D4-QNh"/>
                             <constraint firstItem="JSN-3x-jq6" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="HTI-0i-4QJ"/>
+                            <constraint firstItem="em4-vc-zm6" firstAttribute="centerY" secondItem="DLf-lv-Jmx" secondAttribute="centerY" id="MyP-ms-9W9"/>
                             <constraint firstItem="SYx-CH-7m3" firstAttribute="trailing" secondItem="kOW-d0-MaH" secondAttribute="trailing" id="Pda-bX-VD6"/>
                             <constraint firstItem="Deh-Mf-59k" firstAttribute="height" secondItem="SaH-I3-5o6" secondAttribute="height" id="Ppq-5G-HWh"/>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="bottom" secondItem="kOW-d0-MaH" secondAttribute="bottom" id="Pu9-vv-BhM"/>
+                            <constraint firstItem="kOW-d0-MaH" firstAttribute="trailing" secondItem="DLf-lv-Jmx" secondAttribute="trailing" constant="16" id="Qck-27-hmU"/>
                             <constraint firstItem="Deh-Mf-59k" firstAttribute="width" secondItem="SaH-I3-5o6" secondAttribute="width" id="Rlh-QI-tjo"/>
-                            <constraint firstItem="P5A-X2-pxu" firstAttribute="top" secondItem="kOW-d0-MaH" secondAttribute="top" constant="16" id="VCt-Yh-afF"/>
+                            <constraint firstItem="em4-vc-zm6" firstAttribute="leading" secondItem="kOW-d0-MaH" secondAttribute="leading" constant="16" id="WZi-bx-h8O"/>
                             <constraint firstItem="Deh-Mf-59k" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="Zhe-4n-U75"/>
-                            <constraint firstItem="kOW-d0-MaH" firstAttribute="trailing" secondItem="P5A-X2-pxu" secondAttribute="trailing" constant="16" id="aE7-s9-NWq"/>
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="width" secondItem="JSN-3x-jq6" secondAttribute="width" id="aRe-g3-0CY"/>
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="height" secondItem="JSN-3x-jq6" secondAttribute="height" id="apQ-ep-BV1"/>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="trailing" secondItem="kOW-d0-MaH" secondAttribute="trailing" id="hZO-OV-zkr"/>
@@ -215,10 +275,12 @@
                             <constraint firstItem="SYx-CH-7m3" firstAttribute="leading" secondItem="kOW-d0-MaH" secondAttribute="leading" id="l0N-eT-S5V"/>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="top" secondItem="jfD-WK-zj3" secondAttribute="top" id="lNL-Ll-8aR"/>
                             <constraint firstItem="SYx-CH-7m3" firstAttribute="top" secondItem="jfD-WK-zj3" secondAttribute="top" id="xc8-DH-8Ea"/>
+                            <constraint firstItem="DLf-lv-Jmx" firstAttribute="top" secondItem="kOW-d0-MaH" secondAttribute="top" constant="16" id="yIr-g0-Vcg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="kOW-d0-MaH"/>
                     </view>
                     <connections>
+                        <outlet property="closeButtonVisualEffectsView" destination="em4-vc-zm6" id="FMp-Sa-9xu"/>
                         <outlet property="hudView" destination="SYx-CH-7m3" id="Ouz-wr-rfz"/>
                         <outlet property="mapView" destination="dTk-Ak-7Gi" id="G9d-jN-b9Q"/>
                         <outlet property="resumeButton" destination="Deh-Mf-59k" id="V9o-ev-WtR"/>
@@ -249,6 +311,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="16" height="16"/>
         <image name="settingsButton" width="66" height="66"/>
     </resources>
 </document>

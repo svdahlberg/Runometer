@@ -12,6 +12,7 @@
 		B204BCA7200A70EA0003E3FE /* AudioFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */; };
 		B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */; };
 		B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A02030608A007153D2 /* RoundCornersButton.swift */; };
+		B21967A320307211007153D2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A220307211007153D2 /* Colors.swift */; };
 		B22B3D051FF58B5D0040928A /* AppConfigurationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */; };
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
@@ -103,6 +104,7 @@
 		B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedback.swift; sourceTree = "<group>"; };
 		B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackTests.swift; sourceTree = "<group>"; };
 		B21967A02030608A007153D2 /* RoundCornersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
+		B21967A220307211007153D2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationMock.swift; sourceTree = "<group>"; };
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */,
 				B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */,
 				B276ECF12015321B0036F327 /* AudioFeedbackController.swift */,
+				B21967A220307211007153D2 /* Colors.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				B2528DF11FF19BEE00FE3364 /* RunStatistics.swift in Sources */,
 				B2F1C7221FC0BDC8001AC4DF /* Settings.swift in Sources */,
 				B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */,
+				B21967A320307211007153D2 /* Colors.swift in Sources */,
 				B2F1C7241FC0CE16001AC4DF /* AudioTrigger.swift in Sources */,
 				B28F81BD1F93CE8C000BBA18 /* CheckpointAnnotation.swift in Sources */,
 				B2A9311E1FAF06C5006FEACB /* MKPolyLineExtensions.swift in Sources */,

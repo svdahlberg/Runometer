@@ -15,9 +15,9 @@ import UIKit
     @IBInspectable let arcWidth: CGFloat = 30
     @IBInspectable let fillArcWidth: CGFloat = 20
     @IBInspectable let backgroundShapeColor: UIColor = .darkGray
-    @IBInspectable let gradientStartColor: UIColor = .red
-    @IBInspectable let gradientMiddleColor: UIColor = .yellow
-    @IBInspectable let gradientEndColor: UIColor = .green
+    @IBInspectable let gradientStartColor: UIColor = Colors.red
+    @IBInspectable let gradientMiddleColor: UIColor = Colors.yellow
+    @IBInspectable let gradientEndColor: UIColor = Colors.green
     @IBInspectable var textColor: UIColor = .darkGray
     
     var value: String?

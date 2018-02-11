@@ -20,6 +20,7 @@ class RunViewController: UIViewController {
     @IBOutlet private weak var stopButton: UIButton!
     @IBOutlet private weak var resumeButton: UIButton!
     @IBOutlet private weak var hudView: HUDView!
+    @IBOutlet private weak var closeButtonVisualEffectsView: UIVisualEffectView!
     private var runTracker: RunTracker!
     
     override func viewDidLoad() {
@@ -31,6 +32,9 @@ class RunViewController: UIViewController {
         resumeButton.alpha = 0
         stopButton.alpha = 0
         stopButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        startButton.backgroundColor = Colors.green
+        resumeButton.backgroundColor = Colors.green
+        stopButton.backgroundColor = Colors.red
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,6 +70,7 @@ class RunViewController: UIViewController {
         runTracker.startTracking()
         toggleRunningUI(true)
         showHUDView()
+        toggle(closeButtonVisualEffectsView, hidden: true)
     }
     
     private func pauseRun() {
@@ -85,6 +90,10 @@ class RunViewController: UIViewController {
         }
         
         toggle(resumeButton, hidden: running)
+    }
+    
+    @IBAction private func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

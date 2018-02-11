@@ -40,7 +40,7 @@
                                                         <segment title="Kilometers"/>
                                                         <segment title="Miles"/>
                                                     </segments>
-                                                    <color key="tintColor" red="0.94901960780000005" green="0.59999999999999998" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
                                                         <action selector="didChangeValueOfDistanceSegmentedControl:" destination="IXe-8W-4OO" eventType="valueChanged" id="XUu-qA-g8l"/>
                                                     </connections>
