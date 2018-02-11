@@ -22,6 +22,7 @@ class RunViewController: UIViewController {
     @IBOutlet private weak var hudView: HUDView!
     @IBOutlet private weak var closeButtonVisualEffectsView: UIVisualEffectView!
     private var runTracker: RunTracker!
+    private let userLocationInMapRegionLatitudeMultiplier = 0.2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,7 @@ class RunViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        mapView.centerOnUser()
+        mapView.centerOnUser(offsetMultiplier: (latitude: userLocationInMapRegionLatitudeMultiplier, longitude: nil))
     }
     
     private var runState: RunState = .notStarted {
@@ -111,7 +112,7 @@ extension RunViewController: RunTrackerDelegate {
         let newCoordinates = locations.map { $0.coordinate }
         coordinates.append(contentsOf: newCoordinates)
         mapView.add(MKPolyline(coordinates: coordinates, count: coordinates.count))
-        mapView.centerOnUser()
+        mapView.centerOnUser(offsetMultiplier: (latitude: userLocationInMapRegionLatitudeMultiplier, longitude: nil))
     }
     
     func runTracker(_ runTracker: RunTracker, didUpdate distance: Meters) {

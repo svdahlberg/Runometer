@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -145,7 +146,7 @@
                                 </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaH-I3-5o6" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
-                                <rect key="frame" x="137" y="517" width="100" height="50"/>
+                                <rect key="frame" x="137" y="567" width="100" height="50"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.76078431369999999" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="I24-hZ-bnb"/>
@@ -160,7 +161,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-3x-jq6" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
-                                <rect key="frame" x="137.5" y="517" width="100" height="50"/>
+                                <rect key="frame" x="137.5" y="567" width="100" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <state key="normal" title="Stop">
@@ -171,7 +172,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Deh-Mf-59k" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
-                                <rect key="frame" x="137.5" y="435" width="100" height="50"/>
+                                <rect key="frame" x="137.5" y="485" width="100" height="50"/>
                                 <color key="backgroundColor" red="0.14901960780000001" green="0.76078431369999999" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                 <state key="normal" title="Resume">
@@ -256,7 +257,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="leading" secondItem="kOW-d0-MaH" secondAttribute="leading" id="00h-Q5-brO"/>
-                            <constraint firstItem="kOW-d0-MaH" firstAttribute="bottom" secondItem="JSN-3x-jq6" secondAttribute="bottom" constant="100" id="2Sc-D4-QNh"/>
+                            <constraint firstItem="JSN-3x-jq6" firstAttribute="firstBaseline" secondItem="SaH-I3-5o6" secondAttribute="baseline" id="Czh-5O-0MS"/>
                             <constraint firstItem="JSN-3x-jq6" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="HTI-0i-4QJ"/>
                             <constraint firstItem="em4-vc-zm6" firstAttribute="centerY" secondItem="DLf-lv-Jmx" secondAttribute="centerY" id="MyP-ms-9W9"/>
                             <constraint firstItem="SYx-CH-7m3" firstAttribute="trailing" secondItem="kOW-d0-MaH" secondAttribute="trailing" id="Pda-bX-VD6"/>
@@ -269,7 +270,7 @@
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="width" secondItem="JSN-3x-jq6" secondAttribute="width" id="aRe-g3-0CY"/>
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="height" secondItem="JSN-3x-jq6" secondAttribute="height" id="apQ-ep-BV1"/>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="trailing" secondItem="kOW-d0-MaH" secondAttribute="trailing" id="hZO-OV-zkr"/>
-                            <constraint firstItem="kOW-d0-MaH" firstAttribute="bottom" secondItem="SaH-I3-5o6" secondAttribute="bottom" constant="100" id="iEO-h1-ZNM"/>
+                            <constraint firstItem="kOW-d0-MaH" firstAttribute="bottom" secondItem="SaH-I3-5o6" secondAttribute="bottom" constant="50" id="iEO-h1-ZNM"/>
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="kcA-xr-KBB"/>
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="top" secondItem="Deh-Mf-59k" secondAttribute="bottom" constant="32" id="kqR-A6-QlJ"/>
                             <constraint firstItem="SYx-CH-7m3" firstAttribute="leading" secondItem="kOW-d0-MaH" secondAttribute="leading" id="l0N-eT-S5V"/>
