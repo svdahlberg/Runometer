@@ -181,6 +181,12 @@ class RunTests: XCTestCase {
         XCTAssertEqual(2000, range.upperBound)
     }
     
+    func testInitSetsStartDateToDateMinusDurationOfRun() {
+        let context = CoreDataHelper.inMemoryManagedObjectContext()!
+        let run = Run(context: context, distance: 1000, time: 900, locationSegments: [], date: Date(timeIntervalSince1970: 1000))
+        let expectedStartDate = Date(timeIntervalSince1970: 100)
+        XCTAssertEqual(expectedStartDate, run.startDate)
+    }
 }
 
 // MARK: Mocks

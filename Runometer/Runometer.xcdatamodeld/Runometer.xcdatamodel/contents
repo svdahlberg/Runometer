@@ -9,6 +9,8 @@
     <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="runSegments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RunSegment" inverseName="run" inverseEntity="RunSegment" syncable="YES"/>
     </entity>
@@ -18,7 +20,7 @@
     </entity>
     <elements>
         <element name="Location" positionX="54" positionY="-81" width="128" height="103"/>
-        <element name="Run" positionX="-351" positionY="-67" width="128" height="103"/>
+        <element name="Run" positionX="-351" positionY="-67" width="128" height="133"/>
         <element name="RunSegment" positionX="-164" positionY="-48" width="128" height="75"/>
     </elements>
 </model>

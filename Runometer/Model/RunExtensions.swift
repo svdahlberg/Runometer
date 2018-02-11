@@ -16,6 +16,8 @@ extension Run {
         self.distance = distance
         self.duration = Int16(time)
         self.timestamp = date
+        self.startDate = Calendar.current.date(byAdding: .second, value: Int(-duration), to: date)
+        self.endDate = date
         
         for locationSegment in locationSegments {
             let runSegmentObject = RunSegment(context: context)
