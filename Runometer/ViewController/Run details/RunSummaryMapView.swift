@@ -9,31 +9,39 @@
 import UIKit
 import MapKit
 
+protocol RunSummaryMapViewDelegate: class {
+    func runSummaryMapViewDidGetPressed(_ runSummaryMapView: RunSummaryMapView)
+}
+
 class RunSummaryMapView: UIView {
     @IBOutlet private weak var mapView: MKMapView!
     
+    weak var delegate: RunSummaryMapViewDelegate?
+    
     var run: Run? {
         didSet {
-            guard let coordinateSegments = run?.coordinateSegments(),
-                let coordinates = run?.flattenedCoordinateSegments(),
-                let mapRegion = MKCoordinateRegion.region(from: coordinates),
-                let reachedCheckpoints = run?.reachedCheckpoints()
-            else { return }
-            let polylines = MKPolyline.polylines(from: coordinateSegments)
-            polylines.forEach { mapView.add($0) }
-            mapView.region = mapRegion
-            let checkpointAnnotations = reachedCheckpoints.map { CheckpointAnnotation(checkpoint: $0) }
-            mapView.addAnnotations(checkpointAnnotations)
-            if let startAnnotation = run?.startAnnotation() {
-                mapView.addAnnotation(startAnnotation)
+            guard let runMap = RunMap(run: run) else {
+                return
             }
-            if let endAnnotation = run?.endAnnotation() {
-                mapView.addAnnotation(endAnnotation)
-            }
+            
+            runMap.polylines.forEach { mapView.add($0) }
+            mapView.region = runMap.mapRegion
+            mapView.addAnnotations(runMap.checkpointAnnotations)
+            mapView.addAnnotation(runMap.startAnnotation)
+            mapView.addAnnotation(runMap.endAnnotation)
+            
+            setupTapGestureRecognizer()
         }
     }
     
+    private func setupTapGestureRecognizer() {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        addGestureRecognizer(gestureRecognizer)
+    }
     
+    @objc private func handleTap(sender: UITapGestureRecognizer) {
+        delegate?.runSummaryMapViewDidGetPressed(self)
+    }
     
 }
 
@@ -47,4 +55,29 @@ extension RunSummaryMapView: MKMapViewDelegate {
     }
 }
 
-
+struct RunMap {
+    
+    let mapRegion: MKCoordinateRegion
+    let polylines: [MKPolyline]
+    let checkpointAnnotations: [CheckpointAnnotation]
+    let startAnnotation: StartAnnotation
+    let endAnnotation: EndAnnotation
+    
+    init?(run: Run?) {
+        guard let coordinateSegments = run?.coordinateSegments(),
+            let coordinates = run?.flattenedCoordinateSegments(),
+            let mapRegion = MKCoordinateRegion.region(from: coordinates),
+            let reachedCheckpoints = run?.reachedCheckpoints(),
+            let startAnnotation = run?.startAnnotation(),
+            let endAnnotation = run?.endAnnotation()
+        else {
+                return nil
+        }
+        
+        self.polylines = MKPolyline.polylines(from: coordinateSegments)
+        self.mapRegion = mapRegion
+        self.checkpointAnnotations = reachedCheckpoints.map { CheckpointAnnotation(checkpoint: $0) }
+        self.startAnnotation = startAnnotation
+        self.endAnnotation = endAnnotation
+    }
+}

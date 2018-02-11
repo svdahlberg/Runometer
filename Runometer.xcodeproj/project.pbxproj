@@ -65,6 +65,7 @@
 		B2C261031FA6209100E69E9D /* RunExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261021FA6209100E69E9D /* RunExtensions.swift */; };
 		B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261041FA6275C00E69E9D /* RunTests.swift */; };
 		B2C261071FA6299900E69E9D /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261061FA6299900E69E9D /* CoreDataHelper.swift */; };
+		B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DCA0C0202B916500AB29E7 /* MapViewController.swift */; };
 		B2F1C7191FC05660001AC4DF /* SplitTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7181FC05660001AC4DF /* SplitTimesViewController.swift */; };
 		B2F1C71C1FC0AE41001AC4DF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F1C71B1FC0AE41001AC4DF /* Settings.storyboard */; };
 		B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C71D1FC0AED2001AC4DF /* SettingsTableViewController.swift */; };
@@ -160,6 +161,7 @@
 		B2C261021FA6209100E69E9D /* RunExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunExtensions.swift; sourceTree = "<group>"; };
 		B2C261041FA6275C00E69E9D /* RunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTests.swift; sourceTree = "<group>"; };
 		B2C261061FA6299900E69E9D /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		B2DCA0C0202B916500AB29E7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B2F1C7181FC05660001AC4DF /* SplitTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTimesViewController.swift; sourceTree = "<group>"; };
 		B2F1C71B1FC0AE41001AC4DF /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B2F1C71D1FC0AED2001AC4DF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				B2A9311D1FAF06C5006FEACB /* MKPolyLineExtensions.swift */,
 				B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */,
 				B2F1C7181FC05660001AC4DF /* SplitTimesViewController.swift */,
+				B2DCA0C0202B916500AB29E7 /* MapViewController.swift */,
 				B2B1B1921FC997AA00C579FE /* Run Rating */,
 			);
 			path = "Run details";
@@ -541,6 +544,7 @@
 				B25FE7AA1F88E6F7001B1BF1 /* PaceFormatter.swift in Sources */,
 				B2B055231F80D6A200292EB3 /* RunViewController.swift in Sources */,
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,
+				B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */,
 				B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */,

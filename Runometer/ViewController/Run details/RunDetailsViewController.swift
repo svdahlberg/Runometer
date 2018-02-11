@@ -12,6 +12,7 @@ import MapKit
 class RunDetailsViewController: UIViewController {
 
     @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var runDataSummaryView: RunDataSummaryView!
     @IBOutlet private weak var runSummaryMapView: RunSummaryMapView!
 
@@ -22,12 +23,14 @@ class RunDetailsViewController: UIViewController {
 
         runDataSummaryView.run = run
         runSummaryMapView.run = run
+        runSummaryMapView.delegate = self
         
         if let navigationController = navigationController, navigationController.viewControllers.count == 1 {
             addCLoseBarButtonItem()
         }
         
         setupDateLabel()
+        setupTimeLabel()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -37,6 +40,10 @@ class RunDetailsViewController: UIViewController {
         
         if let runRatingPageViewController = segue.destination as? RunRatingPageViewController {
             runRatingPageViewController.run = run
+        }
+        
+        if let mapViewController = segue.destination as? MapViewController {
+            mapViewController.run = run
         }
     }
     
@@ -53,15 +60,29 @@ class RunDetailsViewController: UIViewController {
     }
     
     private func setupDateLabel() {
-        guard let date = run?.timestamp else { return }
+        guard let date = run?.timestamp else {
+            return
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         let dateText = dateFormatter.string(from: date)
-        
-        
         dateLabel.text = dateText
+    }
+    
+    private func setupTimeLabel() {
+        guard let startDate = run?.startDate, let endDate = run?.endDate else {
+            return
+        }
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        let timeText = "\(dateFormatter.string(from: startDate)) - \(dateFormatter.string(from: endDate))"
+        timeLabel.text = timeText
     }
     
 }
 
-
+extension RunDetailsViewController: RunSummaryMapViewDelegate {
+    func runSummaryMapViewDidGetPressed(_ runSummaryMapView: RunSummaryMapView) {
+        performSegue(withIdentifier: "MapViewControllerSegueIdentifier", sender: run)
+    }
+}
