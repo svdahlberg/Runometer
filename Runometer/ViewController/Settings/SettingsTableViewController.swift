@@ -66,6 +66,10 @@ class SettingsTableViewController: UITableViewController {
         Settings.shared.audioTimingInterval = nil
         updateAudioTimingLabel()
     }
+    
+    @IBAction private func doneButtonPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
 }
 
 extension SettingsTableViewController {

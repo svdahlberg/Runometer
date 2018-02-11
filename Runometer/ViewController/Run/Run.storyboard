@@ -31,27 +31,6 @@
                                     <outlet property="delegate" destination="t0Q-Xs-lZ5" id="xnh-g3-Mol"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaH-I3-5o6">
-                                <rect key="frame" x="170" y="537" width="34" height="30"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="aeB-rQ-xTH"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-3x-jq6">
-                                <rect key="frame" x="171.5" y="537" width="32" height="30"/>
-                                <state key="normal" title="Stop"/>
-                                <connections>
-                                    <action selector="stopButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="Vji-yl-0vT"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Deh-Mf-59k">
-                                <rect key="frame" x="160" y="475" width="55" height="30"/>
-                                <state key="normal" title="Resume"/>
-                                <connections>
-                                    <action selector="resumeButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="PKe-sP-Zs2"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYx-CH-7m3" customClass="HUDView" customModule="Runometer" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                 <subviews>
@@ -165,6 +144,55 @@
                                     <outlet property="timeLabel" destination="Uqp-f7-8jg" id="EKu-y5-2ez"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SaH-I3-5o6" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
+                                <rect key="frame" x="137" y="517" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.76078431369999999" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I24-hZ-bnb"/>
+                                    <constraint firstAttribute="width" constant="100" id="irJ-Eb-8Lg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="aeB-rQ-xTH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JSN-3x-jq6" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
+                                <rect key="frame" x="137.5" y="517" width="100" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="Vji-yl-0vT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Deh-Mf-59k" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
+                                <rect key="frame" x="137.5" y="435" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.76078431369999999" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                <state key="normal" title="Resume">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="resumeButtonPressed:" destination="t0Q-Xs-lZ5" eventType="touchUpInside" id="PKe-sP-Zs2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5A-X2-pxu">
+                                <rect key="frame" x="335" y="36" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="7KT-BE-4td"/>
+                                    <constraint firstAttribute="width" constant="24" id="CTI-6Q-Ocf"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" backgroundImage="settingsButton"/>
+                                <connections>
+                                    <segue destination="kka-cm-msg" kind="presentation" id="BeJ-DB-4TQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -172,8 +200,14 @@
                             <constraint firstItem="kOW-d0-MaH" firstAttribute="bottom" secondItem="JSN-3x-jq6" secondAttribute="bottom" constant="100" id="2Sc-D4-QNh"/>
                             <constraint firstItem="JSN-3x-jq6" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="HTI-0i-4QJ"/>
                             <constraint firstItem="SYx-CH-7m3" firstAttribute="trailing" secondItem="kOW-d0-MaH" secondAttribute="trailing" id="Pda-bX-VD6"/>
+                            <constraint firstItem="Deh-Mf-59k" firstAttribute="height" secondItem="SaH-I3-5o6" secondAttribute="height" id="Ppq-5G-HWh"/>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="bottom" secondItem="kOW-d0-MaH" secondAttribute="bottom" id="Pu9-vv-BhM"/>
+                            <constraint firstItem="Deh-Mf-59k" firstAttribute="width" secondItem="SaH-I3-5o6" secondAttribute="width" id="Rlh-QI-tjo"/>
+                            <constraint firstItem="P5A-X2-pxu" firstAttribute="top" secondItem="kOW-d0-MaH" secondAttribute="top" constant="16" id="VCt-Yh-afF"/>
                             <constraint firstItem="Deh-Mf-59k" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="Zhe-4n-U75"/>
+                            <constraint firstItem="kOW-d0-MaH" firstAttribute="trailing" secondItem="P5A-X2-pxu" secondAttribute="trailing" constant="16" id="aE7-s9-NWq"/>
+                            <constraint firstItem="SaH-I3-5o6" firstAttribute="width" secondItem="JSN-3x-jq6" secondAttribute="width" id="aRe-g3-0CY"/>
+                            <constraint firstItem="SaH-I3-5o6" firstAttribute="height" secondItem="JSN-3x-jq6" secondAttribute="height" id="apQ-ep-BV1"/>
                             <constraint firstItem="dTk-Ak-7Gi" firstAttribute="trailing" secondItem="kOW-d0-MaH" secondAttribute="trailing" id="hZO-OV-zkr"/>
                             <constraint firstItem="kOW-d0-MaH" firstAttribute="bottom" secondItem="SaH-I3-5o6" secondAttribute="bottom" constant="100" id="iEO-h1-ZNM"/>
                             <constraint firstItem="SaH-I3-5o6" firstAttribute="centerX" secondItem="jfD-WK-zj3" secondAttribute="centerX" id="kcA-xr-KBB"/>
@@ -197,6 +231,14 @@
             </objects>
             <point key="canvasLocation" x="96.799999999999997" y="139.880059970015"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="gZo-P9-oVm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="kka-cm-msg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cNb-2r-tvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="698" y="37"/>
+        </scene>
         <!--RunDetails-->
         <scene sceneID="K5a-s3-PoM">
             <objects>
@@ -206,4 +248,7 @@
             <point key="canvasLocation" x="646" y="139"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settingsButton" width="66" height="66"/>
+    </resources>
 </document>

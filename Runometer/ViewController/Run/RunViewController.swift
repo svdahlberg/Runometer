@@ -27,7 +27,10 @@ class RunViewController: UIViewController {
         runTracker = RunTracker()
         runTracker.delegate = self
         runTracker.requestAuthorization()
-        hudView.isHidden = true
+        hudView.alpha = 0
+        resumeButton.alpha = 0
+        stopButton.alpha = 0
+        stopButton.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +65,7 @@ class RunViewController: UIViewController {
     private func startRun() {
         runTracker.startTracking()
         toggleRunningUI(true)
-        hudView.isHidden = false
+        showHUDView()
     }
     
     private func pauseRun() {
@@ -77,9 +80,11 @@ class RunViewController: UIViewController {
     }
     
     private func toggleRunningUI(_ running: Bool) {
-        startButton.isHidden = true
-        stopButton.isHidden = false
-        resumeButton.isHidden = running
+        toggle(startButton, hidden: true) {
+            self.toggle(self.stopButton, hidden: false)
+        }
+        
+        toggle(resumeButton, hidden: running)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,5 +126,23 @@ extension RunViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         return self.mapView.annotationView(for: annotation, on: mapView)
+    }
+}
+
+// MARK: Animations
+private extension RunViewController {
+    func showHUDView() {
+        UIView.animate(withDuration: 0.5) {
+            self.hudView.alpha = 1
+        }
+    }
+    
+    func toggle(_ view: UIView, hidden: Bool, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            view.alpha = hidden ? 0 : 1
+            view.transform = hidden ? CGAffineTransform(scaleX: 0.1, y: 0.1) : CGAffineTransform.identity
+        }) { _ in
+            completion?()
+        }
     }
 }
