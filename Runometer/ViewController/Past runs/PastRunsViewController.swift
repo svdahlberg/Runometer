@@ -73,6 +73,7 @@ extension PastRunsViewControlller: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let run = run(for: indexPath) else { return }
         performSegue(withIdentifier: "RunDetailsSegueIdentifier", sender: run)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Past Runs View Controlller-->
+        <!--Past Runs-->
         <scene sceneID="dBb-3E-2er">
             <objects>
-                <viewController id="Z52-RH-7uy" customClass="PastRunsViewControlller" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Past Runs" id="Z52-RH-7uy" customClass="PastRunsViewControlller" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vvS-yb-JD2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
