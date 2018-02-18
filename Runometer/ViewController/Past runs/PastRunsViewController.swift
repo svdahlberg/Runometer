@@ -11,6 +11,15 @@ import UIKit
 struct RunSection {
     let title: String
     let runs: [Run]
+    
+    static func runSections(from runs: [Run], titleDateFormatter: DateFormatter) -> [RunSection] {
+        return Dictionary(grouping: runs) {
+            titleDateFormatter.string(from: $0.timestamp ?? Date())
+            }
+            .map {
+                RunSection(title: $0, runs: $1)
+        }
+    }
 }
 
 class PastRunsViewControlller: UIViewController {
@@ -22,7 +31,7 @@ class PastRunsViewControlller: UIViewController {
             tableView.reloadData()
         }
     }
-
+    
     private lazy var titleDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM yyyy"
@@ -31,13 +40,9 @@ class PastRunsViewControlller: UIViewController {
     
     private var tableViewSections: [RunSection]? {
         guard let runs = runs else { return nil }
-        return Dictionary(grouping: runs) {
-            titleDateFormatter.string(from: $0.timestamp ?? Date())
-        }.map {
-            RunSection(title: $0, runs: $1)
-        }
+        return RunSection.runSections(from: runs, titleDateFormatter: titleDateFormatter)
     }
-
+    
     private func tableViewSection(for section: Int) -> RunSection? {
         return tableViewSections?[section]
     }
