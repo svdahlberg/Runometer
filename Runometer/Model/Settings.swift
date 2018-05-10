@@ -7,69 +7,99 @@
 //
 
 import Foundation
+import CoreGraphics
 
-protocol SettingsProvider {
-    var distanceUnit: DistanceUnit? { get set }
-    var audioFeedbackDistance: Bool? { get set }
-    var audioFeedbackTime: Bool? { get set }
-    var audioFeedbackAveragePace: Bool? { get set }
-    var audioTrigger: AudioTrigger? { get set }
-    var audioTimingInterval: Double? { get set }
-}
-
-struct Settings: SettingsProvider {
-    static var shared = Settings()
-    private init() {}
+class Settings {
     
-    private enum UserDefaultKey: String {
+    enum UserDefaultKey: String {
         case distanceUnit = "distanceUnit"
-        case audioFeedbackDistance = "audioFeedbackDistance"
-        case audioFeedbackTime = "audioFeedbackTime"
-        case audioFeedbackAveragePace = "audioFeedbackAveragePace"
+        case shouldGiveDistanceAudioFeedback = "shouldGiveDistanceAudioFeedback"
+        case shouldGiveTimeAudioFeedback = "shouldGiveTimeAudioFeedback"
+        case shouldGiveAveragePaceAudioFeedback = "shouldGiveAveragePaceAudioFeedback"
         case audioTrigger = "audioTrigger"
         case audioTimingInterval = "audioTimingInterval"
     }
     
-    private var userDefaults = UserDefaults.standard
+    private let userDefaults: UserDefaults
     
-    var distanceUnit: DistanceUnit? {
+    init(userDefaults: UserDefaults = UserDefaults.standard) {
+        self.userDefaults = userDefaults
+    }
+    
+    // MARK: Units
+    
+    var distanceUnit: DistanceUnit {
         get {
             guard let savedDistanceUnitSymbol = userDefaults.string(forKey: UserDefaultKey.distanceUnit.rawValue) else {
-                return nil
+                return .kilometers
             }
-            return DistanceUnit.parse(distanceUnitSymbol: savedDistanceUnitSymbol)
+            return DistanceUnit.parse(distanceUnitSymbol: savedDistanceUnitSymbol) ?? .kilometers
         }
-        set { userDefaults.set(newValue?.symbol, forKey: UserDefaultKey.distanceUnit.rawValue) }
+        set { userDefaults.set(newValue.symbol, forKey: UserDefaultKey.distanceUnit.rawValue) }
     }
     
-    var audioFeedbackDistance: Bool? {
-        get { return userDefaults.object(forKey: UserDefaultKey.audioFeedbackDistance.rawValue) as? Bool }
-        set { userDefaults.set(newValue, forKey: UserDefaultKey.audioFeedbackDistance.rawValue) }
-    }
-
-    var audioFeedbackTime: Bool? {
-        get { return userDefaults.object(forKey: UserDefaultKey.audioFeedbackTime.rawValue) as? Bool }
-        set { userDefaults.set(newValue, forKey: UserDefaultKey.audioFeedbackTime.rawValue) }
+    var speedUnit: SpeedUnit {
+        switch distanceUnit {
+        case .kilometers: return .minutesPerKilometer
+        case .miles: return .minutesPerMile
+        }
     }
     
-    var audioFeedbackAveragePace: Bool? {
-        get { return userDefaults.object(forKey: UserDefaultKey.audioFeedbackAveragePace.rawValue) as? Bool }
-        set { userDefaults.set(newValue, forKey: UserDefaultKey.audioFeedbackAveragePace.rawValue) }
-    }
+    // MARK: Audio Feedback
     
-    var audioTrigger: AudioTrigger? {
+    var audioTrigger: AudioTrigger {
         get {
             guard let savedAudioTrigger = userDefaults.string(forKey: UserDefaultKey.audioTrigger.rawValue) else {
-                return nil
+                return .distance
             }
-            return AudioTrigger.parse(string: savedAudioTrigger)
+            return AudioTrigger.parse(string: savedAudioTrigger)  ?? .distance
         }
-        set { userDefaults.set(newValue?.rawValue, forKey: UserDefaultKey.audioTrigger.rawValue) }
+        set { userDefaults.set(newValue.rawValue, forKey: UserDefaultKey.audioTrigger.rawValue) }
     }
     
-    var audioTimingInterval: Double? {
-        get { return userDefaults.object(forKey: UserDefaultKey.audioTimingInterval.rawValue) as? Double }
+    var shouldGiveTimeAudioFeedback: Bool {
+        get { return userDefaults.object(forKey: UserDefaultKey.shouldGiveTimeAudioFeedback.rawValue) as? Bool ?? true }
+        set { userDefaults.set(newValue, forKey: UserDefaultKey.shouldGiveTimeAudioFeedback.rawValue) }
+    }
+    
+    var shouldGiveDistanceAudioFeedback: Bool {
+        get { return userDefaults.object(forKey: UserDefaultKey.shouldGiveDistanceAudioFeedback.rawValue) as? Bool ?? true }
+        set { userDefaults.set(newValue, forKey: UserDefaultKey.shouldGiveDistanceAudioFeedback.rawValue) }
+    }
+    
+    var shouldGiveAveragePaceAudioFeedback: Bool {
+        get { return userDefaults.object(forKey: UserDefaultKey.shouldGiveAveragePaceAudioFeedback.rawValue) as? Bool ?? true }
+        set { userDefaults.set(newValue, forKey: UserDefaultKey.shouldGiveAveragePaceAudioFeedback.rawValue) }
+    }
+    
+    var audioTimingInterval: Double {
+        get { return userDefaults.object(forKey: UserDefaultKey.audioTimingInterval.rawValue) as? Double ?? defaultAudioTimingIntervalValue() }
         set { userDefaults.set(newValue, forKey: UserDefaultKey.audioTimingInterval.rawValue) }
     }
+    
+    private func defaultAudioTimingIntervalValue() -> Double {
+        return audioTrigger == .time ? 5.0 : 1.0
+    }
+    
+    func resetAudioTimingInterval() {
+        userDefaults.set(nil, forKey: UserDefaultKey.audioTimingInterval.rawValue)
+    }
+    
+    let timeIntervals: [Double] = [1, 5, 10, 15]
+    let kilometerIntervals: [Double] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    let mileIntervals: [Double] = [0.5, 1, 1.5, 2, 2.5, 3]
+    
+    var audioIntervals: [Double] {
+        switch audioTrigger {
+        case .distance:
+            return distanceUnit == .kilometers ? kilometerIntervals : mileIntervals
+        case .time:
+            return timeIntervals
+        }
+    }
+    
+    // MARK: Run Rating
+    
+    var runRatingRange: ClosedRange<CGFloat> = 0.01...1
 
 }

@@ -11,11 +11,11 @@ import CoreGraphics
 
 class RunStatistics {
     
-    private let appConfiguration: AppConfiguration
+    private let settings: Settings
     private let runService: RunService
     
-    init(appConfiguration: AppConfiguration = AppConfiguration(), runService: RunService = RunService()) {
-        self.appConfiguration = appConfiguration
+    init(settings: Settings = Settings(), runService: RunService = RunService()) {
+        self.settings = settings
         self.runService = runService
     }
     
@@ -116,10 +116,10 @@ class RunStatistics {
     private func format<T>(value: T) -> String? {
         switch value {
         case let meters as Meters:
-            return DistanceFormatter.formatWithLongUnitName(distance: meters, outputUnit: appConfiguration.distanceUnit)
+            return DistanceFormatter.formatWithLongUnitName(distance: meters, outputUnit: settings.distanceUnit)
         case is Pace:
             guard let pace = value as? Pace else { return nil }
-            return PaceFormatter.format(pace: pace.magnitude, outputUnit: appConfiguration.speedUnit)
+            return PaceFormatter.format(pace: pace.magnitude, outputUnit: settings.speedUnit)
         case is Seconds:
             guard let time = value as? Seconds else { return nil }
             return TimeFormatter.format(time: time, unitStyle: .full, zeroFormattingBehavior: .dropAll)
@@ -134,7 +134,7 @@ class RunStatistics {
                 return nil
         }
         
-        return "\(formattedLowerBound) - \(formattedUpperBound) \(appConfiguration.distanceUnit.symbol)"
+        return "\(formattedLowerBound) - \(formattedUpperBound) \(settings.distanceUnit.symbol)"
     }
     
     private struct StatisticsTexts {

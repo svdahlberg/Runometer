@@ -10,12 +10,12 @@ import Foundation
 
 struct PaceFormatter {
     
-    static func pace(fromDistance distance: Meters, time: Seconds, outputUnit: SpeedUnit = AppConfiguration().speedUnit) -> String? {
+    static func pace(fromDistance distance: Meters, time: Seconds, outputUnit: SpeedUnit = Settings().speedUnit) -> String? {
         let pace = PaceCalculator.pace(fromDistance: distance, time: time, outputUnit: outputUnit)
         return format(pace: pace)
     }
     
-    static func format(pace: Seconds, outputUnit: SpeedUnit = AppConfiguration().speedUnit) -> String? {
+    static func format(pace: Seconds, outputUnit: SpeedUnit = Settings().speedUnit) -> String? {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
         formatter.unitsStyle = .positional
@@ -23,7 +23,7 @@ struct PaceFormatter {
         return formatter.string(from: TimeInterval(pace))
     }
     
-    static func formatUsingLongUnitName(pace: Seconds, outputUnit: SpeedUnit = AppConfiguration().speedUnit) -> String? {
+    static func formatUsingLongUnitName(pace: Seconds, outputUnit: SpeedUnit = Settings().speedUnit) -> String? {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = [.minute, .second]
         formatter.unitsStyle = .full

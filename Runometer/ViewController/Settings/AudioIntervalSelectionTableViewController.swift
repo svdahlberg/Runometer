@@ -10,12 +10,12 @@ import UIKit
 
 class AudioIntervalSelectionTableViewController: UITableViewController {
     
-    private var intervals: [Double] = AppConfiguration().audioIntervals
+    private var intervals: [Double] = Settings().audioIntervals
     
     private var intervalUnitName: String {
-        switch AppConfiguration().audioTrigger {
+        switch Settings().audioTrigger {
         case .time: return "minutes"
-        case .distance: return AppConfiguration().distanceUnit.name
+        case .distance: return Settings().distanceUnit.name
         }
     }
     
@@ -24,7 +24,7 @@ class AudioIntervalSelectionTableViewController: UITableViewController {
     }
     
     private var selectedIntervalIndex: Int? {
-        return intervals.index(of: AppConfiguration().audioTimingInterval)
+        return intervals.index(of: Settings().audioTimingInterval)
     }
     
 }
@@ -46,7 +46,7 @@ extension AudioIntervalSelectionTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.visibleCells.forEach { $0.accessoryType = .none }
         tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        Settings.shared.audioTimingInterval = intervals[indexPath.row]
+        Settings().audioTimingInterval = intervals[indexPath.row]
         navigationController?.popViewController(animated: true)
     }
 }

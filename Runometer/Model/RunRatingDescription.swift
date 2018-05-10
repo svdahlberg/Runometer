@@ -21,7 +21,7 @@ struct RunRatingDescription {
     lazy var badRange = bad..<average
     lazy var veryBadRange = worst..<bad
 
-    init(ratingRange: ClosedRange<CGFloat> = AppConfiguration().runRatingRange) {
+    init(ratingRange: ClosedRange<CGFloat> = Settings().runRatingRange) {
         best = ratingRange.upperBound
         worst = ratingRange.lowerBound
     }

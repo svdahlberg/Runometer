@@ -14,7 +14,7 @@ struct RunTrackerConfiguration {
     static let horizontalAccuracyFilter: Double = 20
     static let timeSinceLastLocationFilter: TimeInterval = 10
     static let timerInterval: TimeInterval = 1
-    static let distanceBetweenCheckpoints: Meters = AppConfiguration().distanceUnit.meters
+    static let distanceBetweenCheckpoints: Meters = Settings().distanceUnit.meters
 }
 
 protocol RunTrackerDelegate: class {

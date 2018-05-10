@@ -10,7 +10,7 @@ import Foundation
 
 struct AudioFeedbackController {
     
-    private let appConfiguration: AppConfiguration
+    private let settings: Settings
 
     private(set) var valueAtLastAudioFeedback: Double
     
@@ -36,23 +36,23 @@ struct AudioFeedbackController {
         }
     }
     
-    init(appConfiguration: AppConfiguration = AppConfiguration()) {
-        self.appConfiguration = appConfiguration
+    init(settings: Settings = Settings()) {
+        self.settings = settings
         distance = 0
         time = 0
         valueAtLastAudioFeedback = 0
     }
     
     private var trigger: AudioTrigger {
-        return appConfiguration.audioTrigger
+        return settings.audioTrigger
     }
     
     private var audioFeedbackInterval: Double {
         switch trigger {
         case .time:
-            return appConfiguration.audioTimingInterval * 60
+            return settings.audioTimingInterval * 60
         case .distance:
-            return appConfiguration.audioTimingInterval * appConfiguration.distanceUnit.meters
+            return settings.audioTimingInterval * settings.distanceUnit.meters
         }
     }
     

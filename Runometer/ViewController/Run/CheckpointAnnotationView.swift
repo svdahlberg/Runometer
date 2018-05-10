@@ -27,7 +27,7 @@ class CheckpointAnnotationView: MKAnnotationView {
         
         let label = UILabel(frame: CGRect(x: borderWidth, y: -3, width: labelWidth, height: labelHeight))
         if let formattedDistance = DistanceFormatter.format(distance: annotation.checkpoint.distance) {
-            label.text = "\(formattedDistance) \(AppConfiguration().distanceUnit.symbol)"
+            label.text = "\(formattedDistance) \(Settings().distanceUnit.symbol)"
         }
         label.font = UIFont.boldSystemFont(ofSize: 100)
         label.textAlignment = .center

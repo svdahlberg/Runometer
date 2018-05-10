@@ -18,11 +18,11 @@ class SettingsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        distanceUnitSegmentedControl.selectedSegmentIndex = AppConfiguration().distanceUnit == .kilometers ? 0 : 1
-        audioDistanceSwitch.isOn = AppConfiguration().shouldGiveDistanceAudioFeedback
-        audioTimeSwitch.isOn = AppConfiguration().shouldGiveTimeAudioFeedback
-        audioAveragePaceSwitch.isOn = AppConfiguration().shouldGiveAveragePaceAudioFeedback
-        audioTriggerSegmentedControl.selectedSegmentIndex = AppConfiguration().audioTrigger == .distance ? 0 : 1
+        distanceUnitSegmentedControl.selectedSegmentIndex = Settings().distanceUnit == .kilometers ? 0 : 1
+        audioDistanceSwitch.isOn = Settings().shouldGiveDistanceAudioFeedback
+        audioTimeSwitch.isOn = Settings().shouldGiveTimeAudioFeedback
+        audioAveragePaceSwitch.isOn = Settings().shouldGiveAveragePaceAudioFeedback
+        audioTriggerSegmentedControl.selectedSegmentIndex = Settings().audioTrigger == .distance ? 0 : 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,39 +31,41 @@ class SettingsTableViewController: UITableViewController {
     }
     
     private func updateAudioTimingLabel() {
-        let audioTimingIntervalLabelPostfix = AppConfiguration().audioTrigger == .distance ? AppConfiguration().distanceUnit.symbol : "min"
-        audioTimingIntervalLabel.text = "\(AppConfiguration().audioTimingInterval.trailingZeroRemoved()) \(audioTimingIntervalLabelPostfix)"
+        let audioTimingIntervalLabelPostfix = Settings().audioTrigger == .distance ? Settings().distanceUnit.symbol : "min"
+        audioTimingIntervalLabel.text = "\(Settings().audioTimingInterval.trailingZeroRemoved()) \(audioTimingIntervalLabelPostfix)"
     }
     
     @IBAction private func didChangeValueOfDistanceSegmentedControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: Settings.shared.distanceUnit = .kilometers
-        case 1: Settings.shared.distanceUnit = .miles
+        case 0: Settings().distanceUnit = .kilometers
+        case 1: Settings().distanceUnit = .miles
         default: break
         }
-        Settings.shared.audioTimingInterval = nil
+
+        Settings().resetAudioTimingInterval()
         updateAudioTimingLabel()
     }
     
     @IBAction private func didToggleAudioDistanceSwitch(_ sender: UISwitch) {
-        Settings.shared.audioFeedbackDistance = sender.isOn
+        Settings().shouldGiveDistanceAudioFeedback = sender.isOn
     }
     
     @IBAction private func didToggleAudioTimeSwitch(_ sender: UISwitch) {
-        Settings.shared.audioFeedbackTime = sender.isOn
+        Settings().shouldGiveTimeAudioFeedback = sender.isOn
     }
     
     @IBAction private func didToggleAudioAveragePaceSwitch(_ sender: UISwitch) {
-        Settings.shared.audioFeedbackAveragePace = sender.isOn
+        Settings().shouldGiveAveragePaceAudioFeedback = sender.isOn
     }
     
     @IBAction private func didChangeValueOfAudioTriggerSegmentedControl(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-        case 0: Settings.shared.audioTrigger = .distance
-        case 1: Settings.shared.audioTrigger = .time
+        case 0: Settings().audioTrigger = .distance
+        case 1: Settings().audioTrigger = .time
         default: break
         }
-        Settings.shared.audioTimingInterval = nil
+
+        Settings().resetAudioTimingInterval()
         updateAudioTimingLabel()
     }
     

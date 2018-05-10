@@ -20,8 +20,8 @@ class HUDView: UIView {
         distanceLabel.text = DistanceFormatter.format(distance: 0)
         timeLabel.text = TimeFormatter.format(time: 0)
         paceLabel.text = PaceFormatter.pace(fromDistance: 0, time: 0)
-        distanceUnitLabel.text = AppConfiguration().distanceUnit.symbol
-        paceUnitLabel.text = AppConfiguration().speedUnit.symbol
+        distanceUnitLabel.text = Settings().distanceUnit.symbol
+        paceUnitLabel.text = Settings().speedUnit.symbol
     }
     
     var distance: Meters? {

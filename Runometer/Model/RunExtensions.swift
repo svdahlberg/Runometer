@@ -60,7 +60,7 @@ extension Run {
         }
     }
     
-    func reachedCheckpoints(distanceUnit: DistanceUnit = AppConfiguration().distanceUnit) -> [Checkpoint]? {
+    func reachedCheckpoints(distanceUnit: DistanceUnit = Settings().distanceUnit) -> [Checkpoint]? {
         guard let locationSegments = locationSegments(),
             let startTime = locationSegments.first?.first?.timestamp
         else { return nil }
@@ -97,17 +97,17 @@ extension Run {
         return EndAnnotation(coordinate: lastLocation.coordinate)
     }
     
-    func splitTimes(distanceUnit: DistanceUnit = AppConfiguration().distanceUnit, speedUnit: SpeedUnit = AppConfiguration().speedUnit) -> [String]? {
-        return reachedCheckpoints(distanceUnit: distanceUnit)?.flatMap {
+    func splitTimes(distanceUnit: DistanceUnit = Settings().distanceUnit, speedUnit: SpeedUnit = Settings().speedUnit) -> [String]? {
+        return reachedCheckpoints(distanceUnit: distanceUnit)?.compactMap {
             PaceFormatter.pace(fromDistance: $0.distanceBetweenCheckpoints, time: $0.timeSinceLastCheckpoint, outputUnit: speedUnit)
         }
     }
     
-    func averagePace(speedUnit: SpeedUnit = AppConfiguration().speedUnit) -> Seconds {
+    func averagePace(speedUnit: SpeedUnit = Settings().speedUnit) -> Seconds {
         return PaceCalculator.pace(fromDistance: distance, time: Seconds(duration), outputUnit: speedUnit)
     }
     
-    func similarRunsRange(distanceUnit: DistanceUnit = AppConfiguration().distanceUnit) -> ClosedRange<Meters> {
+    func similarRunsRange(distanceUnit: DistanceUnit = Settings().distanceUnit) -> ClosedRange<Meters> {
         let lowerBound = max(distance - distanceUnit.meters, 0)
         var upperBound = distance + distanceUnit.meters
         if lowerBound == 0 {

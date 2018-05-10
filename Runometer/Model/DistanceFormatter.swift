@@ -9,7 +9,7 @@
 import Foundation
 
 struct DistanceFormatter {
-    static func format(distance: Meters, outputUnit: DistanceUnit = AppConfiguration().distanceUnit) -> String? {
+    static func format(distance: Meters, outputUnit: DistanceUnit = Settings().distanceUnit) -> String? {
         let convertedDistance = distance.convert(to: outputUnit)
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
@@ -19,7 +19,7 @@ struct DistanceFormatter {
         return numberFormatter.string(from: NSNumber(value: convertedDistance))
     }
     
-    static func formatWithLongUnitName(distance: Meters, outputUnit: DistanceUnit = AppConfiguration().distanceUnit) -> String? {
+    static func formatWithLongUnitName(distance: Meters, outputUnit: DistanceUnit = Settings().distanceUnit) -> String? {
         guard let value = format(distance: distance, outputUnit: outputUnit) else {
             return nil
         }

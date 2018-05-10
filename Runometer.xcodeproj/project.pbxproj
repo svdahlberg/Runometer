@@ -63,6 +63,7 @@
 		B2B1B1941FC9B7E500C579FE /* RunRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1931FC9B7E500C579FE /* RunRating.swift */; };
 		B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */; };
 		B2B1B1981FCA2B0E00C579FE /* RunServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */; };
+		B2BAAD5D20A45BA7000117FB /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */; };
 		B2C260FF1FA5FD3100E69E9D /* MKMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C260FE1FA5FD3100E69E9D /* MKMapViewExtensions.swift */; };
 		B2C261011FA5FF5A00E69E9D /* RunSummaryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261001FA5FF5A00E69E9D /* RunSummaryMapView.swift */; };
 		B2C261031FA6209100E69E9D /* RunExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261021FA6209100E69E9D /* RunExtensions.swift */; };
@@ -76,8 +77,6 @@
 		B2F1C7241FC0CE16001AC4DF /* AudioTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */; };
 		B2F1C72D1FC17EE5001AC4DF /* SettingsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C72C1FC17EE5001AC4DF /* SettingsMock.swift */; };
 		B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7301FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift */; };
-		B2F1C7331FC19ABD001AC4DF /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7321FC19ABD001AC4DF /* AppConfiguration.swift */; };
-		B2F1C7351FC19B6C001AC4DF /* AppConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7341FC19B6C001AC4DF /* AppConfigurationTests.swift */; };
 		B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */; };
 		B2F1C7391FC1A7D5001AC4DF /* DoubleExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7381FC1A7D5001AC4DF /* DoubleExtensionsTests.swift */; };
 /* End PBXBuildFile section */
@@ -162,6 +161,7 @@
 		B2B1B1931FC9B7E500C579FE /* RunRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRating.swift; sourceTree = "<group>"; };
 		B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingTests.swift; sourceTree = "<group>"; };
 		B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunServiceTests.swift; sourceTree = "<group>"; };
+		B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		B2C260FE1FA5FD3100E69E9D /* MKMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensions.swift; sourceTree = "<group>"; };
 		B2C261001FA5FF5A00E69E9D /* RunSummaryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummaryMapView.swift; sourceTree = "<group>"; };
 		B2C261021FA6209100E69E9D /* RunExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunExtensions.swift; sourceTree = "<group>"; };
@@ -175,8 +175,6 @@
 		B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrigger.swift; sourceTree = "<group>"; };
 		B2F1C72C1FC17EE5001AC4DF /* SettingsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMock.swift; sourceTree = "<group>"; };
 		B2F1C7301FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioIntervalSelectionTableViewController.swift; sourceTree = "<group>"; };
-		B2F1C7321FC19ABD001AC4DF /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		B2F1C7341FC19B6C001AC4DF /* AppConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationTests.swift; sourceTree = "<group>"; };
 		B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		B2F1C7381FC1A7D5001AC4DF /* DoubleExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionsTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,7 +225,6 @@
 				B25FE7A91F88E6F7001B1BF1 /* PaceFormatter.swift */,
 				B25FE7AF1F8A3A9C001B1BF1 /* PaceCalculator.swift */,
 				B25FE7B11F8A5075001B1BF1 /* Units.swift */,
-				B2F1C7321FC19ABD001AC4DF /* AppConfiguration.swift */,
 				B24956751FA4934B002DC83E /* CoreDataStack.swift */,
 				B2C261021FA6209100E69E9D /* RunExtensions.swift */,
 				B2A931191FADCA77006FEACB /* RunService.swift */,
@@ -313,7 +310,7 @@
 				B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */,
 				B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */,
 				B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */,
-				B2F1C7341FC19B6C001AC4DF /* AppConfigurationTests.swift */,
+				B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */,
 				B2F1C7381FC1A7D5001AC4DF /* DoubleExtensionsTests.swift */,
 				B2A931231FAF11CE006FEACB /* MKCoordinateRegionExtensionsTests.swift */,
 				B2A9311B1FAF0553006FEACB /* MKMapViewExtensionsTests.swift */,
@@ -450,7 +447,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Svante Dahlberg";
 				TargetAttributes = {
 					B2B054ED1F80C55600292EB3 = {
@@ -547,7 +544,6 @@
 				B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */,
 				B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
-				B2F1C7331FC19ABD001AC4DF /* AppConfiguration.swift in Sources */,
 				B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */,
 				B27F634D1FA5B9E700C2116F /* PastRunsViewController.swift in Sources */,
 				B25FE7B21F8A5075001B1BF1 /* Units.swift in Sources */,
@@ -585,7 +581,6 @@
 				B2A9311C1FAF0553006FEACB /* MKMapViewExtensionsTests.swift in Sources */,
 				B2043EC01FF2A97300220C14 /* RunServiceMocks.swift in Sources */,
 				B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */,
-				B2F1C7351FC19B6C001AC4DF /* AppConfigurationTests.swift in Sources */,
 				B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */,
 				B25DB237201E27170089144E /* AudioFeedbackControllerTests.swift in Sources */,
 				B2A931241FAF11CE006FEACB /* MKCoordinateRegionExtensionsTests.swift in Sources */,
@@ -601,6 +596,7 @@
 				B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */,
 				B2F1C72D1FC17EE5001AC4DF /* SettingsMock.swift in Sources */,
 				B25FE7B41F8A513D001B1BF1 /* DistanceFormatterTests.swift in Sources */,
+				B2BAAD5D20A45BA7000117FB /* SettingsTests.swift in Sources */,
 				B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,6 +658,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -669,6 +666,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -719,6 +717,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -726,6 +725,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

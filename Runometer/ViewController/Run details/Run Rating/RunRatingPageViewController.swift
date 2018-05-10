@@ -45,7 +45,7 @@ class RunRatingPageViewController: UIPageViewController {
         
         let allDistances = runs.map { $0.distance }
         let distanceRating = RunRating.distanceRating(for: run.distance, comparedTo: allDistances)
-        return runRatingViewController(percentage: distanceRating, value: formattedDistance, unitName: AppConfiguration().distanceUnit.symbol, ratingInformation: statisticsText)
+        return runRatingViewController(percentage: distanceRating, value: formattedDistance, unitName: Settings().distanceUnit.symbol, ratingInformation: statisticsText)
     }()
     
     private lazy var timeRatingViewController: RunRatingViewController? = {
@@ -77,7 +77,7 @@ class RunRatingPageViewController: UIPageViewController {
         let paces = runsWithSimilarDistances.map { $0.averagePace() }
         let paceRating = RunRating.timeRating(for: run.averagePace(), comparedTo: paces)
 
-        return runRatingViewController(percentage: paceRating, value: formattedPace, unitName: AppConfiguration().speedUnit.symbol, ratingInformation: paceRatingStatisticsText)
+        return runRatingViewController(percentage: paceRating, value: formattedPace, unitName: Settings().speedUnit.symbol, ratingInformation: paceRatingStatisticsText)
     }()
     
     private func runRatingViewController(percentage: CGFloat, value: String, unitName: String, ratingInformation: String) -> RunRatingViewController? {

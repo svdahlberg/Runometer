@@ -22,7 +22,7 @@ class PastRunTableViewCell: UITableViewCell {
                 let date = run.timestamp
                 else { return }
             
-            distanceLabel?.text = "\(formattedDistance) \(AppConfiguration().distanceUnit.symbol)"
+            distanceLabel?.text = "\(formattedDistance) \(Settings().distanceUnit.symbol)"
             timeLabel.text = "\(formattedTime)"
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .short

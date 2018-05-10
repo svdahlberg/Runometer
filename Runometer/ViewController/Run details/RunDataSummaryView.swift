@@ -18,9 +18,9 @@ class RunDataSummaryView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        distanceUnitLabel.text = AppConfiguration().distanceUnit.symbol
+        distanceUnitLabel.text = Settings().distanceUnit.symbol
         timeUnitLabel.text = "Time"
-        paceUnitLabel.text = AppConfiguration().speedUnit.symbol
+        paceUnitLabel.text = Settings().speedUnit.symbol
     }
     
     var run: Run? {
