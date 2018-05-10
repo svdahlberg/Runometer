@@ -420,16 +420,73 @@ class SettingsTests: XCTestCase {
     
     // MARK: audioTimingInterval
     
+    func testGetAudioTimingInterval_shouldInvokeObjectForKeyWithAudioTimingIntervalKeyOnUserDefaults() {
+        // When
+        let _ = sut.audioTimingInterval
+        
+        // Then
+        XCTAssertEqual(userDefaultsMock.objectForKeyInvokeCount, 1)
+        XCTAssertEqual(userDefaultsMock.objectForKeyArgument, Settings.UserDefaultKey.audioTimingInterval.rawValue)
+    }
     
+    func testGetAudioTimingInterval_withUserDefaultsObjectForKeyReturningDouble_shouldReturnTheDouble() {
+        // Given
+        userDefaultsMock.objectForKeyReturnValue = Double(1)
+        sut = Settings(userDefaults: userDefaultsMock)
+        
+        // When
+        let audioTimingInterval = sut.audioTimingInterval
+        
+        // Then
+        XCTAssertEqual(audioTimingInterval, 1)
+    }
     
-    // MARK: runRatingRange
+    func testGetAudioTimingInterval_withUserDefaultsObjectForKeyReturningNilAndDistanceUnitIsTime_shouldReturn5() {
+        // Given
+        userDefaultsMock.objectForKeyReturnValue = nil
+        userDefaultsMock.stringForKeyReturnValue = "time"
+        sut = Settings(userDefaults: userDefaultsMock)
+        
+        // When
+        let audioTimingInterval = sut.audioTimingInterval
+        
+        // Then
+        XCTAssertEqual(audioTimingInterval, 5)
+    }
     
-    func testRunRatingRangeHasLowerBoundZeroPointOneAndUpperBoundOne() {
-        XCTAssertEqual(0.01, sut.runRatingRange.lowerBound)
-        XCTAssertEqual(1, sut.runRatingRange.upperBound)
+    func testGetAudioTimingInterval_withUserDefaultsObjectForKeyReturningNilAndDistanceUnitIsDistance_shouldReturn1() {
+        // Given
+        userDefaultsMock.objectForKeyReturnValue = nil
+        userDefaultsMock.stringForKeyReturnValue = "distance"
+        sut = Settings(userDefaults: userDefaultsMock)
+        
+        // When
+        let audioTimingInterval = sut.audioTimingInterval
+        
+        // Then
+        XCTAssertEqual(audioTimingInterval, 1)
     }
 
+    func testSetAudioTimingInterval_shouldInvokeSetOnUserDefaultsWithKeyAudioTimingInterval() {
+        // When
+        sut.audioTimingInterval = Double(1)
+        
+        // Then
+        XCTAssertEqual(userDefaultsMock.setInvokeCount, 1)
+        XCTAssertEqual(userDefaultsMock.setKeyArgument, Settings.UserDefaultKey.audioTimingInterval.rawValue)
+        XCTAssertEqual(userDefaultsMock.setValueArgument as? Double, Double(1))
+    }
     
+    // MARK: resetAudioTimingInterval
+    
+    func testResetAudioTimingInterval_shouldInvokeSetWithValueNilOnUserDefaults() {
+        // When
+        sut.resetAudioTimingInterval()
+        
+        // Then
+        XCTAssertEqual(userDefaultsMock.setInvokeCount, 1)
+        XCTAssertNil(userDefaultsMock.setValueArgument)
+    }
     
 }
 
