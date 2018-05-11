@@ -1,5 +1,5 @@
 //
-//  RunService.swift
+//  RunProvider.swift
 //  Runometer
 //
 //  Created by Svante Dahlberg on 2017-11-04.
@@ -9,7 +9,7 @@
 import CoreData
 import CoreLocation
 
-class RunService {
+class RunProvider {
     
     private(set) var context: NSManagedObjectContext
     

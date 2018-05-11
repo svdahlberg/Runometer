@@ -1,5 +1,5 @@
 //
-//  RunServiceMocks.swift
+//  RunProviderMocks.swift
 //  RunometerTests
 //
 //  Created by Svante Dahlberg on 2017-12-26.
@@ -9,19 +9,19 @@
 import Foundation
 @testable import Runometer
 
-class RunServiceMock: RunService {
+class RunProviderMock: RunProvider {
     override func savedRuns() -> [Run]? {
         return Run.runsMock(context: context)
     }
 }
 
-class RunServiceMockWithLongestRunOneKilometerLongerThanNextLongestRun: RunService {
+class RunProviderMockWithLongestRunOneKilometerLongerThanNextLongestRun: RunProvider {
     override func savedRuns() -> [Run]? {
         return Array(Run.runsMock(context: context).dropLast())
     }
 }
 
-class RunServiceMockWithLongestRunOneMeterLongerThanNextLongestRun: RunService {
+class RunProviderMockWithLongestRunOneMeterLongerThanNextLongestRun: RunProvider {
     override func savedRuns() -> [Run]? {
         var runs = Array(Run.runsMock(context: context))
         runs.append(Run(context: context, distance: 10001, time: 3600, locationSegments: [], date: Date(timeIntervalSince1970: 0)))
@@ -29,7 +29,7 @@ class RunServiceMockWithLongestRunOneMeterLongerThanNextLongestRun: RunService {
     }
 }
 
-class RunServiceMockWithShortestRunOneMeterShorterThanNextShortestRun: RunService {
+class RunProviderMockWithShortestRunOneMeterShorterThanNextShortestRun: RunProvider {
     override func savedRuns() -> [Run]? {
         var runs = Array(Run.runsMock(context: context))
         runs.append(Run(context: context, distance: 999, time: 360, locationSegments: [], date: Date(timeIntervalSince1970: 0)))
@@ -37,7 +37,7 @@ class RunServiceMockWithShortestRunOneMeterShorterThanNextShortestRun: RunServic
     }
 }
 
-class RunServiceMockWithOneSavedRun: RunService {
+class RunProviderMockWithOneSavedRun: RunProvider {
     override func savedRuns() -> [Run]? {
         return [Run.runsMock(context: context).first!]
     }

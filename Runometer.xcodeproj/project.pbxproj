@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBD1FF26F8800220C14 /* RunsMock.swift */; };
-		B2043EC01FF2A97300220C14 /* RunServiceMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBF1FF2A97300220C14 /* RunServiceMocks.swift */; };
+		B2043EC01FF2A97300220C14 /* RunProviderMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBF1FF2A97300220C14 /* RunProviderMocks.swift */; };
 		B204BCA7200A70EA0003E3FE /* AudioFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */; };
 		B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */; };
 		B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A02030608A007153D2 /* RoundCornersButton.swift */; };
@@ -43,7 +43,7 @@
 		B27F63581FA5E69700C2116F /* RunDataSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */; };
 		B28F81BD1F93CE8C000BBA18 /* CheckpointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */; };
 		B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BE1F93D888000BBA18 /* Checkpoint.swift */; };
-		B2A9311A1FADCA77006FEACB /* RunService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A931191FADCA77006FEACB /* RunService.swift */; };
+		B2A9311A1FADCA77006FEACB /* RunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A931191FADCA77006FEACB /* RunProvider.swift */; };
 		B2A9311C1FAF0553006FEACB /* MKMapViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A9311B1FAF0553006FEACB /* MKMapViewExtensionsTests.swift */; };
 		B2A9311E1FAF06C5006FEACB /* MKPolyLineExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A9311D1FAF06C5006FEACB /* MKPolyLineExtensions.swift */; };
 		B2A931201FAF06F7006FEACB /* MKPolylineExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A9311F1FAF06F7006FEACB /* MKPolylineExtensionTests.swift */; };
@@ -62,7 +62,7 @@
 		B2B1B1911FC997A200C579FE /* RunRatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1901FC997A200C579FE /* RunRatingViewController.swift */; };
 		B2B1B1941FC9B7E500C579FE /* RunRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1931FC9B7E500C579FE /* RunRating.swift */; };
 		B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */; };
-		B2B1B1981FCA2B0E00C579FE /* RunServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */; };
+		B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1971FCA2B0E00C579FE /* RunProviderTests.swift */; };
 		B2BAAD5D20A45BA7000117FB /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */; };
 		B2C260FF1FA5FD3100E69E9D /* MKMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C260FE1FA5FD3100E69E9D /* MKMapViewExtensions.swift */; };
 		B2C261011FA5FF5A00E69E9D /* RunSummaryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261001FA5FF5A00E69E9D /* RunSummaryMapView.swift */; };
@@ -100,7 +100,7 @@
 
 /* Begin PBXFileReference section */
 		B2043EBD1FF26F8800220C14 /* RunsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunsMock.swift; sourceTree = "<group>"; };
-		B2043EBF1FF2A97300220C14 /* RunServiceMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunServiceMocks.swift; sourceTree = "<group>"; };
+		B2043EBF1FF2A97300220C14 /* RunProviderMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProviderMocks.swift; sourceTree = "<group>"; };
 		B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedback.swift; sourceTree = "<group>"; };
 		B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackTests.swift; sourceTree = "<group>"; };
 		B21967A02030608A007153D2 /* RoundCornersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 		B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDataSummaryView.swift; sourceTree = "<group>"; };
 		B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotation.swift; sourceTree = "<group>"; };
 		B28F81BE1F93D888000BBA18 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
-		B2A931191FADCA77006FEACB /* RunService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunService.swift; sourceTree = "<group>"; };
+		B2A931191FADCA77006FEACB /* RunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProvider.swift; sourceTree = "<group>"; };
 		B2A9311B1FAF0553006FEACB /* MKMapViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensionsTests.swift; sourceTree = "<group>"; };
 		B2A9311D1FAF06C5006FEACB /* MKPolyLineExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPolyLineExtensions.swift; sourceTree = "<group>"; };
 		B2A9311F1FAF06F7006FEACB /* MKPolylineExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPolylineExtensionTests.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		B2B1B1901FC997A200C579FE /* RunRatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingViewController.swift; sourceTree = "<group>"; };
 		B2B1B1931FC9B7E500C579FE /* RunRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRating.swift; sourceTree = "<group>"; };
 		B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingTests.swift; sourceTree = "<group>"; };
-		B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunServiceTests.swift; sourceTree = "<group>"; };
+		B2B1B1971FCA2B0E00C579FE /* RunProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProviderTests.swift; sourceTree = "<group>"; };
 		B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
 		B2C260FE1FA5FD3100E69E9D /* MKMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensions.swift; sourceTree = "<group>"; };
 		B2C261001FA5FF5A00E69E9D /* RunSummaryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSummaryMapView.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				B25FE7B11F8A5075001B1BF1 /* Units.swift */,
 				B24956751FA4934B002DC83E /* CoreDataStack.swift */,
 				B2C261021FA6209100E69E9D /* RunExtensions.swift */,
-				B2A931191FADCA77006FEACB /* RunService.swift */,
+				B2A931191FADCA77006FEACB /* RunProvider.swift */,
 				B2F1C7211FC0BDC8001AC4DF /* Settings.swift */,
 				B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */,
 				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
@@ -308,7 +308,7 @@
 			children = (
 				B2F1C7291FC0E6D0001AC4DF /* Mocks */,
 				B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */,
-				B2B1B1971FCA2B0E00C579FE /* RunServiceTests.swift */,
+				B2B1B1971FCA2B0E00C579FE /* RunProviderTests.swift */,
 				B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */,
 				B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */,
 				B2F1C7381FC1A7D5001AC4DF /* DoubleExtensionsTests.swift */,
@@ -378,7 +378,7 @@
 				B2528DF41FF2470B00FE3364 /* DistancesMock.swift */,
 				B2528DF61FF2477200FE3364 /* DurationsMock.swift */,
 				B2043EBD1FF26F8800220C14 /* RunsMock.swift */,
-				B2043EBF1FF2A97300220C14 /* RunServiceMocks.swift */,
+				B2043EBF1FF2A97300220C14 /* RunProviderMocks.swift */,
 				B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */,
 			);
 			path = Mocks;
@@ -530,7 +530,7 @@
 				B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */,
 				B27F63511FA5BFA400C2116F /* PastRunTableViewCell.swift in Sources */,
 				B2528DEF1FF114C400FE3364 /* RunRatingPageViewController.swift in Sources */,
-				B2A9311A1FADCA77006FEACB /* RunService.swift in Sources */,
+				B2A9311A1FADCA77006FEACB /* RunProvider.swift in Sources */,
 				B2B055281F80E24E00292EB3 /* RunTracker.swift in Sources */,
 				B2F1C7191FC05660001AC4DF /* SplitTimesViewController.swift in Sources */,
 				B2B054FA1F80C55600292EB3 /* Runometer.xcdatamodeld in Sources */,
@@ -579,7 +579,7 @@
 				B2C261071FA6299900E69E9D /* CoreDataHelper.swift in Sources */,
 				B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */,
 				B2A9311C1FAF0553006FEACB /* MKMapViewExtensionsTests.swift in Sources */,
-				B2043EC01FF2A97300220C14 /* RunServiceMocks.swift in Sources */,
+				B2043EC01FF2A97300220C14 /* RunProviderMocks.swift in Sources */,
 				B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */,
 				B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */,
 				B25DB237201E27170089144E /* AudioFeedbackControllerTests.swift in Sources */,
@@ -588,7 +588,7 @@
 				B25FE7AC1F8A33B0001B1BF1 /* PaceFormatterTests.swift in Sources */,
 				B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */,
 				B2528DF31FF19DC800FE3364 /* RunStatisticsTests.swift in Sources */,
-				B2B1B1981FCA2B0E00C579FE /* RunServiceTests.swift in Sources */,
+				B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */,
 				B22B3D051FF58B5D0040928A /* AppConfigurationMock.swift in Sources */,
 				B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */,
 				B2A931201FAF06F7006FEACB /* MKPolylineExtensionTests.swift in Sources */,

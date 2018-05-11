@@ -1,5 +1,5 @@
 //
-//  RunServiceTests.swift
+//  RunProviderTests.swift
 //  RunometerTests
 //
 //  Created by Svante Dahlberg on 2017-11-25.
@@ -10,12 +10,12 @@ import XCTest
 @testable import Runometer
 import CoreData
 
-class RunServiceTests: XCTestCase {
+class RunProviderTests: XCTestCase {
     
     func testSavedRunsReturnsRunsSortedByDateInDescendingOrder() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
-        let savedRuns = RunService(context: context).savedRuns()
+        let savedRuns = RunProvider(context: context).savedRuns()
         XCTAssertEqual(1000, savedRuns?.last?.distance)
         XCTAssertEqual(6000, savedRuns?.first?.distance)
     }
@@ -24,20 +24,20 @@ class RunServiceTests: XCTestCase {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
         let range = Meters(4000)...Meters(6000)
-        let runsWithSimilarDistance = RunService(context: context).savedRuns(withinDistanceRange: range)
+        let runsWithSimilarDistance = RunProvider(context: context).savedRuns(withinDistanceRange: range)
         XCTAssertEqual(3, runsWithSimilarDistance?.count)
     }
     
     func testAveragePaceForAllRunsReturnsAveragePace() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
-        let averagePace = RunService(context: context).averagePaceOfSavedRuns()
+        let averagePace = RunProvider(context: context).averagePaceOfSavedRuns()
         XCTAssertEqual(300, averagePace)
     }
     
     func testAveragePaceForAllRunsReturnsNilIfThereAreNoSavedRuns() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let averagePace = RunService(context: context).averagePaceOfSavedRuns()
+        let averagePace = RunProvider(context: context).averagePaceOfSavedRuns()
         XCTAssertNil(averagePace)
     }
     
@@ -45,14 +45,14 @@ class RunServiceTests: XCTestCase {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
         let range = Meters(4000)...Meters(6000)
-        let averagePace = RunService(context: context).averagePaceOfSavedRuns(withinDistanceRange: range)
+        let averagePace = RunProvider(context: context).averagePaceOfSavedRuns(withinDistanceRange: range)
         XCTAssertEqual(333, averagePace)
     }
     
     func testAverageTimeOfRunsReturnsAverageTimeOfAllSavedRuns() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
-        let averageTime = RunService(context: context).averageTimeOfSavedRuns()
+        let averageTime = RunProvider(context: context).averageTimeOfSavedRuns()
         XCTAssertEqual(1620, averageTime)
     }
     
@@ -60,14 +60,14 @@ class RunServiceTests: XCTestCase {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
         let range = Meters(4000)...Meters(6000)
-        let averageTime = RunService(context: context).averageTimeOfSavedRuns(withinDistanceRange: range)
+        let averageTime = RunProvider(context: context).averageTimeOfSavedRuns(withinDistanceRange: range)
         XCTAssertEqual(1633, averageTime)
     }
     
     func testAverageDistanceOfRunsReturnsAverageDistanceOfAllSavedRuns() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let _ = Run.runsMock(context: context)
-        let averageDistance = RunService(context: context).averageDistanceOfSavedRuns()
+        let averageDistance = RunProvider(context: context).averageDistanceOfSavedRuns()
         XCTAssertEqual(5200, averageDistance)
     }
 }

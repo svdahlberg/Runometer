@@ -12,55 +12,55 @@ import CoreGraphics
 class RunStatistics {
     
     private let settings: Settings
-    private let runService: RunService
+    private let runProvider: RunProvider
     
-    init(settings: Settings = Settings(), runService: RunService = RunService()) {
+    init(settings: Settings = Settings(), runProvider: RunProvider = RunProvider()) {
         self.settings = settings
-        self.runService = runService
+        self.runProvider = runProvider
     }
     
     // MARK: Public methods
     
     func allDistancesStatisticsText(for distance: Meters) -> String? {
-        guard let allRuns = runService.savedRuns(), allRuns.count > 1 else { return "Your longest run!" }
+        guard let allRuns = runProvider.savedRuns(), allRuns.count > 1 else { return "Your longest run!" }
         let distances = allRuns.map { $0.distance }
         return statisticsText(for: distance, comparedTo: distances, using: allDistancesStatisticsTexts)
     }
     
     func allTimesStatisticsText(for time: Seconds) -> String? {
-        guard let allRuns = runService.savedRuns(), allRuns.count > 1 else { return "Your longest run!" }
+        guard let allRuns = runProvider.savedRuns(), allRuns.count > 1 else { return "Your longest run!" }
         let times = allRuns.map { Seconds($0.duration) }
         return statisticsText(for: time, comparedTo: times, using: allTimesStatisticsTexts)
     }
 
     func allPacesStatisticsText(for pace: Seconds) -> String? {
-        guard let allRuns = runService.savedRuns(), allRuns.count > 1 else { return "Your fastest pace!" }
+        guard let allRuns = runProvider.savedRuns(), allRuns.count > 1 else { return "Your fastest pace!" }
         let paces = allRuns.map { Pace(integerLiteral: $0.averagePace()) }
         return statisticsText(for: Pace(integerLiteral: pace), comparedTo: paces, using: allPacesStatisticsTexts)
     }
     
     func averagePaceStatisticsText(for pace: Seconds, withinDistanceRange range: ClosedRange<Meters>) -> String? {
-        guard let averagePace = runService.averagePaceOfSavedRuns(withinDistanceRange: range) else { return nil }
+        guard let averagePace = runProvider.averagePaceOfSavedRuns(withinDistanceRange: range) else { return nil }
         return statisticsText(for: Pace(integerLiteral: pace), comparedTo: Pace(integerLiteral: averagePace), withinDistanceRange: range, using: averagePaceForSimilarRunsStatisticsTexts)
     }
     
     func averagePaceStatisticsText(for pace: Seconds) -> String? {
-        guard let averagePace = runService.averagePaceOfSavedRuns() else { return nil }
+        guard let averagePace = runProvider.averagePaceOfSavedRuns() else { return nil }
         return statisticsText(for: Pace(integerLiteral: pace), comparedTo: Pace(integerLiteral: averagePace), using: averagePaceStatisticsTexts)
     }
     
     func averageTimeStatisticsText(for time: Seconds, withinDistanceRange range: ClosedRange<Meters>) -> String? {
-        guard let averageTime = runService.averageTimeOfSavedRuns(withinDistanceRange: range) else { return nil }
+        guard let averageTime = runProvider.averageTimeOfSavedRuns(withinDistanceRange: range) else { return nil }
         return statisticsText(for: time, comparedTo: averageTime, withinDistanceRange: range, using: averageTimeForSimilarRunsStatisticsTexts)
     }
     
     func averageTimeStatisticsText(for time: Seconds) -> String? {
-        guard let averageTime = runService.averageTimeOfSavedRuns() else { return nil }
+        guard let averageTime = runProvider.averageTimeOfSavedRuns() else { return nil }
         return statisticsText(for: time, comparedTo: averageTime, using: averageTimeStatisticsTexts)
     }
     
     func averageDistanceStatisticsText(for distance: Meters) -> String? {
-        guard let averageDistance = runService.averageDistanceOfSavedRuns() else { return nil }
+        guard let averageDistance = runProvider.averageDistanceOfSavedRuns() else { return nil }
         return statisticsText(for: distance, comparedTo: averageDistance, using: averageDistanceStatisticsTexts)
     }
 

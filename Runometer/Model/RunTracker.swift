@@ -105,7 +105,7 @@ class RunTracker: NSObject {
     }
     
     func saveRun() -> Run {
-        return RunService().saveRun(distance: distance, time: time, locationSegments: runSegments)
+        return RunProvider().saveRun(distance: distance, time: time, locationSegments: runSegments)
     }
 }
 
