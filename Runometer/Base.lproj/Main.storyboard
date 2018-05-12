@@ -17,15 +17,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-Pf-mi2">
-                                <rect key="frame" x="147" y="318" width="80" height="30"/>
-                                <state key="normal" title="Go Running"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tT3-Pf-mi2" customClass="RoundCornersButton" customModule="Runometer" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="303" width="200" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8P9-jm-OPd"/>
+                                    <constraint firstAttribute="width" constant="200" id="Evk-dx-qAz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="24"/>
+                                <state key="normal" title="Go Running">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <segue destination="PwD-0H-AEs" kind="presentation" id="Blk-p1-P0H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8g-6q-vXY">
-                                <rect key="frame" x="159" y="364" width="57" height="30"/>
+                                <rect key="frame" x="159" y="379" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <segue destination="erk-0M-FNX" kind="show" id="S3j-7Y-l86"/>
@@ -37,12 +44,15 @@
                             <constraint firstItem="G8g-6q-vXY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5R2-HL-ize"/>
                             <constraint firstItem="G8g-6q-vXY" firstAttribute="top" secondItem="tT3-Pf-mi2" secondAttribute="bottom" constant="16" id="GjL-EY-WCw"/>
                             <constraint firstItem="tT3-Pf-mi2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HmK-4u-qQZ"/>
-                            <constraint firstItem="tT3-Pf-mi2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XBm-M0-OiL"/>
                             <constraint firstItem="G8g-6q-vXY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XLR-fR-3LJ"/>
+                            <constraint firstItem="tT3-Pf-mi2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iBF-id-T6Y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="pkb-Ox-QxB"/>
+                    <connections>
+                        <outlet property="startButton" destination="tT3-Pf-mi2" id="4xG-1V-hij"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
