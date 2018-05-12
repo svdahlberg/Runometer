@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pNi-sW-bRD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pNi-sW-bRD">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -219,7 +219,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5rR-T1-xef"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Run Details" id="XFc-Fk-OyL"/>
+                    <navigationItem key="navigationItem" title="Run Details" largeTitleDisplayMode="never" id="XFc-Fk-OyL"/>
                     <connections>
                         <outlet property="dateLabel" destination="KtM-dg-jh2" id="ZJo-xS-vqI"/>
                         <outlet property="runDataSummaryView" destination="mo3-7e-BEo" id="ra9-Iz-tD2"/>
@@ -249,7 +249,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bth-SY-Ejq">
-                                <rect key="frame" x="16" y="354" width="343" height="21"/>
+                                <rect key="frame" x="16" y="354.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -315,10 +315,10 @@
             </objects>
             <point key="canvasLocation" x="592.79999999999995" y="1052.9235382308846"/>
         </scene>
-        <!--Split Times View Controller-->
+        <!--Split Times-->
         <scene sceneID="hZg-r5-JWc">
             <objects>
-                <viewController id="Uzk-Yk-wV8" customClass="SplitTimesViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Split Times" id="Uzk-Yk-wV8" customClass="SplitTimesViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CeP-o0-Fvb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -39,6 +39,7 @@ class PastRunsViewControlller: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Past Runs"
         runs = RunProvider().savedRuns()
     }
     

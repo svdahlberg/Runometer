@@ -79,6 +79,7 @@
 		B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7301FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift */; };
 		B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */; };
 		B2F1C7391FC1A7D5001AC4DF /* DoubleExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7381FC1A7D5001AC4DF /* DoubleExtensionsTests.swift */; };
+		B2F856C420A6E4BB00A9414D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F856C320A6E4BB00A9414D /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +178,7 @@
 		B2F1C7301FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioIntervalSelectionTableViewController.swift; sourceTree = "<group>"; };
 		B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensions.swift; sourceTree = "<group>"; };
 		B2F1C7381FC1A7D5001AC4DF /* DoubleExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionsTests.swift; sourceTree = "<group>"; };
+		B2F856C320A6E4BB00A9414D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 			children = (
 				B2B054F11F80C55600292EB3 /* AppDelegate.swift */,
 				B2B054F51F80C55600292EB3 /* Main.storyboard */,
+				B2F856C320A6E4BB00A9414D /* HomeViewController.swift */,
 				B25FE79C1F815E70001B1BF1 /* Model */,
 				B25FE79B1F815E66001B1BF1 /* ViewController */,
 				B2B054FB1F80C55600292EB3 /* Assets.xcassets */,
@@ -546,6 +549,7 @@
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
 				B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */,
 				B27F634D1FA5B9E700C2116F /* PastRunsViewController.swift in Sources */,
+				B2F856C420A6E4BB00A9414D /* HomeViewController.swift in Sources */,
 				B25FE7B21F8A5075001B1BF1 /* Units.swift in Sources */,
 				B25FE7AA1F88E6F7001B1BF1 /* PaceFormatter.swift in Sources */,
 				B21967A92039B05D007153D2 /* RunSection.swift in Sources */,
