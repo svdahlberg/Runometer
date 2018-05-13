@@ -84,7 +84,12 @@ extension PastRunsViewControlller: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return tableViewSection(for: section)?.title
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let title = tableViewSection(for: section)?.title else { return nil }
+        return PastRunsTableViewSectionHeaderView(title: title)
     }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return tableViewSection(for: section)?.title
+//    }
 }

@@ -70,6 +70,8 @@
 		B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261041FA6275C00E69E9D /* RunTests.swift */; };
 		B2C261071FA6299900E69E9D /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261061FA6299900E69E9D /* CoreDataHelper.swift */; };
 		B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DCA0C0202B916500AB29E7 /* MapViewController.swift */; };
+		B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF80BF20A850A200457800 /* PastRunsTableViewSectionHeaderView.swift */; };
+		B2EF80C220A850C300457800 /* PastRunsTableViewSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2EF80C120A850C300457800 /* PastRunsTableViewSectionHeaderView.xib */; };
 		B2F1C7191FC05660001AC4DF /* SplitTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7181FC05660001AC4DF /* SplitTimesViewController.swift */; };
 		B2F1C71C1FC0AE41001AC4DF /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2F1C71B1FC0AE41001AC4DF /* Settings.storyboard */; };
 		B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C71D1FC0AED2001AC4DF /* SettingsTableViewController.swift */; };
@@ -169,6 +171,8 @@
 		B2C261041FA6275C00E69E9D /* RunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTests.swift; sourceTree = "<group>"; };
 		B2C261061FA6299900E69E9D /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		B2DCA0C0202B916500AB29E7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B2EF80BF20A850A200457800 /* PastRunsTableViewSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunsTableViewSectionHeaderView.swift; sourceTree = "<group>"; };
+		B2EF80C120A850C300457800 /* PastRunsTableViewSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastRunsTableViewSectionHeaderView.xib; sourceTree = "<group>"; };
 		B2F1C7181FC05660001AC4DF /* SplitTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTimesViewController.swift; sourceTree = "<group>"; };
 		B2F1C71B1FC0AE41001AC4DF /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		B2F1C71D1FC0AED2001AC4DF /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 			isa = PBXGroup;
 			children = (
 				B27F634C1FA5B9E700C2116F /* PastRunsViewController.swift */,
+				B2EF80BF20A850A200457800 /* PastRunsTableViewSectionHeaderView.swift */,
+				B2EF80C120A850C300457800 /* PastRunsTableViewSectionHeaderView.xib */,
 				B27F63501FA5BFA400C2116F /* PastRunTableViewCell.swift */,
 				B27F634E1FA5BA0200C2116F /* PastRuns.storyboard */,
 			);
@@ -502,6 +508,7 @@
 				B2B054FF1F80C55600292EB3 /* LaunchScreen.storyboard in Resources */,
 				B2B054FC1F80C55600292EB3 /* Assets.xcassets in Resources */,
 				B2B055251F80D7B800292EB3 /* Run.storyboard in Resources */,
+				B2EF80C220A850C300457800 /* PastRunsTableViewSectionHeaderView.xib in Resources */,
 				B27F63561FA5CEB100C2116F /* RunDetails.storyboard in Resources */,
 				B27F634F1FA5BA0200C2116F /* PastRuns.storyboard in Resources */,
 				B2B054F71F80C55600292EB3 /* Main.storyboard in Resources */,
@@ -557,6 +564,7 @@
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,
 				B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
+				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
 				B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */,
 				B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */,
 				B2528DF11FF19BEE00FE3364 /* RunStatistics.swift in Sources */,
