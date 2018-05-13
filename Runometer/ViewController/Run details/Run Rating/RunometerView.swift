@@ -18,7 +18,7 @@ import UIKit
     @IBInspectable let gradientStartColor: UIColor = Colors.red
     @IBInspectable let gradientMiddleColor: UIColor = Colors.yellow
     @IBInspectable let gradientEndColor: UIColor = Colors.green
-    @IBInspectable var textColor: UIColor = .darkGray
+    @IBInspectable var textColor: UIColor = .white
     
     var value: String?
     var unitName: String?
