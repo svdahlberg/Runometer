@@ -13,7 +13,7 @@
         <!--Run Details-->
         <scene sceneID="rxM-Io-Wri">
             <objects>
-                <viewController storyboardIdentifier="RunDetailsViewController" title="Run Details" id="6C0-nT-JC3" customClass="RunDetailsViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RunDetailsViewController" title="Run Details" extendedLayoutIncludesOpaqueBars="YES" id="6C0-nT-JC3" customClass="RunDetailsViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="82a-xm-hrS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,6 +64,13 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mo3-7e-BEo" customClass="RunDataSummaryView" customModule="Runometer" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="342" width="375" height="78"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQj-91-etH">
+                                                        <rect key="frame" x="16" y="0.0" width="343" height="0.0"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" id="bUx-CG-zOS"/>
+                                                        </constraints>
+                                                    </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lhH-La-Hyd">
                                                         <rect key="frame" x="16" y="16" width="343" height="46"/>
                                                         <subviews>
@@ -123,8 +130,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="lhH-La-Hyd" firstAttribute="top" secondItem="mo3-7e-BEo" secondAttribute="top" constant="16" id="8bn-HN-pWA"/>
+                                                    <constraint firstItem="lhH-La-Hyd" firstAttribute="top" secondItem="HQj-91-etH" secondAttribute="bottom" constant="16" id="0B8-sS-dON"/>
+                                                    <constraint firstAttribute="trailing" secondItem="HQj-91-etH" secondAttribute="trailing" constant="16" id="7WN-gt-O82"/>
+                                                    <constraint firstItem="HQj-91-etH" firstAttribute="leading" secondItem="mo3-7e-BEo" secondAttribute="leading" constant="16" id="BH0-mS-rtb"/>
                                                     <constraint firstAttribute="trailing" secondItem="lhH-La-Hyd" secondAttribute="trailing" constant="16" id="c9f-yC-mqo"/>
+                                                    <constraint firstItem="HQj-91-etH" firstAttribute="top" secondItem="mo3-7e-BEo" secondAttribute="top" id="dIr-Au-9qV"/>
                                                     <constraint firstAttribute="bottom" secondItem="lhH-La-Hyd" secondAttribute="bottom" constant="16" id="o69-Iv-3fQ"/>
                                                     <constraint firstItem="lhH-La-Hyd" firstAttribute="leading" secondItem="mo3-7e-BEo" secondAttribute="leading" constant="16" id="sFj-GK-Goc"/>
                                                 </constraints>
@@ -296,7 +306,7 @@
         <!--Map View Controller-->
         <scene sceneID="w5X-jb-UVt">
             <objects>
-                <viewController id="M8X-ld-VhL" customClass="MapViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="M8X-ld-VhL" customClass="MapViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aH3-Q0-yuc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,7 +338,7 @@
         <!--Split Times-->
         <scene sceneID="hZg-r5-JWc">
             <objects>
-                <viewController title="Split Times" id="Uzk-Yk-wV8" customClass="SplitTimesViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Split Times" extendedLayoutIncludesOpaqueBars="YES" id="Uzk-Yk-wV8" customClass="SplitTimesViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CeP-o0-Fvb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -389,7 +399,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OE5-Fd-Jet">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pNi-sW-bRD" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="pNi-sW-bRD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="F5G-AK-goE">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
