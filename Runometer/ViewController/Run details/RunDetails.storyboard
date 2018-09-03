@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pNi-sW-bRD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6C0-nT-JC3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -318,7 +318,7 @@
                                 </connections>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="bht-eW-AAk" firstAttribute="top" secondItem="aH3-Q0-yuc" secondAttribute="top" id="7zG-un-uJj"/>
                             <constraint firstItem="bht-eW-AAk" firstAttribute="bottom" secondItem="2wT-Zm-HMg" secondAttribute="bottom" id="OnI-cl-ZVq"/>
@@ -379,7 +379,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="68W-YH-cOL" firstAttribute="bottom" secondItem="Soj-oi-tlH" secondAttribute="bottom" id="6EN-k8-5ew"/>
                             <constraint firstItem="68W-YH-cOL" firstAttribute="leading" secondItem="Soj-oi-tlH" secondAttribute="leading" id="Dk3-iS-vbI"/>
@@ -395,25 +395,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DBf-GO-E3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1376.8" y="635.53223388305855"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="OE5-Fd-Jet">
-            <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="pNi-sW-bRD" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="F5G-AK-goE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6C0-nT-JC3" kind="relationship" relationship="rootViewController" id="MlD-t9-Ybn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R7x-2m-xhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-270" y="125"/>
         </scene>
     </scenes>
 </document>

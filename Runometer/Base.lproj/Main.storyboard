@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g3y-GM-QuN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g3y-GM-QuN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <!--Runometer-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Runometer" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Runometer" extendedLayoutIncludesOpaqueBars="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -89,7 +89,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Ce9-VG-b22">
             <objects>
-                <tabBarController id="g3y-GM-QuN" sceneMemberID="viewController">
+                <tabBarController extendedLayoutIncludesOpaqueBars="YES" id="g3y-GM-QuN" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="O2V-ZK-gEn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -109,7 +109,7 @@
         <!--Start-->
         <scene sceneID="HnK-gj-c6W">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ots-uq-Rl4" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="Ots-uq-Rl4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Start" id="dkf-hY-Rge"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="3Fx-kT-pSW">
