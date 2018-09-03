@@ -210,45 +210,87 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B25FE79B1F815E66001B1BF1 /* ViewController */ = {
+		B25FE79B1F815E66001B1BF1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B2720893213D221A009DCE7D /* Home */,
 				B2F1C71A1FC0AE28001AC4DF /* Settings */,
-				B27F63521FA5CE9700C2116F /* Run details */,
-				B27F634B1FA5B9CB00C2116F /* Past runs */,
+				B2720895213D22EF009DCE7D /* Extensions */,
+				B2720894213D22D8009DCE7D /* Units */,
+				B2720892213D21C4009DCE7D /* Database */,
+				B27F63521FA5CE9700C2116F /* Run Details */,
+				B27F634B1FA5B9CB00C2116F /* Past Runs */,
 				B2B055261F80D7C000292EB3 /* Run */,
 			);
-			path = ViewController;
+			path = Modules;
 			sourceTree = "<group>";
 		};
-		B25FE79C1F815E70001B1BF1 /* Model */ = {
+		B2720892213D21C4009DCE7D /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				B2B055271F80E24E00292EB3 /* RunTracker.swift */,
-				B28F81BE1F93D888000BBA18 /* Checkpoint.swift */,
+				B24956751FA4934B002DC83E /* CoreDataStack.swift */,
+				B2C261021FA6209100E69E9D /* RunExtensions.swift */,
+				B2A931191FADCA77006FEACB /* RunProvider.swift */,
+				B21967A82039B05D007153D2 /* RunSection.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		B2720893213D221A009DCE7D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B2F856C320A6E4BB00A9414D /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		B2720894213D22D8009DCE7D /* Units */ = {
+			isa = PBXGroup;
+			children = (
 				B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */,
 				B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */,
 				B25FE7A91F88E6F7001B1BF1 /* PaceFormatter.swift */,
 				B25FE7AF1F8A3A9C001B1BF1 /* PaceCalculator.swift */,
 				B25FE7B11F8A5075001B1BF1 /* Units.swift */,
-				B24956751FA4934B002DC83E /* CoreDataStack.swift */,
-				B2C261021FA6209100E69E9D /* RunExtensions.swift */,
-				B2A931191FADCA77006FEACB /* RunProvider.swift */,
-				B2F1C7211FC0BDC8001AC4DF /* Settings.swift */,
-				B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */,
-				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
-				B2B1B1931FC9B7E500C579FE /* RunRating.swift */,
-				B2528DF01FF19BEE00FE3364 /* RunStatistics.swift */,
-				B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */,
-				B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */,
-				B276ECF12015321B0036F327 /* AudioFeedbackController.swift */,
-				B21967A220307211007153D2 /* Colors.swift */,
-				B21967A82039B05D007153D2 /* RunSection.swift */,
 			);
-			path = Model;
+			path = Units;
 			sourceTree = "<group>";
 		};
-		B27F634B1FA5B9CB00C2116F /* Past runs */ = {
+		B2720895213D22EF009DCE7D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B2720896213D237F009DCE7D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2B055221F80D6A200292EB3 /* RunViewController.swift */,
+				B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */,
+				B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */,
+				B2B055241F80D7B800292EB3 /* Run.storyboard */,
+				B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */,
+				B2C260FE1FA5FD3100E69E9D /* MKMapViewExtensions.swift */,
+				B21967A02030608A007153D2 /* RoundCornersButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B2720897213D23D2009DCE7D /* Run Tracking */ = {
+			isa = PBXGroup;
+			children = (
+				B2B055271F80E24E00292EB3 /* RunTracker.swift */,
+				B28F81BE1F93D888000BBA18 /* Checkpoint.swift */,
+				B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */,
+				B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */,
+				B276ECF12015321B0036F327 /* AudioFeedbackController.swift */,
+			);
+			path = "Run Tracking";
+			sourceTree = "<group>";
+		};
+		B27F634B1FA5B9CB00C2116F /* Past Runs */ = {
 			isa = PBXGroup;
 			children = (
 				B27F634C1FA5B9E700C2116F /* PastRunsViewController.swift */,
@@ -257,12 +299,13 @@
 				B27F63501FA5BFA400C2116F /* PastRunTableViewCell.swift */,
 				B27F634E1FA5BA0200C2116F /* PastRuns.storyboard */,
 			);
-			path = "Past runs";
+			path = "Past Runs";
 			sourceTree = "<group>";
 		};
-		B27F63521FA5CE9700C2116F /* Run details */ = {
+		B27F63521FA5CE9700C2116F /* Run Details */ = {
 			isa = PBXGroup;
 			children = (
+				B2528DF01FF19BEE00FE3364 /* RunStatistics.swift */,
 				B27F63531FA5CEA800C2116F /* RunDetailsViewController.swift */,
 				B27F63551FA5CEB100C2116F /* RunDetails.storyboard */,
 				B2C261001FA5FF5A00E69E9D /* RunSummaryMapView.swift */,
@@ -271,9 +314,10 @@
 				B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */,
 				B2F1C7181FC05660001AC4DF /* SplitTimesViewController.swift */,
 				B2DCA0C0202B916500AB29E7 /* MapViewController.swift */,
+				B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */,
 				B2B1B1921FC997AA00C579FE /* Run Rating */,
 			);
-			path = "Run details";
+			path = "Run Details";
 			sourceTree = "<group>";
 		};
 		B2B054E51F80C55600292EB3 = {
@@ -301,9 +345,8 @@
 			children = (
 				B2B054F11F80C55600292EB3 /* AppDelegate.swift */,
 				B2B054F51F80C55600292EB3 /* Main.storyboard */,
-				B2F856C320A6E4BB00A9414D /* HomeViewController.swift */,
-				B25FE79C1F815E70001B1BF1 /* Model */,
-				B25FE79B1F815E66001B1BF1 /* ViewController */,
+				B21967A220307211007153D2 /* Colors.swift */,
+				B25FE79B1F815E66001B1BF1 /* Modules */,
 				B2B054FB1F80C55600292EB3 /* Assets.xcassets */,
 				B2B054FD1F80C55600292EB3 /* LaunchScreen.storyboard */,
 				B2B055001F80C55600292EB3 /* Info.plist */,
@@ -349,13 +392,8 @@
 		B2B055261F80D7C000292EB3 /* Run */ = {
 			isa = PBXGroup;
 			children = (
-				B2B055221F80D6A200292EB3 /* RunViewController.swift */,
-				B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */,
-				B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */,
-				B2B055241F80D7B800292EB3 /* Run.storyboard */,
-				B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */,
-				B2C260FE1FA5FD3100E69E9D /* MKMapViewExtensions.swift */,
-				B21967A02030608A007153D2 /* RoundCornersButton.swift */,
+				B2720897213D23D2009DCE7D /* Run Tracking */,
+				B2720896213D237F009DCE7D /* View */,
 			);
 			path = Run;
 			sourceTree = "<group>";
@@ -363,6 +401,7 @@
 		B2B1B1921FC997AA00C579FE /* Run Rating */ = {
 			isa = PBXGroup;
 			children = (
+				B2B1B1931FC9B7E500C579FE /* RunRating.swift */,
 				B2528DEE1FF114C400FE3364 /* RunRatingPageViewController.swift */,
 				B2B1B1901FC997A200C579FE /* RunRatingViewController.swift */,
 				B2B1B18E1FC994DC00C579FE /* RunometerView.swift */,
@@ -376,6 +415,7 @@
 				B2F1C71B1FC0AE41001AC4DF /* Settings.storyboard */,
 				B2F1C71D1FC0AED2001AC4DF /* SettingsTableViewController.swift */,
 				B2F1C7301FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift */,
+				B2F1C7211FC0BDC8001AC4DF /* Settings.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
