@@ -40,6 +40,10 @@ class PastRunsViewControlller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Past Runs"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         runs = RunProvider().savedRuns()
     }
     
@@ -88,8 +92,5 @@ extension PastRunsViewControlller: UITableViewDataSource {
         guard let title = tableViewSection(for: section)?.title else { return nil }
         return PastRunsTableViewSectionHeaderView(title: title)
     }
-    
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return tableViewSection(for: section)?.title
-//    }
+
 }
