@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-3Q-fTO">
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="mvj-3Q-fTO">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg0-tn-xPO">
@@ -308,19 +308,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bht-eW-AAk">
+                            <mapView multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bht-eW-AAk">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
                                     <outlet property="delegate" destination="M8X-ld-VhL" id="Kfl-tB-fFD"/>
                                 </connections>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="bht-eW-AAk" firstAttribute="top" secondItem="aH3-Q0-yuc" secondAttribute="top" id="7zG-un-uJj"/>
-                            <constraint firstItem="bht-eW-AAk" firstAttribute="bottom" secondItem="2wT-Zm-HMg" secondAttribute="bottom" id="OnI-cl-ZVq"/>
-                            <constraint firstItem="bht-eW-AAk" firstAttribute="trailing" secondItem="2wT-Zm-HMg" secondAttribute="trailing" id="RaJ-Dn-hKg"/>
-                            <constraint firstItem="bht-eW-AAk" firstAttribute="leading" secondItem="2wT-Zm-HMg" secondAttribute="leading" id="oyw-Oj-dEN"/>
+                            <constraint firstItem="bht-eW-AAk" firstAttribute="trailing" secondItem="2wT-Zm-HMg" secondAttribute="trailing" id="Cuc-Ts-KbQ"/>
+                            <constraint firstItem="bht-eW-AAk" firstAttribute="leading" secondItem="2wT-Zm-HMg" secondAttribute="leading" id="URP-Kp-Brm"/>
+                            <constraint firstItem="bht-eW-AAk" firstAttribute="top" secondItem="aH3-Q0-yuc" secondAttribute="top" id="fu3-44-RxE"/>
+                            <constraint firstItem="bht-eW-AAk" firstAttribute="bottom" secondItem="aH3-Q0-yuc" secondAttribute="bottom" id="nxt-xG-9UO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2wT-Zm-HMg"/>
                     </view>
@@ -340,7 +339,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="68W-YH-cOL">
+                            <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="68W-YH-cOL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>

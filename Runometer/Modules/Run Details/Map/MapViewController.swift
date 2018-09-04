@@ -35,10 +35,10 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        return self.mapView.overlayRenderer(for: overlay)
+        return mapView.overlayRenderer(for: overlay)
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        return self.mapView.annotationView(for: annotation, on: mapView)
+        return mapView.annotationView(for: annotation, on: mapView)
     }
 }
