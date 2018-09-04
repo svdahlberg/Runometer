@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tg0-tn-xPO">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="710"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="748"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JTn-hs-gxj">
                                                 <rect key="frame" x="16" y="8" width="343" height="34"/>
@@ -41,28 +42,82 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ipf-RH-h4O">
-                                                <rect key="frame" x="0.0" y="42" width="375" height="300"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rFE-aa-Q0E" customClass="RunRatingsView" customModule="Runometer" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="50" width="375" height="330"/>
                                                 <subviews>
-                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIz-Hs-WZo">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EQH-93-miG">
+                                                        <rect key="frame" x="168" y="293" width="39" height="37"/>
+                                                    </pageControl>
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eCn-aa-5k8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="293"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="cWF-pV-gfa">
+                                                            <size key="itemSize" width="375" height="300"/>
+                                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        </collectionViewFlowLayout>
+                                                        <cells>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RunRatingCollectionViewCellReuseIdentifier" id="biB-VK-Rth" customClass="RunRatingCollectionViewCell" customModule="Runometer" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="-3.5" width="375" height="300"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIV-Cw-KLa">
+                                                                            <rect key="frame" x="8" y="279.5" width="359" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-Hd-Xpk" customClass="RunometerView" customModule="Runometer" customModuleProvider="target">
+                                                                            <rect key="frame" x="37" y="8" width="301.5" height="301.5"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" secondItem="5dh-Hd-Xpk" secondAttribute="height" multiplier="1:1" id="2l5-ze-oqJ"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </view>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="5dh-Hd-Xpk" firstAttribute="top" secondItem="biB-VK-Rth" secondAttribute="topMargin" id="5XF-LG-PKS"/>
+                                                                    <constraint firstItem="5dh-Hd-Xpk" firstAttribute="centerX" secondItem="biB-VK-Rth" secondAttribute="centerX" id="8ya-rv-i2Q"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="rIV-Cw-KLa" secondAttribute="bottom" id="LIh-W4-OdI"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="rIV-Cw-KLa" secondAttribute="trailing" constant="8" id="bPR-iB-qcq"/>
+                                                                    <constraint firstItem="rIV-Cw-KLa" firstAttribute="top" secondItem="5dh-Hd-Xpk" secondAttribute="bottom" constant="-30" id="bzd-Pl-zsM"/>
+                                                                    <constraint firstItem="rIV-Cw-KLa" firstAttribute="leading" secondItem="biB-VK-Rth" secondAttribute="leading" constant="8" id="u5n-gk-Qkh"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outlet property="descriptionLabel" destination="rIV-Cw-KLa" id="yHh-io-coT"/>
+                                                                    <outlet property="runometerView" destination="5dh-Hd-Xpk" id="GAT-bx-Yy4"/>
+                                                                </connections>
+                                                            </collectionViewCell>
+                                                        </cells>
                                                         <connections>
-                                                            <segue destination="5vc-Qf-oLh" kind="embed" identifier="RunRatingPageViewControllerEmbedSegueIdentifier" id="1AE-0J-z7Y"/>
+                                                            <outlet property="dataSource" destination="rFE-aa-Q0E" id="uQt-SK-glk"/>
+                                                            <outlet property="delegate" destination="rFE-aa-Q0E" id="bUb-yY-cyM"/>
                                                         </connections>
-                                                    </containerView>
+                                                    </collectionView>
                                                 </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="LIz-Hs-WZo" secondAttribute="trailing" id="0Gp-jt-RjB"/>
-                                                    <constraint firstAttribute="height" constant="300" id="8A3-3n-Qp2"/>
-                                                    <constraint firstItem="LIz-Hs-WZo" firstAttribute="top" secondItem="ipf-RH-h4O" secondAttribute="top" id="IYf-OL-Gja"/>
-                                                    <constraint firstAttribute="bottom" secondItem="LIz-Hs-WZo" secondAttribute="bottom" id="ZPs-Iu-6hU"/>
-                                                    <constraint firstItem="LIz-Hs-WZo" firstAttribute="leading" secondItem="ipf-RH-h4O" secondAttribute="leading" id="l9K-YJ-Xl9"/>
+                                                    <constraint firstItem="EQH-93-miG" firstAttribute="top" secondItem="eCn-aa-5k8" secondAttribute="bottom" id="0Eh-Pe-gfZ"/>
+                                                    <constraint firstItem="eCn-aa-5k8" firstAttribute="top" secondItem="rFE-aa-Q0E" secondAttribute="top" id="1zd-fZ-2Wm"/>
+                                                    <constraint firstItem="EQH-93-miG" firstAttribute="centerX" secondItem="rFE-aa-Q0E" secondAttribute="centerX" id="8jn-SX-gnl"/>
+                                                    <constraint firstAttribute="bottom" secondItem="EQH-93-miG" secondAttribute="bottom" id="B2v-k7-ww0"/>
+                                                    <constraint firstAttribute="height" constant="330" id="McH-tr-0Ba"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eCn-aa-5k8" secondAttribute="trailing" id="NID-o0-gb3"/>
+                                                    <constraint firstItem="eCn-aa-5k8" firstAttribute="leading" secondItem="rFE-aa-Q0E" secondAttribute="leading" id="tNZ-ea-wms"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="pageControl" destination="EQH-93-miG" id="tvu-si-WPo"/>
+                                                    <outlet property="runRatingsCollectionView" destination="eCn-aa-5k8" id="YyI-Ox-8io"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mo3-7e-BEo" customClass="RunDataSummaryView" customModule="Runometer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="342" width="375" height="78"/>
+                                                <rect key="frame" x="0.0" y="380" width="375" height="78"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQj-91-etH">
                                                         <rect key="frame" x="16" y="0.0" width="343" height="0.0"/>
@@ -148,7 +203,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvH-Qs-m0M" customClass="RunSummaryMapView" customModule="Runometer" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="420" width="375" height="240"/>
+                                                <rect key="frame" x="0.0" y="458" width="375" height="240"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vd1-aO-Bbv">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
@@ -170,7 +225,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-aG-Wjk">
-                                                <rect key="frame" x="0.0" y="660" width="375" height="50"/>
+                                                <rect key="frame" x="0.0" y="698" width="375" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-yW-PSU">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -195,21 +250,21 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="gvH-Qs-m0M" secondAttribute="trailing" id="1jh-16-bj3"/>
-                                            <constraint firstAttribute="trailing" secondItem="ipf-RH-h4O" secondAttribute="trailing" id="BKd-g2-tPY"/>
                                             <constraint firstAttribute="bottom" secondItem="GJS-aG-Wjk" secondAttribute="bottom" id="BQJ-wa-v45"/>
                                             <constraint firstItem="JTn-hs-gxj" firstAttribute="leading" secondItem="tg0-tn-xPO" secondAttribute="leading" constant="16" id="QbG-Rk-Cfc"/>
+                                            <constraint firstItem="rFE-aa-Q0E" firstAttribute="top" secondItem="JTn-hs-gxj" secondAttribute="bottom" constant="8" id="SbC-kz-weP"/>
+                                            <constraint firstAttribute="trailing" secondItem="rFE-aa-Q0E" secondAttribute="trailing" id="Tze-HV-Klg"/>
                                             <constraint firstItem="GJS-aG-Wjk" firstAttribute="leading" secondItem="tg0-tn-xPO" secondAttribute="leading" id="aNc-Jn-riD"/>
                                             <constraint firstItem="GJS-aG-Wjk" firstAttribute="top" secondItem="gvH-Qs-m0M" secondAttribute="bottom" id="avg-t8-fTx"/>
                                             <constraint firstItem="JTn-hs-gxj" firstAttribute="top" secondItem="tg0-tn-xPO" secondAttribute="top" constant="8" id="bCa-Ie-h7B"/>
-                                            <constraint firstItem="ipf-RH-h4O" firstAttribute="top" secondItem="JTn-hs-gxj" secondAttribute="bottom" id="cWD-eF-99E"/>
                                             <constraint firstItem="mo3-7e-BEo" firstAttribute="leading" secondItem="tg0-tn-xPO" secondAttribute="leading" id="dyW-d0-BMO"/>
                                             <constraint firstAttribute="trailing" secondItem="GJS-aG-Wjk" secondAttribute="trailing" id="luc-wt-x6v"/>
-                                            <constraint firstItem="mo3-7e-BEo" firstAttribute="top" secondItem="ipf-RH-h4O" secondAttribute="bottom" id="nj0-aa-w3q"/>
                                             <constraint firstAttribute="trailing" secondItem="mo3-7e-BEo" secondAttribute="trailing" id="orb-47-LCs"/>
+                                            <constraint firstItem="mo3-7e-BEo" firstAttribute="top" secondItem="rFE-aa-Q0E" secondAttribute="bottom" id="smH-Pz-9rk"/>
+                                            <constraint firstItem="rFE-aa-Q0E" firstAttribute="leading" secondItem="tg0-tn-xPO" secondAttribute="leading" id="uQa-L1-oOg"/>
                                             <constraint firstAttribute="trailing" secondItem="JTn-hs-gxj" secondAttribute="trailing" constant="16" id="vBd-8s-bOE"/>
                                             <constraint firstItem="gvH-Qs-m0M" firstAttribute="leading" secondItem="tg0-tn-xPO" secondAttribute="leading" id="xDh-jm-tAZ"/>
                                             <constraint firstItem="gvH-Qs-m0M" firstAttribute="top" secondItem="mo3-7e-BEo" secondAttribute="bottom" id="yDY-da-j0w"/>
-                                            <constraint firstItem="ipf-RH-h4O" firstAttribute="leading" secondItem="tg0-tn-xPO" secondAttribute="leading" id="yiM-Du-c5a"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -235,6 +290,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="KtM-dg-jh2" id="ZJo-xS-vqI"/>
                         <outlet property="runDataSummaryView" destination="mo3-7e-BEo" id="ra9-Iz-tD2"/>
+                        <outlet property="runRatingsView" destination="rFE-aa-Q0E" id="V6j-bY-2eQ"/>
                         <outlet property="runSummaryMapView" destination="gvH-Qs-m0M" id="EYU-ah-anL"/>
                         <outlet property="timeLabel" destination="98W-YU-oCc" id="imP-qb-L3R"/>
                         <segue destination="M8X-ld-VhL" kind="show" identifier="MapViewControllerSegueIdentifier" id="Imm-hS-eTH"/>
@@ -243,65 +299,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKt-T8-cqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1444" y="125.4872563718141"/>
-        </scene>
-        <!--Run Rating Page View Controller-->
-        <scene sceneID="qby-tr-8wV">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5vc-Qf-oLh" customClass="RunRatingPageViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zY2-gN-0XP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2316" y="-59.370314842578715"/>
-        </scene>
-        <!--Run Rating View Controller-->
-        <scene sceneID="0Vm-UM-xCt">
-            <objects>
-                <viewController storyboardIdentifier="RunRatingViewControllerStoryboardIdentifier" id="bGS-sM-WAz" customClass="RunRatingViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="eGa-TQ-GBG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bth-SY-Ejq">
-                                <rect key="frame" x="16" y="354.5" width="343" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8k-kX-aOZ" customClass="RunometerView" customModule="Runometer" customModuleProvider="target">
-                                <rect key="frame" x="8" y="16" width="359" height="359"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="R8k-kX-aOZ" secondAttribute="height" multiplier="1:1" id="GCm-A1-UZX"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundShapeColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="R8k-kX-aOZ" firstAttribute="centerX" secondItem="eGa-TQ-GBG" secondAttribute="centerX" id="Fit-XR-T4R"/>
-                            <constraint firstItem="bth-SY-Ejq" firstAttribute="leading" secondItem="iBS-KE-w8R" secondAttribute="leading" constant="16" id="TII-Co-jkf"/>
-                            <constraint firstItem="R8k-kX-aOZ" firstAttribute="top" secondItem="iBS-KE-w8R" secondAttribute="top" constant="16" id="WYK-aR-fD8"/>
-                            <constraint firstItem="iBS-KE-w8R" firstAttribute="trailing" secondItem="bth-SY-Ejq" secondAttribute="trailing" constant="16" id="rfK-U2-mFN"/>
-                            <constraint firstItem="iBS-KE-w8R" firstAttribute="bottom" secondItem="bth-SY-Ejq" secondAttribute="bottom" id="uNN-2C-tJR"/>
-                            <constraint firstItem="iBS-KE-w8R" firstAttribute="bottom" secondItem="R8k-kX-aOZ" secondAttribute="bottom" id="yUj-87-JP5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="iBS-KE-w8R"/>
-                    </view>
-                    <size key="freeformSize" width="375" height="375"/>
-                    <connections>
-                        <outlet property="ratingDescriptionLabel" destination="bth-SY-Ejq" id="eIT-tU-oZu"/>
-                        <outlet property="runometerView" destination="R8k-kX-aOZ" id="BJv-iK-bB7"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tvY-ue-f0y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2983.1999999999998" y="-58.920539730134934"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="w5X-jb-UVt">

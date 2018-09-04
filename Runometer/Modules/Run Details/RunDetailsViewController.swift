@@ -10,9 +10,10 @@ import UIKit
 import MapKit
 
 class RunDetailsViewController: UIViewController {
-
+    
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var runRatingsView: RunRatingsView!
     @IBOutlet private weak var runDataSummaryView: RunDataSummaryView!
     @IBOutlet private weak var runSummaryMapView: RunSummaryMapView!
 
@@ -21,6 +22,7 @@ class RunDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        runRatingsView.run = run
         runDataSummaryView.run = run
         runSummaryMapView.run = run
         runSummaryMapView.delegate = self
@@ -36,10 +38,6 @@ class RunDetailsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let splitTimesViewController = segue.destination as? SplitTimesViewController {
             splitTimesViewController.splitTimes = run?.splitTimes()
-        }
-        
-        if let runRatingPageViewController = segue.destination as? RunRatingPageViewController {
-            runRatingPageViewController.run = run
         }
         
         if let mapViewController = segue.destination as? MapViewController {

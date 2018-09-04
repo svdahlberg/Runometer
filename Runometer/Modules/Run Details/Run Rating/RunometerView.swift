@@ -24,14 +24,10 @@ import UIKit
     var unitName: String?
     
     /// The percentage to fill the meter with, represented by a number between 0 and 1.
-    var percentage: CGFloat = 0 {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
+    var percentage: CGFloat = 0
     
     // MARK: Draw
-    
+
     override func draw(_ rect: CGRect) {
         layer.addSublayer(gradientLayer)
         backgroundPath.stroke()
