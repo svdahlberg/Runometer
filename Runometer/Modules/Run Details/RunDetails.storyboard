@@ -7,6 +7,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,13 +67,13 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIV-Cw-KLa">
-                                                                            <rect key="frame" x="8" y="279.5" width="359" height="20.5"/>
+                                                                            <rect key="frame" x="8" y="278" width="359" height="22"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-Hd-Xpk" customClass="RunometerView" customModule="Runometer" customModuleProvider="target">
-                                                                            <rect key="frame" x="37" y="8" width="301.5" height="301.5"/>
+                                                                            <rect key="frame" x="38" y="8" width="300" height="300"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="5dh-Hd-Xpk" secondAttribute="height" multiplier="1:1" id="2l5-ze-oqJ"/>
@@ -85,6 +86,7 @@
                                                                     <constraint firstItem="5dh-Hd-Xpk" firstAttribute="top" secondItem="biB-VK-Rth" secondAttribute="topMargin" id="5XF-LG-PKS"/>
                                                                     <constraint firstItem="5dh-Hd-Xpk" firstAttribute="centerX" secondItem="biB-VK-Rth" secondAttribute="centerX" id="8ya-rv-i2Q"/>
                                                                     <constraint firstAttribute="bottom" secondItem="rIV-Cw-KLa" secondAttribute="bottom" id="LIh-W4-OdI"/>
+                                                                    <constraint firstItem="5dh-Hd-Xpk" firstAttribute="width" relation="lessThanOrEqual" secondItem="biB-VK-Rth" secondAttribute="width" multiplier="0.8" id="RmD-aJ-3kz"/>
                                                                     <constraint firstAttribute="trailing" secondItem="rIV-Cw-KLa" secondAttribute="trailing" constant="8" id="bPR-iB-qcq"/>
                                                                     <constraint firstItem="rIV-Cw-KLa" firstAttribute="top" secondItem="5dh-Hd-Xpk" secondAttribute="bottom" constant="-30" id="bzd-Pl-zsM"/>
                                                                     <constraint firstItem="rIV-Cw-KLa" firstAttribute="leading" secondItem="biB-VK-Rth" secondAttribute="leading" constant="8" id="u5n-gk-Qkh"/>
