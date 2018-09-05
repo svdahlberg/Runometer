@@ -13,6 +13,13 @@ import CoreData
 
 class RunTests: XCTestCase {
     
+    func testInitSetsStartDateToDateMinusDurationOfRun() {
+        let context = CoreDataHelper.inMemoryManagedObjectContext()!
+        let run = Run(context: context, distance: 1000, time: 900, locationSegments: [], date: Date(timeIntervalSince1970: 1000))
+        let expectedStartDate = Date(timeIntervalSince1970: 100)
+        XCTAssertEqual(expectedStartDate, run.startDate)
+    }
+    
     func testLocationSegmentsReturnsOneSegmentOfOneLocationWithTheCorrectPropertiesWhenRunHasOneRunSegmentWithOneLocation() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let run = Run(context: context)
@@ -181,12 +188,25 @@ class RunTests: XCTestCase {
         XCTAssertEqual(2000, range.upperBound)
     }
     
-    func testInitSetsStartDateToDateMinusDurationOfRun() {
+    func testSimilarRunsRange_withRangeContainingUpperAndLowerBoundsThatAreNotEqualToWholeKilometers_shouldReturnRangeWithLowerBoundRoundedDownToNearestKilometerAndUpperBoundRoundedUpToNearestKilometer() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context, distance: 1000, time: 900, locationSegments: [], date: Date(timeIntervalSince1970: 1000))
-        let expectedStartDate = Date(timeIntervalSince1970: 100)
-        XCTAssertEqual(expectedStartDate, run.startDate)
+        let run = Run(context: context)
+        run.distance = 10500
+        let range = run.similarRunsRange(distanceUnit: .kilometers)
+        XCTAssertEqual(9000, range.lowerBound)
+        XCTAssertEqual(11000, range.upperBound)
     }
+    
+    func testSimilarRunsRange_withRangeContainingUpperAndLowerBoundsThatAreNotEqualToWholeMiles_shouldReturnRangeWithLowerBoundRoundedDownToNearestMilAndUpperBoundRoundedUpToNearestMile() {
+        let context = CoreDataHelper.inMemoryManagedObjectContext()!
+        let run = Run(context: context)
+        run.distance = 10500
+        let range = run.similarRunsRange(distanceUnit: .miles)
+        XCTAssertEqual(8046.72, range.lowerBound)
+        XCTAssertEqual(11265.408, range.upperBound)
+    }
+    
+
 }
 
 // MARK: Mocks

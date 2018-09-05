@@ -108,13 +108,19 @@ extension Run {
     }
     
     func similarRunsRange(distanceUnit: DistanceUnit = Settings().distanceUnit) -> ClosedRange<Meters> {
-        let lowerBound = max(distance - distanceUnit.meters, 0)
-        var upperBound = distance + distanceUnit.meters
+        
+        let roundedDistance = Meters(distance.number(of: distanceUnit)) * distanceUnit.meters
+        
+        let lowerBound = max(roundedDistance - distanceUnit.meters, 0)
+        var upperBound = roundedDistance + distanceUnit.meters
         if lowerBound == 0 {
-            upperBound += distanceUnit.meters - distance
+            upperBound += distanceUnit.meters - roundedDistance
         }
         
-        return lowerBound...upperBound
+        return  lowerBound...upperBound
     }
+    
+    
+    
     
 }

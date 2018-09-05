@@ -62,8 +62,13 @@ struct Pace: Numeric, Comparable, Equatable {
 
 
 extension Meters {
+    
     func convert(to distanceUnit: DistanceUnit) -> Double {
         return self / distanceUnit.meters
+    }
+    
+    func number(of distanceUnits: DistanceUnit) -> Int {
+        return Int(self / distanceUnits.meters)
     }
 }
 
