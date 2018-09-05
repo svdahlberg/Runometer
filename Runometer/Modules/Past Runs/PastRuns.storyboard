@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="V4c-F0-33k">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PastRunTableViewCellIdentifier" rowHeight="80" id="mn9-kD-m9Q" customClass="PastRunTableViewCell" customModule="Runometer" customModuleProvider="target">
@@ -108,16 +108,15 @@
         <scene sceneID="Fnm-PN-A2O">
             <objects>
                 <navigationController title="Past Runs" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="OsH-0e-ahz" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Past Runs" image="pastRuns" selectedImage="pastRuns" id="OwK-mt-5eL"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="pRh-fT-nkv">
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xtn-fh-qXi">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
                         <segue destination="Z52-RH-7uy" kind="relationship" relationship="rootViewController" id="qYh-II-1pc"/>
                     </connections>
@@ -127,4 +126,7 @@
             <point key="canvasLocation" x="-143.19999999999999" y="168.6656671664168"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pastRuns" width="28" height="28"/>
+    </resources>
 </document>
