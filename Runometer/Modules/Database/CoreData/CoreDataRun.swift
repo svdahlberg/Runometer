@@ -18,14 +18,6 @@ struct CoreDataRun: RunProtocol {
     
     let managedRunObject: ManagedRunObject
     
-    init(managedRunObject: ManagedRunObject, distance: Meters, duration: Seconds, startDate: Date, endDate: Date) {
-        self.managedRunObject = managedRunObject
-        self.distance = distance
-        self.duration = duration
-        self.startDate = startDate
-        self.endDate = endDate
-    }
-    
     init(managedRunObject: ManagedRunObject) {
         self.managedRunObject = managedRunObject
         self.distance = managedRunObject.distance
