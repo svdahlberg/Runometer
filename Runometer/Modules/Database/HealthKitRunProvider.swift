@@ -14,12 +14,28 @@ class HealthStoreManager {
     let healthStore = HKHealthStore()
 }
 
+struct HealthKitRun {
+    let distance: Meters
+    let duration: Seconds
+    
+}
+
 struct HealthKitRunProvider {
+    
+    private let healthStore: HKHealthStore
+    
+    init(healthStore: HKHealthStore = HealthStoreManager.shared.healthStore) {
+        self.healthStore = healthStore
+    }
     
     func runs() -> [Run] {
         guard HKHealthStore.isHealthDataAvailable() else { return [] }
-        let healthStore = HealthStoreManager.shared.healthStore
-        healthStore.requestAuthorization(toShare: Set([HKObjectType.workoutType()]), read: Set([HKObjectType.workoutType()])) { (success, error) in
+        
+        let healthkitObjectTypes = Set([HKObjectType.workoutType(),
+                                        HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
+                                        HKObjectType.seriesType(forIdentifier: HKSeriesType.workoutRoute().identifier)!])
+        
+        healthStore.requestAuthorization(toShare: healthkitObjectTypes, read: healthkitObjectTypes) { (success, error) in
             
             let predicate = HKQuery.predicateForWorkouts(with: .running)
             let query = HKSampleQuery(sampleType: HKObjectType.workoutType(),
@@ -27,29 +43,55 @@ struct HealthKitRunProvider {
                                       limit: 0,
                                       sortDescriptors: nil,
                                       resultsHandler: { (query, results, error) in
-//                                        print(results)
                                         
-                                        results?.forEach {
-                                            guard let workout = $0 as? HKWorkout else { return }
-                                            let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
-                                            
-                                            let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
-                                                
-                                                print(samples)
-                                                
-                                            }
-                                            
-                                            healthStore.execute(routeQuery)
-                                        }
+//                                        results?.forEach {
+                                            self.route(for: results?.first as! HKWorkout)
+//                                        }
                                         
 
                                         
             })
             
-            healthStore.execute(query)
+            self.healthStore.execute(query)
         }
         
         return []
     }
+    
+    func route(for workout: HKWorkout) {
+        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
+        
+        print(workout)
+        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
+
+            
+            self.locations(for: samples?.first as! HKWorkoutRoute)
+            
+
+        }
+
+        healthStore.execute(routeQuery)
+    }
+    
+    private func locations(for route: HKWorkoutRoute) {
+        // Create the route query.
+        let query = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
+            
+            
+            // Do something with this batch of location data.
+            
+            print(locations?.count)
+            
+            if done {
+                // The query returned all the location data associated with the route.
+                // Do something with the complete data set.
+                print(locations?.count)
+            }
+            
+        }
+        
+        healthStore.execute(query)
+    }
+    
     
 }
