@@ -45,6 +45,9 @@ class PastRunsViewControlller: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         runs = RunProvider().savedRuns()
+        
+        HealthKitRunProvider().runs()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
