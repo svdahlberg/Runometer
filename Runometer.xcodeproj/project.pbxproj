@@ -23,6 +23,11 @@
 		B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF41FF2470B00FE3364 /* DistancesMock.swift */; };
 		B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF61FF2477200FE3364 /* DurationsMock.swift */; };
 		B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */; };
+		B25D5703214151AF00BC2C0D /* RunProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* RunProtocol.swift */; };
+		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
+		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
+		B25D57092141625E00BC2C0D /* HealthKitRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57082141625E00BC2C0D /* HealthKitRun.swift */; };
+		B25D570B2141703200BC2C0D /* RunsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D570A2141703200BC2C0D /* RunsExtensions.swift */; };
 		B25DB237201E27170089144E /* AudioFeedbackControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DB236201E27170089144E /* AudioFeedbackControllerTests.swift */; };
 		B25FE7A21F88BCAC001B1BF1 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */; };
 		B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */; };
@@ -122,6 +127,11 @@
 		B2528DF41FF2470B00FE3364 /* DistancesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancesMock.swift; sourceTree = "<group>"; };
 		B2528DF61FF2477200FE3364 /* DurationsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationsMock.swift; sourceTree = "<group>"; };
 		B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingDescription.swift; sourceTree = "<group>"; };
+		B25D5702214151AF00BC2C0D /* RunProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProtocol.swift; sourceTree = "<group>"; };
+		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
+		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
+		B25D57082141625E00BC2C0D /* HealthKitRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitRun.swift; sourceTree = "<group>"; };
+		B25D570A2141703200BC2C0D /* RunsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunsExtensions.swift; sourceTree = "<group>"; };
 		B25DB236201E27170089144E /* AudioFeedbackControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackControllerTests.swift; sourceTree = "<group>"; };
 		B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
@@ -240,7 +250,11 @@
 			children = (
 				B24956751FA4934B002DC83E /* CoreDataStack.swift */,
 				B2C261021FA6209100E69E9D /* RunExtensions.swift */,
+				B25D5704214151D800BC2C0D /* CoreDataRun.swift */,
+				B25D57082141625E00BC2C0D /* HealthKitRun.swift */,
+				B25D5702214151AF00BC2C0D /* RunProtocol.swift */,
 				B2A931191FADCA77006FEACB /* RunProvider.swift */,
+				B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */,
 				B27208A521402993009DCE7D /* HealthKitRunProvider.swift */,
 				B21967A82039B05D007153D2 /* RunSection.swift */,
 			);
@@ -271,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
+				B25D570A2141703200BC2C0D /* RunsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -622,7 +637,10 @@
 				B204BCA7200A70EA0003E3FE /* AudioFeedback.swift in Sources */,
 				B2C261031FA6209100E69E9D /* RunExtensions.swift in Sources */,
 				B2C260FF1FA5FD3100E69E9D /* MKMapViewExtensions.swift in Sources */,
+				B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */,
 				B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */,
+				B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */,
+				B25D57092141625E00BC2C0D /* HealthKitRun.swift in Sources */,
 				B2B1B18F1FC994DC00C579FE /* RunometerView.swift in Sources */,
 				B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */,
 				B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */,
@@ -646,6 +664,8 @@
 				B272089E213E699F009DCE7D /* RunRatingProvider.swift in Sources */,
 				B27208A621402993009DCE7D /* HealthKitRunProvider.swift in Sources */,
 				B2F1C7221FC0BDC8001AC4DF /* Settings.swift in Sources */,
+				B25D5703214151AF00BC2C0D /* RunProtocol.swift in Sources */,
+				B25D570B2141703200BC2C0D /* RunsExtensions.swift in Sources */,
 				B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */,
 				B21967A320307211007153D2 /* Colors.swift in Sources */,
 				B2F1C7241FC0CE16001AC4DF /* AudioTrigger.swift in Sources */,

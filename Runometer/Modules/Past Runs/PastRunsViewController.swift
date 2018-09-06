@@ -12,7 +12,7 @@ class PastRunsViewControlller: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private var runs: [Run]? {
+    private var runs: [RunProtocol]? {
         didSet {
             tableView.reloadData()
         }
@@ -33,7 +33,7 @@ class PastRunsViewControlller: UIViewController {
         return tableViewSections?[section]
     }
     
-    private func run(for indexPath: IndexPath) -> Run? {
+    private func run(for indexPath: IndexPath) -> RunProtocol? {
         return tableViewSection(for: indexPath.section)?.runs[indexPath.row]
     }
     
@@ -44,15 +44,21 @@ class PastRunsViewControlller: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        runs = RunProvider().savedRuns()
+        loadRuns()
         
         HealthKitRunProvider().runs()
         
     }
     
+    private func loadRuns() {
+        RunProvider().savedRuns { [weak self] (runs: [RunProtocol]) in
+            self?.runs = runs
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let runDetailsViewController = segue.destination as? RunDetailsViewController {
-            runDetailsViewController.run = sender as? Run
+            runDetailsViewController.run = sender as? CoreDataRun
         }
     }
 }
@@ -62,8 +68,8 @@ extension PastRunsViewControlller: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             guard let run = run(for: indexPath) else { return }
-            RunProvider.delete(run)
-            runs = RunProvider().savedRuns()
+            RunProvider().delete(run)
+            loadRuns()
         default:
             return
         }

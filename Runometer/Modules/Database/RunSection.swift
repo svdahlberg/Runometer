@@ -10,11 +10,11 @@ import Foundation
 
 struct RunSection {
     let title: String
-    let runs: [Run]
+    let runs: [RunProtocol]
     
-    static func runSections(from runs: [Run], titleDateFormatter: DateFormatter) -> [RunSection] {
+    static func runSections(from runs: [RunProtocol], titleDateFormatter: DateFormatter) -> [RunSection] {
         return Dictionary(grouping: runs) {
-            titleDateFormatter.string(from: $0.timestamp ?? Date())
+            titleDateFormatter.string(from: $0.endDate ?? Date())
             }
             .map {
                 RunSection(title: $0, runs: $1)

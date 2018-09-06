@@ -17,7 +17,7 @@ class RunDetailsViewController: UIViewController {
     @IBOutlet private weak var runDataSummaryView: RunDataSummaryView!
     @IBOutlet private weak var runSummaryMapView: RunSummaryMapView!
 
-    var run: Run?
+    var run: RunProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +58,7 @@ class RunDetailsViewController: UIViewController {
     }
     
     private func setupDateLabel() {
-        guard let date = run?.timestamp else {
+        guard let date = run?.endDate else {
             return
         }
         let dateFormatter = DateFormatter()

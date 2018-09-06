@@ -14,12 +14,6 @@ class HealthStoreManager {
     let healthStore = HKHealthStore()
 }
 
-struct HealthKitRun {
-    let distance: Meters
-    let duration: Seconds
-    
-}
-
 struct HealthKitRunProvider {
     
     private let healthStore: HKHealthStore
@@ -28,7 +22,7 @@ struct HealthKitRunProvider {
         self.healthStore = healthStore
     }
     
-    func runs() -> [Run] {
+    func runs() -> [ManagedRunObject] {
         guard HKHealthStore.isHealthDataAvailable() else { return [] }
         
         let healthkitObjectTypes = Set([HKObjectType.workoutType(),

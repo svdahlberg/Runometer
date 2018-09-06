@@ -9,63 +9,85 @@
 import CoreData
 import CoreLocation
 
+protocol RunProviding {
+    func runs(completion: (_ runs: [RunProtocol]) -> Void)
+}
+
+protocol RunPersisting {
+    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> RunProtocol
+    func delete(_ run: RunProtocol)
+}
+
 class RunProvider {
     
-    private(set) var context: NSManagedObjectContext
+    private let coreDataRunProvider: CoreDataRunProvider
+    private let coreDataRunPersister: CoreDataRunPersister
     
-    init(context: NSManagedObjectContext = CoreDataStack.context) {
-        self.context = context
+    init(coreDataRunProvider: CoreDataRunProvider = CoreDataRunProvider(),
+         coreDataRunPersister: CoreDataRunPersister = CoreDataRunPersister()) {
+        self.coreDataRunProvider = coreDataRunProvider
+        self.coreDataRunPersister = coreDataRunPersister
     }
     
-    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> Run {
-        let run = Run(context: context, distance: distance, time: time, locationSegments: locationSegments)
-        CoreDataStack.saveContext()
-        return run
+    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> RunProtocol {
+        return coreDataRunPersister.saveRun(distance: distance, time: time, locationSegments: locationSegments)
     }
     
-    class func delete(_ run: Run) {
-        try? CoreDataStack.deleteRun(run)
+    func delete(_ run: RunProtocol) {
+        coreDataRunPersister.delete(run)
     }
     
-    func savedRuns() -> [Run]? {
-        let fetchRequest: NSFetchRequest<Run> = Run.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: #keyPath(Run.timestamp), ascending: false)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        return try? context.fetch(fetchRequest)
+    func savedRuns(completion: ([RunProtocol]) -> Void) {
+        coreDataRunProvider.runs {
+            completion($0)
+        }
     }
     
-    func savedRuns(withinDistanceRange range: ClosedRange<Meters>) -> [Run]? {
-        return savedRuns()?.filter { range.contains($0.distance) }
+    func savedRuns(withinDistanceRange range: ClosedRange<Meters>, completion: ([RunProtocol]) -> Void) {
+        savedRuns {
+            completion($0.within(range))
+        }
     }
     
-    func averagePaceOfSavedRuns() -> Seconds? {
-        guard let runs = savedRuns() else { return nil }
-        return averagePace(of: runs)
+    func averagePaceOfSavedRuns(completion: (Seconds?) -> Void) {
+        savedRuns {
+            completion(averagePace(of: $0))
+        }
     }
     
-    func averagePaceOfSavedRuns(withinDistanceRange range: ClosedRange<Meters>) -> Seconds? {
-        guard let runs = savedRuns(withinDistanceRange: range) else { return nil }
-        return averagePace(of: runs)
+    func averagePaceOfSavedRuns(withinDistanceRange range: ClosedRange<Meters>, completion: (Seconds?) -> Void) {
+        savedRuns(withinDistanceRange: range) {
+            completion(averagePace(of: $0))
+        }
     }
     
-    func averageTimeOfSavedRuns() -> Seconds? {
-        guard let runs = savedRuns() else { return nil }
-        return averageTime(of: runs)
+    func averageTimeOfSavedRuns(completion: (Seconds?) -> Void) {
+        savedRuns {
+            completion(averageTime(of: $0))
+        }
     }
     
-    func averageTimeOfSavedRuns(withinDistanceRange range: ClosedRange<Meters>) -> Seconds? {
-        guard let runs = savedRuns(withinDistanceRange: range) else { return nil }
-        return averageTime(of: runs)
+    func averageTimeOfSavedRuns(withinDistanceRange range: ClosedRange<Meters>, completion: (Seconds?) -> Void) {
+        savedRuns(withinDistanceRange: range) {
+            completion(averageTime(of: $0))
+        }
+
     }
     
-    func averageDistanceOfSavedRuns() -> Meters? {
-        guard let runs = savedRuns(), !runs.isEmpty else { return nil }
-        return runs
-            .map { $0.distance }
-            .reduce(0, +) / Double(runs.count)
+    func averageDistanceOfSavedRuns(completion: (Meters?) -> Void) {
+        savedRuns { runs in
+            guard !runs.isEmpty else {
+                completion(nil)
+                return
+            }
+            completion(runs
+                .map { $0.distance }
+                .reduce(0, +) / Double(runs.count)
+            )
+        }
     }
     
-    private func averagePace(of runs: [Run]) -> Seconds? {
+    private func averagePace(of runs: [RunProtocol]) -> Seconds? {
         guard !runs.isEmpty else {
             return nil
         }
@@ -74,7 +96,7 @@ class RunProvider {
         return sumOfPaces / runs.count
     }
 
-    private func averageTime(of runs: [Run]) -> Seconds? {
+    private func averageTime(of runs: [RunProtocol]) -> Seconds? {
         guard !runs.isEmpty else {
             return nil
         }

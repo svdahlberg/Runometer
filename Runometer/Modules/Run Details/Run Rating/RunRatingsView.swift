@@ -13,15 +13,24 @@ class RunRatingsView: UIView {
     @IBOutlet private weak var runRatingsCollectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
     
-    var run: Run?
+    var run: RunProtocol? {
+        didSet { setupRunRatings() }
+    }
     
-    private lazy var runRatings: [RunRating] = {
-        guard let run = run else { return [] }
-        let runRatingProvider = RunRatingProvider(run: run)
-        return [runRatingProvider.distanceRating(),
-                runRatingProvider.timeRating(),
-                runRatingProvider.paceRating()].compactMap { $0 }
-    }()
+    private var runRatings: [RunRating] = [] {
+        didSet { runRatingsCollectionView.reloadData() }
+    }
+    
+    private func setupRunRatings() {
+        guard let run = run else { return }
+        RunProvider().savedRuns { allRuns in
+            let similarDistanceRuns = allRuns.within(run.similarRunsRange())
+            let runRatingProvider = RunRatingProvider(run: run)
+            runRatings = [runRatingProvider.distanceRating(comparedTo: allRuns),
+                          runRatingProvider.timeRating(comparedTo: similarDistanceRuns),
+                          runRatingProvider.paceRating(comparedTo: allRuns)].compactMap { $0 }
+        }
+    }
     
 }
 

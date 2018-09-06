@@ -18,7 +18,7 @@ class RunSummaryMapView: UIView {
     
     weak var delegate: RunSummaryMapViewDelegate?
     
-    var run: Run? {
+    var run: RunProtocol? {
         didSet {
             guard let runMap = RunMap(run: run) else {
                 return
@@ -63,7 +63,7 @@ struct RunMap {
     let startAnnotation: StartAnnotation
     let endAnnotation: EndAnnotation
     
-    init?(run: Run?) {
+    init?(run: RunProtocol?) {
         guard let coordinateSegments = run?.coordinateSegments(),
             let coordinates = run?.flattenedCoordinateSegments(),
             let mapRegion = MKCoordinateRegion.region(from: coordinates),

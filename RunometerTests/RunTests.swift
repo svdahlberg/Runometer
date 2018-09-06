@@ -15,14 +15,14 @@ class RunTests: XCTestCase {
     
     func testInitSetsStartDateToDateMinusDurationOfRun() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context, distance: 1000, time: 900, locationSegments: [], date: Date(timeIntervalSince1970: 1000))
+        let run = ManagedRunObject(context: context, distance: 1000, time: 900, locationSegments: [], date: Date(timeIntervalSince1970: 1000))
         let expectedStartDate = Date(timeIntervalSince1970: 100)
         XCTAssertEqual(expectedStartDate, run.startDate)
     }
     
     func testLocationSegmentsReturnsOneSegmentOfOneLocationWithTheCorrectPropertiesWhenRunHasOneRunSegmentWithOneLocation() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.addToRunSegments(runSegmentMock(context: context))
         let locationSegments = run.locationSegments()
         XCTAssertEqual(1, run.runSegments?.count)
@@ -34,7 +34,7 @@ class RunTests: XCTestCase {
     
     func testCoordinateSegmentsReturnsOneSegmentOfOneCoordinateWhenRunHasOneRunSegmentWithOneLocation() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.addToRunSegments(runSegmentMock(context: context))
         XCTAssertEqual(1, run.runSegments?.count)
         XCTAssertEqual(1, run.coordinateSegments()?.first?.count)
@@ -42,7 +42,7 @@ class RunTests: XCTestCase {
     
     func testCoordinateSegmentsReturnsOneSegmentOfTwoCoordinatesWhenRunHasOneRunSegmentWithTwoLocations() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.addToRunSegments(runSegmentMock(context: context, numberOfLocations: 2))
         XCTAssertEqual(1, run.runSegments?.count)
         XCTAssertEqual(2, run.coordinateSegments()?.first?.count)
@@ -50,7 +50,7 @@ class RunTests: XCTestCase {
     
     func testCoordinateSegmentsReturnsTwoSegmentsOfTwoCoordinatesEachWhenRunHasTwoRunSegmentsWithTwoLocationsEach() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.addToRunSegments(runSegmentMock(context: context, numberOfLocations: 2))
         run.addToRunSegments(runSegmentMock(context: context, numberOfLocations: 2))
         XCTAssertEqual(2, run.runSegments?.count)
@@ -60,7 +60,7 @@ class RunTests: XCTestCase {
     
     func testCoordinateSegmentsReturnsCoordinateWithLatitudeTwoAndLongitudeOneForLocationWithLatitudeTwoAndLongitudeOne() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.addToRunSegments(runSegmentMock(context: context))
         let coordinate = run.coordinateSegments()?.first?.first
         XCTAssertEqual(2, coordinate?.latitude)
@@ -70,21 +70,21 @@ class RunTests: XCTestCase {
     func testConvenianceInitCreatesOneRunSegmentFromArrayOfOneArrayOfLocations() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let locationSegments = [[CLLocation(latitude: 1, longitude: 1)]]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         XCTAssertEqual(1, run.runSegments?.count)
     }
     
     func testConvenianceInitCreatesTwoRunSegmentsFromArrayOfTwoArraysOfLocations() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let locationSegments = [[CLLocation(latitude: 1, longitude: 1)], [CLLocation(latitude: 1, longitude: 1)]]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         XCTAssertEqual(2, run.runSegments?.count)
     }
     
     func testFlattenedCoordinateSegmentsReturnsCoordinateSegmentsAsOneArray() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
         let locationSegments = [[CLLocation(latitude: 1, longitude: 1)], [CLLocation(latitude: 2, longitude: 2)]]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         XCTAssertEqual(2, run.flattenedCoordinateSegments()?.count)
     }
     
@@ -93,7 +93,7 @@ class RunTests: XCTestCase {
         let locationSegments = [
             [CLLocation(latitude: 1, longitude: 1), CLLocation(latitude: 1.01, longitude: 1)]
         ]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         let checkpoints = run.reachedCheckpoints(distanceUnit: .kilometers)
         XCTAssertEqual(1, checkpoints?.count)
     }
@@ -104,14 +104,14 @@ class RunTests: XCTestCase {
             [CLLocation(latitude: 1, longitude: 1), CLLocation(latitude: 1.01, longitude: 1)],
             [CLLocation(latitude: 1, longitude: 1), CLLocation(latitude: 1.01, longitude: 1)]
         ]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         let checkpoints = run.reachedCheckpoints(distanceUnit: .kilometers)
         XCTAssertEqual(2, checkpoints?.count)
     }
     
     func testStartAnnotationReturnsNilIfRunHasNoLocations() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: [])
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: [])
         let startAnnotation = run.startAnnotation()
         XCTAssertNil(startAnnotation)
     }
@@ -121,7 +121,7 @@ class RunTests: XCTestCase {
         let locationSegments = [
             [CLLocation(latitude: 1, longitude: 1), CLLocation(latitude: 2, longitude: 2)]
         ]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         let startAnnotation = run.startAnnotation()
         XCTAssertEqual(1, startAnnotation?.coordinate.latitude)
         XCTAssertEqual(1, startAnnotation?.coordinate.longitude)
@@ -129,7 +129,7 @@ class RunTests: XCTestCase {
 
     func testEndAnnotationReturnsNilIfRunHasNoLocations() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: [])
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: [])
         let endAnnotation = run.endAnnotation()
         XCTAssertNil(endAnnotation)
     }
@@ -139,7 +139,7 @@ class RunTests: XCTestCase {
         let locationSegments = [
             [CLLocation(latitude: 1, longitude: 1), CLLocation(latitude: 2, longitude: 2)]
         ]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         let endAnnotation = run.endAnnotation()
         XCTAssertEqual(2, endAnnotation?.coordinate.latitude)
         XCTAssertEqual(2, endAnnotation?.coordinate.longitude)
@@ -157,7 +157,7 @@ class RunTests: XCTestCase {
         let location2 = CLLocation(coordinate: coordinate2, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: time2)
         let location3 = CLLocation(coordinate: coordinate3, altitude: 0, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: time3)
         let locationSegments = [ [location1, location2, location3] ]
-        let run = Run(context: context, distance: 0, time: 0, locationSegments: locationSegments)
+        let run = ManagedRunObject(context: context, distance: 0, time: 0, locationSegments: locationSegments)
         let splitTimes = run.splitTimes(distanceUnit: .kilometers, speedUnit: .minutesPerKilometer)
         XCTAssertEqual(2, splitTimes?.count)
         XCTAssertEqual("5:00", splitTimes?.first)
@@ -166,13 +166,13 @@ class RunTests: XCTestCase {
     
     func testAveragePaceReturnsSixMinutesForRunWithDistanceTenKilometersAndTimeSixtyMinutes() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context, distance: 10000, time: 3600, locationSegments: [])
+        let run = ManagedRunObject(context: context, distance: 10000, time: 3600, locationSegments: [])
         XCTAssertEqual(360, run.averagePace())
     }
     
     func testSimilarRunsRangeForTwoKilometerRunReturnsLowerBoundOneKilometerAndUpperBoundThreeKilometers() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.distance = 2000
         let range = run.similarRunsRange(distanceUnit: .kilometers)
         XCTAssertEqual(1000, range.lowerBound)
@@ -181,7 +181,7 @@ class RunTests: XCTestCase {
     
     func testSimilarRunsRangeFor500MeterRunReturnsLowerBoundZeroKilometerAndUpperBoundTwoKilometers() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.distance = 500
         let range = run.similarRunsRange(distanceUnit: .kilometers)
         XCTAssertEqual(0, range.lowerBound)
@@ -190,7 +190,7 @@ class RunTests: XCTestCase {
     
     func testSimilarRunsRange_withRangeContainingUpperAndLowerBoundsThatAreNotEqualToWholeKilometers_shouldReturnRangeWithLowerBoundRoundedDownToNearestKilometerAndUpperBoundRoundedUpToNearestKilometer() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.distance = 10500
         let range = run.similarRunsRange(distanceUnit: .kilometers)
         XCTAssertEqual(9000, range.lowerBound)
@@ -199,7 +199,7 @@ class RunTests: XCTestCase {
     
     func testSimilarRunsRange_withRangeContainingUpperAndLowerBoundsThatAreNotEqualToWholeMiles_shouldReturnRangeWithLowerBoundRoundedDownToNearestMilAndUpperBoundRoundedUpToNearestMile() {
         let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        let run = Run(context: context)
+        let run = ManagedRunObject(context: context)
         run.distance = 10500
         let range = run.similarRunsRange(distanceUnit: .miles)
         XCTAssertEqual(8046.72, range.lowerBound)

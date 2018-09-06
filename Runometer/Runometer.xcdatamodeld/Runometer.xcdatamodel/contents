@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1212" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Location" representedClassName="Location" syncable="YES" codeGenerationType="class">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="runSegment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RunSegment" inverseName="locations" inverseEntity="RunSegment" syncable="YES"/>
     </entity>
-    <entity name="Run" representedClassName="Run" syncable="YES" codeGenerationType="class">
+    <entity name="ManagedRunObject" representedClassName="ManagedRunObject" syncable="YES" codeGenerationType="class">
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -16,11 +16,11 @@
     </entity>
     <entity name="RunSegment" representedClassName="RunSegment" syncable="YES" codeGenerationType="class">
         <relationship name="locations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Location" inverseName="runSegment" inverseEntity="Location" syncable="YES"/>
-        <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Run" inverseName="runSegments" inverseEntity="Run" syncable="YES"/>
+        <relationship name="run" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedRunObject" inverseName="runSegments" inverseEntity="ManagedRunObject" syncable="YES"/>
     </entity>
     <elements>
         <element name="Location" positionX="54" positionY="-81" width="128" height="103"/>
-        <element name="Run" positionX="-351" positionY="-67" width="128" height="133"/>
+        <element name="ManagedRunObject" positionX="160" positionY="192" width="128" height="135"/>
         <element name="RunSegment" positionX="-164" positionY="-48" width="128" height="75"/>
     </elements>
 </model>

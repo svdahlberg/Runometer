@@ -32,7 +32,7 @@ struct CoreDataStack {
         }
     }
     
-    static func deleteRun(_ run: Run) throws {
+    static func deleteRun(_ run: ManagedRunObject) throws {
         let context = persistentContainer.viewContext
         context.delete(run)
         try context.save()
