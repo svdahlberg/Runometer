@@ -51,7 +51,7 @@ class PastRunsViewControlller: UIViewController {
     }
     
     private func loadRuns() {
-        RunProvider().savedRuns { [weak self] (runs: [RunProtocol]) in
+        RunProvider().runs { [weak self] (runs: [RunProtocol]) in
             self?.runs = runs
         }
     }
@@ -68,7 +68,7 @@ extension PastRunsViewControlller: UITableViewDelegate {
         switch editingStyle {
         case .delete:
             guard let run = run(for: indexPath) else { return }
-            RunProvider().delete(run)
+            RunPersister().delete(run)
             loadRuns()
         default:
             return

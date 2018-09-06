@@ -9,7 +9,9 @@
 import Foundation
 
 extension Double {
+    
     func trailingZeroRemoved() -> String {
         return String(format: "%g", self)
     }
+    
 }

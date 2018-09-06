@@ -14,7 +14,7 @@ struct RunSection {
     
     static func runSections(from runs: [RunProtocol], titleDateFormatter: DateFormatter) -> [RunSection] {
         return Dictionary(grouping: runs) {
-            titleDateFormatter.string(from: $0.endDate ?? Date())
+            titleDateFormatter.string(from: $0.endDate)
             }
             .map {
                 RunSection(title: $0, runs: $1)

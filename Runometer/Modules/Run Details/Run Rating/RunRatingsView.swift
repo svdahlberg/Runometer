@@ -23,7 +23,7 @@ class RunRatingsView: UIView {
     
     private func setupRunRatings() {
         guard let run = run else { return }
-        RunProvider().savedRuns { allRuns in
+        RunProvider().runs { allRuns in
             let similarDistanceRuns = allRuns.within(run.similarRunsRange())
             let runRatingProvider = RunRatingProvider(run: run)
             runRatings = [runRatingProvider.distanceRating(comparedTo: allRuns),
