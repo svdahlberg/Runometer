@@ -10,9 +10,9 @@ import Foundation
 
 struct RunRatingProvider {
     
-    let run: RunProtocol
+    let run: Run
     
-    func distanceRating(comparedTo runs: [RunProtocol]) -> RunRating? {
+    func distanceRating(comparedTo runs: [Run]) -> RunRating? {
         guard let formattedDistance = DistanceFormatter.format(distance: run.distance),
             let statisticsText = RunStatistics(runs: runs).allDistancesStatisticsText(for: run.distance) else {
                 return nil
@@ -23,7 +23,7 @@ struct RunRatingProvider {
         return RunRating(percentage: distanceRating, title: formattedDistance, subtitle: Settings().distanceUnit.symbol, description: statisticsText)
     }
     
-    func timeRating(comparedTo runs: [RunProtocol]) -> RunRating? {
+    func timeRating(comparedTo runs: [Run]) -> RunRating? {
         guard let formattedTime = TimeFormatter.format(time: Seconds(run.duration)),
             let timeRatingStatisticsText = RunStatistics(runs: runs).averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: run.similarRunsRange())
             else {
@@ -35,7 +35,7 @@ struct RunRatingProvider {
         return RunRating(percentage: timeRating, title: formattedTime, subtitle: "Time", description: timeRatingStatisticsText)
     }
     
-    func paceRating(comparedTo runs: [RunProtocol]) -> RunRating? {
+    func paceRating(comparedTo runs: [Run]) -> RunRating? {
         guard let formattedPace = PaceFormatter.pace(fromDistance: run.distance, time: Seconds(run.duration)),
             let paceRatingStatisticsText = RunStatistics(runs: runs).averagePaceStatisticsText(for: run.averagePace())
             else {

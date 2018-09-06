@@ -23,7 +23,7 @@ class RunDataSummaryView: UIView {
         paceUnitLabel.text = Settings().speedUnit.symbol
     }
     
-    var run: RunProtocol? {
+    var run: Run? {
         didSet {
             guard let run = run,
                 let formattedDistance = DistanceFormatter.format(distance: run.distance),

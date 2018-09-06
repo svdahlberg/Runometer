@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Collection where Iterator.Element == RunProtocol {
+extension Collection where Iterator.Element == Run {
     
-    func within(_ range: ClosedRange<Meters>) -> [RunProtocol] {
+    func within(_ range: ClosedRange<Meters>) -> [Run] {
         return filter { range.contains($0.distance) }
     }
     

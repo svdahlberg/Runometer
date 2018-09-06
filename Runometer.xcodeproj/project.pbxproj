@@ -23,7 +23,7 @@
 		B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF41FF2470B00FE3364 /* DistancesMock.swift */; };
 		B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF61FF2477200FE3364 /* DurationsMock.swift */; };
 		B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */; };
-		B25D5703214151AF00BC2C0D /* RunProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* RunProtocol.swift */; };
+		B25D5703214151AF00BC2C0D /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
 		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
 		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
 		B25D57092141625E00BC2C0D /* HealthKitRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57082141625E00BC2C0D /* HealthKitRun.swift */; };
@@ -129,7 +129,7 @@
 		B2528DF41FF2470B00FE3364 /* DistancesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancesMock.swift; sourceTree = "<group>"; };
 		B2528DF61FF2477200FE3364 /* DurationsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationsMock.swift; sourceTree = "<group>"; };
 		B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingDescription.swift; sourceTree = "<group>"; };
-		B25D5702214151AF00BC2C0D /* RunProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProtocol.swift; sourceTree = "<group>"; };
+		B25D5702214151AF00BC2C0D /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
 		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
 		B25D57082141625E00BC2C0D /* HealthKitRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitRun.swift; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		B2720892213D21C4009DCE7D /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				B25D5702214151AF00BC2C0D /* RunProtocol.swift */,
+				B25D5702214151AF00BC2C0D /* Run.swift */,
 				B2A931191FADCA77006FEACB /* RunProvider.swift */,
 				B25D570C2141835200BC2C0D /* RunPersister.swift */,
 				B25D5711214183BF00BC2C0D /* HealthKit */,
@@ -687,7 +687,7 @@
 				B27208A621402993009DCE7D /* HealthKitRunProvider.swift in Sources */,
 				B25D570D2141835200BC2C0D /* RunPersister.swift in Sources */,
 				B2F1C7221FC0BDC8001AC4DF /* Settings.swift in Sources */,
-				B25D5703214151AF00BC2C0D /* RunProtocol.swift in Sources */,
+				B25D5703214151AF00BC2C0D /* Run.swift in Sources */,
 				B25D570B2141703200BC2C0D /* RunsExtensions.swift in Sources */,
 				B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */,
 				B21967A320307211007153D2 /* Colors.swift in Sources */,

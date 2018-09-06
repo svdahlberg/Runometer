@@ -1,5 +1,5 @@
 //
-//  RunProtocol.swift
+//  Run.swift
 //  Runometer
 //
 //  Created by Svante Dahlberg on 2018-09-06.
@@ -8,7 +8,7 @@
 
 import CoreLocation
 
-protocol RunProtocol {
+protocol Run {
     var distance: Meters { get }
     var duration: Seconds { get }
     var startDate: Date { get }
@@ -16,7 +16,7 @@ protocol RunProtocol {
     func locationSegments() -> [[CLLocation]]?
 }
 
-extension RunProtocol {
+extension Run {
     
     func coordinateSegments() -> [[CLLocationCoordinate2D]]? {
         return locationSegments()?.map {

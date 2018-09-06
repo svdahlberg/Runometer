@@ -14,7 +14,7 @@ class PastRunTableViewCell: UITableViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
-    var run: RunProtocol? {
+    var run: Run? {
         didSet {
             guard let run = run,
                 let formattedDistance = DistanceFormatter.format(distance: run.distance),

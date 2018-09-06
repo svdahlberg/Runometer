@@ -104,7 +104,7 @@ class RunTracker: NSObject {
         checkpoints.append(checkpoint)
     }
     
-    func saveRun() -> RunProtocol {
+    func saveRun() -> Run {
         return RunPersister().saveRun(distance: distance, time: time, locationSegments: runSegments)
     }
 }

@@ -17,7 +17,7 @@ struct CoreDataRunProvider: RunProviding {
         self.context = context
     }
     
-    func runs(completion: ([RunProtocol]) -> Void) {
+    func runs(completion: ([Run]) -> Void) {
         let fetchRequest: NSFetchRequest<ManagedRunObject> = ManagedRunObject.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: #keyPath(ManagedRunObject.timestamp), ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]

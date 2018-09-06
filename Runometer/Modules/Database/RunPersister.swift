@@ -10,8 +10,8 @@ import CoreData
 import CoreLocation
 
 protocol RunPersisting {
-    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> RunProtocol
-    func delete(_ run: RunProtocol)
+    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> Run
+    func delete(_ run: Run)
 }
 
 struct RunPersister: RunPersisting {
@@ -22,11 +22,11 @@ struct RunPersister: RunPersisting {
         self.coreDataRunPersister = coreDataRunPersister
     }
     
-    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> RunProtocol {
+    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> Run {
         return coreDataRunPersister.saveRun(distance: distance, time: time, locationSegments: locationSegments)
     }
     
-    func delete(_ run: RunProtocol) {
+    func delete(_ run: Run) {
         coreDataRunPersister.delete(run)
     }
     

@@ -17,7 +17,7 @@ class RunDetailsViewController: UIViewController {
     @IBOutlet private weak var runDataSummaryView: RunDataSummaryView!
     @IBOutlet private weak var runSummaryMapView: RunSummaryMapView!
 
-    var run: RunProtocol?
+    var run: Run?
     
     override func viewDidLoad() {
         super.viewDidLoad()

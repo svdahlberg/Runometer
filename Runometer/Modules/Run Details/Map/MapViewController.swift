@@ -13,7 +13,7 @@ class MapViewController: UIViewController {
     
     @IBOutlet private weak var mapView: MKMapView!
     
-    var run: RunProtocol?
+    var run: Run?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,13 +17,13 @@ struct CoreDataRunPersister: RunPersisting {
         self.context = context
     }
     
-    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> RunProtocol {
+    func saveRun(distance: Meters, time: Seconds, locationSegments: [[CLLocation]]) -> Run {
         let run = ManagedRunObject(context: context, distance: distance, time: time, locationSegments: locationSegments)
         CoreDataStack.saveContext()
         return CoreDataRun(managedRunObject: run)
     }
     
-    func delete(_ run: RunProtocol) {
+    func delete(_ run: Run) {
         guard let run = run as? CoreDataRun else { return }
         try? CoreDataStack.deleteRun(run.managedRunObject)
     }

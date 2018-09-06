@@ -12,9 +12,9 @@ import CoreGraphics
 class RunStatistics {
     
     private let settings: Settings
-    private let runs: [RunProtocol]
+    private let runs: [Run]
     
-    init(settings: Settings = Settings(), runs: [RunProtocol]) {
+    init(settings: Settings = Settings(), runs: [Run]) {
         self.settings = settings
         self.runs = runs
     }

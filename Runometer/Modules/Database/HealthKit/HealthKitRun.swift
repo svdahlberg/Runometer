@@ -7,15 +7,27 @@
 //
 
 import CoreLocation
+import HealthKit
 
-struct HealthKitRun: RunProtocol {
+struct HealthKitRun: Run {
+    
     var distance: Meters
-    
     var duration: Seconds
-    
     var startDate: Date
-    
     var endDate: Date
+    
+    private let workout: HKWorkout
+    
+    init?(workout: HKWorkout) {
+        guard let distance = workout.totalDistance?.doubleValue(for: HKUnit.meter()) else {
+            return nil
+        }
+        self.distance = distance
+        self.duration = Seconds(workout.duration)
+        self.startDate = workout.startDate
+        self.endDate = workout.endDate
+        self.workout = workout
+    }
     
     func locationSegments() -> [[CLLocation]]? {
         return nil

@@ -13,7 +13,7 @@ class RunRatingsView: UIView {
     @IBOutlet private weak var runRatingsCollectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
     
-    var run: RunProtocol? {
+    var run: Run? {
         didSet { setupRunRatings() }
     }
     

@@ -12,7 +12,7 @@ class PastRunsViewControlller: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
-    private var runs: [RunProtocol]? {
+    private var runs: [Run]? {
         didSet {
             tableView.reloadData()
         }
@@ -33,7 +33,7 @@ class PastRunsViewControlller: UIViewController {
         return tableViewSections?[section]
     }
     
-    private func run(for indexPath: IndexPath) -> RunProtocol? {
+    private func run(for indexPath: IndexPath) -> Run? {
         return tableViewSection(for: indexPath.section)?.runs[indexPath.row]
     }
     
@@ -51,7 +51,7 @@ class PastRunsViewControlller: UIViewController {
     }
     
     private func loadRuns() {
-        RunProvider().runs { [weak self] (runs: [RunProtocol]) in
+        RunProvider().runs { [weak self] (runs: [Run]) in
             self?.runs = runs
         }
     }

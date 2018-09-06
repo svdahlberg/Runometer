@@ -10,7 +10,7 @@ import CoreData
 import CoreLocation
 
 protocol RunProviding {
-    func runs(completion: (_ runs: [RunProtocol]) -> Void)
+    func runs(completion: (_ runs: [Run]) -> Void)
 }
 
 struct RunProvider: RunProviding {
@@ -22,7 +22,7 @@ struct RunProvider: RunProviding {
         self.coreDataRunProvider = coreDataRunProvider
     }
     
-    func runs(completion: ([RunProtocol]) -> Void) {
+    func runs(completion: ([Run]) -> Void) {
         coreDataRunProvider.runs {
             completion($0)
         }

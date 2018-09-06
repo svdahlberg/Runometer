@@ -9,7 +9,7 @@
 import CoreData
 import CoreLocation
 
-struct CoreDataRun: RunProtocol {
+struct CoreDataRun: Run {
     
     var distance: Meters
     var duration: Seconds
