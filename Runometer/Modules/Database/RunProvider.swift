@@ -10,21 +10,31 @@ import CoreData
 import CoreLocation
 
 protocol RunProviding {
-    func runs(completion: (_ runs: [Run]) -> Void)
+    func runs(completion: @escaping (_ runs: [Run]) -> Void)
 }
 
 struct RunProvider: RunProviding {
     
     private let coreDataRunProvider: CoreDataRunProvider
+    private let healthKitRunProvider: HealthKitRunProvider
     
     init(coreDataRunProvider: CoreDataRunProvider = CoreDataRunProvider(),
-         coreDataRunPersister: CoreDataRunPersister = CoreDataRunPersister()) {
+         healthKitRunProvider: HealthKitRunProvider = HealthKitRunProvider()) {
         self.coreDataRunProvider = coreDataRunProvider
+        self.healthKitRunProvider = healthKitRunProvider
     }
     
-    func runs(completion: ([Run]) -> Void) {
-        coreDataRunProvider.runs {
-            completion($0)
+    func runs(completion: @escaping (_ runs: [Run]) -> Void) {
+        coreDataRunProvider.runs { coreDataRuns in
+            self.healthKitRunProvider.runs { healthKitRuns in
+                let allRuns = (healthKitRuns + coreDataRuns).sorted {
+                    $1.endDate < $0.endDate
+                }
+                
+                DispatchQueue.main.async {
+                    completion(allRuns)
+                }
+            }
         }
     }
     

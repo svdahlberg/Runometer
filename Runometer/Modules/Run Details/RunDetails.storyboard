@@ -48,6 +48,9 @@
                                                 <subviews>
                                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EQH-93-miG">
                                                         <rect key="frame" x="168" y="293" width="39" height="37"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="37" id="r4w-xo-SI2"/>
+                                                        </constraints>
                                                     </pageControl>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eCn-aa-5k8">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="293"/>
@@ -67,16 +70,16 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIV-Cw-KLa">
-                                                                            <rect key="frame" x="8" y="278" width="359" height="22"/>
+                                                                            <rect key="frame" x="8" y="279.5" width="359" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-Hd-Xpk" customClass="RunometerView" customModule="Runometer" customModuleProvider="target">
-                                                                            <rect key="frame" x="38" y="8" width="300" height="300"/>
+                                                                            <rect key="frame" x="38" y="8" width="300" height="301.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" secondItem="5dh-Hd-Xpk" secondAttribute="height" multiplier="1:1" id="2l5-ze-oqJ"/>
+                                                                                <constraint firstAttribute="width" secondItem="5dh-Hd-Xpk" secondAttribute="height" multiplier="300:301" id="ERh-9o-Y2T"/>
                                                                             </constraints>
                                                                         </view>
                                                                     </subviews>

@@ -23,10 +23,10 @@ class RunRatingsView: UIView {
     
     private func setupRunRatings() {
         guard let run = run else { return }
-        RunProvider().runs { allRuns in
+        RunProvider().runs { [weak self] allRuns in
             let similarDistanceRuns = allRuns.within(run.similarRunsRange())
             let runRatingProvider = RunRatingProvider(run: run)
-            runRatings = [runRatingProvider.distanceRating(comparedTo: allRuns),
+            self?.runRatings = [runRatingProvider.distanceRating(comparedTo: allRuns),
                           runRatingProvider.timeRating(comparedTo: similarDistanceRuns),
                           runRatingProvider.paceRating(comparedTo: allRuns)].compactMap { $0 }
         }
@@ -54,7 +54,10 @@ extension RunRatingsView: UICollectionViewDataSource {
 extension RunRatingsView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
+        return CGSize(width: collectionView.frame.width -
+            collectionView.contentInset.left -
+            collectionView.contentInset.right,
+                    height: collectionView.frame.height - collectionView.contentInset.top - collectionView.contentInset.bottom)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

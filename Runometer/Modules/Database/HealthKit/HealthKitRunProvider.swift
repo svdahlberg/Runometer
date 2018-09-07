@@ -14,7 +14,7 @@ class HealthStoreManager {
     let healthStore = HKHealthStore()
 }
 
-struct HealthKitRunProvider {
+struct HealthKitRunProvider: RunProviding {
     
     private let healthStore: HKHealthStore
     
@@ -22,15 +22,18 @@ struct HealthKitRunProvider {
         self.healthStore = healthStore
     }
     
-    func runs() -> [ManagedRunObject] {
-        guard HKHealthStore.isHealthDataAvailable() else { return [] }
+    func runs(completion: @escaping (_ runs: [Run]) -> Void) {
+        guard HKHealthStore.isHealthDataAvailable() else {
+            completion([])
+            return
+        }
         
         let healthkitObjectTypes = Set([HKObjectType.workoutType(),
                                         HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                                         HKObjectType.seriesType(forIdentifier: HKSeriesType.workoutRoute().identifier)!])
         
-        healthStore.requestAuthorization(toShare: healthkitObjectTypes, read: healthkitObjectTypes) { (success, error) in
-            
+        healthStore.requestAuthorization(toShare: healthkitObjectTypes,
+                                         read: healthkitObjectTypes) { (success, error) in
             let predicate = HKQuery.predicateForWorkouts(with: .running)
             let query = HKSampleQuery(sampleType: HKObjectType.workoutType(),
                                       predicate: predicate,
@@ -38,54 +41,16 @@ struct HealthKitRunProvider {
                                       sortDescriptors: nil,
                                       resultsHandler: { (query, results, error) in
                                         
-//                                        results?.forEach {
-                                            self.route(for: results?.first as! HKWorkout)
-//                                        }
+                                        let runs: [HealthKitRun]? = results?.compactMap {
+                                            guard let workout = $0 as? HKWorkout else { return nil }
+                                            return HealthKitRun(workout: workout)
+                                        }
                                         
-
-                                        
+                                        completion(runs ?? [])
             })
             
             self.healthStore.execute(query)
         }
-        
-        return []
     }
-    
-    func route(for workout: HKWorkout) {
-        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
-        
-        print(workout)
-        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
-
-            
-            self.locations(for: samples?.first as! HKWorkoutRoute)
-            
-
-        }
-
-        healthStore.execute(routeQuery)
-    }
-    
-    private func locations(for route: HKWorkoutRoute) {
-        // Create the route query.
-        let query = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
-            
-            
-            // Do something with this batch of location data.
-            
-            print(locations?.count)
-            
-            if done {
-                // The query returned all the location data associated with the route.
-                // Do something with the complete data set.
-                print(locations?.count)
-            }
-            
-        }
-        
-        healthStore.execute(query)
-    }
-    
     
 }

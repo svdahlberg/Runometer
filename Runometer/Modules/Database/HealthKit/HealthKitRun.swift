@@ -33,4 +33,42 @@ struct HealthKitRun: Run {
         return nil
     }
     
+    
+    
+//    func route(for workout: HKWorkout) {
+//        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
+//        
+//        print(workout)
+//        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
+//            
+//            
+//            self.locations(for: samples?.first as! HKWorkoutRoute)
+//            
+//            
+//        }
+//        
+//        healthStore.execute(routeQuery)
+//    }
+//    
+//    private func locations(for route: HKWorkoutRoute, completion: ([[CLLocation]] -> Void)) {
+//        // Create the route query.
+//        let query = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
+//            
+//            
+//            // Do something with this batch of location data.
+//            
+//            print(locations?.count)
+//            
+//            if done {
+//                // The query returned all the location data associated with the route.
+//                // Do something with the complete data set.
+//                print(locations?.count)
+//            }
+//            
+//        }
+//        
+//        healthStore.execute(query)
+//    }
+    
+    
 }

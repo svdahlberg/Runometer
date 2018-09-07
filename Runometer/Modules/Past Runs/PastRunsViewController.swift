@@ -45,9 +45,6 @@ class PastRunsViewControlller: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadRuns()
-        
-        HealthKitRunProvider().runs()
-        
     }
     
     private func loadRuns() {
@@ -58,7 +55,12 @@ class PastRunsViewControlller: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let runDetailsViewController = segue.destination as? RunDetailsViewController {
-            runDetailsViewController.run = sender as? CoreDataRun
+            if let run = sender as? CoreDataRun {
+                runDetailsViewController.run = run
+            }
+            if let run = sender as? HealthKitRun {
+                runDetailsViewController.run = run
+            }
         }
     }
 }

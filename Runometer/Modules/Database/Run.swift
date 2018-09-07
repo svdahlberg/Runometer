@@ -18,6 +18,8 @@ protocol Run {
 
 extension Run {
     
+    
+    
     func coordinateSegments() -> [[CLLocationCoordinate2D]]? {
         return locationSegments()?.map {
             $0.map { CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude) }
