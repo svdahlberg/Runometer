@@ -13,7 +13,9 @@ class SplitTimesViewController: UIViewController {
     
     var run: Run?
     
-    private var splitTimes: [String]?
+    private var splitTimes: [String]? {
+        didSet { tableView.reloadData() }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
