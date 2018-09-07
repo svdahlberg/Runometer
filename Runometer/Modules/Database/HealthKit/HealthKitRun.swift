@@ -17,8 +17,9 @@ struct HealthKitRun: Run {
     var endDate: Date
     
     private let workout: HKWorkout
+    private let healthStore: HKHealthStore
     
-    init?(workout: HKWorkout) {
+    init?(workout: HKWorkout, healthStore: HKHealthStore = HealthStoreManager.shared.healthStore) {
         guard let distance = workout.totalDistance?.doubleValue(for: HKUnit.meter()) else {
             return nil
         }
@@ -27,48 +28,59 @@ struct HealthKitRun: Run {
         self.startDate = workout.startDate
         self.endDate = workout.endDate
         self.workout = workout
+        self.healthStore = healthStore
     }
     
     func locationSegments(completion: @escaping ([[CLLocation]]) -> Void) {
+        
+        route(for: workout) { (route: HKWorkoutRoute?) in
+            guard let route = route else {
+                completion([])
+                return
+            }
+            
+            self.locations(for: route) { locations in
+                
+                DispatchQueue.main.async {
+                    completion([locations])
+                }
+                
+            }
+        }
         
     }
     
     
     
-//    func route(for workout: HKWorkout) {
-//        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
-//        
-//        print(workout)
-//        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
-//            
-//            
-//            self.locations(for: samples?.first as! HKWorkoutRoute)
-//            
-//            
-//        }
-//        
-//        healthStore.execute(routeQuery)
-//    }
-//    
-//    private func locations(for route: HKWorkoutRoute, completion: ([[CLLocation]] -> Void)) {
-//        // Create the route query.
-//        let query = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
-//            
-//            
-//            // Do something with this batch of location data.
-//            
-//            print(locations?.count)
-//            
-//            if done {
-//                // The query returned all the location data associated with the route.
-//                // Do something with the complete data set.
-//                print(locations?.count)
-//            }
-//            
-//        }
-//        
-//        healthStore.execute(query)
-//    }
+    func route(for workout: HKWorkout, completion: @escaping (HKWorkoutRoute?) -> Void) {
+        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
+        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
+            completion(samples?.first as? HKWorkoutRoute)
+        }
+        
+        healthStore.execute(routeQuery)
+    }
     
+    private func locations(for route: HKWorkoutRoute, completion: @escaping ([CLLocation]) -> Void) {
+        
+        var result = [CLLocation]()
+        
+        let query = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
+            guard !done else {
+                if let locations = locations {
+                    result.append(contentsOf: locations)
+                }
+                
+                completion(result)
+                return
+            }
+            
+            if let locations = locations {
+                result.append(contentsOf: locations)
+            }
+        }
+        
+        healthStore.execute(query)
+    }
     
 }
