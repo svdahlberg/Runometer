@@ -42,7 +42,7 @@ struct HealthKitRun: Run {
             self.locations(for: route) { locations in
                 
                 DispatchQueue.main.async {
-                    completion([locations])
+                    completion(self.splitIntoSegments(locations))
                 }
                 
             }
@@ -50,9 +50,7 @@ struct HealthKitRun: Run {
         
     }
     
-    
-    
-    func route(for workout: HKWorkout, completion: @escaping (HKWorkoutRoute?) -> Void) {
+    private func route(for workout: HKWorkout, completion: @escaping (HKWorkoutRoute?) -> Void) {
         let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
         let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, deletedObjects, anchor, error) in
             completion(samples?.first as? HKWorkoutRoute)
@@ -81,6 +79,39 @@ struct HealthKitRun: Run {
         }
         
         healthStore.execute(query)
+    }
+    
+    private func splitIntoSegments(_ locations: [CLLocation]) -> [[CLLocation]] {
+        let pauseEvents = workout.workoutEvents?.filter {
+            $0.type == HKWorkoutEventType.pause
+        } ?? []
+        
+        var result = [[CLLocation]]()
+        var index = 0
+        
+        for pause in pauseEvents {
+            guard let pauseLocation = closestValue(in: locations, to: pause.dateInterval.start),
+            let pauseLocationIndex = locations.index(of: pauseLocation) else { continue }
+            let segment = Array(locations[index ..< Int(pauseLocationIndex.magnitude)])
+            result.append(segment)
+            guard let resumeLocation = closestValue(in: locations, to: pause.dateInterval.end),
+            let resumeLocationIndex = locations.index(of: resumeLocation) else { continue }
+            index = resumeLocationIndex + 1
+        }
+
+        let segment = Array(locations[index ..< locations.count])
+        result.append(segment)
+        
+        return result
+    }
+    
+    private func closestValue(in locations: [CLLocation], to date: Date) -> CLLocation? {
+        guard let firstLocation = locations.first else { return nil }
+        return locations.reduce(firstLocation) {
+            let x = abs($1.timestamp.timeIntervalSince1970 - date.timeIntervalSince1970)
+            let y = abs($0.timestamp.timeIntervalSince1970 - date.timeIntervalSince1970)
+            return x < y ? $1 : $0
+        }
     }
     
 }
