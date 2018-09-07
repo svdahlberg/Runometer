@@ -10,7 +10,19 @@ import UIKit
 
 class SplitTimesViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
-    var splitTimes: [String]?
+    
+    var run: Run?
+    
+    private var splitTimes: [String]?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        run?.locationSegments { [weak self] locationSegments in
+            self?.splitTimes = locationSegments.splitTimes()
+        }
+    }
+    
 }
 
 extension SplitTimesViewController: UITableViewDelegate, UITableViewDataSource {

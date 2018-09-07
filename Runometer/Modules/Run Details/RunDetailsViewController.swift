@@ -37,7 +37,7 @@ class RunDetailsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let splitTimesViewController = segue.destination as? SplitTimesViewController {
-            splitTimesViewController.splitTimes = run?.splitTimes()
+            splitTimesViewController.run = run
         }
         
         if let mapViewController = segue.destination as? MapViewController {

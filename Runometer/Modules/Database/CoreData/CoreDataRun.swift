@@ -26,6 +26,10 @@ struct CoreDataRun: Run {
         self.endDate = managedRunObject.endDate!
     }
     
+    func locationSegments(completion: @escaping ([[CLLocation]]) -> Void) {
+        completion(locationSegments() ?? [])
+    }
+    
     func locationSegments() -> [[CLLocation]]? {
         guard let runSegments = managedRunObject.runSegments else { return nil }
         var segments = [[CLLocation]]()

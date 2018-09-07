@@ -21,16 +21,18 @@ class MapViewController: UIViewController {
     }
     
     private func setupMapView() {
-        guard let runMap = RunMap(run: run) else {
-            return
-        }
         
-        runMap.polylines.forEach { mapView.add($0) }
-        mapView.region = runMap.mapRegion
-        mapView.addAnnotations(runMap.checkpointAnnotations)
-        mapView.addAnnotation(runMap.startAnnotation)
-        mapView.addAnnotation(runMap.endAnnotation)
+        run?.locationSegments { [weak self] locationSegments in
+            guard let runMap = RunMap(locationSegments: locationSegments) else { return }
+            runMap.polylines.forEach { self?.mapView.add($0) }
+            self?.mapView.region = runMap.mapRegion
+            self?.mapView.addAnnotations(runMap.checkpointAnnotations)
+            self?.mapView.addAnnotation(runMap.startAnnotation)
+            self?.mapView.addAnnotation(runMap.endAnnotation)
+        }
+
     }
+    
 }
 
 extension MapViewController: MKMapViewDelegate {

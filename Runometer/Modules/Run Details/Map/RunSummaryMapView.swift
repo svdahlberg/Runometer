@@ -20,15 +20,14 @@ class RunSummaryMapView: UIView {
     
     var run: Run? {
         didSet {
-            guard let runMap = RunMap(run: run) else {
-                return
+            run?.locationSegments { [weak self] locationSegments in
+                guard let runMap = RunMap(locationSegments: locationSegments) else { return }
+                runMap.polylines.forEach { self?.mapView.add($0) }
+                self?.mapView.region = runMap.mapRegion
+                self?.mapView.addAnnotations(runMap.checkpointAnnotations)
+                self?.mapView.addAnnotation(runMap.startAnnotation)
+                self?.mapView.addAnnotation(runMap.endAnnotation)
             }
-            
-            runMap.polylines.forEach { mapView.add($0) }
-            mapView.region = runMap.mapRegion
-            mapView.addAnnotations(runMap.checkpointAnnotations)
-            mapView.addAnnotation(runMap.startAnnotation)
-            mapView.addAnnotation(runMap.endAnnotation)
             
             setupTapGestureRecognizer()
         }
@@ -63,13 +62,13 @@ struct RunMap {
     let startAnnotation: StartAnnotation
     let endAnnotation: EndAnnotation
     
-    init?(run: Run?) {
-        guard let coordinateSegments = run?.coordinateSegments(),
-            let coordinates = run?.flattenedCoordinateSegments(),
-            let mapRegion = MKCoordinateRegion.region(from: coordinates),
-            let reachedCheckpoints = run?.reachedCheckpoints(),
-            let startAnnotation = run?.startAnnotation(),
-            let endAnnotation = run?.endAnnotation()
+    init?(locationSegments: [[CLLocation]]) {
+        let coordinateSegments = locationSegments.coordinateSegments()
+        let coordinates = locationSegments.flattenedCoordinateSegments()
+        guard let mapRegion = MKCoordinateRegion.region(from: coordinates),
+            let reachedCheckpoints = locationSegments.reachedCheckpoints(),
+            let startAnnotation = locationSegments.startAnnotation(),
+            let endAnnotation = locationSegments.endAnnotation()
         else {
                 return nil
         }

@@ -29,8 +29,8 @@ struct HealthKitRun: Run {
         self.workout = workout
     }
     
-    func locationSegments() -> [[CLLocation]]? {
-        return nil
+    func locationSegments(completion: @escaping ([[CLLocation]]) -> Void) {
+        
     }
     
     
