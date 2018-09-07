@@ -55,9 +55,11 @@ extension RunRatingsView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width -
-            collectionView.contentInset.left -
-            collectionView.contentInset.right,
-                    height: collectionView.frame.height - collectionView.contentInset.top - collectionView.contentInset.bottom)
+                        collectionView.contentInset.left -
+                        collectionView.contentInset.right,
+                    height: collectionView.frame.height -
+                        collectionView.contentInset.top -
+                        collectionView.contentInset.bottom)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
