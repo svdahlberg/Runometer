@@ -76,11 +76,17 @@
                                     <outlet property="delegate" destination="Z52-RH-7uy" id="Ge2-CL-X6z"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="i21-pj-1vl">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <color key="color" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="V4c-F0-33k" firstAttribute="leading" secondItem="m24-Qg-Wdf" secondAttribute="leading" id="1oQ-fw-8Lb"/>
                             <constraint firstItem="V4c-F0-33k" firstAttribute="top" secondItem="vvS-yb-JD2" secondAttribute="top" id="YZG-Um-qY9"/>
+                            <constraint firstItem="i21-pj-1vl" firstAttribute="centerY" secondItem="vvS-yb-JD2" secondAttribute="centerY" id="Zq4-nQ-G1k"/>
+                            <constraint firstItem="i21-pj-1vl" firstAttribute="centerX" secondItem="vvS-yb-JD2" secondAttribute="centerX" id="hDT-XY-bVA"/>
                             <constraint firstItem="V4c-F0-33k" firstAttribute="trailing" secondItem="m24-Qg-Wdf" secondAttribute="trailing" id="rcf-Um-MO3"/>
                             <constraint firstItem="V4c-F0-33k" firstAttribute="bottom" secondItem="m24-Qg-Wdf" secondAttribute="bottom" id="vJn-G2-luK"/>
                         </constraints>
@@ -88,6 +94,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="92H-jv-reU"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="i21-pj-1vl" id="6Lm-4P-Xae"/>
                         <outlet property="tableView" destination="V4c-F0-33k" id="zfc-jU-wcS"/>
                         <segue destination="b7D-IZ-csj" kind="show" identifier="RunDetailsSegueIdentifier" id="KsT-Iz-hyA"/>
                     </connections>

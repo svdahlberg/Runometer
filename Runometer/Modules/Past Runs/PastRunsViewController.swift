@@ -12,10 +12,10 @@ class PastRunsViewControlller: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    
     private var runs: [Run]? {
-        didSet {
-            tableView.reloadData()
-        }
+        didSet { tableView.reloadData() }
     }
     
     private lazy var titleDateFormatter: DateFormatter = {
@@ -50,6 +50,7 @@ class PastRunsViewControlller: UIViewController {
     private func loadRuns() {
         RunProvider().runs { [weak self] (runs: [Run]) in
             self?.runs = runs
+            self?.activityIndicatorView.stopAnimating()
         }
     }
     
