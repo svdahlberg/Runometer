@@ -10,14 +10,36 @@ import UIKit
 import MapKit
 
 class CheckpointAnnotationView: MKAnnotationView {
+    
+    private let imageWidth = 24
+    private let imageHeight = 35
+    private let borderWidth = 1
+    private var labelWidth: Int { return imageWidth - (borderWidth * 2) }
+    private var labelHeight: Int { return imageHeight - (borderWidth * 2) }
+    
+    private lazy var label: UILabel = {
+        let label = UILabel(frame: CGRect(x: borderWidth, y: -3, width: labelWidth, height: labelHeight))
+        label.font = UIFont.boldSystemFont(ofSize: 100)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    override var annotation: MKAnnotation? {
+        didSet {
+            guard let annotation = annotation as? CheckpointAnnotation else {
+                return
+            }
+            
+            if let formattedDistance = DistanceFormatter.format(distance: annotation.checkpoint.distance) {
+                label.text = "\(formattedDistance) \(Settings().distanceUnit.symbol)"
+            }
+        }
+    }
+    
     init(annotation: CheckpointAnnotation, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-        
-        let imageWidth = 24
-        let imageHeight = 35
-        let borderWidth = 1
-        let labelWidth = imageWidth - (borderWidth * 2)
-        let labelHeight = imageHeight - (borderWidth * 2)
         
         isOpaque = false
         image = UIImage(named: "checkpointAnnotation")
@@ -25,21 +47,13 @@ class CheckpointAnnotationView: MKAnnotationView {
         centerOffset = CGPoint(x: 0, y: -imageHeight / 2)
         canShowCallout = true
         
-        let label = UILabel(frame: CGRect(x: borderWidth, y: -3, width: labelWidth, height: labelHeight))
-        if let formattedDistance = DistanceFormatter.format(distance: annotation.checkpoint.distance) {
-            label.text = "\(formattedDistance) \(Settings().distanceUnit.symbol)"
-        }
-        label.font = UIFont.boldSystemFont(ofSize: 100)
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.adjustsFontSizeToFitWidth = true
         addSubview(label)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+ 
 }
 
 

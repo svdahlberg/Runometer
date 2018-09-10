@@ -21,7 +21,6 @@ class MapViewController: UIViewController {
     }
     
     private func setupMapView() {
-        
         run?.locationSegments { [weak self] locationSegments in
             guard let runMap = RunMap(locationSegments: locationSegments) else { return }
             runMap.polylines.forEach { self?.mapView.add($0) }
@@ -30,7 +29,6 @@ class MapViewController: UIViewController {
             self?.mapView.addAnnotation(runMap.startAnnotation)
             self?.mapView.addAnnotation(runMap.endAnnotation)
         }
-
     }
     
 }
