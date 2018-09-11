@@ -14,7 +14,7 @@ struct RunRatingProvider {
     
     func distanceRating(comparedTo runs: [Run]) -> RunRating? {
         guard let formattedDistance = DistanceFormatter.format(distance: run.distance),
-            let statisticsText = RunStatistics(runs: runs).allDistancesStatisticsText(for: run.distance) else {
+            let statisticsText = RunStatisticsTextProvider(runs: runs).allDistancesStatisticsText(for: run.distance) else {
                 return nil
         }
         
@@ -25,7 +25,7 @@ struct RunRatingProvider {
     
     func timeRating(comparedTo runs: [Run]) -> RunRating? {
         guard let formattedTime = TimeFormatter.format(time: Seconds(run.duration)),
-            let timeRatingStatisticsText = RunStatistics(runs: runs).averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: run.similarRunsRange())
+            let timeRatingStatisticsText = RunStatisticsTextProvider(runs: runs).averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: run.similarRunsRange())
             else {
                 return nil
         }
@@ -37,7 +37,7 @@ struct RunRatingProvider {
     
     func paceRating(comparedTo runs: [Run]) -> RunRating? {
         guard let formattedPace = PaceFormatter.pace(fromDistance: run.distance, time: Seconds(run.duration)),
-            let paceRatingStatisticsText = RunStatistics(runs: runs).averagePaceStatisticsText(for: run.averagePace())
+            let paceRatingStatisticsText = RunStatisticsTextProvider(runs: runs).averagePaceStatisticsText(for: run.averagePace())
             else {
                 return nil
         }

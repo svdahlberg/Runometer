@@ -72,7 +72,17 @@ extension Meters {
     }
 }
 
-enum DistanceUnit {
+protocol RunUnit {
+    var symbol: String { get }
+}
+
+enum TimeUnit: RunUnit {
+    var symbol: String {
+        return "Time"
+    }
+}
+
+enum DistanceUnit: RunUnit {
     case kilometers
     case miles
     
@@ -113,7 +123,7 @@ enum DistanceUnit {
     }
 }
 
-enum SpeedUnit {
+enum SpeedUnit: RunUnit {
     case minutesPerKilometer
     case minutesPerMile
     

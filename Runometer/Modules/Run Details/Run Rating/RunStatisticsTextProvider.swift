@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-class RunStatistics {
+class RunStatisticsTextProvider {
     
     private let settings: Settings
     private let runs: [Run]
