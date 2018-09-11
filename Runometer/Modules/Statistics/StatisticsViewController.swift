@@ -37,11 +37,13 @@ class Statistics {
     }
     
     var averageDistance: RunStatistic? {
+        guard runs.count > 0 else { return nil }
         let averageDistance = totalDistance.value / Double(runs.count)
         return RunStatistic(value: averageDistance, title: "Average Distance", unit: settings.distanceUnit)
     }
     
     var averagePace: RunStatistic? {
+        guard runs.count > 0 else { return nil }
         let averagePace = paces.reduce(0, +) / runs.count
         return RunStatistic(value: Double(averagePace), title: "Average Pace", unit: settings.speedUnit)
     }
