@@ -15,11 +15,11 @@ protocol RunProviding {
 
 struct RunProvider: RunProviding {
     
-    private let coreDataRunProvider: CoreDataRunProvider
-    private let healthKitRunProvider: HealthKitRunProvider
+    private let coreDataRunProvider: RunProviding
+    private let healthKitRunProvider: RunProviding
     
-    init(coreDataRunProvider: CoreDataRunProvider = CoreDataRunProvider(),
-         healthKitRunProvider: HealthKitRunProvider = HealthKitRunProvider()) {
+    init(coreDataRunProvider: RunProviding = CoreDataRunProvider(),
+         healthKitRunProvider: RunProviding = HealthKitRunProvider()) {
         self.coreDataRunProvider = coreDataRunProvider
         self.healthKitRunProvider = healthKitRunProvider
     }

@@ -8,18 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBD1FF26F8800220C14 /* RunsMock.swift */; };
-		B2043EC01FF2A97300220C14 /* RunProviderMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBF1FF2A97300220C14 /* RunProviderMocks.swift */; };
 		B204BCA7200A70EA0003E3FE /* AudioFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */; };
 		B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */; };
 		B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A02030608A007153D2 /* RoundCornersButton.swift */; };
 		B21967A320307211007153D2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A220307211007153D2 /* Colors.swift */; };
 		B21967A92039B05D007153D2 /* RunSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A82039B05D007153D2 /* RunSection.swift */; };
-		B22B3D051FF58B5D0040928A /* AppConfigurationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */; };
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
 		B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956751FA4934B002DC83E /* CoreDataStack.swift */; };
 		B2528DF11FF19BEE00FE3364 /* RunStatisticsTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF01FF19BEE00FE3364 /* RunStatisticsTextProvider.swift */; };
-		B2528DF31FF19DC800FE3364 /* RunStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF21FF19DC800FE3364 /* RunStatisticsTests.swift */; };
+		B2528DF31FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF21FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift */; };
 		B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF41FF2470B00FE3364 /* DistancesMock.swift */; };
 		B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF61FF2477200FE3364 /* DurationsMock.swift */; };
 		B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */; };
@@ -27,6 +25,11 @@
 		B2534BAD2146A4F300EFEBFE /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BAC2146A4F300EFEBFE /* StatisticsViewController.swift */; };
 		B2534BAF2146AB9E00EFEBFE /* RunStatisticView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2534BAE2146AB9E00EFEBFE /* RunStatisticView.xib */; };
 		B2534BB12146ABB500EFEBFE /* RunStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB02146ABB500EFEBFE /* RunStatisticView.swift */; };
+		B2534BB32147E73300EFEBFE /* RunProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB22147E73300EFEBFE /* RunProviderMock.swift */; };
+		B2534BB52147EA8100EFEBFE /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
+		B2534BB7214806D200EFEBFE /* CoreDataRunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB6214806D200EFEBFE /* CoreDataRunTests.swift */; };
+		B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */; };
+		B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */; };
 		B25D5703214151AF00BC2C0D /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
 		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
 		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
@@ -119,18 +122,16 @@
 
 /* Begin PBXFileReference section */
 		B2043EBD1FF26F8800220C14 /* RunsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunsMock.swift; sourceTree = "<group>"; };
-		B2043EBF1FF2A97300220C14 /* RunProviderMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProviderMocks.swift; sourceTree = "<group>"; };
 		B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedback.swift; sourceTree = "<group>"; };
 		B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackTests.swift; sourceTree = "<group>"; };
 		B21967A02030608A007153D2 /* RoundCornersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
 		B21967A220307211007153D2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B21967A82039B05D007153D2 /* RunSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSection.swift; sourceTree = "<group>"; };
-		B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationMock.swift; sourceTree = "<group>"; };
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
 		B24956751FA4934B002DC83E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		B2528DF01FF19BEE00FE3364 /* RunStatisticsTextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsTextProvider.swift; sourceTree = "<group>"; };
-		B2528DF21FF19DC800FE3364 /* RunStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsTests.swift; sourceTree = "<group>"; };
+		B2528DF21FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsTextProviderTests.swift; sourceTree = "<group>"; };
 		B2528DF41FF2470B00FE3364 /* DistancesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancesMock.swift; sourceTree = "<group>"; };
 		B2528DF61FF2477200FE3364 /* DurationsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationsMock.swift; sourceTree = "<group>"; };
 		B2528DFA1FF2669400FE3364 /* RunRatingDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingDescription.swift; sourceTree = "<group>"; };
@@ -138,6 +139,11 @@
 		B2534BAC2146A4F300EFEBFE /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		B2534BAE2146AB9E00EFEBFE /* RunStatisticView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RunStatisticView.xib; path = Runometer/Modules/Statistics/RunStatisticView.xib; sourceTree = SOURCE_ROOT; };
 		B2534BB02146ABB500EFEBFE /* RunStatisticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticView.swift; sourceTree = "<group>"; };
+		B2534BB22147E73300EFEBFE /* RunProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProviderMock.swift; sourceTree = "<group>"; };
+		B2534BB42147EA8100EFEBFE /* RunMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMock.swift; sourceTree = "<group>"; };
+		B2534BB6214806D200EFEBFE /* CoreDataRunTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunTests.swift; sourceTree = "<group>"; };
+		B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedRunObjectTests.swift; sourceTree = "<group>"; };
+		B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSegmentExtensionsTests.swift; sourceTree = "<group>"; };
 		B25D5702214151AF00BC2C0D /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
 		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
@@ -455,11 +461,14 @@
 				B2A9311B1FAF0553006FEACB /* MKMapViewExtensionsTests.swift */,
 				B2A9311F1FAF06F7006FEACB /* MKPolylineExtensionTests.swift */,
 				B2C261041FA6275C00E69E9D /* RunTests.swift */,
+				B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */,
+				B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */,
+				B2534BB6214806D200EFEBFE /* CoreDataRunTests.swift */,
 				B2C261061FA6299900E69E9D /* CoreDataHelper.swift */,
 				B25FE7AB1F8A33B0001B1BF1 /* PaceFormatterTests.swift */,
 				B25FE7B31F8A513D001B1BF1 /* DistanceFormatterTests.swift */,
 				B25FE7B51F8A514B001B1BF1 /* TimeFormatterTests.swift */,
-				B2528DF21FF19DC800FE3364 /* RunStatisticsTests.swift */,
+				B2528DF21FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift */,
 				B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */,
 				B25DB236201E27170089144E /* AudioFeedbackControllerTests.swift */,
 				B2B0550B1F80C55600292EB3 /* Info.plist */,
@@ -518,8 +527,8 @@
 				B2528DF41FF2470B00FE3364 /* DistancesMock.swift */,
 				B2528DF61FF2477200FE3364 /* DurationsMock.swift */,
 				B2043EBD1FF26F8800220C14 /* RunsMock.swift */,
-				B2043EBF1FF2A97300220C14 /* RunProviderMocks.swift */,
-				B22B3D041FF58B5D0040928A /* AppConfigurationMock.swift */,
+				B2534BB42147EA8100EFEBFE /* RunMock.swift */,
+				B2534BB22147E73300EFEBFE /* RunProviderMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -740,22 +749,25 @@
 				B2C261071FA6299900E69E9D /* CoreDataHelper.swift in Sources */,
 				B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */,
 				B2A9311C1FAF0553006FEACB /* MKMapViewExtensionsTests.swift in Sources */,
-				B2043EC01FF2A97300220C14 /* RunProviderMocks.swift in Sources */,
 				B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */,
 				B2528DF71FF2477200FE3364 /* DurationsMock.swift in Sources */,
 				B25DB237201E27170089144E /* AudioFeedbackControllerTests.swift in Sources */,
 				B2A931241FAF11CE006FEACB /* MKCoordinateRegionExtensionsTests.swift in Sources */,
 				B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */,
+				B2534BB32147E73300EFEBFE /* RunProviderMock.swift in Sources */,
+				B2534BB7214806D200EFEBFE /* CoreDataRunTests.swift in Sources */,
 				B25FE7AC1F8A33B0001B1BF1 /* PaceFormatterTests.swift in Sources */,
+				B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */,
 				B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */,
-				B2528DF31FF19DC800FE3364 /* RunStatisticsTests.swift in Sources */,
+				B2528DF31FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift in Sources */,
 				B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */,
-				B22B3D051FF58B5D0040928A /* AppConfigurationMock.swift in Sources */,
+				B2534BB52147EA8100EFEBFE /* RunMock.swift in Sources */,
 				B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */,
 				B2A931201FAF06F7006FEACB /* MKPolylineExtensionTests.swift in Sources */,
 				B2F1C7391FC1A7D5001AC4DF /* DoubleExtensionsTests.swift in Sources */,
 				B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */,
 				B2F1C72D1FC17EE5001AC4DF /* SettingsMock.swift in Sources */,
+				B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */,
 				B25FE7B41F8A513D001B1BF1 /* DistanceFormatterTests.swift in Sources */,
 				B2BAAD5D20A45BA7000117FB /* SettingsTests.swift in Sources */,
 				B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */,

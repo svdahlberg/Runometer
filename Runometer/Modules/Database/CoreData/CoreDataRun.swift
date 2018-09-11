@@ -30,7 +30,7 @@ struct CoreDataRun: Run {
         completion(locationSegments() ?? [])
     }
     
-    func locationSegments() -> [[CLLocation]]? {
+    private func locationSegments() -> [[CLLocation]]? {
         guard let runSegments = managedRunObject.runSegments else { return nil }
         var segments = [[CLLocation]]()
         for segment in runSegments {

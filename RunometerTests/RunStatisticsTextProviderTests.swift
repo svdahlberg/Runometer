@@ -1,5 +1,5 @@
 //
-//  RunStatisticsTests.swift
+//  RunStatisticsTextProviderTests.swift
 //  RunometerTests
 //
 //  Created by Svante Dahlberg on 2017-12-25.
@@ -10,17 +10,26 @@ import XCTest
 @testable import Runometer
 import CoreData
 
-class RunStatisticsTests: XCTestCase {
+class RunStatisticsTextProviderTests: XCTestCase {
     
     private var sut: RunStatisticsTextProvider!
-    let settingsMock = SettingsMock(distanceUnit: .kilometers, audioFeedbackDistance: true, audioFeedbackTime: true, audioFeedbackAveragePace: true, audioTrigger: .distance, audioTimingInterval: 1)
-    
+    private var settingsMock: SettingsMock!
+    private var runsMock: [RunMock]!
+
     override func setUp() {
         super.setUp()
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMock(context: context))
+        settingsMock = SettingsMock(distanceUnit: .kilometers, audioFeedbackDistance: true, audioFeedbackTime: true, audioFeedbackAveragePace: true, audioTrigger: .distance, audioTimingInterval: 1)
+        runsMock = RunMock.runsMock()
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: runsMock)
     }
     
+    override func tearDown() {
+        sut = nil
+        settingsMock = nil
+        runsMock = nil
+        super.tearDown()
+    }
+
     // MARK: Average pace of all runs
 
     func testAveragePaceStatisticsText_withAveragePaceFasterThanAveragePaceOfSavedRuns_returnsFasterThanAveragePaceText() {
@@ -123,111 +132,105 @@ class RunStatisticsTests: XCTestCase {
         let statisticsText = sut.averageDistanceStatisticsText(for: averageDistance)
         XCTAssertEqual(statisticsText, "As long as your average run.")
     }
-    
+
     // MARK: All distances
     func testAllDistancesStatisticsText_withDistanceOneKilometerLongerThanNextLongestDistance_returnsLongestDistanceEverStringWithSingularUnitName() {
         let distance: Meters = 6000
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMockWithLongestRunOneKilometerLongerThanNextLongestRun(context: context))
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: RunMock.runsWithLongestRunOneKilometerLongerThanNextLongestRun())
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "Your longest run by 1 kilometer!")
     }
-    
+
     func testAllDistancesStatisticsText_withDistanceFiveKilometersLongerThanNextLongestDistance_returnsLongestDistanceEverStringWithPluralUnitName() {
         let distance: Meters = 10000
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "Your longest run by 4 kilometers!")
     }
-    
+
     func testAllDistancesStatisticsText_withDistanceLessThanTenMetersLongerThanNextLongestDistance_returnsLongestDistanceEverString() {
         let distance: Meters = 10001
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMockWithLongestRunOneMeterLongerThanNextLongestRun(context: context))
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: RunMock.runsWithLongestRunOneMeterLongerThanNextLongestRun())
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "Your longest run by .001 kilometers!")
     }
-    
+
     func testAllDistancesStatisticsText_withDistanceThreeKilometersShorterThanNextShortestDistance_returnsShortestDistanceEverStringWithPluralUnitName() {
         let distance: Meters = 1000
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "Your shortest run by 3 kilometers!")
     }
-    
+
     func testAllDistancesStatisticsText_withDistanceShorterThanNextShortestDistanceByOneMeter_returnsShortestDistanceEverString() {
         let distance: Meters = 999
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMockWithShortestRunOneMeterShorterThanNextShortestRun(context: context))
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: RunMock.runsWithShortestRunOneMeterShorterThanNextShortestRun())
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "Your shortest run by .001 kilometers!")
     }
-    
+
     func testAllDistancesStatisticsText_withDistanceShorterThanNextLongestDistance_returnsNumberOfKilometersShorterThanLongestRunText() {
         let distance: Meters = 5000
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "5 kilometers shorter than your farthest run.")
     }
-    
+
     func testAllDistancesStatisticsText_withOneSavedRun_returnsLongestRunText() {
         let distance: Meters = 5000
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMockWithOneSavedRun(context: context))
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: [RunMock(distance: 1000, duration: 1, startDate: Date(), endDate: Date())])
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
         XCTAssertEqual(statisticsText, "Your longest run!")
     }
-    
-    
+
+
     // MARK All times
-    
+
     func testAllTimesStatisticsText_withFastestTime_returnsFastestRunString() {
         let time: Seconds = 200
         let statisticsText = sut.allTimesStatisticsText(for: time)
         XCTAssertEqual(statisticsText, "Your shortest run by 21 minutes, 40 seconds!")
     }
-    
+
     func testAllTimesStatisticsText_withLongestTime_returnsLongestRunString() {
         let time: Seconds = 3000
         let statisticsText = sut.allTimesStatisticsText(for: time)
         XCTAssertEqual(statisticsText, "Your longest run by 20 minutes!")
     }
-    
+
     func testAllTimesStatisticsText_withTimeBetweenFastestAndLongestTime_returnsAmountOfTimeShorterThanLongestRun() {
         let time: Seconds = 1500
         let statisticsText = sut.allTimesStatisticsText(for: time)
         XCTAssertEqual(statisticsText, "25 minutes shorter than your longest run.")
     }
-    
+
     func testAllTimesStatisticsText_withOneSavedRun_returnsLongestRunText() {
         let time: Seconds = 1500
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMockWithOneSavedRun(context: context))
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: [RunMock(distance: 1000, duration: 1, startDate: Date(), endDate: Date())])
         let statisticsText = sut.allTimesStatisticsText(for: time)
         XCTAssertEqual(statisticsText, "Your longest run!")
     }
-    
+
     // MARK All paces
-    
+
     func testAllPacesStatisticsText_withFastestPace_returnsFastestRunString() {
         let pace: Seconds = 200
         let statisticsText = sut.allPacesStatisticsText(for: pace)
         XCTAssertEqual(statisticsText, "Your fastest pace by 1:40!")
     }
-    
+
     func testAllPacesStatisticsText_withSlowestPace_returnsSlowestRunString() {
         let pace: Seconds = 400
         let statisticsText = sut.allPacesStatisticsText(for: pace)
         XCTAssertEqual(statisticsText, "Your slowest pace by 1:40!")
     }
-    
+
     func testAllPacesStatisticsText_withPaceBetweenFastestAndSlowestPace_returnsDifferenceInPaceBetweenRunAndFastestRunString() {
         let pace: Seconds = 300
         let statisticsText = sut.allPacesStatisticsText(for: pace)
         XCTAssertEqual(statisticsText, "1:40 slower than your fastest pace.")
     }
-    
+
     func testAllPacesStatisticsText_withOneSavedRun_returnsFastestPaceText() {
         let pace: Seconds = 300
-        let context = CoreDataHelper.inMemoryManagedObjectContext()!
-        sut = RunStatisticsTextProvider(settings: settingsMock, runProvider: RunProviderMockWithOneSavedRun(context: context))
+        sut = RunStatisticsTextProvider(settings: settingsMock, runs: [RunMock(distance: 1000, duration: 100, startDate: Date(), endDate: Date())])
         let statisticsText = sut.allPacesStatisticsText(for: pace)
         XCTAssertEqual(statisticsText, "Your fastest pace!")
     }
