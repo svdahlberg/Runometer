@@ -8,67 +8,72 @@
 
 import UIKit
 
-class Statistics {
+class StatisticsViewController: UIViewController {
     
-    private let settings: Settings
-    private let runs: [Run]
+    @IBOutlet private weak var collectionView: UICollectionView!
     
-    init(settings: Settings = Settings(), runs: [Run]) {
-        self.settings = settings
-        self.runs = runs
+    private var runStatistics: [RunStatistic]? {
+        didSet { collectionView.reloadData() }
     }
     
-    private lazy var distances: [Meters] = runs.map { $0.distance }
-    private lazy var paces: [Seconds] = runs.map { $0.averagePace() }
-    
-    lazy var totalDistance: RunStatistic = {
-        let totalDistance = distances.reduce(0, +)
-        return RunStatistic(value: totalDistance, title: "Total Distance", unit: settings.distanceUnit)
-    }()
-    
-    var longestDistance: RunStatistic? {
-        guard let longestDistance = distances.max() else { return nil }
-        return RunStatistic(value: longestDistance, title: "Longest Run", unit: settings.distanceUnit)
+    private var statistics: Statistics? {
+        didSet {
+            runStatistics = [
+                statistics?.totalDistance,
+                statistics?.numberOfRuns,
+                statistics?.totalDuration,
+                statistics?.longestDistance,
+                statistics?.fastestPace,
+                statistics?.averageDistance,
+                statistics?.averagePace
+                ].compactMap { $0 }
+            
+            
+        }
     }
     
-    var fastestPace: RunStatistic? {
-        guard let fastestPace = paces.min() else { return nil }
-        return RunStatistic(value: Double(fastestPace), title: "Fastest Pace", unit: settings.speedUnit)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadStatistics()
     }
     
-    var averageDistance: RunStatistic? {
-        guard runs.count > 0 else { return nil }
-        let averageDistance = totalDistance.value / Double(runs.count)
-        return RunStatistic(value: averageDistance, title: "Average Distance", unit: settings.distanceUnit)
-    }
-    
-    var averagePace: RunStatistic? {
-        guard runs.count > 0 else { return nil }
-        let averagePace = paces.reduce(0, +) / runs.count
-        return RunStatistic(value: Double(averagePace), title: "Average Pace", unit: settings.speedUnit)
+    private func loadStatistics() {
+        StatisticsProvider().statistics { [weak self] statistics in
+            self?.statistics = statistics
+        }
     }
     
 }
 
-class StatisticsViewController: UIViewController {
+extension StatisticsViewController: UICollectionViewDataSource {
     
-    @IBOutlet private weak var totalDistanceStatisticView: RunStatisticView!
-    @IBOutlet private weak var longestRunStatisticView: RunStatisticView!
-    @IBOutlet private weak var fastestPaceStatisticView: RunStatisticView!
-    @IBOutlet private weak var averageDistanceStatisticView: RunStatisticView!
-    @IBOutlet private weak var averagePaceStatisticView: RunStatisticView!
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        RunProvider().runs { [weak self] runs in
-            let statistics = Statistics(runs: runs)
-            self?.totalDistanceStatisticView.statistic = statistics.totalDistance
-            self?.longestRunStatisticView.statistic = statistics.longestDistance
-            self?.fastestPaceStatisticView.statistic = statistics.fastestPace
-            self?.averageDistanceStatisticView.statistic = statistics.averageDistance
-            self?.averagePaceStatisticView.statistic = statistics.averagePace
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return runStatistics?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RunStatisticCollectionViewCell", for: indexPath) as? RunStatisticCollectionViewCell else {
+            return UICollectionViewCell()
         }
+        cell.runStatistic = runStatistics?[indexPath.row]
+        return cell
+    }
+    
+}
+
+extension StatisticsViewController: UICollectionViewDelegate {
+    
+}
+
+extension StatisticsViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width/2 - 16
+        return CGSize(width: width, height: width * 0.75)
     }
     
 }

@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,105 +18,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gME-sL-VyD">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rD6-ds-Kfn">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="t7o-2M-ltO" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="16" width="343" height="100"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A7m-eH-slm">
-                                                <rect key="frame" x="16" y="148" width="343" height="100"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="vB8-te-TGb" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="100"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Voc-3l-MiI" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                        <rect key="frame" x="179.5" y="0.0" width="163.5" height="100"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="vB8-te-TGb" firstAttribute="width" secondItem="Voc-3l-MiI" secondAttribute="width" id="JWe-Q0-0pF"/>
-                                                    <constraint firstItem="vB8-te-TGb" firstAttribute="top" secondItem="A7m-eH-slm" secondAttribute="top" id="Sbd-Tm-xyL"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Voc-3l-MiI" secondAttribute="bottom" id="U1t-qS-aI2"/>
-                                                    <constraint firstItem="Voc-3l-MiI" firstAttribute="leading" secondItem="vB8-te-TGb" secondAttribute="trailing" constant="16" id="Ym7-GS-qiv"/>
-                                                    <constraint firstItem="vB8-te-TGb" firstAttribute="leading" secondItem="A7m-eH-slm" secondAttribute="leading" id="jgC-IV-hvs"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Voc-3l-MiI" secondAttribute="trailing" id="mVc-UB-rLZ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="vB8-te-TGb" secondAttribute="bottom" id="nwX-1o-Uqh"/>
-                                                    <constraint firstItem="Voc-3l-MiI" firstAttribute="top" secondItem="A7m-eH-slm" secondAttribute="top" id="sjt-i6-tnj"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf6-Df-HGZ">
-                                                <rect key="frame" x="16" y="280" width="343" height="100"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="3xz-v7-ztN" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="100"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="343" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="9xY-yR-tRG" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                        <rect key="frame" x="179.5" y="0.0" width="163.5" height="100"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="3xz-v7-ztN" secondAttribute="bottom" id="7Xh-ml-3NK"/>
-                                                    <constraint firstItem="3xz-v7-ztN" firstAttribute="width" secondItem="9xY-yR-tRG" secondAttribute="width" id="GEd-WY-979"/>
-                                                    <constraint firstItem="3xz-v7-ztN" firstAttribute="top" secondItem="sf6-Df-HGZ" secondAttribute="top" id="GK0-VU-FH8"/>
-                                                    <constraint firstAttribute="trailing" secondItem="9xY-yR-tRG" secondAttribute="trailing" id="PA5-Lm-b5d"/>
-                                                    <constraint firstItem="9xY-yR-tRG" firstAttribute="top" secondItem="sf6-Df-HGZ" secondAttribute="top" id="PZ9-gi-Gpl"/>
-                                                    <constraint firstItem="3xz-v7-ztN" firstAttribute="leading" secondItem="sf6-Df-HGZ" secondAttribute="leading" id="a6c-0L-gdp"/>
-                                                    <constraint firstItem="9xY-yR-tRG" firstAttribute="leading" secondItem="3xz-v7-ztN" secondAttribute="trailing" constant="16" id="cLc-Kk-9MO"/>
-                                                    <constraint firstAttribute="bottom" secondItem="9xY-yR-tRG" secondAttribute="bottom" id="fpb-Rc-5ET"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xU6-Bf-MKA">
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m54-dp-AYf">
+                                    <size key="itemSize" width="173" height="166"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RunStatisticCollectionViewCell" id="Ydq-pd-v3I" customClass="RunStatisticCollectionViewCell" customModule="Runometer" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="0.0" width="173" height="166"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="166"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56N-6F-1s1" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="8" width="157" height="150"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
+                                        </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="t7o-2M-ltO" firstAttribute="top" secondItem="rD6-ds-Kfn" secondAttribute="top" constant="16" id="1L3-LK-wmU"/>
-                                            <constraint firstItem="sf6-Df-HGZ" firstAttribute="leading" secondItem="rD6-ds-Kfn" secondAttribute="leading" constant="16" id="3DB-HR-BLK"/>
-                                            <constraint firstItem="A7m-eH-slm" firstAttribute="top" secondItem="t7o-2M-ltO" secondAttribute="bottom" constant="32" id="3iS-gR-eBR"/>
-                                            <constraint firstItem="A7m-eH-slm" firstAttribute="leading" secondItem="rD6-ds-Kfn" secondAttribute="leading" constant="16" id="9Oo-CC-2CT"/>
-                                            <constraint firstAttribute="bottom" secondItem="sf6-Df-HGZ" secondAttribute="bottom" constant="16" id="B4W-hx-QCP"/>
-                                            <constraint firstItem="t7o-2M-ltO" firstAttribute="leading" secondItem="rD6-ds-Kfn" secondAttribute="leading" constant="16" id="IQp-xu-6bD"/>
-                                            <constraint firstAttribute="trailing" secondItem="sf6-Df-HGZ" secondAttribute="trailing" constant="16" id="Ivy-QT-oEA"/>
-                                            <constraint firstAttribute="trailing" secondItem="A7m-eH-slm" secondAttribute="trailing" constant="16" id="U23-oZ-1qt"/>
-                                            <constraint firstAttribute="trailing" secondItem="t7o-2M-ltO" secondAttribute="trailing" constant="16" id="UdI-K2-EY2"/>
-                                            <constraint firstItem="sf6-Df-HGZ" firstAttribute="top" secondItem="A7m-eH-slm" secondAttribute="bottom" constant="32" id="zgi-Bo-a4H"/>
+                                            <constraint firstItem="56N-6F-1s1" firstAttribute="leading" secondItem="Ydq-pd-v3I" secondAttribute="leadingMargin" id="Wtb-Bm-2Cv"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="56N-6F-1s1" secondAttribute="bottom" id="ejx-Ym-spo"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="56N-6F-1s1" secondAttribute="trailing" id="ugz-vV-1vH"/>
+                                            <constraint firstItem="56N-6F-1s1" firstAttribute="top" secondItem="Ydq-pd-v3I" secondAttribute="topMargin" id="yRq-R5-27v"/>
                                         </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="rD6-ds-Kfn" firstAttribute="leading" secondItem="gME-sL-VyD" secondAttribute="leading" id="7Pe-aC-gQJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="rD6-ds-Kfn" secondAttribute="trailing" id="DVB-al-zun"/>
-                                    <constraint firstAttribute="bottom" secondItem="rD6-ds-Kfn" secondAttribute="bottom" id="G3N-Wb-uKy"/>
-                                    <constraint firstItem="rD6-ds-Kfn" firstAttribute="top" secondItem="gME-sL-VyD" secondAttribute="top" id="PI0-22-2XM"/>
-                                </constraints>
-                            </scrollView>
+                                        <connections>
+                                            <outlet property="runStatisticView" destination="56N-6F-1s1" id="gm0-fG-Lce"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="xfq-Ah-0ch" id="LPz-TM-hb4"/>
+                                    <outlet property="delegate" destination="xfq-Ah-0ch" id="80c-L8-hJk"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gME-sL-VyD" firstAttribute="leading" secondItem="xNt-ah-PWo" secondAttribute="leading" id="2M2-2b-lGe"/>
-                            <constraint firstItem="gME-sL-VyD" firstAttribute="bottom" secondItem="xNt-ah-PWo" secondAttribute="bottom" id="7Te-ml-FaU"/>
-                            <constraint firstItem="rD6-ds-Kfn" firstAttribute="width" secondItem="EEY-fy-rXU" secondAttribute="width" id="TH2-Ag-QqW"/>
-                            <constraint firstItem="gME-sL-VyD" firstAttribute="trailing" secondItem="xNt-ah-PWo" secondAttribute="trailing" id="oO4-b3-RZS"/>
-                            <constraint firstItem="gME-sL-VyD" firstAttribute="top" secondItem="EEY-fy-rXU" secondAttribute="top" id="rbe-uT-Ilh"/>
+                            <constraint firstItem="xU6-Bf-MKA" firstAttribute="top" secondItem="xNt-ah-PWo" secondAttribute="top" id="7dN-Sp-jgV"/>
+                            <constraint firstItem="xU6-Bf-MKA" firstAttribute="trailing" secondItem="xNt-ah-PWo" secondAttribute="trailing" id="H1s-Cd-YV8"/>
+                            <constraint firstItem="xU6-Bf-MKA" firstAttribute="leading" secondItem="xNt-ah-PWo" secondAttribute="leading" id="YSp-Zc-mEY"/>
+                            <constraint firstItem="xU6-Bf-MKA" firstAttribute="bottom" secondItem="xNt-ah-PWo" secondAttribute="bottom" id="mm5-PX-p1O"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xNt-ah-PWo"/>
                     </view>
                     <navigationItem key="navigationItem" title="Statistics" id="ia4-dG-Udf"/>
                     <connections>
-                        <outlet property="averageDistanceStatisticView" destination="3xz-v7-ztN" id="9Kb-tS-rib"/>
-                        <outlet property="averagePaceStatisticView" destination="9xY-yR-tRG" id="9nv-E0-oQK"/>
-                        <outlet property="fastestPaceStatisticView" destination="Voc-3l-MiI" id="tMU-KR-2ac"/>
-                        <outlet property="longestRunStatisticView" destination="vB8-te-TGb" id="L3B-SE-Lh3"/>
-                        <outlet property="totalDistanceStatisticView" destination="t7o-2M-ltO" id="Wa2-Uz-dxP"/>
+                        <outlet property="collectionView" destination="xU6-Bf-MKA" id="JR1-cf-c7u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sW-qR-Xox" userLabel="First Responder" sceneMemberID="firstResponder"/>
