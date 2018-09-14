@@ -19,18 +19,20 @@ class StatisticsViewController: UIViewController {
     private var statistics: Statistics? {
         didSet {
             runStatistics = [
-                statistics?.totalDistance,
-                statistics?.numberOfRuns,
-                statistics?.totalDuration,
-                statistics?.longestDistance,
-                statistics?.fastestPace,
-                statistics?.averageDistance,
-                statistics?.averagePace
+                statistics?.totalDistance(),
+                statistics?.numberOfRuns(),
+                statistics?.totalDuration(),
+                statistics?.longestDistance(),
+                statistics?.fastestPace(),
+                statistics?.averageDistance(),
+                statistics?.averagePace()
                 ].compactMap { $0 }
-            
-            
         }
     }
+    
+    let transition = ScaleAnimator()
+    
+    private var selectedCell: UICollectionViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +68,18 @@ extension StatisticsViewController: UICollectionViewDataSource {
 }
 
 extension StatisticsViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCell = collectionView.cellForItem(at: indexPath)
+        
+        guard let statisticDetailViewController = storyboard?.instantiateViewController(withIdentifier: "RunStatisticDetailViewController") as? RunStatisticDetailViewController else {
+            return
+        }
+        
+        statisticDetailViewController.runStatistic = runStatistics?[indexPath.row]
+        statisticDetailViewController.transitioningDelegate = self
+        present(statisticDetailViewController, animated: true)
+    }
     
 }
 
@@ -74,6 +88,25 @@ extension StatisticsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width/2 - 16
         return CGSize(width: width, height: width * 0.75)
+    }
+    
+}
+
+extension StatisticsViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.originFrame = selectedCell!.superview!.convert(selectedCell!.frame, to: nil)
+        
+        transition.presenting = true
+//        selectedCell!.isHidden = true
+        
+        return nil
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.presenting = false
+        return nil
     }
     
 }

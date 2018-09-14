@@ -34,13 +34,15 @@ struct RunStatistic {
     let value: Double
     let title: String
     let unitType: UnitType
+    let type: RunStatisticType
     
     private let unitTypeConverter: UnitTypeConverter
     
-    init(value: Double, title: String, unitType: UnitType, unitTypeConverter: UnitTypeConverter = UnitTypeConverter()) {
+    init(value: Double, title: String, unitType: UnitType, type: RunStatisticType, unitTypeConverter: UnitTypeConverter = UnitTypeConverter()) {
         self.value = value
         self.title = title
         self.unitType = unitType
+        self.type = type
         self.unitTypeConverter = unitTypeConverter
     }
     

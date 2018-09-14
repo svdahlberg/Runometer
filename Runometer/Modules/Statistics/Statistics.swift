@@ -8,6 +8,17 @@
 
 import Foundation
 
+// TODO: implement CaseIterable from Swift 4
+enum RunStatisticType {
+    case averageDistance
+    case totalDistance
+    case numberOfRuns
+    case totalDuration
+    case longestDistance
+    case fastestPace
+    case averagePace
+}
+
 class Statistics {
     
     private let settings: Settings
@@ -21,41 +32,54 @@ class Statistics {
     private lazy var distances: [Meters] = runs.map { $0.distance }
     private lazy var paces: [Seconds] = runs.map { $0.averagePace() }
     private lazy var durations: [Seconds] = runs.map { $0.duration }
+    private lazy var totalDistanceValue: Meters = distances.reduce(0, +)
     
-    lazy var totalDistance: RunStatistic = {
+    func statistic(of type: RunStatisticType, with title: String) -> RunStatistic? {
+        switch type {
+        case .averageDistance: return averageDistance(with: title)
+        case .totalDistance: return totalDistance(with: title)
+        case .numberOfRuns: return numberOfRuns(with: title)
+        case .fastestPace: return fastestPace(with: title)
+        case .averagePace: return averagePace(with: title)
+        case .longestDistance: return longestDistance(with: title)
+        case .totalDuration: return totalDuration(with: title)
+        }
+    }
+    
+    func totalDistance(with title: String = "Total Distance") -> RunStatistic {
         let totalDistance = distances.reduce(0, +)
-        return RunStatistic(value: totalDistance, title: "Total Distance", unitType: .distance)
-    }()
-    
-    var numberOfRuns: RunStatistic {
-        return RunStatistic(value: Double(runs.count), title: "Number of Runs", unitType: .count)
+        return RunStatistic(value: totalDistance, title: title, unitType: .distance, type: .totalDistance)
     }
     
-    var totalDuration: RunStatistic {
+    func numberOfRuns(with title: String = "Number of Runs") -> RunStatistic {
+        return RunStatistic(value: Double(runs.count), title: title, unitType: .count, type: .numberOfRuns)
+    }
+    
+    func totalDuration(with title: String = "Total Duration") -> RunStatistic {
         let totalDuration = durations.reduce(0, +)
-        return RunStatistic(value: Double(totalDuration), title: "Total Duration", unitType: .time)
+        return RunStatistic(value: Double(totalDuration), title: title, unitType: .time, type: .totalDuration)
     }
     
-    var longestDistance: RunStatistic? {
+    func longestDistance(with title: String = "Longest Run") -> RunStatistic? {
         guard let longestDistance = distances.max() else { return nil }
-        return RunStatistic(value: longestDistance, title: "Longest Run", unitType: .distance)
+        return RunStatistic(value: longestDistance, title: title, unitType: .distance, type: .longestDistance)
     }
     
-    var fastestPace: RunStatistic? {
+    func fastestPace(with title: String = "Fastest Pace") -> RunStatistic? {
         guard let fastestPace = paces.min() else { return nil }
-        return RunStatistic(value: Double(fastestPace), title: "Fastest Pace", unitType: .speed)
+        return RunStatistic(value: Double(fastestPace), title: title, unitType: .speed, type: .fastestPace)
     }
     
-    var averageDistance: RunStatistic? {
+    func averageDistance(with title: String = "Average Distance") -> RunStatistic? {
         guard runs.count > 0 else { return nil }
-        let averageDistance = totalDistance.value / Double(runs.count)
-        return RunStatistic(value: averageDistance, title: "Average Distance", unitType: .distance)
+        let averageDistance = totalDistanceValue / Double(runs.count)
+        return RunStatistic(value: averageDistance, title: title, unitType: .distance, type: .averageDistance)
     }
     
-    var averagePace: RunStatistic? {
+    func averagePace(with title: String = "Average Pace") -> RunStatistic? {
         guard runs.count > 0 else { return nil }
         let averagePace = paces.reduce(0, +) / runs.count
-        return RunStatistic(value: Double(averagePace), title: "Average Pace", unitType: .speed)
+        return RunStatistic(value: Double(averagePace), title: title, unitType: .speed, type: .averagePace)
     }
     
 }
