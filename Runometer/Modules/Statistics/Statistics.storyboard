@@ -128,9 +128,14 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="PXY-EQ-Fxs"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="valueFontSize">
+                                        <real key="value" value="70"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-cN-1LY">
-                                <rect key="frame" x="0.0" y="212" width="375" height="455"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-cN-1LY">
+                                <rect key="frame" x="0.0" y="232" width="375" height="435"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RunStatisticTableViewCellReuseIdentifier" textLabel="eR7-Ck-Oef" detailTextLabel="VsQ-mZ-2hF" style="IBUITableViewCellStyleValue1" id="70f-Jh-ryD">
@@ -165,13 +170,28 @@
                                     <outlet property="delegate" destination="KFL-Mn-Zvv" id="pim-oh-b7G"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-e5-c58">
+                                <rect key="frame" x="16" y="196" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Day"/>
+                                    <segment title="Month"/>
+                                    <segment title="Year"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="didChangeSegmentedControlValue:" destination="KFL-Mn-Zvv" eventType="valueChanged" id="kME-3l-gOK"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="t8D-e5-c58" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" constant="16" id="12o-ri-sWD"/>
+                            <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="t8D-e5-c58" secondAttribute="trailing" constant="16" id="4Bq-gR-lxR"/>
+                            <constraint firstItem="Knq-cN-1LY" firstAttribute="top" secondItem="t8D-e5-c58" secondAttribute="bottom" constant="8" id="6mN-6R-cob"/>
+                            <constraint firstItem="t8D-e5-c58" firstAttribute="top" secondItem="G8g-Fk-Zqh" secondAttribute="bottom" id="EdF-Sb-SWL"/>
                             <constraint firstItem="G8g-Fk-Zqh" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="H17-Yg-fLi"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="Ib9-v5-H9U"/>
                             <constraint firstItem="G8g-Fk-Zqh" firstAttribute="top" secondItem="uTP-vn-NcK" secondAttribute="bottom" constant="8" id="IfO-Pn-tSy"/>
-                            <constraint firstItem="Knq-cN-1LY" firstAttribute="top" secondItem="G8g-Fk-Zqh" secondAttribute="bottom" constant="16" id="VKa-ck-3pY"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="trailing" secondItem="MwP-rD-Um5" secondAttribute="trailing" id="Wua-va-MSr"/>
                             <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="G8g-Fk-Zqh" secondAttribute="trailing" id="c4B-8H-eUX"/>
                             <constraint firstItem="NV1-Mm-e3b" firstAttribute="top" secondItem="MwP-rD-Um5" secondAttribute="top" constant="16" id="h9P-Qx-6fh"/>
@@ -181,6 +201,7 @@
                         <viewLayoutGuide key="safeArea" id="MwP-rD-Um5"/>
                     </view>
                     <connections>
+                        <outlet property="segmentedControl" destination="t8D-e5-c58" id="wph-K0-RWi"/>
                         <outlet property="statisticView" destination="G8g-Fk-Zqh" id="0m9-lk-CUY"/>
                         <outlet property="tableView" destination="Knq-cN-1LY" id="75w-cy-pWx"/>
                     </connections>

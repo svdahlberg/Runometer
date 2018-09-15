@@ -20,6 +20,14 @@ enum StatisticsBreakdownFilter {
         }
         return dateFormatter
     }
+    
+    var title: String {
+        switch self {
+        case .day: return "Day"
+        case .month: return "Month"
+        case .year: return "Year"
+        }
+    }
 }
 
 struct StatisticsBreakdown {
@@ -49,6 +57,7 @@ class RunStatisticDetailViewController: UIViewController {
     
     @IBOutlet private weak var statisticView: RunStatisticView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
     
     var runStatistic: RunStatistic?
     
@@ -59,19 +68,35 @@ class RunStatisticDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         statisticView.statistic = runStatistic
-        
+        setupSegmentedControl()
         loadStatisticsBreakdown()
     }
     
     private func loadStatisticsBreakdown() {
         guard let runStatistic = runStatistic else { return }
-        StatisticsBreakdown().statistics(of: runStatistic.type, with: .month) { [weak self] runStatistics in
+        StatisticsBreakdown().statistics(of: runStatistic.type, with: selectedFilter) { [weak self] runStatistics in
             self?.runStatisticsBreakdown = runStatistics
         }
     }
 
     @IBAction private func didPressCloseButton(_ sender: Any) {
         presentingViewController?.dismiss(animated: true)
+    }
+    
+    private let filters: [StatisticsBreakdownFilter] = [.day, .month, .year]
+    
+    private var selectedFilter: StatisticsBreakdownFilter {
+        return filters[segmentedControl.selectedSegmentIndex]
+    }
+    
+    private func setupSegmentedControl() {
+        filters.enumerated().forEach {
+            segmentedControl.setTitle($1.title, forSegmentAt: $0)
+        }
+    }
+    
+    @IBAction private func didChangeSegmentedControlValue(_ sender: Any) {
+        loadStatisticsBreakdown()
     }
     
 }
