@@ -85,10 +85,5 @@ extension RunDetailsViewController: RunSummaryMapViewDelegate {
     func runSummaryMapViewDidGetPressed(_ runSummaryMapView: RunSummaryMapView) {
         performSegue(withIdentifier: "MapViewControllerSegueIdentifier", sender: run)
     }
-    
-    func runSummaryMapViewDidNotReceiveAnyLocationSegments(_ runSummaryMapView: RunSummaryMapView) {
-        runSummaryMapView.removeFromSuperview()
-        splitTimesButtonView.removeFromSuperview()
-    }
-    
+
 }
