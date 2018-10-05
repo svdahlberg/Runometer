@@ -26,17 +26,12 @@ class RunRatingsView: UIView {
         
         runRatingsCollectionView.alpha = 0
         
-        RunProvider().runs { [weak self] allRuns in
-            let similarDistanceRuns = allRuns.within(run.similarRunsRange())
-            let runRatingProvider = RunRatingProvider(run: run)
-            self?.runRatings = [runRatingProvider.distanceRating(comparedTo: allRuns),
-                          runRatingProvider.timeRating(comparedTo: similarDistanceRuns),
-                          runRatingProvider.paceRating(comparedTo: allRuns)].compactMap { $0 }
-            
+        RunRatingsProvider(run: run).runRatings { [weak self] runRatings in
+            guard let self = self else { return }
+            self.runRatings = runRatings
             UIView.animate(withDuration: 0.5) {
-                self?.runRatingsCollectionView.alpha = 1
+                self.runRatingsCollectionView.alpha = 1
             }
-            
         }
     }
     

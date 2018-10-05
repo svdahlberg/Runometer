@@ -8,14 +8,109 @@
 
 import Foundation
 
-struct RunRatingProvider {
+struct RunRatingsProvider {
+    
+    private let run: Run
+    private let runProvider: RunProvider
+    
+    init(run: Run, runProvider: RunProvider = RunProvider()) {
+        self.run = run
+        self.runProvider = runProvider
+    }
+    
+    func runRatings(_ completion: @escaping ([RunRating]) -> Void) {
+        runProvider.runs { allRuns in
+            let runRatingProvider = RunRatingProvider(run: self.run, allRuns: allRuns)
+            let runRatings = Array([
+                runRatingProvider.allTimeDistanceRating(),
+                runRatingProvider.averageDistanceRating(),
+                runRatingProvider.allTimeDurationRating(),
+                runRatingProvider.averageDurationRating(),
+                runRatingProvider.averageDurationComparedToRunsWithSimilarDistanceRating(),
+                runRatingProvider.averagePaceRating(),
+                runRatingProvider.allTimePaceRating(),
+                runRatingProvider.averagePaceComparedToRunsWithSimilarDistanceRating()
+            ].compactMap { $0 }.sorted { $0.percentage > $1.percentage }[0...1])
+            
+            completion(runRatings)
+        }
+    }
+    
+}
+
+
+class RunRatingProvider {
     
     let run: Run
+    let allRuns: [Run]
     
-    func distanceRating(comparedTo runs: [Run]) -> RunRating? {
-        guard let formattedDistance = DistanceFormatter.format(distance: run.distance),
-            let statisticsText = RunStatisticsTextProvider(runs: runs).allDistancesStatisticsText(for: run.distance) else {
-                return nil
+    init(run: Run, allRuns: [Run]) {
+        self.run = run
+        self.allRuns = allRuns
+    }
+    
+    private lazy var similarDistanceRuns = allRuns.within(self.run.similarRunsRange())
+    
+    func allTimeDistanceRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).allDistancesStatisticsText(for: run.distance) else {
+            return nil
+        }
+        return distanceRating(comparedTo: allRuns, statisticsText: statisticsText)
+    }
+    
+    func averageDistanceRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).averageDistanceStatisticsText(for: run.distance) else {
+            return nil
+        }
+        return distanceRating(comparedTo: allRuns, statisticsText: statisticsText)
+    }
+    
+    func allTimeDurationRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).allTimesStatisticsText(for: run.duration) else {
+            return nil
+        }
+        return timeRating(comparedTo: allRuns, statisticsText: statisticsText)
+    }
+    
+    func averageDurationRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).averageTimeStatisticsText(for: run.duration) else {
+            return nil
+        }
+        return timeRating(comparedTo: allRuns, statisticsText: statisticsText)
+    }
+    
+    func averageDurationComparedToRunsWithSimilarDistanceRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: similarDistanceRuns).averageTimeStatisticsText(for: run.duration, withinDistanceRange: run.similarRunsRange()) else {
+            return nil
+        }
+        return timeRating(comparedTo: similarDistanceRuns, statisticsText: statisticsText)
+    }
+    
+    func allTimePaceRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).allPacesStatisticsText(for: run.averagePace()) else {
+            return nil
+        }
+        return paceRating(comparedTo: allRuns, statisticsText: statisticsText)
+    }
+    
+    func averagePaceRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).averagePaceStatisticsText(for: run.averagePace()) else {
+            return nil
+        }
+        return paceRating(comparedTo: allRuns, statisticsText: statisticsText)
+    }
+    
+    func averagePaceComparedToRunsWithSimilarDistanceRating() -> RunRating? {
+        guard let statisticsText = RunStatisticsTextProvider(runs: allRuns).averagePaceStatisticsText(for: run.averagePace(), withinDistanceRange: run.similarRunsRange()) else {
+            return nil
+        }
+        return paceRating(comparedTo: similarDistanceRuns, statisticsText: statisticsText)
+    }
+    
+    
+    private func distanceRating(comparedTo runs: [Run], statisticsText: String) -> RunRating? {
+        guard let formattedDistance = DistanceFormatter.format(distance: run.distance) else {
+            return nil
         }
         
         let allDistances = runs.map { $0.distance }
@@ -23,27 +118,24 @@ struct RunRatingProvider {
         return RunRating(percentage: distanceRating, title: formattedDistance, subtitle: Settings().distanceUnit.symbol, description: statisticsText)
     }
     
-    func timeRating(comparedTo runs: [Run]) -> RunRating? {
-        guard let formattedTime = TimeFormatter.format(time: Seconds(run.duration)),
-            let timeRatingStatisticsText = RunStatisticsTextProvider(runs: runs).averageTimeStatisticsText(for: Seconds(run.duration), withinDistanceRange: run.similarRunsRange())
-            else {
-                return nil
+    private func timeRating(comparedTo runs: [Run], statisticsText: String) -> RunRating? {
+        guard let formattedTime = TimeFormatter.format(time: Seconds(run.duration)) else {
+            return nil
         }
         
         let times = runs.map { Seconds($0.duration) }
         let timeRating = RunRatingCalculator.timeRating(for: Seconds(run.duration), comparedTo: times)
-        return RunRating(percentage: timeRating, title: formattedTime, subtitle: "Time", description: timeRatingStatisticsText)
+        return RunRating(percentage: timeRating, title: formattedTime, subtitle: "Time", description: statisticsText)
     }
     
-    func paceRating(comparedTo runs: [Run]) -> RunRating? {
-        guard let formattedPace = PaceFormatter.pace(fromDistance: run.distance, time: Seconds(run.duration)),
-            let paceRatingStatisticsText = RunStatisticsTextProvider(runs: runs).averagePaceStatisticsText(for: run.averagePace())
-            else {
-                return nil
+    private func paceRating(comparedTo runs: [Run], statisticsText: String) -> RunRating? {
+        guard let formattedPace = PaceFormatter.pace(fromDistance: run.distance, time: Seconds(run.duration)) else {
+            return nil
         }
         
         let paces = runs.map { $0.averagePace() }
         let paceRating = RunRatingCalculator.timeRating(for: run.averagePace(), comparedTo: paces)
-        return RunRating(percentage: paceRating, title: formattedPace, subtitle: Settings().speedUnit.symbol, description: paceRatingStatisticsText)
+        return RunRating(percentage: paceRating, title: formattedPace, subtitle: Settings().speedUnit.symbol, description: statisticsText)
     }
+    
 }
