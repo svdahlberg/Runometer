@@ -12,6 +12,7 @@ struct DistanceFormatter {
     static func format(distance: Meters, outputUnit: DistanceUnit = Settings().distanceUnit) -> String? {
         let convertedDistance = distance.convert(to: outputUnit)
         let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale(identifier: "en_US")
         numberFormatter.maximumFractionDigits = 2
         if distance < 10 {
             numberFormatter.maximumFractionDigits = 4
