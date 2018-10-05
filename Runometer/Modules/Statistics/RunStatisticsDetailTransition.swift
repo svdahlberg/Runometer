@@ -13,7 +13,6 @@ protocol RunStatisticsDetailTransitionViewController: class {
     func backgroundView() -> UIView
 }
 
-
 class RunStatisticsDetailTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     let duration = 0.5
@@ -51,16 +50,26 @@ class RunStatisticsDetailTransition: NSObject, UIViewControllerAnimatedTransitio
         containerView.addSubview(toView)
         
         // Add backgroundView to containerView
-        let finalBackgroundFrameInContainerView = containerView.convert(backgroundViews.final.frame, from: backgroundViews.final.superview!)
-        let initialBackgroundCenterInContainerView = containerView.convert(backgroundViews.initial.center, from: backgroundViews.initial.superview!)
+        guard let initialBackgroundViewSuperView = backgroundViews.initial.superview,
+            let finalBackgroundViewSuperView = backgroundViews.final.superview else {
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+                return
+        }
+        let finalBackgroundFrameInContainerView = containerView.convert(backgroundViews.final.frame, from: finalBackgroundViewSuperView)
+        let initialBackgroundCenterInContainerView = containerView.convert(backgroundViews.initial.center, from: initialBackgroundViewSuperView)
         let animatableBackgroundView = UIView(frame: backgroundViews.initial.frame)
         animatableBackgroundView.backgroundColor = backgroundViews.initial.backgroundColor
         containerView.addSubview(animatableBackgroundView)
         animatableBackgroundView.center = initialBackgroundCenterInContainerView
         
         // Add statisticsView to containerView
-        let finalFrameInContainerView = containerView.convert(statisticsViews.final.frame, from: statisticsViews.final.superview!)
-        let initialCenterInContainerView = containerView.convert(statisticsViews.initial.center, from: statisticsViews.initial.superview!)
+        guard let initialStatisticViewSuperView = statisticsViews.initial.superview,
+            let finalStatisticViewSuperView = statisticsViews.final.superview else {
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+                return
+        }
+        let finalFrameInContainerView = containerView.convert(statisticsViews.final.frame, from: finalStatisticViewSuperView)
+        let initialCenterInContainerView = containerView.convert(statisticsViews.initial.center, from: initialStatisticViewSuperView)
         let animatableStatisticsView = RunStatisticView(frame: finalFrameInContainerView)
         animatableStatisticsView.statistic = statisticsViews.initial.statistic
         containerView.addSubview(animatableStatisticsView)

@@ -28,11 +28,13 @@ struct HealthKitRunProvider: RunProviding {
             return
         }
         
-        let healthkitObjectTypes = Set([HKObjectType.workoutType(),
-                                        HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
-                                        HKObjectType.seriesType(forIdentifier: HKSeriesType.workoutRoute().identifier)!])
+        let healthkitObjectTypes = Set([
+            HKObjectType.workoutType(),
+            HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning),
+            HKObjectType.seriesType(forIdentifier: HKSeriesType.workoutRoute().identifier)
+            ].compactMap { $0 })
         
-        healthStore.requestAuthorization(toShare: healthkitObjectTypes,
+        healthStore.requestAuthorization(toShare: nil,
                                          read: healthkitObjectTypes) { (success, error) in
             let predicate = HKQuery.predicateForWorkouts(with: .running)
             let query = HKSampleQuery(sampleType: HKObjectType.workoutType(),
