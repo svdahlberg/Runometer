@@ -49,7 +49,7 @@
 		B25FE7B41F8A513D001B1BF1 /* DistanceFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7B31F8A513D001B1BF1 /* DistanceFormatterTests.swift */; };
 		B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7B51F8A514B001B1BF1 /* TimeFormatterTests.swift */; };
 		B2618932214A982D008BA04A /* RunStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618931214A982C008BA04A /* RunStatistic.swift */; };
-		B2618934214A9CC3008BA04A /* ScaleAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618933214A9CC3008BA04A /* ScaleAnimator.swift */; };
+		B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */; };
 		B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */; };
 		B2720899213D47E1009DCE7D /* RunRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */; };
 		B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089A213D6380009DCE7D /* RunRatingsView.swift */; };
@@ -169,7 +169,7 @@
 		B25FE7B31F8A513D001B1BF1 /* DistanceFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatterTests.swift; sourceTree = "<group>"; };
 		B25FE7B51F8A514B001B1BF1 /* TimeFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatterTests.swift; sourceTree = "<group>"; };
 		B2618931214A982C008BA04A /* RunStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatistic.swift; sourceTree = "<group>"; };
-		B2618933214A9CC3008BA04A /* ScaleAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAnimator.swift; sourceTree = "<group>"; };
+		B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsDetailTransition.swift; sourceTree = "<group>"; };
 		B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticDetailViewController.swift; sourceTree = "<group>"; };
 		B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B272089A213D6380009DCE7D /* RunRatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingsView.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 				B2534BAA2146A4E300EFEBFE /* Statistics.storyboard */,
 				B2534BAC2146A4F300EFEBFE /* StatisticsViewController.swift */,
 				B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */,
-				B2618933214A9CC3008BA04A /* ScaleAnimator.swift */,
+				B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */,
 				B2BE7B9D2148F96C00902720 /* RunStatisticCollectionViewCell.swift */,
 				B2BE7B992148F52700902720 /* Statistics.swift */,
 				B2BE7B9B2148F8D600902720 /* StatisticsProvider.swift */,
@@ -722,7 +722,7 @@
 				B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
 				B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */,
-				B2618934214A9CC3008BA04A /* ScaleAnimator.swift in Sources */,
+				B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */,
 				B2618932214A982D008BA04A /* RunStatistic.swift in Sources */,
 				B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */,
 				B27F634D1FA5B9E700C2116F /* PastRunsViewController.swift in Sources */,

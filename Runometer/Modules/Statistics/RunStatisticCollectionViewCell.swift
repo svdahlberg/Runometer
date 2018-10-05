@@ -10,7 +10,8 @@ import UIKit
 
 class RunStatisticCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet private weak var runStatisticView: RunStatisticView!
+    @IBOutlet weak var runStatisticView: RunStatisticView!
+    @IBOutlet weak var backgroundColorView: UIView!
     
     var runStatistic: RunStatistic? {
         didSet {

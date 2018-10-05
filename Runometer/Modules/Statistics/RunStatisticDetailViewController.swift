@@ -55,9 +55,11 @@ struct StatisticsBreakdown {
 
 class RunStatisticDetailViewController: UIViewController {
     
+    @IBOutlet private weak var statisticsBackgroundView: UIView!
     @IBOutlet private weak var statisticView: RunStatisticView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var closeButton: UIButton!
     
     var runStatistic: RunStatistic?
     
@@ -70,6 +72,18 @@ class RunStatisticDetailViewController: UIViewController {
         statisticView.statistic = runStatistic
         setupSegmentedControl()
         loadStatisticsBreakdown()
+        
+        segmentedControl.alpha = 0
+        closeButton.alpha = 0
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 0.15) {
+            self.segmentedControl.alpha = 1
+            self.closeButton.alpha = 1
+        }
     }
     
     private func loadStatisticsBreakdown() {
@@ -123,5 +137,17 @@ extension RunStatisticDetailViewController: UITableViewDataSource {
 }
 
 extension RunStatisticDetailViewController: UITableViewDelegate {
+    
+}
+
+extension RunStatisticDetailViewController: RunStatisticsDetailTransitionViewController {
+    
+    func runStatisticsView() -> RunStatisticView {
+        return statisticView
+    }
+    
+    func backgroundView() -> UIView {
+        return statisticsBackgroundView
+    }
     
 }

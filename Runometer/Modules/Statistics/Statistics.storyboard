@@ -21,20 +21,24 @@
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xU6-Bf-MKA">
                                 <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="m54-dp-AYf">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="8" id="m54-dp-AYf">
                                     <size key="itemSize" width="173" height="166"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="8" minY="16" maxX="8" maxY="16"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RunStatisticCollectionViewCell" id="Ydq-pd-v3I" customClass="RunStatisticCollectionViewCell" customModule="Runometer" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="0.0" width="173" height="166"/>
+                                        <rect key="frame" x="8" y="16" width="173" height="166"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="173" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkr-Oa-TWq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="166"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56N-6F-1s1" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="157" height="150"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -43,12 +47,22 @@
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="vkr-Oa-TWq" secondAttribute="trailing" id="Lkv-bG-Itx"/>
+                                            <constraint firstAttribute="bottom" secondItem="vkr-Oa-TWq" secondAttribute="bottom" id="MIY-zI-R7R"/>
+                                            <constraint firstItem="vkr-Oa-TWq" firstAttribute="top" secondItem="Ydq-pd-v3I" secondAttribute="top" id="O3N-J7-JXr"/>
                                             <constraint firstItem="56N-6F-1s1" firstAttribute="leading" secondItem="Ydq-pd-v3I" secondAttribute="leadingMargin" id="Wtb-Bm-2Cv"/>
+                                            <constraint firstItem="vkr-Oa-TWq" firstAttribute="leading" secondItem="Ydq-pd-v3I" secondAttribute="leading" id="bDb-WG-ViI"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="56N-6F-1s1" secondAttribute="bottom" id="ejx-Ym-spo"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="56N-6F-1s1" secondAttribute="trailing" id="ugz-vV-1vH"/>
                                             <constraint firstItem="56N-6F-1s1" firstAttribute="top" secondItem="Ydq-pd-v3I" secondAttribute="topMargin" id="yRq-R5-27v"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="backgroundColorView" destination="vkr-Oa-TWq" id="uB7-rF-Xba"/>
                                             <outlet property="runStatisticView" destination="56N-6F-1s1" id="gm0-fG-Lce"/>
                                         </connections>
                                     </collectionViewCell>
@@ -85,57 +99,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-Mm-e3b">
-                                <rect key="frame" x="16" y="36" width="24" height="24"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CDE-sW-baL">
-                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTP-vn-NcK" userLabel="Close">
-                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                            <state key="normal" image="close"/>
-                                            <connections>
-                                                <action selector="didPressCloseButton:" destination="KFL-Mn-Zvv" eventType="touchUpInside" id="atb-2Y-wjq"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="uTP-vn-NcK" firstAttribute="leading" secondItem="CDE-sW-baL" secondAttribute="leading" id="F6x-fd-sXq"/>
-                                        <constraint firstAttribute="bottom" secondItem="uTP-vn-NcK" secondAttribute="bottom" id="IDI-8p-Ajf"/>
-                                        <constraint firstAttribute="trailing" secondItem="uTP-vn-NcK" secondAttribute="trailing" id="XJw-SK-nXc"/>
-                                        <constraint firstItem="uTP-vn-NcK" firstAttribute="top" secondItem="CDE-sW-baL" secondAttribute="top" id="zaq-9B-Noo"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="20"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89u-Dw-Eh0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="244"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8g-Fk-Zqh" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="PXY-EQ-Fxs"/>
+                                        </constraints>
+                                    </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-e5-c58">
+                                        <rect key="frame" x="16" y="200" width="343" height="29"/>
+                                        <segments>
+                                            <segment title="Day"/>
+                                            <segment title="Month"/>
+                                            <segment title="Year"/>
+                                        </segments>
+                                        <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="didChangeSegmentedControlValue:" destination="KFL-Mn-Zvv" eventType="valueChanged" id="kME-3l-gOK"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="8Cq-re-evJ"/>
-                                    <constraint firstAttribute="width" constant="24" id="AR2-Nd-ZVG"/>
+                                    <constraint firstItem="t8D-e5-c58" firstAttribute="top" secondItem="G8g-Fk-Zqh" secondAttribute="bottom" constant="16" id="7QJ-jA-xEg"/>
+                                    <constraint firstItem="G8g-Fk-Zqh" firstAttribute="leading" secondItem="89u-Dw-Eh0" secondAttribute="leading" id="HHc-aa-CkT"/>
+                                    <constraint firstAttribute="trailing" secondItem="t8D-e5-c58" secondAttribute="trailing" constant="16" id="SPm-qE-uRJ"/>
+                                    <constraint firstItem="G8g-Fk-Zqh" firstAttribute="top" secondItem="89u-Dw-Eh0" secondAttribute="top" constant="56" id="Yf6-uF-Tzv"/>
+                                    <constraint firstAttribute="bottom" secondItem="t8D-e5-c58" secondAttribute="bottom" constant="16" id="hxr-q7-xWG"/>
+                                    <constraint firstAttribute="trailing" secondItem="G8g-Fk-Zqh" secondAttribute="trailing" id="iA5-V2-ilA"/>
+                                    <constraint firstItem="t8D-e5-c58" firstAttribute="leading" secondItem="89u-Dw-Eh0" secondAttribute="leading" constant="16" id="wxJ-4b-nUN"/>
                                 </constraints>
-                                <blurEffect style="extraLight"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="12"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8g-Fk-Zqh" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="375" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="PXY-EQ-Fxs"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="valueFontSize">
-                                        <real key="value" value="70"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-cN-1LY">
-                                <rect key="frame" x="0.0" y="232" width="375" height="435"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="423"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RunStatisticTableViewCellReuseIdentifier" textLabel="eR7-Ck-Oef" detailTextLabel="VsQ-mZ-2hF" style="IBUITableViewCellStyleValue1" id="70f-Jh-ryD">
@@ -170,39 +169,64 @@
                                     <outlet property="delegate" destination="KFL-Mn-Zvv" id="pim-oh-b7G"/>
                                 </connections>
                             </tableView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-e5-c58">
-                                <rect key="frame" x="16" y="196" width="343" height="29"/>
-                                <segments>
-                                    <segment title="Day"/>
-                                    <segment title="Month"/>
-                                    <segment title="Year"/>
-                                </segments>
-                                <color key="tintColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="didChangeSegmentedControlValue:" destination="KFL-Mn-Zvv" eventType="valueChanged" id="kME-3l-gOK"/>
-                                </connections>
-                            </segmentedControl>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-Mm-e3b">
+                                <rect key="frame" x="16" y="36" width="24" height="24"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CDE-sW-baL">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTP-vn-NcK" userLabel="Close">
+                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                            <state key="normal" image="close"/>
+                                            <connections>
+                                                <action selector="didPressCloseButton:" destination="KFL-Mn-Zvv" eventType="touchUpInside" id="atb-2Y-wjq"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uTP-vn-NcK" firstAttribute="leading" secondItem="CDE-sW-baL" secondAttribute="leading" id="F6x-fd-sXq"/>
+                                        <constraint firstAttribute="bottom" secondItem="uTP-vn-NcK" secondAttribute="bottom" id="IDI-8p-Ajf"/>
+                                        <constraint firstAttribute="trailing" secondItem="uTP-vn-NcK" secondAttribute="trailing" id="XJw-SK-nXc"/>
+                                        <constraint firstItem="uTP-vn-NcK" firstAttribute="top" secondItem="CDE-sW-baL" secondAttribute="top" id="zaq-9B-Noo"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="8Cq-re-evJ"/>
+                                    <constraint firstAttribute="width" constant="24" id="AR2-Nd-ZVG"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="t8D-e5-c58" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" constant="16" id="12o-ri-sWD"/>
-                            <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="t8D-e5-c58" secondAttribute="trailing" constant="16" id="4Bq-gR-lxR"/>
-                            <constraint firstItem="Knq-cN-1LY" firstAttribute="top" secondItem="t8D-e5-c58" secondAttribute="bottom" constant="8" id="6mN-6R-cob"/>
-                            <constraint firstItem="t8D-e5-c58" firstAttribute="top" secondItem="G8g-Fk-Zqh" secondAttribute="bottom" id="EdF-Sb-SWL"/>
-                            <constraint firstItem="G8g-Fk-Zqh" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="H17-Yg-fLi"/>
+                            <constraint firstAttribute="trailing" secondItem="89u-Dw-Eh0" secondAttribute="trailing" id="0PS-TF-AUv"/>
+                            <constraint firstItem="89u-Dw-Eh0" firstAttribute="leading" secondItem="iIC-Ym-hnc" secondAttribute="leading" id="CJS-2o-qjR"/>
+                            <constraint firstItem="NV1-Mm-e3b" firstAttribute="top" secondItem="MwP-rD-Um5" secondAttribute="top" constant="16" id="Hus-SE-7Xg"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="Ib9-v5-H9U"/>
-                            <constraint firstItem="G8g-Fk-Zqh" firstAttribute="top" secondItem="uTP-vn-NcK" secondAttribute="bottom" constant="8" id="IfO-Pn-tSy"/>
+                            <constraint firstItem="NV1-Mm-e3b" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" constant="16" id="Jk9-kb-Njk"/>
+                            <constraint firstItem="Knq-cN-1LY" firstAttribute="top" secondItem="89u-Dw-Eh0" secondAttribute="bottom" id="K0k-6a-fob"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="trailing" secondItem="MwP-rD-Um5" secondAttribute="trailing" id="Wua-va-MSr"/>
-                            <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="G8g-Fk-Zqh" secondAttribute="trailing" id="c4B-8H-eUX"/>
-                            <constraint firstItem="NV1-Mm-e3b" firstAttribute="top" secondItem="MwP-rD-Um5" secondAttribute="top" constant="16" id="h9P-Qx-6fh"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="bottom" secondItem="MwP-rD-Um5" secondAttribute="bottom" id="il9-Xk-aGg"/>
-                            <constraint firstItem="NV1-Mm-e3b" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" constant="16" id="vkM-bN-wX5"/>
+                            <constraint firstItem="89u-Dw-Eh0" firstAttribute="top" secondItem="iIC-Ym-hnc" secondAttribute="top" id="mtt-0w-Zai"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MwP-rD-Um5"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="closeButton" destination="uTP-vn-NcK" id="p9q-B4-eWJ"/>
                         <outlet property="segmentedControl" destination="t8D-e5-c58" id="wph-K0-RWi"/>
                         <outlet property="statisticView" destination="G8g-Fk-Zqh" id="0m9-lk-CUY"/>
+                        <outlet property="statisticsBackgroundView" destination="89u-Dw-Eh0" id="KbT-DE-8Rj"/>
                         <outlet property="tableView" destination="Knq-cN-1LY" id="75w-cy-pWx"/>
                     </connections>
                 </viewController>

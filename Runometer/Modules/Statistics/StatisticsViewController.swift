@@ -10,6 +10,8 @@ import UIKit
 
 class StatisticsViewController: UIViewController {
     
+    private var selectedCell: RunStatisticCollectionViewCell?
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var runStatistics: [RunStatistic]? {
@@ -30,10 +32,6 @@ class StatisticsViewController: UIViewController {
         }
     }
     
-    let transition = ScaleAnimator()
-    
-    private var selectedCell: UICollectionViewCell?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadStatistics()
@@ -44,7 +42,7 @@ class StatisticsViewController: UIViewController {
             self?.statistics = statistics
         }
     }
-    
+
 }
 
 extension StatisticsViewController: UICollectionViewDataSource {
@@ -70,15 +68,16 @@ extension StatisticsViewController: UICollectionViewDataSource {
 extension StatisticsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCell = collectionView.cellForItem(at: indexPath)
-        
         guard let statisticDetailViewController = storyboard?.instantiateViewController(withIdentifier: "RunStatisticDetailViewController") as? RunStatisticDetailViewController else {
             return
         }
         
+        selectedCell = collectionView.cellForItem(at: indexPath) as? RunStatisticCollectionViewCell
+        
         statisticDetailViewController.runStatistic = runStatistics?[indexPath.row]
         statisticDetailViewController.transitioningDelegate = self
-        present(statisticDetailViewController, animated: true)
+        
+        navigationController?.present(statisticDetailViewController, animated: true)
     }
     
 }
@@ -93,20 +92,17 @@ extension StatisticsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension StatisticsViewController: UIViewControllerTransitioningDelegate {
-    
+
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        let transition = RunStatisticsDetailTransition(statisticsCell: selectedCell!)
         
-        transition.originFrame = selectedCell!.superview!.convert(selectedCell!.frame, to: nil)
-        
-        transition.presenting = true
-//        selectedCell!.isHidden = true
-        
-        return nil
+        return transition
     }
-    
+
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        transition.presenting = false
-        return nil
+        let transition = RunStatisticsDetailTransition(statisticsCell: selectedCell!)
+
+        return transition
     }
-    
+
 }
