@@ -20,4 +20,13 @@ class RunStatisticCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+    override var isHighlighted: Bool {
+        willSet {
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: {
+                self.transform = newValue ? CGAffineTransform(scaleX: 0.9, y: 0.9) : .identity
+            })
+        }
+    }
+    
 }
