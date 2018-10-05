@@ -35,7 +35,9 @@ struct HealthKitRun: Run {
         
         route(for: workout) { (route: HKWorkoutRoute?) in
             guard let route = route else {
-                completion([])
+                DispatchQueue.main.async {
+                    completion([])
+                }
                 return
             }
             

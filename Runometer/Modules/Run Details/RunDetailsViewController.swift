@@ -16,7 +16,8 @@ class RunDetailsViewController: UIViewController {
     @IBOutlet private weak var runRatingsView: RunRatingsView!
     @IBOutlet private weak var runDataSummaryView: RunDataSummaryView!
     @IBOutlet private weak var runSummaryMapView: RunSummaryMapView!
-
+    @IBOutlet private weak var splitTimesButtonView: UIView!
+    
     var run: Run?
     
     override func viewDidLoad() {
@@ -80,7 +81,14 @@ class RunDetailsViewController: UIViewController {
 }
 
 extension RunDetailsViewController: RunSummaryMapViewDelegate {
+    
     func runSummaryMapViewDidGetPressed(_ runSummaryMapView: RunSummaryMapView) {
         performSegue(withIdentifier: "MapViewControllerSegueIdentifier", sender: run)
     }
+    
+    func runSummaryMapViewDidNotReceiveAnyLocationSegments(_ runSummaryMapView: RunSummaryMapView) {
+        runSummaryMapView.removeFromSuperview()
+        splitTimesButtonView.removeFromSuperview()
+    }
+    
 }

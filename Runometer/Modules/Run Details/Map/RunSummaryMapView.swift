@@ -11,6 +11,7 @@ import MapKit
 
 protocol RunSummaryMapViewDelegate: class {
     func runSummaryMapViewDidGetPressed(_ runSummaryMapView: RunSummaryMapView)
+    func runSummaryMapViewDidNotReceiveAnyLocationSegments(_ runSummaryMapView: RunSummaryMapView)
 }
 
 class RunSummaryMapView: UIView {
@@ -21,12 +22,18 @@ class RunSummaryMapView: UIView {
     var run: Run? {
         didSet {
             run?.locationSegments { [weak self] locationSegments in
+                guard let self = self else { return }
+                guard !locationSegments.isEmpty else {
+                    self.delegate?.runSummaryMapViewDidNotReceiveAnyLocationSegments(self)
+                    return
+                }
+                
                 guard let runMap = RunMap(locationSegments: locationSegments) else { return }
-                runMap.polylines.forEach { self?.mapView.add($0) }
-                self?.mapView.region = runMap.mapRegion
-                self?.mapView.addAnnotations(runMap.checkpointAnnotations)
-                self?.mapView.addAnnotation(runMap.startAnnotation)
-                self?.mapView.addAnnotation(runMap.endAnnotation)
+                runMap.polylines.forEach { self.mapView.add($0) }
+                self.mapView.region = runMap.mapRegion
+                self.mapView.addAnnotations(runMap.checkpointAnnotations)
+                self.mapView.addAnnotation(runMap.startAnnotation)
+                self.mapView.addAnnotation(runMap.endAnnotation)
             }
             
             setupTapGestureRecognizer()

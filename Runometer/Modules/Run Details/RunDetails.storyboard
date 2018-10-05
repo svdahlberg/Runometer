@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="13f-Fg-SR4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="13f-Fg-SR4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,7 +74,7 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-Hd-Xpk" customClass="RunometerView" customModule="Runometer" customModuleProvider="target">
-                                                                            <rect key="frame" x="38" y="8" width="300" height="301.5"/>
+                                                                            <rect key="frame" x="47" y="28" width="281" height="281.5"/>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" secondItem="5dh-Hd-Xpk" secondAttribute="height" multiplier="300:301" id="ERh-9o-Y2T"/>
@@ -297,6 +295,7 @@
                         <outlet property="runDataSummaryView" destination="mo3-7e-BEo" id="ra9-Iz-tD2"/>
                         <outlet property="runRatingsView" destination="rFE-aa-Q0E" id="V6j-bY-2eQ"/>
                         <outlet property="runSummaryMapView" destination="gvH-Qs-m0M" id="EYU-ah-anL"/>
+                        <outlet property="splitTimesButtonView" destination="GJS-aG-Wjk" id="9GE-hw-WuD"/>
                         <outlet property="timeLabel" destination="98W-YU-oCc" id="imP-qb-L3R"/>
                         <segue destination="M8X-ld-VhL" kind="show" identifier="MapViewControllerSegueIdentifier" id="Imm-hS-eTH"/>
                     </connections>
