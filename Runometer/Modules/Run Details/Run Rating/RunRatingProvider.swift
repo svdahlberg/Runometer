@@ -21,7 +21,7 @@ struct RunRatingsProvider {
     func runRatings(_ completion: @escaping ([RunRating]) -> Void) {
         runProvider.runs { allRuns in
             let runRatingProvider = RunRatingProvider(run: self.run, allRuns: allRuns)
-            let runRatings = Array([
+            let runRatings = [
                 runRatingProvider.allTimeDistanceRating(),
                 runRatingProvider.averageDistanceRating(),
                 runRatingProvider.allTimeDurationRating(),
@@ -30,9 +30,18 @@ struct RunRatingsProvider {
                 runRatingProvider.averagePaceRating(),
                 runRatingProvider.allTimePaceRating(),
                 runRatingProvider.averagePaceComparedToRunsWithSimilarDistanceRating()
-            ].compactMap { $0 }.sorted { $0.percentage > $1.percentage }[0...1])
+                ]
+                .compactMap { $0 }
+                .sorted { $0.percentage > $1.percentage }
             
-            completion(runRatings)
+            guard !runRatings.isEmpty else {
+                completion([])
+                return
+            }
+            
+            let bestRunRatings = Array(runRatings[0...runRatings.index(after: 0)])
+            
+            completion(bestRunRatings)
         }
     }
     
