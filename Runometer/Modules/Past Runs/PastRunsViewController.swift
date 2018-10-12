@@ -67,6 +67,15 @@ class PastRunsViewControlller: UIViewController {
 }
 
 extension PastRunsViewControlller: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        guard let run = run(for: indexPath), run is CoreDataRun else {
+            return .none
+        }
+        
+        return .delete
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
@@ -83,6 +92,7 @@ extension PastRunsViewControlller: UITableViewDelegate {
         performSegue(withIdentifier: "RunDetailsSegueIdentifier", sender: run)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }
 
 extension PastRunsViewControlller: UITableViewDataSource {
