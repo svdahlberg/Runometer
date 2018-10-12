@@ -17,13 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Runometer would like to access your health data to track the progress of your workouts</string>
+	<string>Runometer would like to access your health data to analyze your workouts</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Runometer would like to access your health data to track the progress of your workouts</string>
+	<string>Runometer would like to access your health data to analyze your workouts</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Runometer needs access to your location in order to record and track your run</string>
 	<key>UIBackgroundModes</key>
