@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,11 +15,11 @@
             <objects>
                 <viewController title="Statistics" id="xfq-Ah-0ch" customClass="StatisticsViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EEY-fy-rXU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xU6-Bf-MKA">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="8" id="m54-dp-AYf">
                                     <size key="itemSize" width="173" height="166"/>
@@ -40,7 +40,7 @@
                                                     <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56N-6F-1s1" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="28" width="157" height="130"/>
+                                                    <rect key="frame" x="8" y="52" width="157" height="106"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -96,7 +96,7 @@
             <objects>
                 <viewController storyboardIdentifier="RunStatisticDetailViewController" id="KFL-Mn-Zvv" customClass="RunStatisticDetailViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iIC-Ym-hnc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89u-Dw-Eh0">
@@ -132,27 +132,28 @@
                                     <constraint firstAttribute="trailing" secondItem="G8g-Fk-Zqh" secondAttribute="trailing" id="iA5-V2-ilA"/>
                                     <constraint firstItem="t8D-e5-c58" firstAttribute="leading" secondItem="89u-Dw-Eh0" secondAttribute="leading" constant="16" id="wxJ-4b-nUN"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="d9x-Ii-MNM"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-cN-1LY">
-                                <rect key="frame" x="0.0" y="244" width="375" height="423"/>
+                                <rect key="frame" x="0.0" y="244" width="375" height="534"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RunStatisticTableViewCellReuseIdentifier" textLabel="eR7-Ck-Oef" detailTextLabel="VsQ-mZ-2hF" style="IBUITableViewCellStyleValue1" id="70f-Jh-ryD">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="70f-Jh-ryD" id="qaR-gu-LZn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eR7-Ck-Oef">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VsQ-mZ-2hF">
-                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="316" y="11.999999999999998" width="44" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,7 +171,7 @@
                                 </connections>
                             </tableView>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NV1-Mm-e3b">
-                                <rect key="frame" x="16" y="36" width="24" height="24"/>
+                                <rect key="frame" x="16" y="60" width="24" height="24"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CDE-sW-baL">
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,8 +210,8 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="89u-Dw-Eh0" secondAttribute="trailing" id="0PS-TF-AUv"/>
-                            <constraint firstItem="89u-Dw-Eh0" firstAttribute="leading" secondItem="iIC-Ym-hnc" secondAttribute="leading" id="CJS-2o-qjR"/>
+                            <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="89u-Dw-Eh0" secondAttribute="trailing" id="0PS-TF-AUv"/>
+                            <constraint firstItem="89u-Dw-Eh0" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="CJS-2o-qjR"/>
                             <constraint firstItem="NV1-Mm-e3b" firstAttribute="top" secondItem="MwP-rD-Um5" secondAttribute="top" constant="16" id="Hus-SE-7Xg"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="Ib9-v5-H9U"/>
                             <constraint firstItem="NV1-Mm-e3b" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" constant="16" id="Jk9-kb-Njk"/>
@@ -242,7 +243,7 @@
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="4A7-S4-iwr">
-                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

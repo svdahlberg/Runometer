@@ -49,12 +49,15 @@ class RunStatisticsDetailTransition: NSObject, UIViewControllerAnimatedTransitio
         containerView.addSubview(fromView)
         containerView.addSubview(toView)
         
+        containerView.layoutIfNeeded()
+        
         // Add backgroundView to containerView
         guard let initialBackgroundViewSuperView = backgroundViews.initial.superview,
             let finalBackgroundViewSuperView = backgroundViews.final.superview else {
                 transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
                 return
         }
+        
         let finalBackgroundFrameInContainerView = containerView.convert(backgroundViews.final.frame, from: finalBackgroundViewSuperView)
         let initialBackgroundCenterInContainerView = containerView.convert(backgroundViews.initial.center, from: initialBackgroundViewSuperView)
         let animatableBackgroundView = UIView(frame: backgroundViews.initial.frame)
@@ -81,13 +84,17 @@ class RunStatisticsDetailTransition: NSObject, UIViewControllerAnimatedTransitio
         }.startAnimation()
         
         UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, animations: {
-        
+            
             toView.alpha = 1
             fromView.alpha = 0
 
-            animatableBackgroundView.frame = finalBackgroundFrameInContainerView
-            
-            animatableStatisticsView.frame = containerView.convert(statisticsViews.final.frame, from: statisticsViews.final.superview!)
+            if isPresenting {
+                animatableBackgroundView.frame = backgroundViews.final.frame
+                animatableStatisticsView.frame = statisticsViews.final.frame
+            } else {
+                animatableBackgroundView.frame = finalBackgroundFrameInContainerView
+                animatableStatisticsView.frame = finalFrameInContainerView
+            }
             
         }) { (_) in
             statisticsViews.final.alpha = 1
