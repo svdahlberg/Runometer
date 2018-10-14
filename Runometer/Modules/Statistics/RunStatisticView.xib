@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,25 +23,25 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yrD-P9-g04">
-                    <rect key="frame" x="26.5" y="56" width="137.5" height="86.5"/>
+                    <rect key="frame" x="41" y="56" width="108.5" height="86.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN5-Eg-Row">
-                            <rect key="frame" x="0.0" y="66" width="137.5" height="20.5"/>
+                            <rect key="frame" x="0.0" y="66" width="108.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aNO-KH-yvL">
-                            <rect key="frame" x="0.0" y="0.0" width="137.5" height="66"/>
+                            <rect key="frame" x="21.5" y="0.0" width="65.5" height="66"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12.7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MbX-cu-lD3">
-                                    <rect key="frame" x="0.0" y="0.0" width="110" height="66"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MbX-cu-lD3">
+                                    <rect key="frame" x="0.0" y="0.0" width="38" height="66"/>
                                     <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="55"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts4-WP-WKg">
-                                    <rect key="frame" x="112" y="36" width="25.5" height="20.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ts4-WP-WKg">
+                                    <rect key="frame" x="40" y="36" width="25.5" height="20.5"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -60,9 +61,8 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="iN5-Eg-Row" firstAttribute="top" secondItem="aNO-KH-yvL" secondAttribute="bottom" id="2Bf-Ns-4Fr"/>
-                        <constraint firstItem="aNO-KH-yvL" firstAttribute="leading" secondItem="yrD-P9-g04" secondAttribute="leading" id="FDX-Te-uPP"/>
                         <constraint firstItem="aNO-KH-yvL" firstAttribute="top" secondItem="yrD-P9-g04" secondAttribute="top" id="H7T-hA-4Ao"/>
-                        <constraint firstAttribute="trailing" secondItem="aNO-KH-yvL" secondAttribute="trailing" id="TaW-ks-fD1"/>
+                        <constraint firstItem="aNO-KH-yvL" firstAttribute="centerX" secondItem="yrD-P9-g04" secondAttribute="centerX" id="Tfj-Oc-Eop"/>
                         <constraint firstAttribute="bottom" secondItem="iN5-Eg-Row" secondAttribute="bottom" id="Uro-4q-IJU"/>
                         <constraint firstAttribute="trailing" secondItem="iN5-Eg-Row" secondAttribute="trailing" id="jrc-NS-qyS"/>
                         <constraint firstItem="iN5-Eg-Row" firstAttribute="leading" secondItem="yrD-P9-g04" secondAttribute="leading" id="mCQ-ii-KpY"/>
@@ -73,7 +73,7 @@
             <constraints>
                 <constraint firstItem="yrD-P9-g04" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CmA-os-RHQ"/>
                 <constraint firstItem="yrD-P9-g04" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="WNW-vD-NvX"/>
-                <constraint firstItem="aNO-KH-yvL" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" id="r8Q-1u-wWx"/>
+                <constraint firstItem="aNO-KH-yvL" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" id="j88-vz-t41"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
