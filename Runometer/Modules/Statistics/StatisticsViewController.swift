@@ -15,7 +15,10 @@ class StatisticsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private var runStatistics: [RunStatistic]? {
-        didSet { collectionView.reloadData() }
+        didSet {
+            refreshControl.endRefreshing()
+            collectionView.reloadData()
+        }
     }
     
     private var statistics: Statistics? {
@@ -32,12 +35,19 @@ class StatisticsViewController: UIViewController {
         }
     }
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadStatistics), for: .valueChanged)
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.refreshControl = refreshControl
         loadStatistics()
     }
     
-    private func loadStatistics() {
+    @objc private func loadStatistics() {
         StatisticsProvider().statistics { [weak self] statistics in
             self?.statistics = statistics
         }

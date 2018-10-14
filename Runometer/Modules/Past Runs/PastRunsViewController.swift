@@ -15,8 +15,17 @@ class PastRunsViewControlller: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     
     private var runs: [Run]? {
-        didSet { tableView.reloadData() }
+        didSet {
+            refreshControl.endRefreshing()
+            tableView.reloadData()
+        }
     }
+    
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(loadRuns), for: .valueChanged)
+        return refreshControl
+    }()
     
     private lazy var titleDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -40,14 +49,11 @@ class PastRunsViewControlller: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Past Runs"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        tableView.refreshControl = refreshControl
         loadRuns()
     }
     
-    private func loadRuns() {
+    @objc private func loadRuns() {
         RunProvider().runs { [weak self] (runs: [Run]) in
             self?.runs = runs
             self?.activityIndicatorView.stopAnimating()
