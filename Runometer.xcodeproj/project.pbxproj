@@ -13,6 +13,7 @@
 		B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A02030608A007153D2 /* RoundCornersButton.swift */; };
 		B21967A320307211007153D2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A220307211007153D2 /* Colors.swift */; };
 		B21967A92039B05D007153D2 /* RunSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A82039B05D007153D2 /* RunSection.swift */; };
+		B229CC9F2250BC54002D4BE6 /* RunSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229CC9E2250BC54002D4BE6 /* RunSectionTests.swift */; };
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
 		B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956751FA4934B002DC83E /* CoreDataStack.swift */; };
@@ -133,6 +134,7 @@
 		B21967A02030608A007153D2 /* RoundCornersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
 		B21967A220307211007153D2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B21967A82039B05D007153D2 /* RunSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSection.swift; sourceTree = "<group>"; };
+		B229CC9E2250BC54002D4BE6 /* RunSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSectionTests.swift; sourceTree = "<group>"; };
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
 		B24956751FA4934B002DC83E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				B2528DF21FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift */,
 				B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */,
 				B25DB236201E27170089144E /* AudioFeedbackControllerTests.swift */,
+				B229CC9E2250BC54002D4BE6 /* RunSectionTests.swift */,
 				B2B0550B1F80C55600292EB3 /* Info.plist */,
 			);
 			path = RunometerTests;
@@ -787,6 +790,7 @@
 				B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */,
 				B2534BB52147EA8100EFEBFE /* RunMock.swift in Sources */,
 				B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */,
+				B229CC9F2250BC54002D4BE6 /* RunSectionTests.swift in Sources */,
 				B2A931201FAF06F7006FEACB /* MKPolylineExtensionTests.swift in Sources */,
 				B2F1C7391FC1A7D5001AC4DF /* DoubleExtensionsTests.swift in Sources */,
 				B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */,
