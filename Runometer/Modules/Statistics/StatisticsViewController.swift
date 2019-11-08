@@ -86,6 +86,7 @@ extension StatisticsViewController: UICollectionViewDelegate {
         
         statisticDetailViewController.runStatistic = runStatistics?[indexPath.row]
         statisticDetailViewController.transitioningDelegate = self
+        statisticDetailViewController.modalPresentationStyle = .fullScreen
         
         navigationController?.present(statisticDetailViewController, animated: true)
     }
