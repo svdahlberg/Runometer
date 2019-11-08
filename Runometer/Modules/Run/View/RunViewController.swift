@@ -26,6 +26,9 @@ class RunViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
         runTracker = RunTracker()
         runTracker.delegate = self
         runTracker.requestAuthorization()
@@ -101,6 +104,9 @@ class RunViewController: UIViewController {
         if let navigationController = segue.destination as? UINavigationController,
             let runDetailsViewController = navigationController.viewControllers.first as? RunDetailsViewController {
             runDetailsViewController.run = sender as? CoreDataRun
+            if #available(iOS 13.0, *) {
+                runDetailsViewController.isModalInPresentation = true
+            }
         }
     }
 }
