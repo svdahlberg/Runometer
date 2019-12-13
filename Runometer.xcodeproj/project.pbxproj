@@ -65,6 +65,7 @@
 		B27F63541FA5CEA800C2116F /* RunDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63531FA5CEA800C2116F /* RunDetailsViewController.swift */; };
 		B27F63561FA5CEB100C2116F /* RunDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27F63551FA5CEB100C2116F /* RunDetails.storyboard */; };
 		B27F63581FA5E69700C2116F /* RunDataSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */; };
+		B28D7DD5237615D800817E45 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B28D7DD4237615D800817E45 /* Colors.xcassets */; };
 		B28F81BD1F93CE8C000BBA18 /* CheckpointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */; };
 		B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BE1F93D888000BBA18 /* Checkpoint.swift */; };
 		B2A9311A1FADCA77006FEACB /* RunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A931191FADCA77006FEACB /* RunProvider.swift */; };
@@ -187,6 +188,7 @@
 		B27F63531FA5CEA800C2116F /* RunDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDetailsViewController.swift; sourceTree = "<group>"; };
 		B27F63551FA5CEB100C2116F /* RunDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RunDetails.storyboard; sourceTree = "<group>"; };
 		B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDataSummaryView.swift; sourceTree = "<group>"; };
+		B28D7DD4237615D800817E45 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotation.swift; sourceTree = "<group>"; };
 		B28F81BE1F93D888000BBA18 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		B2A931191FADCA77006FEACB /* RunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProvider.swift; sourceTree = "<group>"; };
@@ -264,6 +266,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B20F058F2376FD30004ECF97 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				B21967A220307211007153D2 /* Colors.swift */,
+				B28D7DD4237615D800817E45 /* Colors.xcassets */,
+			);
+			path = Appearance;
+			sourceTree = "<group>";
+		};
 		B2534BA92146A4C900EFEBFE /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +316,7 @@
 		B25FE79B1F815E66001B1BF1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B20F058F2376FD30004ECF97 /* Appearance */,
 				B2534BA92146A4C900EFEBFE /* Statistics */,
 				B2720893213D221A009DCE7D /* Home */,
 				B2F1C71A1FC0AE28001AC4DF /* Settings */,
@@ -458,7 +470,6 @@
 				B27208A121402922009DCE7D /* Runometer.entitlements */,
 				B2B054F11F80C55600292EB3 /* AppDelegate.swift */,
 				B2B054F51F80C55600292EB3 /* Main.storyboard */,
-				B21967A220307211007153D2 /* Colors.swift */,
 				B25FE79B1F815E66001B1BF1 /* Modules */,
 				B2B054FB1F80C55600292EB3 /* Assets.xcassets */,
 				B2B054FD1F80C55600292EB3 /* LaunchScreen.storyboard */,
@@ -671,6 +682,7 @@
 			files = (
 				B2B054FF1F80C55600292EB3 /* LaunchScreen.storyboard in Resources */,
 				B2B054FC1F80C55600292EB3 /* Assets.xcassets in Resources */,
+				B28D7DD5237615D800817E45 /* Colors.xcassets in Resources */,
 				B2B055251F80D7B800292EB3 /* Run.storyboard in Resources */,
 				B2534BAF2146AB9E00EFEBFE /* RunStatisticView.xib in Resources */,
 				B2EF80C220A850C300457800 /* PastRunsTableViewSectionHeaderView.xib in Resources */,
