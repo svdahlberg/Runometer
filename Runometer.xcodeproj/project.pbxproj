@@ -17,6 +17,8 @@
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
 		B24956761FA4934B002DC83E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956751FA4934B002DC83E /* CoreDataStack.swift */; };
+		B24B3A3023D3BDAA007851A3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24B3A2F23D3BDAA007851A3 /* AppCoordinator.swift */; };
+		B24B3A3223D3BF51007851A3 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24B3A3123D3BF51007851A3 /* Appearance.swift */; };
 		B2528DF11FF19BEE00FE3364 /* RunStatisticsTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF01FF19BEE00FE3364 /* RunStatisticsTextProvider.swift */; };
 		B2528DF31FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF21FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift */; };
 		B2528DF51FF2470B00FE3364 /* DistancesMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2528DF41FF2470B00FE3364 /* DistancesMock.swift */; };
@@ -139,6 +141,8 @@
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
 		B24956751FA4934B002DC83E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		B24B3A2F23D3BDAA007851A3 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		B24B3A3123D3BF51007851A3 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		B2528DF01FF19BEE00FE3364 /* RunStatisticsTextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsTextProvider.swift; sourceTree = "<group>"; };
 		B2528DF21FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsTextProviderTests.swift; sourceTree = "<group>"; };
 		B2528DF41FF2470B00FE3364 /* DistancesMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistancesMock.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				B21967A220307211007153D2 /* Colors.swift */,
+				B24B3A3123D3BF51007851A3 /* Appearance.swift */,
 				B28D7DD4237615D800817E45 /* Colors.xcassets */,
 			);
 			path = Appearance;
@@ -470,6 +475,7 @@
 				B27208A121402922009DCE7D /* Runometer.entitlements */,
 				B2B054F11F80C55600292EB3 /* AppDelegate.swift */,
 				B2B054F51F80C55600292EB3 /* Main.storyboard */,
+				B24B3A2F23D3BDAA007851A3 /* AppCoordinator.swift */,
 				B25FE79B1F815E66001B1BF1 /* Modules */,
 				B2B054FB1F80C55600292EB3 /* Assets.xcassets */,
 				B2B054FD1F80C55600292EB3 /* LaunchScreen.storyboard */,
@@ -735,6 +741,7 @@
 				B25D57132142AA4300BC2C0D /* LocationSegmentsExtensions.swift in Sources */,
 				B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */,
 				B2528DFB1FF2669400FE3364 /* RunRatingDescription.swift in Sources */,
+				B24B3A3023D3BDAA007851A3 /* AppCoordinator.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
 				B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */,
 				B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */,
@@ -744,6 +751,7 @@
 				B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */,
 				B27208A0213E6B15009DCE7D /* RunRating.swift in Sources */,
 				B2BE7B9A2148F52700902720 /* Statistics.swift in Sources */,
+				B24B3A3223D3BF51007851A3 /* Appearance.swift in Sources */,
 				B2F856C420A6E4BB00A9414D /* HomeViewController.swift in Sources */,
 				B25FE7B21F8A5075001B1BF1 /* Units.swift in Sources */,
 				B25FE7AA1F88E6F7001B1BF1 /* PaceFormatter.swift in Sources */,
