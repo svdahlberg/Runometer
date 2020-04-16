@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xU6-Bf-MKA">
-                                <rect key="frame" x="0.0" y="140" width="375" height="589"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="8" id="m54-dp-AYf">
                                     <size key="itemSize" width="173" height="166"/>
@@ -37,10 +36,10 @@
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkr-Oa-TWq">
                                                     <rect key="frame" x="0.0" y="0.0" width="173" height="166"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <color key="backgroundColor" name="SecondaryBackground"/>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56N-6F-1s1" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="52" width="157" height="106"/>
+                                                    <rect key="frame" x="8" y="8" width="157" height="150"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </view>
                                             </subviews>
@@ -73,7 +72,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="xU6-Bf-MKA" firstAttribute="top" secondItem="xNt-ah-PWo" secondAttribute="top" id="7dN-Sp-jgV"/>
                             <constraint firstItem="xU6-Bf-MKA" firstAttribute="trailing" secondItem="xNt-ah-PWo" secondAttribute="trailing" id="H1s-Cd-YV8"/>
@@ -100,7 +99,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="89u-Dw-Eh0">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="244"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="247"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8g-Fk-Zqh" customClass="RunStatisticView" customModule="Runometer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="375" height="128"/>
@@ -110,7 +109,7 @@
                                         </constraints>
                                     </view>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="t8D-e5-c58">
-                                        <rect key="frame" x="16" y="200" width="343" height="29"/>
+                                        <rect key="frame" x="16" y="200" width="343" height="32"/>
                                         <segments>
                                             <segment title="Day"/>
                                             <segment title="Month"/>
@@ -122,7 +121,7 @@
                                         </connections>
                                     </segmentedControl>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="backgroundColor" name="SecondaryBackground"/>
                                 <constraints>
                                     <constraint firstItem="t8D-e5-c58" firstAttribute="top" secondItem="G8g-Fk-Zqh" secondAttribute="bottom" constant="16" id="7QJ-jA-xEg"/>
                                     <constraint firstItem="G8g-Fk-Zqh" firstAttribute="leading" secondItem="89u-Dw-Eh0" secondAttribute="leading" id="HHc-aa-CkT"/>
@@ -135,21 +134,21 @@
                                 <viewLayoutGuide key="safeArea" id="d9x-Ii-MNM"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-cN-1LY">
-                                <rect key="frame" x="0.0" y="244" width="375" height="534"/>
+                                <rect key="frame" x="0.0" y="247" width="375" height="531"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RunStatisticTableViewCellReuseIdentifier" textLabel="eR7-Ck-Oef" detailTextLabel="VsQ-mZ-2hF" style="IBUITableViewCellStyleValue1" id="70f-Jh-ryD">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="70f-Jh-ryD" id="qaR-gu-LZn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eR7-Ck-Oef">
                                                     <rect key="frame" x="15" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VsQ-mZ-2hF">
@@ -208,7 +207,7 @@
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="89u-Dw-Eh0" secondAttribute="trailing" id="0PS-TF-AUv"/>
                             <constraint firstItem="89u-Dw-Eh0" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="CJS-2o-qjR"/>
@@ -257,7 +256,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close" width="16" height="16"/>
+        <image name="close" width="16.666666030883789" height="16.666666030883789"/>
         <image name="statistics" width="80" height="80"/>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
