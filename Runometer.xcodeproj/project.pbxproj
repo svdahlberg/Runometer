@@ -67,6 +67,7 @@
 		B27F63541FA5CEA800C2116F /* RunDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63531FA5CEA800C2116F /* RunDetailsViewController.swift */; };
 		B27F63561FA5CEB100C2116F /* RunDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27F63551FA5CEB100C2116F /* RunDetails.storyboard */; };
 		B27F63581FA5E69700C2116F /* RunDataSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */; };
+		B28AF1D02448B134005C288E /* RunometerVisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28AF1CF2448B134005C288E /* RunometerVisualEffectView.swift */; };
 		B28D7DD5237615D800817E45 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B28D7DD4237615D800817E45 /* Colors.xcassets */; };
 		B28F81BD1F93CE8C000BBA18 /* CheckpointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */; };
 		B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BE1F93D888000BBA18 /* Checkpoint.swift */; };
@@ -192,6 +193,7 @@
 		B27F63531FA5CEA800C2116F /* RunDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDetailsViewController.swift; sourceTree = "<group>"; };
 		B27F63551FA5CEB100C2116F /* RunDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RunDetails.storyboard; sourceTree = "<group>"; };
 		B27F63571FA5E69700C2116F /* RunDataSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunDataSummaryView.swift; sourceTree = "<group>"; };
+		B28AF1CF2448B134005C288E /* RunometerVisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunometerVisualEffectView.swift; sourceTree = "<group>"; };
 		B28D7DD4237615D800817E45 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotation.swift; sourceTree = "<group>"; };
 		B28F81BE1F93D888000BBA18 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				B21967A220307211007153D2 /* Colors.swift */,
 				B24B3A3123D3BF51007851A3 /* Appearance.swift */,
+				B28AF1CF2448B134005C288E /* RunometerVisualEffectView.swift */,
 				B28D7DD4237615D800817E45 /* Colors.xcassets */,
 			);
 			path = Appearance;
@@ -744,6 +747,7 @@
 				B24B3A3023D3BDAA007851A3 /* AppCoordinator.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
 				B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */,
+				B28AF1D02448B134005C288E /* RunometerVisualEffectView.swift in Sources */,
 				B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */,
 				B2618932214A982D008BA04A /* RunStatistic.swift in Sources */,
 				B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */,

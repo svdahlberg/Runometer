@@ -400,10 +400,10 @@
             </objects>
             <point key="canvasLocation" x="2316" y="635.53223388305855"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Runometer Navigation Controller-->
         <scene sceneID="m7u-90-EW0">
             <objects>
-                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="13f-Fg-SR4" sceneMemberID="viewController">
+                <navigationController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="13f-Fg-SR4" customClass="RunometerNavigationController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="tUd-R4-j9Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>

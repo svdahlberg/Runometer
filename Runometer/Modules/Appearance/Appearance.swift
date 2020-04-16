@@ -18,4 +18,12 @@ struct Appearance {
         }
     }
 
+    static func blurEffect(for traitCollection: UITraitCollection) -> UIBlurEffect.Style {
+        if #available(iOS 12.0, *) {
+            return traitCollection.userInterfaceStyle == .light ? .light : .dark
+        } else {
+            return .dark
+        }
+    }
+
 }
