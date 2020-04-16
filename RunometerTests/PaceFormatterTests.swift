@@ -13,17 +13,17 @@ class PaceFormatterTests: XCTestCase {
     
     func testPaceReturnsFormatMSSForDistance0Time0() {
         let pace = PaceFormatter.pace(fromDistance: 0, time: 0)
-        XCTAssertEqual("0:00", pace)
+        XCTAssertEqual("00:00", pace)
     }
 
     func testPaceReturns6FromDistance10kmTime3600UnitMinutesPerKilometer() {
         let pace = PaceFormatter.pace(fromDistance: 10000, time: 3600, outputUnit: .minutesPerKilometer)
-        XCTAssertEqual("6:00", pace)
+        XCTAssertEqual("06:00", pace)
     }
     
     func testPaceReturns6FromDistance10milesTime3600UnitMinutesPerMile() {
         let pace = PaceFormatter.pace(fromDistance: 16093.44, time: 3600, outputUnit: .minutesPerMile)
-        XCTAssertEqual("6:00", pace)
+        XCTAssertEqual("06:00", pace)
     }
     
 }

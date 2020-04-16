@@ -102,8 +102,8 @@ class LocationSegmentExtensionsTests: XCTestCase {
         let locationSegments = [ [location1, location2, location3] ]
         let splitTimes = locationSegments.splitTimes(distanceUnit: .kilometers, speedUnit: .minutesPerKilometer)
         XCTAssertEqual(2, splitTimes?.count)
-        XCTAssertEqual("5:00", splitTimes?.first)
-        XCTAssertEqual("6:00", splitTimes?.last)
+        XCTAssertEqual("05:00", splitTimes?.first)
+        XCTAssertEqual("06:00", splitTimes?.last)
     }
 
     
