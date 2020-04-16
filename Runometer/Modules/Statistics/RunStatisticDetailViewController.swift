@@ -75,7 +75,7 @@ class RunStatisticDetailViewController: UIViewController {
         
         segmentedControl.alpha = 0
         closeButton.alpha = 0
-
+        tableView.removeTrailingSeparators()
     }
     
     override func viewDidAppear(_ animated: Bool) {
