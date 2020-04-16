@@ -35,13 +35,13 @@ class RunStatisticsTextProviderTests: XCTestCase {
     func testAveragePaceStatisticsText_withAveragePaceFasterThanAveragePaceOfSavedRuns_returnsFasterThanAveragePaceText() {
         let averagePace = 200
         let statisticsText = sut.averagePaceStatisticsText(for: averagePace)
-        XCTAssertEqual(statisticsText, "1:40 faster than your average pace!")
+        XCTAssertEqual(statisticsText, "01:40 faster than your average pace!")
     }
 
     func testAveragePaceStatisticsText_withAveragePaceSlowerThanAveragePaceOfSavedRuns_returnsSlowerThanAveragePaceText() {
         let averagePace = 400
         let statisticsText = sut.averagePaceStatisticsText(for: averagePace)
-        XCTAssertEqual(statisticsText, "1:40 slower than your average pace!")
+        XCTAssertEqual(statisticsText, "01:40 slower than your average pace!")
     }
 
     func testAveragePaceStatisticsText_withAveragePaceTheSameAsAveragePaceOfSavedRuns_returnsSameAveragePaceText() {
@@ -56,14 +56,14 @@ class RunStatisticsTextProviderTests: XCTestCase {
         let averagePace = 200
         let range = Meters(6000)...Meters(10000)
         let statisticsText = sut.averagePaceStatisticsText(for: averagePace, withinDistanceRange: range)
-        XCTAssertEqual(statisticsText, "1:40 faster than your average pace for 6 - 10 km runs!")
+        XCTAssertEqual(statisticsText, "01:40 faster than your average pace for 6 - 10 km runs!")
     }
 
     func testAveragePaceStatisticsTextForRunWithinRange_withPaceSlowerThanAveragePaceOfRunsWithinRange_returnsSlowerThanAveragePaceText() {
         let averagePace = 400
         let range = Meters(6000)...Meters(10000)
         let statisticsText = sut.averagePaceStatisticsText(for: averagePace, withinDistanceRange: range)
-        XCTAssertEqual(statisticsText, "1:40 slower than your average pace for 6 - 10 km runs!")
+        XCTAssertEqual(statisticsText, "01:40 slower than your average pace for 6 - 10 km runs!")
     }
 
     func testAveragePaceStatisticsTextForRunWithinRange_withPaceEqualToAveragePaceOfRunsWithinRange_returnsSameAsAveragePaceText() {
@@ -151,7 +151,7 @@ class RunStatisticsTextProviderTests: XCTestCase {
         let distance: Meters = 10001
         sut = RunStatisticsTextProvider(settings: settingsMock, runs: RunMock.runsWithLongestRunOneMeterLongerThanNextLongestRun())
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
-        XCTAssertEqual(statisticsText, "Your longest run by .001 kilometers!")
+        XCTAssertEqual(statisticsText, "Your longest run by 0.001 kilometers!")
     }
 
     func testAllDistancesStatisticsText_withDistanceThreeKilometersShorterThanNextShortestDistance_returnsShortestDistanceEverStringWithPluralUnitName() {
@@ -164,7 +164,7 @@ class RunStatisticsTextProviderTests: XCTestCase {
         let distance: Meters = 999
         sut = RunStatisticsTextProvider(settings: settingsMock, runs: RunMock.runsWithShortestRunOneMeterShorterThanNextShortestRun())
         let statisticsText = sut.allDistancesStatisticsText(for: distance)
-        XCTAssertEqual(statisticsText, "Your shortest run by .001 kilometers!")
+        XCTAssertEqual(statisticsText, "Your shortest run by 0.001 kilometers!")
     }
 
     func testAllDistancesStatisticsText_withDistanceShorterThanNextLongestDistance_returnsNumberOfKilometersShorterThanLongestRunText() {
@@ -213,19 +213,19 @@ class RunStatisticsTextProviderTests: XCTestCase {
     func testAllPacesStatisticsText_withFastestPace_returnsFastestRunString() {
         let pace: Seconds = 200
         let statisticsText = sut.allPacesStatisticsText(for: pace)
-        XCTAssertEqual(statisticsText, "Your fastest pace by 1:40!")
+        XCTAssertEqual(statisticsText, "Your fastest pace by 01:40!")
     }
 
     func testAllPacesStatisticsText_withSlowestPace_returnsSlowestRunString() {
         let pace: Seconds = 400
         let statisticsText = sut.allPacesStatisticsText(for: pace)
-        XCTAssertEqual(statisticsText, "Your slowest pace by 1:40!")
+        XCTAssertEqual(statisticsText, "Your slowest pace by 01:40!")
     }
 
     func testAllPacesStatisticsText_withPaceBetweenFastestAndSlowestPace_returnsDifferenceInPaceBetweenRunAndFastestRunString() {
         let pace: Seconds = 300
         let statisticsText = sut.allPacesStatisticsText(for: pace)
-        XCTAssertEqual(statisticsText, "1:40 slower than your fastest pace.")
+        XCTAssertEqual(statisticsText, "01:40 slower than your fastest pace.")
     }
 
     func testAllPacesStatisticsText_withOneSavedRun_returnsFastestPaceText() {
