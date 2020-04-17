@@ -1,7 +1,7 @@
 # Runometer
 Runometer is a simple running app that is easy to use. It has all the essential features a running app needs and is completely free and with no ads. No account is needed so you will never have to sign up or sign in to use the app.
 
-## Features:
+## Features
 
 ### Track
 Use Runometer to track your run in an easy way.
