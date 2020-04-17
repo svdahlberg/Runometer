@@ -12,6 +12,6 @@ After a finished run Runometer shows you how you did, compared to your previousl
 ### Statistics
 View statistics of distance, time, and pace over time to find out how you are progressing.
 
-Runometer lets you read your runs saved in Apple Health, so that you can analyse and view statistics of runs recorded with other workout apps that write to Apple Health.
+Runometer lets you read your runs saved in Apple Health, so that you can analyze and view statistics of runs recorded with other workout apps that write to Apple Health.
 
 App Store: https://apps.apple.com/us/app/runometer/id1038211354
