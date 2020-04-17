@@ -6,7 +6,7 @@ Runometer is a simple running app that is easy to use. It has all the essential 
 ### Track
 Use Runometer to track your run in an easy way.
 
-### Analyse
+### Analyze
 After a finished run Runometer shows you how you did, compared to your previously recorded workouts.
 
 ### Statistics
