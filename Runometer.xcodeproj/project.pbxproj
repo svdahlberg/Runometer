@@ -60,7 +60,9 @@
 		B27208A0213E6B15009DCE7D /* RunRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089F213E6B15009DCE7D /* RunRating.swift */; };
 		B27208A421402922009DCE7D /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27208A321402922009DCE7D /* HealthKit.framework */; };
 		B27208A621402993009DCE7D /* HealthKitRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27208A521402993009DCE7D /* HealthKitRunProvider.swift */; };
+		B2729FDF244A3934007E4FCB /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2729FDE244A3934007E4FCB /* UIViewExtensions.swift */; };
 		B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B276ECF12015321B0036F327 /* AudioFeedbackController.swift */; };
+		B279EC9A2448CFA6009827B0 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */; };
 		B27F634D1FA5B9E700C2116F /* PastRunsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F634C1FA5B9E700C2116F /* PastRunsViewController.swift */; };
 		B27F634F1FA5BA0200C2116F /* PastRuns.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27F634E1FA5BA0200C2116F /* PastRuns.storyboard */; };
 		B27F63511FA5BFA400C2116F /* PastRunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63501FA5BFA400C2116F /* PastRunTableViewCell.swift */; };
@@ -186,7 +188,9 @@
 		B27208A121402922009DCE7D /* Runometer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runometer.entitlements; sourceTree = "<group>"; };
 		B27208A321402922009DCE7D /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		B27208A521402993009DCE7D /* HealthKitRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitRunProvider.swift; sourceTree = "<group>"; };
+		B2729FDE244A3934007E4FCB /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		B276ECF12015321B0036F327 /* AudioFeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackController.swift; sourceTree = "<group>"; };
+		B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		B27F634C1FA5B9E700C2116F /* PastRunsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunsViewController.swift; sourceTree = "<group>"; };
 		B27F634E1FA5BA0200C2116F /* PastRuns.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastRuns.storyboard; sourceTree = "<group>"; };
 		B27F63501FA5BFA400C2116F /* PastRunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunTableViewCell.swift; sourceTree = "<group>"; };
@@ -376,6 +380,8 @@
 				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
 				B25D570A2141703200BC2C0D /* RunsExtensions.swift */,
 				B25D57122142AA4300BC2C0D /* LocationSegmentsExtensions.swift */,
+				B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */,
+				B2729FDE244A3934007E4FCB /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -738,6 +744,7 @@
 				B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */,
 				B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */,
 				B2BE7B9C2148F8D600902720 /* StatisticsProvider.swift in Sources */,
+				B2729FDF244A3934007E4FCB /* UIViewExtensions.swift in Sources */,
 				B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */,
 				B25D57092141625E00BC2C0D /* HealthKitRun.swift in Sources */,
 				B2B1B18F1FC994DC00C579FE /* RunometerView.swift in Sources */,
@@ -760,6 +767,7 @@
 				B25FE7B21F8A5075001B1BF1 /* Units.swift in Sources */,
 				B25FE7AA1F88E6F7001B1BF1 /* PaceFormatter.swift in Sources */,
 				B2534BAD2146A4F300EFEBFE /* StatisticsViewController.swift in Sources */,
+				B279EC9A2448CFA6009827B0 /* UITableViewExtensions.swift in Sources */,
 				B21967A92039B05D007153D2 /* RunSection.swift in Sources */,
 				B2B055231F80D6A200292EB3 /* RunViewController.swift in Sources */,
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,

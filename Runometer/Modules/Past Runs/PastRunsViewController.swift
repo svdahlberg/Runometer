@@ -50,6 +50,7 @@ class PastRunsViewControlller: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Past Runs"
         tableView.refreshControl = refreshControl
+        tableView.removeTrailingSeparators()
         loadRuns()
     }
     

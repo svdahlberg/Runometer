@@ -14,7 +14,10 @@ class RunRatingsView: UIView {
     @IBOutlet private weak var pageControl: UIPageControl!
     
     var run: Run? {
-        didSet { setupRunRatings() }
+        didSet {
+            setupRunRatings()
+            setupPageControl()
+        }
     }
     
     private var runRatings: [RunRating] = [] {
@@ -33,6 +36,19 @@ class RunRatingsView: UIView {
                 self.runRatingsCollectionView.alpha = 1
             }
         }
+    }
+
+    private func setupPageControl() {
+        if #available(iOS 12.0, *) {
+            let isLightMode = traitCollection.userInterfaceStyle == .light
+            pageControl.pageIndicatorTintColor = isLightMode ? .gray : nil
+            pageControl.currentPageIndicatorTintColor = isLightMode ? .black : nil
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setupPageControl()
     }
     
 }

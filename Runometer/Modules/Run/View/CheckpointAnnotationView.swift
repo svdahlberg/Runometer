@@ -18,7 +18,8 @@ class CheckpointAnnotationView: MKAnnotationView {
     private var labelHeight: Int { return imageHeight - (borderWidth * 2) }
     
     private lazy var label: UILabel = {
-        let label = UILabel(frame: CGRect(x: borderWidth, y: -3, width: labelWidth, height: labelHeight))
+        let label = UILabel()
+        label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 100)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -48,6 +49,7 @@ class CheckpointAnnotationView: MKAnnotationView {
         canShowCallout = true
         
         addSubview(label)
+        label.pinToSuperview(bottom: -6)
     }
     
     required init?(coder aDecoder: NSCoder) {
