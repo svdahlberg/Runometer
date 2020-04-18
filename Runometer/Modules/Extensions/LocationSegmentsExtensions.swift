@@ -37,7 +37,7 @@ extension Array where Iterator.Element == [CLLocation] {
                 if distance >= nextCheckpoint {
                     let time = Seconds(secondLocation.timestamp.timeIntervalSince(startTime))
                     let timeSinceLastCheckpoint = Seconds(secondLocation.timestamp.timeIntervalSince(timeAtLastCheckpoint))
-                    let checkpoint = Checkpoint(distance: distance, time: time, location: secondLocation, timeSinceLastCheckpoint: timeSinceLastCheckpoint, distanceBetweenCheckpoints: distanceUnit.meters)
+                    let checkpoint = Checkpoint(distance: nextCheckpoint, time: time, location: secondLocation, timeSinceLastCheckpoint: timeSinceLastCheckpoint, distanceBetweenCheckpoints: distanceUnit.meters)
                     nextCheckpoint += distanceUnit.meters
                     timeAtLastCheckpoint = secondLocation.timestamp
                     checkpoints.append(checkpoint)
