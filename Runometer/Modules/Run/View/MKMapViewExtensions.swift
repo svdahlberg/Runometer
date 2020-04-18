@@ -54,9 +54,17 @@ extension MKMapView {
             return MKOverlayRenderer(overlay: overlay)
         }
         let renderer = MKPolylineRenderer(polyline: polyline)
-        renderer.strokeColor = .darkGray
+        renderer.strokeColor = polylineStrokeColor()
         renderer.lineWidth = 5
         return renderer
+    }
+
+    private func polylineStrokeColor() -> UIColor {
+        if #available(iOS 12.0, *) {
+            return traitCollection.userInterfaceStyle == .light ? .darkGray : .gray
+        } else {
+            return .darkGray
+        }
     }
 
 }
