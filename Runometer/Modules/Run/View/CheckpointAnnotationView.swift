@@ -19,6 +19,7 @@ class CheckpointAnnotationView: MKAnnotationView {
     
     private lazy var label: UILabel = {
         let label = UILabel()
+        label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 100)
         label.textAlignment = .center
         label.numberOfLines = 0
