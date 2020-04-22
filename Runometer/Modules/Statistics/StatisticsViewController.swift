@@ -13,44 +13,26 @@ class StatisticsViewController: UIViewController {
     private var selectedCell: RunStatisticCollectionViewCell?
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    
-    private var runStatistics: [RunStatistic]? {
-        didSet {
-            refreshControl.endRefreshing()
-            collectionView.reloadData()
-        }
-    }
-    
-    private var statistics: Statistics? {
-        didSet {
-            runStatistics = [
-                statistics?.totalDistance(),
-                statistics?.numberOfRuns(),
-                statistics?.totalDuration(),
-                statistics?.longestDistance(),
-                statistics?.fastestPace(),
-                statistics?.averageDistance(),
-                statistics?.averagePace()
-                ].compactMap { $0 }
-        }
-    }
-    
+
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(loadStatistics), for: .valueChanged)
         return refreshControl
     }()
+
+    private let viewModel = StatisticsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.refreshControl = refreshControl
-        loadStatistics()
+        viewModel.didLoadStatistics = { [weak self] in
+            self?.refreshControl.endRefreshing()
+            self?.collectionView.reloadData()
+        }
     }
     
     @objc private func loadStatistics() {
-        StatisticsProvider().statistics { [weak self] statistics in
-            self?.statistics = statistics
-        }
+        viewModel.loadStatistics()
     }
 
 }
@@ -58,19 +40,35 @@ class StatisticsViewController: UIViewController {
 extension StatisticsViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return runStatistics?.count ?? 0
+        switch section {
+        case 0: return 1
+        case 1: return viewModel.runStatistics.count
+        default: return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RunStatisticCollectionViewCell", for: indexPath) as? RunStatisticCollectionViewCell else {
+        switch indexPath.section {
+        case 0:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RunStatisticFilterCollectionViewCell", for: indexPath) as? RunStatisticFilterCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.delegate = self
+            cell.runStatisticFilter = viewModel.selectedRunStatisticFilter
+            return cell
+        case 1:
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RunStatisticCollectionViewCell", for: indexPath) as? RunStatisticCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.runStatistic = viewModel.runStatistics[indexPath.row]
+            return cell
+        default:
             return UICollectionViewCell()
         }
-        cell.runStatistic = runStatistics?[indexPath.row]
-        return cell
     }
     
 }
@@ -78,17 +76,25 @@ extension StatisticsViewController: UICollectionViewDataSource {
 extension StatisticsViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let statisticDetailViewController = storyboard?.instantiateViewController(withIdentifier: "RunStatisticDetailViewController") as? RunStatisticDetailViewController else {
-            return
+        switch indexPath.section {
+        case 0:
+            break
+        case 1:
+            guard let statisticDetailViewController = storyboard?.instantiateViewController(withIdentifier: "RunStatisticDetailViewController") as? RunStatisticDetailViewController else {
+                return
+            }
+
+            selectedCell = collectionView.cellForItem(at: indexPath) as? RunStatisticCollectionViewCell
+
+            statisticDetailViewController.runStatistic = viewModel.runStatistics[indexPath.row]
+            statisticDetailViewController.runs = viewModel.selectedRunStatisticFilter?.runs ?? []
+            statisticDetailViewController.transitioningDelegate = self
+            statisticDetailViewController.modalPresentationStyle = .fullScreen
+
+            navigationController?.present(statisticDetailViewController, animated: true)
+        default:
+            break
         }
-        
-        selectedCell = collectionView.cellForItem(at: indexPath) as? RunStatisticCollectionViewCell
-        
-        statisticDetailViewController.runStatistic = runStatistics?[indexPath.row]
-        statisticDetailViewController.transitioningDelegate = self
-        statisticDetailViewController.modalPresentationStyle = .fullScreen
-        
-        navigationController?.present(statisticDetailViewController, animated: true)
     }
     
 }
@@ -96,8 +102,15 @@ extension StatisticsViewController: UICollectionViewDelegate {
 extension StatisticsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width/2 - 16
-        return CGSize(width: width, height: width * 0.75)
+        switch indexPath.section {
+        case 0:
+            return CGSize(width: collectionView.frame.width - 32, height: 40)
+        case 1:
+            let width = collectionView.frame.width/2 - 16
+            return CGSize(width: width, height: width * 0.75)
+        default:
+            return .zero
+        }
     }
     
 }
@@ -114,6 +127,29 @@ extension StatisticsViewController: UIViewControllerTransitioningDelegate {
         let transition = RunStatisticsDetailTransition(statisticsCell: selectedCell!)
 
         return transition
+    }
+
+}
+
+extension StatisticsViewController: RunStatisticFilterCollectionViewCellDelegate {
+
+    func runStatisticFilterCollectionViewCellDidPressButton(_ runStatisticFilterCollectionViewCell: RunStatisticFilterCollectionViewCell) {
+        guard let filterNavigationController = storyboard?.instantiateViewController(withIdentifier: "FilterNavigationController") as? UINavigationController, let filterViewController = filterNavigationController.topViewController as? RunStatisticsFilterViewController else {
+            return
+        }
+
+        filterViewController.delegate = self
+        filterViewController.filters = viewModel.runStatisticFilters
+        present(filterNavigationController, animated: true)
+    }
+
+}
+
+extension StatisticsViewController: RunStatisticsFilterViewControllerDelegate {
+
+    func runStatisticsFilterViewController(_ runStatisticsFilterViewController: RunStatisticsFilterViewController, didSelect filter: RunGroup) {
+        runStatisticsFilterViewController.dismiss(animated: true)
+        viewModel.selectedRunStatisticFilter = filter
     }
 
 }
