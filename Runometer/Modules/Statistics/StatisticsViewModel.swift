@@ -25,14 +25,15 @@ class StatisticsViewModel {
     var selectedRunStatisticFilter: RunGroup? {
         didSet {
             guard let selectedRunStatisticFilter = selectedRunStatisticFilter else { return }
+            let isAllRuns = selectedRunStatisticFilter.name.lowercased() == "all runs"
             let statistics = Statistics(runs: selectedRunStatisticFilter.runs)
             runStatistics = [
                 statistics.numberOfRuns(),
                 statistics.totalDistance(),
                 statistics.totalDuration(),
-                statistics.longestDistance(),
+                isAllRuns ? statistics.longestDistance() : nil,
                 statistics.fastestPace(),
-                statistics.averageDistance(),
+                isAllRuns ? statistics.averageDistance() : nil,
                 statistics.averagePace()
                 ].compactMap { $0 }
         }
