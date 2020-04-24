@@ -5,4 +5,4 @@ install:
   - bundle install
 script:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then fastlane tests; fi'
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" && "$TRAVIS_BRANCH" = "master" ]; then fastlane beta; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_BRANCH" = "master" ]; then fastlane beta; fi'
