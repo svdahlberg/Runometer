@@ -32,23 +32,18 @@ enum StatisticsBreakdownFilter {
 
 struct StatisticsBreakdown {
     
-    let runProvider: RunProvider
+    private let runs: [Run]
     
-    init(runProvider: RunProvider = RunProvider()) {
-        self.runProvider = runProvider
+    init(runs: [Run]) {
+        self.runs = runs
     }
     
-    func statistics(of type: RunStatisticType, with filter: StatisticsBreakdownFilter, completion: @escaping ([RunStatistic]) -> Void) {
-        runProvider.runs { runs in
-            let runSections = RunSection.runSections(from: runs, titleDateFormatter: filter.titleDateFormatter)
-            
-            let statistics: [RunStatistic] = runSections.compactMap { (runSection: RunSection) in
-                Statistics(runs: runSection.runs).statistic(of: type, with: runSection.title)
-            }
-            
-            completion(statistics)
+    func statistics(of type: RunStatisticType, with filter: StatisticsBreakdownFilter) -> [RunStatistic] {
+        let runSections = RunSection.runSections(from: runs, titleDateFormatter: filter.titleDateFormatter)
+
+        return runSections.compactMap { (runSection: RunSection) in
+            Statistics(runs: runSection.runs).statistic(of: type, with: runSection.title)
         }
-        
     }
     
 }
@@ -62,6 +57,7 @@ class RunStatisticDetailViewController: UIViewController {
     @IBOutlet private weak var closeButton: UIButton!
     
     var runStatistic: RunStatistic?
+    var runs: [Run] = []
     
     private var runStatisticsBreakdown: [RunStatistic]? {
         didSet { tableView.reloadData() }
@@ -88,9 +84,7 @@ class RunStatisticDetailViewController: UIViewController {
     
     private func loadStatisticsBreakdown() {
         guard let runStatistic = runStatistic else { return }
-        StatisticsBreakdown().statistics(of: runStatistic.type, with: selectedFilter) { [weak self] runStatistics in
-            self?.runStatisticsBreakdown = runStatistics
-        }
+        runStatisticsBreakdown = StatisticsBreakdown(runs: runs).statistics(of: runStatistic.type, with: selectedFilter)
     }
 
     @IBAction private func didPressCloseButton(_ sender: Any) {

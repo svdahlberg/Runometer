@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -65,6 +66,35 @@
                                             <outlet property="runStatisticView" destination="56N-6F-1s1" id="gm0-fG-Lce"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="RunStatisticFilterCollectionViewCell" id="gbh-jq-2Tj" customClass="RunStatisticFilterCollectionViewCell" customModule="Runometer" customModuleProvider="target">
+                                        <rect key="frame" x="194" y="16" width="173" height="166"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gmz-yQ-oMX">
+                                            <rect key="frame" x="0.0" y="0.0" width="173" height="166"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dsQ-Xm-tOK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="173" height="166"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Show statistics for all runs">
+                                                        <color key="titleColor" name="Orange"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didPressButton:" destination="gbh-jq-2Tj" eventType="touchUpInside" id="kLc-nZ-mP5"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="dsQ-Xm-tOK" secondAttribute="trailing" id="Q5h-UK-aZD"/>
+                                                <constraint firstItem="dsQ-Xm-tOK" firstAttribute="top" secondItem="gmz-yQ-oMX" secondAttribute="top" id="SI6-gW-T2Y"/>
+                                                <constraint firstItem="dsQ-Xm-tOK" firstAttribute="leading" secondItem="gmz-yQ-oMX" secondAttribute="leading" id="nBL-UR-Wv9"/>
+                                                <constraint firstAttribute="bottom" secondItem="dsQ-Xm-tOK" secondAttribute="bottom" id="rok-ib-gfN"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="button" destination="dsQ-Xm-tOK" id="D7P-2t-KTq"/>
+                                        </connections>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="xfq-Ah-0ch" id="LPz-TM-hb4"/>
@@ -89,6 +119,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sW-qR-Xox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="823.20000000000005" y="152.47376311844079"/>
+        </scene>
+        <!--Run Statistics Filter View Controller-->
+        <scene sceneID="p6P-nG-BZJ">
+            <objects>
+                <viewController storyboardIdentifier="RunStatisticsFilterViewController" id="L9P-7U-AMT" customClass="RunStatisticsFilterViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9lJ-lB-o6t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Hn-M6-esn">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RunStatisticFilterTableViewCell" textLabel="sJs-Ft-c58" style="IBUITableViewCellStyleDefault" id="ofO-pk-eqb">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ofO-pk-eqb" id="CGC-XJ-cQM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sJs-Ft-c58">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="L9P-7U-AMT" id="diC-pP-e1h"/>
+                                    <outlet property="delegate" destination="L9P-7U-AMT" id="8cJ-2h-bfw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5Hn-M6-esn" secondAttribute="bottom" id="NGd-8G-M4a"/>
+                            <constraint firstItem="5Hn-M6-esn" firstAttribute="top" secondItem="9U8-iH-LXh" secondAttribute="top" id="Rjn-gg-9VN"/>
+                            <constraint firstItem="5Hn-M6-esn" firstAttribute="trailing" secondItem="9U8-iH-LXh" secondAttribute="trailing" id="VU8-Nh-BdY"/>
+                            <constraint firstItem="5Hn-M6-esn" firstAttribute="leading" secondItem="9U8-iH-LXh" secondAttribute="leading" id="ryZ-NK-zk8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9U8-iH-LXh"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="U9G-5K-xva"/>
+                    <connections>
+                        <outlet property="tableView" destination="5Hn-M6-esn" id="YuC-YY-Pgk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OnT-VL-NkN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1764" y="889.65517241379314"/>
         </scene>
         <!--Run Statistic Detail View Controller-->
         <scene sceneID="c5t-ys-2gT">
@@ -254,6 +338,24 @@
             </objects>
             <point key="canvasLocation" x="-116" y="152.47376311844079"/>
         </scene>
+        <!--Runometer Navigation Controller-->
+        <scene sceneID="tbk-bI-X5s">
+            <objects>
+                <navigationController storyboardIdentifier="FilterNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Grq-49-yZj" customClass="RunometerNavigationController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b9o-Cd-vfd">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="L9P-7U-AMT" kind="relationship" relationship="rootViewController" id="ti0-hC-IEW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9st-PH-FaF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821.60000000000002" y="889.65517241379314"/>
+        </scene>
     </scenes>
     <resources>
         <image name="close" width="16.666666030883789" height="16.666666030883789"/>
@@ -261,8 +363,11 @@
         <namedColor name="Background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="Orange">
+            <color red="1" green="0.60392156862745094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="SecondaryBackground">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
