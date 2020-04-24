@@ -18,7 +18,9 @@ default_platform(:ios)
 platform :ios do
   desc "Run all tests"
   lane :tests do
-    run_tests(scheme: "Runometer")
+    run_tests(
+      devices: ["iPhone 11 Pro"],
+      scheme: "Runometer")
   end
 
   desc "Push a new beta build to TestFlight"
