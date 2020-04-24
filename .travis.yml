@@ -4,4 +4,5 @@ language: swift
 install:
   - bundle install
 script:
-  - fastlane tests
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then fastlane tests; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" && "$TRAVIS_BRANCH" = "master" ]; then fastlane beta; fi'
