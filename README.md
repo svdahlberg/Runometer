@@ -1,4 +1,6 @@
 # Runometer
+[![Build Status](https://travis-ci.org/svdahlberg/Runometer.svg?branch=master)](https://travis-ci.org/svdahlberg/Runometer)
+
 Runometer is a simple running app that is easy to use. It has all the essential features a running app needs and is completely free and with no ads. No account is needed so you will never have to sign up or sign in to use the app.
 
 ## Features
