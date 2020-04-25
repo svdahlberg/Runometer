@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -217,6 +216,12 @@
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="d9x-Ii-MNM"/>
                             </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpi-Ee-Exd">
+                                <rect key="frame" x="0.0" y="247" width="375" height="531"/>
+                                <connections>
+                                    <segue destination="WT8-8i-wFF" kind="embed" id="8V4-Kc-aKd"/>
+                                </connections>
+                            </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-cN-1LY">
                                 <rect key="frame" x="0.0" y="247" width="375" height="531"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -290,33 +295,59 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kkr-2T-Uqv">
+                                <rect key="frame" x="329" y="55.666666666666657" width="30" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="List">
+                                    <color key="titleColor" name="Orange"/>
+                                </state>
+                                <connections>
+                                    <action selector="didPressToggleViewButton:" destination="KFL-Mn-Zvv" eventType="touchUpInside" id="QHD-P8-N2U"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="89u-Dw-Eh0" secondAttribute="trailing" id="0PS-TF-AUv"/>
+                            <constraint firstItem="tpi-Ee-Exd" firstAttribute="top" secondItem="89u-Dw-Eh0" secondAttribute="bottom" id="3nm-8v-aH3"/>
                             <constraint firstItem="89u-Dw-Eh0" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="CJS-2o-qjR"/>
                             <constraint firstItem="NV1-Mm-e3b" firstAttribute="top" secondItem="MwP-rD-Um5" secondAttribute="top" constant="16" id="Hus-SE-7Xg"/>
+                            <constraint firstItem="tpi-Ee-Exd" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="IOI-g5-idU"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="Ib9-v5-H9U"/>
                             <constraint firstItem="NV1-Mm-e3b" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" constant="16" id="Jk9-kb-Njk"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="top" secondItem="89u-Dw-Eh0" secondAttribute="bottom" id="K0k-6a-fob"/>
+                            <constraint firstItem="Kkr-2T-Uqv" firstAttribute="centerY" secondItem="uTP-vn-NcK" secondAttribute="centerY" id="RsE-NY-So8"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="trailing" secondItem="MwP-rD-Um5" secondAttribute="trailing" id="Wua-va-MSr"/>
+                            <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="tpi-Ee-Exd" secondAttribute="trailing" id="iAd-e9-qvr"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="bottom" secondItem="MwP-rD-Um5" secondAttribute="bottom" id="il9-Xk-aGg"/>
+                            <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="Kkr-2T-Uqv" secondAttribute="trailing" constant="16" id="kzF-LV-f9U"/>
                             <constraint firstItem="89u-Dw-Eh0" firstAttribute="top" secondItem="iIC-Ym-hnc" secondAttribute="top" id="mtt-0w-Zai"/>
+                            <constraint firstItem="MwP-rD-Um5" firstAttribute="bottom" secondItem="tpi-Ee-Exd" secondAttribute="bottom" id="ylP-bw-ndT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MwP-rD-Um5"/>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="closeButton" destination="uTP-vn-NcK" id="p9q-B4-eWJ"/>
+                        <outlet property="chartContainerView" destination="tpi-Ee-Exd" id="YBv-nX-PKx"/>
+                        <outlet property="closeButtonContainerView" destination="NV1-Mm-e3b" id="cwv-i7-7yZ"/>
                         <outlet property="segmentedControl" destination="t8D-e5-c58" id="wph-K0-RWi"/>
                         <outlet property="statisticView" destination="G8g-Fk-Zqh" id="0m9-lk-CUY"/>
                         <outlet property="statisticsBackgroundView" destination="89u-Dw-Eh0" id="KbT-DE-8Rj"/>
                         <outlet property="tableView" destination="Knq-cN-1LY" id="75w-cy-pWx"/>
+                        <outlet property="toggleViewButton" destination="Kkr-2T-Uqv" id="SR0-B4-MsI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kGJ-vb-5XX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1669.5999999999999" y="151.57421289355324"/>
+        </scene>
+        <!--Chart View Hosting Controller-->
+        <scene sceneID="pST-Su-Hwt">
+            <objects>
+                <hostingController id="WT8-8i-wFF" customClass="ChartViewHostingController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nXq-Pf-MfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2537" y="152"/>
         </scene>
         <!--Statistics-->
         <scene sceneID="fYa-dJ-fVS">

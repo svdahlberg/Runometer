@@ -34,6 +34,8 @@
 		B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */; };
 		B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */; };
 		B2562CEF2451029C0011B534 /* RunRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */; };
+		B2562CF1245381B00011B534 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CF0245381B00011B534 /* ChartView.swift */; };
+		B2562CF42453A2740011B534 /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
 		B25D5703214151AF00BC2C0D /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
 		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
 		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
@@ -55,6 +57,7 @@
 		B2618932214A982D008BA04A /* RunStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618931214A982C008BA04A /* RunStatistic.swift */; };
 		B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */; };
 		B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */; };
+		B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2632E842454DAB300E0645F /* ChartViewHostingController.swift */; };
 		B2720899213D47E1009DCE7D /* RunRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */; };
 		B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089A213D6380009DCE7D /* RunRatingsView.swift */; };
 		B272089E213E699F009DCE7D /* RunRatingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089D213E699F009DCE7D /* RunRatingProvider.swift */; };
@@ -167,6 +170,7 @@
 		B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedRunObjectTests.swift; sourceTree = "<group>"; };
 		B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSegmentExtensionsTests.swift; sourceTree = "<group>"; };
 		B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepositoryTests.swift; sourceTree = "<group>"; };
+		B2562CF0245381B00011B534 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B25D5702214151AF00BC2C0D /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
 		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		B2618931214A982C008BA04A /* RunStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatistic.swift; sourceTree = "<group>"; };
 		B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsDetailTransition.swift; sourceTree = "<group>"; };
 		B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticDetailViewController.swift; sourceTree = "<group>"; };
+		B2632E842454DAB300E0645F /* ChartViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHostingController.swift; sourceTree = "<group>"; };
 		B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B272089A213D6380009DCE7D /* RunRatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingsView.swift; sourceTree = "<group>"; };
 		B272089D213E699F009DCE7D /* RunRatingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingProvider.swift; sourceTree = "<group>"; };
@@ -304,6 +309,8 @@
 			children = (
 				B2534BAA2146A4E300EFEBFE /* Statistics.storyboard */,
 				B2534BAC2146A4F300EFEBFE /* StatisticsViewController.swift */,
+				B2562CF0245381B00011B534 /* ChartView.swift */,
+				B2632E842454DAB300E0645F /* ChartViewHostingController.swift */,
 				B273D871244D273B00E373F8 /* StatisticsViewModel.swift */,
 				B2DE408F244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift */,
 				B273D873244D27AC00E373F8 /* RunStatisticsFilterViewController.swift */,
@@ -772,6 +779,7 @@
 				B2DE4090244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift in Sources */,
 				B24B3A3023D3BDAA007851A3 /* AppCoordinator.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
+				B2562CF42453A2740011B534 /* RunMock.swift in Sources */,
 				B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */,
 				B28AF1D02448B134005C288E /* RunometerVisualEffectView.swift in Sources */,
 				B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */,
@@ -787,6 +795,7 @@
 				B273D876244E132B00E373F8 /* StringExtensions.swift in Sources */,
 				B273D872244D273B00E373F8 /* StatisticsViewModel.swift in Sources */,
 				B25FE7B21F8A5075001B1BF1 /* Units.swift in Sources */,
+				B2562CF1245381B00011B534 /* ChartView.swift in Sources */,
 				B25FE7AA1F88E6F7001B1BF1 /* PaceFormatter.swift in Sources */,
 				B2534BAD2146A4F300EFEBFE /* StatisticsViewController.swift in Sources */,
 				B279EC9A2448CFA6009827B0 /* UITableViewExtensions.swift in Sources */,
@@ -794,6 +803,7 @@
 				B2B055231F80D6A200292EB3 /* RunViewController.swift in Sources */,
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,
 				B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */,
+				B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
 				B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */,
@@ -1020,6 +1030,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FJG293K5T8;
 				INFOPLIST_FILE = Runometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker;
@@ -1037,6 +1048,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FJG293K5T8;
 				INFOPLIST_FILE = Runometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker;
