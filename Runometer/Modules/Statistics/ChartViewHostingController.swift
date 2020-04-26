@@ -11,14 +11,14 @@ import SwiftUI
 
 class ChartViewHostingController: UIHostingController<ChartView> {
 
-    var chartData: [ChartData] = [] {
+    var chartData: [ChartDataSection] = [] {
         didSet {
-            rootView = ChartView(data: chartData)
+            rootView = ChartView(dataSections: chartData)
         }
     }
 
     @objc required dynamic init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder, rootView: ChartView(data: []))
+        super.init(coder: aDecoder, rootView: ChartView(dataSections: []))
     }
     
 }

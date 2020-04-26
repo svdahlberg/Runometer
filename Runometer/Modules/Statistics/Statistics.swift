@@ -33,6 +33,7 @@ class Statistics {
     private lazy var paces: [Seconds] = runs.map { $0.averagePace() }
     private lazy var durations: [Seconds] = runs.map { $0.duration }
     private lazy var totalDistanceValue: Meters = distances.reduce(0, +)
+    private lazy var date: Date = runs[0].endDate
     
     func statistic(of type: RunStatisticType, with title: String) -> RunStatistic? {
         switch type {
@@ -48,38 +49,38 @@ class Statistics {
     
     func totalDistance(with title: String = "Total Distance") -> RunStatistic {
         let totalDistance = distances.reduce(0, +)
-        return RunStatistic(value: totalDistance, title: title, unitType: .distance, type: .totalDistance)
+        return RunStatistic(value: totalDistance, title: title, date: date, unitType: .distance, type: .totalDistance)
     }
     
     func numberOfRuns(with title: String = "Number of Runs") -> RunStatistic {
-        return RunStatistic(value: Double(runs.count), title: title, unitType: .count, type: .numberOfRuns)
+        return RunStatistic(value: Double(runs.count), title: title, date: date, unitType: .count, type: .numberOfRuns)
     }
     
     func totalDuration(with title: String = "Total Duration") -> RunStatistic {
         let totalDuration = durations.reduce(0, +)
-        return RunStatistic(value: Double(totalDuration), title: title, unitType: .time, type: .totalDuration)
+        return RunStatistic(value: Double(totalDuration), title: title, date: date, unitType: .time, type: .totalDuration)
     }
     
     func longestDistance(with title: String = "Longest Run") -> RunStatistic? {
         guard let longestDistance = distances.max() else { return nil }
-        return RunStatistic(value: longestDistance, title: title, unitType: .distance, type: .longestDistance)
+        return RunStatistic(value: longestDistance, title: title, date: date, unitType: .distance, type: .longestDistance)
     }
     
     func fastestPace(with title: String = "Fastest Pace") -> RunStatistic? {
         guard let fastestPace = paces.min() else { return nil }
-        return RunStatistic(value: Double(fastestPace), title: title, unitType: .speed, type: .fastestPace)
+        return RunStatistic(value: Double(fastestPace), title: title, date: date, unitType: .speed, type: .fastestPace)
     }
     
     func averageDistance(with title: String = "Average Distance") -> RunStatistic? {
         guard runs.count > 0 else { return nil }
         let averageDistance = totalDistanceValue / Double(runs.count)
-        return RunStatistic(value: averageDistance, title: title, unitType: .distance, type: .averageDistance)
+        return RunStatistic(value: averageDistance, title: title, date: date, unitType: .distance, type: .averageDistance)
     }
     
     func averagePace(with title: String = "Average Pace") -> RunStatistic? {
         guard runs.count > 0 else { return nil }
         let averagePace = paces.reduce(0, +) / runs.count
-        return RunStatistic(value: Double(averagePace), title: title, unitType: .speed, type: .averagePace)
+        return RunStatistic(value: Double(averagePace), title: title, date: date, unitType: .speed, type: .averagePace)
     }
     
 }

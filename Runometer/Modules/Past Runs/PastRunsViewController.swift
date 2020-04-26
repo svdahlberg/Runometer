@@ -27,15 +27,9 @@ class PastRunsViewControlller: UIViewController {
         return refreshControl
     }()
     
-    private lazy var titleDateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy"
-        return dateFormatter
-    }()
-    
     private var tableViewSections: [RunSection]? {
         guard let runs = runs else { return nil }
-        return RunSection.runSections(from: runs, filter: .month, titleDateFormatter: titleDateFormatter)
+        return RunSection.runSections(from: runs, filter: .month)
     }
     
     private func tableViewSection(for section: Int) -> RunSection? {

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-@testable import Runometer
 import CoreLocation
 
 class RunMock: Run {

@@ -13,37 +13,41 @@ struct ChartData: Hashable {
     let title: String
 }
 
+struct ChartDataSection: Hashable {
+    let title: String?
+    let data: [ChartData]
+}
+
 struct ChartView: View {
 
-    let data: [ChartData]
+    let dataSections: [ChartDataSection]
 
-    init(data: [ChartData]) {
-        self.data = data
+    init(dataSections: [ChartDataSection]) {
+        self.dataSections = dataSections
     }
 
     var body: some View {
         GeometryReader { geometry in
-//            Rectangle()
-//                .opacity(0.3)
-//                .frame(width: geometry.size.width,
-//                       height: geometry.size.height / 2,
-//                       alignment: .center)
-//            Path(CGRect(x: 0, y: 0, width: geometry.size.width, height: 1))
-//            Path(CGRect(x: 0, y: geometry.size.height / 7.5, width: geometry.size.width, height: 1))
-//            Path(CGRect(x: 0, y: geometry.size.height / 4, width: geometry.size.width, height: 1))
-//            Path(CGRect(x: 0, y: geometry.size.height / 2.5, width: geometry.size.width, height: 1))
-//            Path(CGRect(x: 0, y: geometry.size.height / 2, width: geometry.size.width, height: 1))
             ScrollView(.horizontal, showsIndicators: true) {
                 HStack(alignment: .bottom, spacing: 10) {
-                    ForEach(self.data, id: \.self) { data in
-                        VStack(alignment: .center, spacing: 10) {
-                            Rectangle()
-                                .frame(width: 25,
-                                       height: self.height(of: data, geometry: geometry),
-                                       alignment: .bottom)
-                                .cornerRadius(2)
-                                .foregroundColor(Color(Colors.orange))
-                            Text(data.title)
+                    ForEach(self.dataSections, id: \.self) { section in
+                        VStack(alignment: .leading, spacing: 5) {
+                            HStack(alignment: .bottom) {
+                                ForEach(section.data, id: \.self) { data in
+                                    VStack(alignment: .center, spacing: 10) {
+                                        Rectangle()
+                                            .frame(width: 25,
+                                                   height: self.height(of: data, geometry: geometry),
+                                                   alignment: .bottom)
+                                            .cornerRadius(2)
+                                            .foregroundColor(Color(Colors.orange))
+                                        Text(data.title)
+                                    }
+                                }
+                            }
+                            if section.title != nil {
+                                Text(section.title!)
+                            }
                         }
                     }
                 }
@@ -52,7 +56,8 @@ struct ChartView: View {
     }
 
     private func height(of data: ChartData, geometry: GeometryProxy) -> CGFloat {
-        guard let maxDataValue = self.data.map({ $0.value }).max() else { return 0 }
+        let allData = dataSections.flatMap { $0.data }
+        guard let maxDataValue = allData.map({ $0.value }).max() else { return 0 }
         let maxHeight = CGFloat(geometry.size.height / 2)
         let heightPerUnit = maxHeight / CGFloat(maxDataValue)
         return CGFloat(data.value) * heightPerUnit
@@ -62,28 +67,30 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let runs = [
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 1)),
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 60)),
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 60)),
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 60)),
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 60)),
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 120)),
-            RunMock(distance: 5000, duration: 1500, startDate: Date(), endDate: Date(timeIntervalSince1970: 86400 * 120))
-        ]
-
-        return ChartView.create(from: runs, statisticType: .numberOfRuns, filter: .month)
+        ChartView(
+            dataSections: [
+                ChartDataSection(
+                    title: "2019",
+                    data: [
+                        ChartData(value: 19, title: "Jun"),
+                        ChartData(value: 22, title: "Jul"),
+                        ChartData(value: 21, title: "Aug"),
+                        ChartData(value: 15, title: "Sep"),
+                        ChartData(value: 18, title: "Oct"),
+                        ChartData(value: 14, title: "Nov"),
+                        ChartData(value: 13, title: "Dec")
+                    ]
+                ),
+                ChartDataSection(
+                    title: "2020",
+                    data: [
+                        ChartData(value: 10, title: "Jan"),
+                        ChartData(value: 13, title: "Feb"),
+                        ChartData(value: 12, title: "Mar"),
+                        ChartData(value: 13, title: "Apr")
+                    ]
+                )
+            ]
+        )
     }
-}
-
-extension ChartView {
-
-    static func create(from runs: [Run], statisticType: RunStatisticType, filter: StatisticsBreakdownFilter) -> ChartView {
-        let statistics = StatisticsBreakdown(runs: runs).chartStatistics(of: statisticType, with: filter)
-        let data = statistics.map {
-            return ChartData(value: $0.value, title: $0.title)
-        }
-        return ChartView(data: data.reversed())
-    }
-
 }
