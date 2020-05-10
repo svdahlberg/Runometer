@@ -307,7 +307,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="closeButton" destination="uTP-vn-NcK" id="p9q-B4-eWJ"/>
+                        <outlet property="closeButtonContainerView" destination="NV1-Mm-e3b" id="QgL-bj-zA1"/>
                         <outlet property="segmentedControl" destination="t8D-e5-c58" id="wph-K0-RWi"/>
                         <outlet property="statisticView" destination="G8g-Fk-Zqh" id="0m9-lk-CUY"/>
                         <outlet property="statisticsBackgroundView" destination="89u-Dw-Eh0" id="KbT-DE-8Rj"/>

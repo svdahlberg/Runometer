@@ -54,8 +54,8 @@ class RunStatisticDetailViewController: UIViewController {
     @IBOutlet private weak var statisticView: RunStatisticView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
-    @IBOutlet private weak var closeButton: UIButton!
-    
+    @IBOutlet private weak var closeButtonContainerView: UIVisualEffectView!
+
     var runStatistic: RunStatistic?
     var runs: [Run] = []
     
@@ -70,7 +70,7 @@ class RunStatisticDetailViewController: UIViewController {
         loadStatisticsBreakdown()
         
         segmentedControl.alpha = 0
-        closeButton.alpha = 0
+        closeButtonContainerView.alpha = 0
         tableView.removeTrailingSeparators()
     }
     
@@ -78,7 +78,7 @@ class RunStatisticDetailViewController: UIViewController {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 0.15) {
             self.segmentedControl.alpha = 1
-            self.closeButton.alpha = 1
+            self.closeButtonContainerView.alpha = 1
         }
     }
     
