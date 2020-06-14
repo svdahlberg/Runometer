@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: implement CaseIterable from Swift 4
 enum RunStatisticType {
     case averageDistance
     case totalDistance
@@ -17,6 +16,19 @@ enum RunStatisticType {
     case longestDistance
     case fastestPace
     case averagePace
+
+    var unitType: UnitType {
+        switch self {
+        case .averageDistance, .totalDistance, .longestDistance:
+            return .distance
+        case .totalDuration:
+            return .time
+        case .averagePace, .fastestPace:
+            return .speed
+        case .numberOfRuns:
+            return .count
+        }
+    }
 }
 
 class Statistics {

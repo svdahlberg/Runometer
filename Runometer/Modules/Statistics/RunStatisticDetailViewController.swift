@@ -122,7 +122,10 @@ class RunStatisticDetailViewController: UIViewController {
     private var runStatisticSections: [RunStatisticSection]? {
         didSet {
             tableView.reloadData()
-            chartViewHostingController?.chartData = self.chartData()
+            chartViewHostingController?.chartModel = ChartModel(
+                dataSections: self.chartData(),
+                valueFormatter: self.chartValueFormatter()
+            )
         }
     }
 
@@ -184,9 +187,29 @@ class RunStatisticDetailViewController: UIViewController {
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
         return statistics.map {
             ChartDataSection(title: $0.title, data: $0.runStatistics.map {
-                ChartData(value: $0.value, title: $0.title)
+                ChartData(
+                    value: $0.value,
+                    title: $0.title
+                )
             }.reversed())
         }.reversed()
+    }
+
+    private func chartValueFormatter() -> (Double) -> String {
+        guard let unitType = runStatistic?.type.unitType else {
+            return { _ in "" }
+        }
+
+        switch unitType {
+        case .distance:
+            return { value in DistanceFormatter.format(distance: value) ?? "" }
+        case .speed:
+            return { value in PaceFormatter.format(pace: Seconds(value)) ?? "" }
+        case .time:
+            return { value in TimeFormatter.format(time: Seconds(value)) ?? "" }
+        case .count:
+            return { value in String(Int(value)) }
+        }
     }
 
     @IBAction private func didPressCloseButton(_ sender: Any) {

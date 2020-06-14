@@ -217,7 +217,10 @@
                                 <viewLayoutGuide key="safeArea" id="d9x-Ii-MNM"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpi-Ee-Exd">
-                                <rect key="frame" x="0.0" y="247" width="375" height="531"/>
+                                <rect key="frame" x="0.0" y="362.66666666666674" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="y0Y-J5-VEN"/>
+                                </constraints>
                                 <connections>
                                     <segue destination="WT8-8i-wFF" kind="embed" id="8V4-Kc-aKd"/>
                                 </connections>
@@ -309,7 +312,6 @@
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="89u-Dw-Eh0" secondAttribute="trailing" id="0PS-TF-AUv"/>
-                            <constraint firstItem="tpi-Ee-Exd" firstAttribute="top" secondItem="89u-Dw-Eh0" secondAttribute="bottom" id="3nm-8v-aH3"/>
                             <constraint firstItem="89u-Dw-Eh0" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="CJS-2o-qjR"/>
                             <constraint firstItem="NV1-Mm-e3b" firstAttribute="top" secondItem="MwP-rD-Um5" secondAttribute="top" constant="16" id="Hus-SE-7Xg"/>
                             <constraint firstItem="tpi-Ee-Exd" firstAttribute="leading" secondItem="MwP-rD-Um5" secondAttribute="leading" id="IOI-g5-idU"/>
@@ -318,11 +320,11 @@
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="top" secondItem="89u-Dw-Eh0" secondAttribute="bottom" id="K0k-6a-fob"/>
                             <constraint firstItem="Kkr-2T-Uqv" firstAttribute="centerY" secondItem="uTP-vn-NcK" secondAttribute="centerY" id="RsE-NY-So8"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="trailing" secondItem="MwP-rD-Um5" secondAttribute="trailing" id="Wua-va-MSr"/>
+                            <constraint firstItem="tpi-Ee-Exd" firstAttribute="centerY" secondItem="Knq-cN-1LY" secondAttribute="centerY" id="c0l-tR-1jd"/>
                             <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="tpi-Ee-Exd" secondAttribute="trailing" id="iAd-e9-qvr"/>
                             <constraint firstItem="Knq-cN-1LY" firstAttribute="bottom" secondItem="MwP-rD-Um5" secondAttribute="bottom" id="il9-Xk-aGg"/>
                             <constraint firstItem="MwP-rD-Um5" firstAttribute="trailing" secondItem="Kkr-2T-Uqv" secondAttribute="trailing" constant="16" id="kzF-LV-f9U"/>
                             <constraint firstItem="89u-Dw-Eh0" firstAttribute="top" secondItem="iIC-Ym-hnc" secondAttribute="top" id="mtt-0w-Zai"/>
-                            <constraint firstItem="MwP-rD-Um5" firstAttribute="bottom" secondItem="tpi-Ee-Exd" secondAttribute="bottom" id="ylP-bw-ndT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MwP-rD-Um5"/>
                     </view>
