@@ -28,15 +28,13 @@ struct ChartView: View {
 
     let chartModel: ChartModel
 
-    init(chartModel: ChartModel) {
-        self.chartModel = chartModel
-    }
-
     var body: some View {
 
         let allData = chartModel.dataSections.flatMap { $0.data }
         let maxDataValue = allData.map { $0.value }.max() ?? 0
         let maxGridLineValue = maxDataValue.roundedUp()
+
+        let sidebarWidth: CGFloat = 50
 
         func maxBarHeight(chartHeight: CGFloat) -> CGFloat {
             CGFloat(maxDataValue / maxGridLineValue) * chartHeight
@@ -47,7 +45,8 @@ struct ChartView: View {
             ZStack(alignment: .top) {
                 
                 GridLines(maxDataValue: maxGridLineValue,
-                          valueFormatter: self.chartModel.valueFormatter)
+                          valueFormatter: self.chartModel.valueFormatter,
+                          sidebarWidth: sidebarWidth)
                     .frame(height: geometry.size.height)
 
                 HStack {
@@ -58,7 +57,7 @@ struct ChartView: View {
                                  maxDataValue: maxDataValue)
                             .padding([.leading, .trailing], 16)
                     }
-                    .frame(width: geometry.size.width - 50)
+                    .frame(width: geometry.size.width - sidebarWidth)
                     .offset(y: geometry.size.height - maxBarHeight(chartHeight: geometry.size.height))
 
                     Spacer()
@@ -89,8 +88,16 @@ private struct GridLines: View {
 
     let maxDataValue: Double
     let valueFormatter: (Double) -> String
+    let sidebarWidth: CGFloat
 
-    private let numberOfLines = 5
+    private var numberOfLines: Int {
+
+        for i in (2...5).reversed() {
+            if Int(maxDataValue) % (i - 1) == 0 { return i }
+        }
+
+        return 2
+    }
 
     var body: some View {
 
@@ -105,20 +112,23 @@ private struct GridLines: View {
                         Path { path in
                             let y = self.yValue(for: lineIndex, maxY: geometry.size.height)
                             path.move(to: CGPoint(x: 0, y: y))
-                            path.addLine(to: CGPoint(x: geometry.size.width, y: y))
+                            path.addLine(to: CGPoint(x: geometry.size.width - self.sidebarWidth, y: y))
                         }.stroke(lineIndex == self.numberOfLines - 1 ? Color.primary : Color.secondary)
 
                         HStack {
                             Spacer()
-                            Text(lineTitles[lineIndex])
-                                .frame(width: 50)
-                        }.offset(y: self.yValue(for: lineIndex, maxY: geometry.size.height))
 
+                            Text(lineTitles[lineIndex])
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.5)
+                                .frame(width: self.sidebarWidth)
+
+                        }.offset(y: self.yValue(for: lineIndex, maxY: geometry.size.height))
                     }
                 }
 
                 Path { path in
-                    let x = geometry.size.width - 50
+                    let x = geometry.size.width - self.sidebarWidth
                     path.move(to: CGPoint(x: x, y: 0))
                     path.addLine(to: CGPoint(x: x, y: geometry.size.height))
                 }.stroke(Color.primary)
