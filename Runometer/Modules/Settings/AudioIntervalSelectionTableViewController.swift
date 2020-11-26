@@ -24,7 +24,7 @@ class AudioIntervalSelectionTableViewController: UITableViewController {
     }
     
     private var selectedIntervalIndex: Int? {
-        return intervals.index(of: Settings().audioTimingInterval)
+        return intervals.firstIndex(of: Settings().audioTimingInterval)
     }
     
 }

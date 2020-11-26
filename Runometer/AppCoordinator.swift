@@ -64,7 +64,7 @@ extension UIViewController {
     private func childViewControllers(of viewController: UIViewController, result: inout [UIViewController]) {
         result.append(viewController)
 
-        for viewController in viewController.childViewControllers {
+        for viewController in viewController.children {
             result.append(viewController)
             childViewControllers(of: viewController, result: &result)
         }

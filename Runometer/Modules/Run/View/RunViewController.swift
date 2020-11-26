@@ -117,7 +117,7 @@ extension RunViewController: RunTrackerDelegate {
         var coordinates = [lastLocation.coordinate]
         let newCoordinates = locations.map { $0.coordinate }
         coordinates.append(contentsOf: newCoordinates)
-        mapView.add(MKPolyline(coordinates: coordinates, count: coordinates.count))
+        mapView.addOverlay(MKPolyline(coordinates: coordinates, count: coordinates.count))
         mapView.centerOnUser(offsetMultiplier: (latitude: userLocationInMapRegionLatitudeMultiplier, longitude: nil))
     }
     

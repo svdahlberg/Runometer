@@ -11,7 +11,7 @@ import MapKit
 extension MKMapView {
     func centerOnUser(offsetMultiplier: (latitude: CLLocationDegrees?, longitude: CLLocationDegrees?) = (nil, nil)) {
         var centerCoordinate = userLocation.coordinate
-        let region = MKCoordinateRegionMakeWithDistance(centerCoordinate, 500, 500)
+        let region = MKCoordinateRegion.init(center: centerCoordinate, latitudinalMeters: 500, longitudinalMeters: 500)
         setRegion(region, animated: true)
         
         if let latitudeMultiplier = offsetMultiplier.latitude {
