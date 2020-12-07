@@ -135,6 +135,7 @@ struct RunStatisticWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             RunStatisticWidgetEntryView(entry: entry)
         }
+        .supportedFamilies([.systemSmall])
         .configurationDisplayName("Runometer Widget")
         .description("Track your runs from the home screen!")
     }
