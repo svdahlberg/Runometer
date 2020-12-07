@@ -8,7 +8,6 @@
 
 import Foundation
 
-// TODO: implement CaseIterable from Swift 4
 enum RunStatisticType {
     case averageDistance
     case totalDistance
@@ -34,15 +33,28 @@ class Statistics {
     private lazy var durations: [Seconds] = runs.map { $0.duration }
     private lazy var totalDistanceValue: Meters = distances.reduce(0, +)
     
-    func statistic(of type: RunStatisticType, with title: String) -> RunStatistic? {
-        switch type {
-        case .averageDistance: return averageDistance(with: title)
-        case .totalDistance: return totalDistance(with: title)
-        case .numberOfRuns: return numberOfRuns(with: title)
-        case .fastestPace: return fastestPace(with: title)
-        case .averagePace: return averagePace(with: title)
-        case .longestDistance: return longestDistance(with: title)
-        case .totalDuration: return totalDuration(with: title)
+    func statistic(of type: RunStatisticType, with title: String? = nil) -> RunStatistic? {
+
+        if let title = title {
+            switch type {
+            case .averageDistance: return averageDistance(with: title)
+            case .totalDistance: return totalDistance(with: title)
+            case .numberOfRuns: return numberOfRuns(with: title)
+            case .fastestPace: return fastestPace(with: title)
+            case .averagePace: return averagePace(with: title)
+            case .longestDistance: return longestDistance(with: title)
+            case .totalDuration: return totalDuration(with: title)
+            }
+        } else {
+            switch type {
+            case .averageDistance: return averageDistance()
+            case .totalDistance: return totalDistance()
+            case .numberOfRuns: return numberOfRuns()
+            case .fastestPace: return fastestPace()
+            case .averagePace: return averagePace()
+            case .longestDistance: return longestDistance()
+            case .totalDuration: return totalDuration()
+            }
         }
     }
     

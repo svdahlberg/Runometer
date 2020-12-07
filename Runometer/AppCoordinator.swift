@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import WidgetKit
 
 class AppCoordinator {
 
     private let navigationController: UINavigationController
+    private let runObserver: RunObserving
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, runObserver: RunObserving = RunProvider()) {
         self.navigationController = navigationController
+        self.runObserver = runObserver
     }
 
     func start() {
@@ -25,6 +28,12 @@ class AppCoordinator {
         navigationController.pushViewController(tabBarController, animated: false)
 
         (navigationController as? RunometerNavigationController)?.updateStyle()
+
+        runObserver.observe { _ in
+            if #available(iOS 14.0, *) {
+                WidgetCenter.shared.reloadTimelines(ofKind: "RunStatisticWidget")
+            }
+        }
     }
 
 }

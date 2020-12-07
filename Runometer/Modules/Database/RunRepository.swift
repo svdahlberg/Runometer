@@ -24,7 +24,7 @@ class RunRepository {
     }
 
     func allRuns(_ completion: @escaping (_ runs: [Run]) -> Void) {
-        runProvider.runs(completion: completion)
+        runProvider.runs(filter: nil, completion: completion)
     }
 
     func runsGroupedBySimilarDistance(_ completion: @escaping (_ runs: [RunGroup]) -> Void) {
@@ -56,6 +56,10 @@ class RunRepository {
 
             completion([RunGroup(name: "all runs", runs: runs)] + runGroups)
         }
+    }
+
+    func runs(filter: RunFilter?, _ completion: @escaping (_ runs: [Run]) -> Void) {
+        runProvider.runs(filter: filter, completion: completion)
     }
 
 }

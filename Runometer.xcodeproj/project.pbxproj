@@ -67,6 +67,11 @@
 		B273D876244E132B00E373F8 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273D875244E132B00E373F8 /* StringExtensions.swift */; };
 		B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B276ECF12015321B0036F327 /* AudioFeedbackController.swift */; };
 		B279EC9A2448CFA6009827B0 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */; };
+		B27F18ED25747C510061D3B9 /* RunFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F18EC25747C510061D3B9 /* RunFilter.swift */; };
+		B27F18EE25747C510061D3B9 /* RunFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F18EC25747C510061D3B9 /* RunFilter.swift */; };
+		B27F18F425747D090061D3B9 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F18F325747D090061D3B9 /* DateExtensions.swift */; };
+		B27F18F525747D090061D3B9 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F18F325747D090061D3B9 /* DateExtensions.swift */; };
+		B27F190A257D9FD30061D3B9 /* CoreDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F1909257D9FD30061D3B9 /* CoreDataProviderTests.swift */; };
 		B27F634D1FA5B9E700C2116F /* PastRunsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F634C1FA5B9E700C2116F /* PastRunsViewController.swift */; };
 		B27F634F1FA5BA0200C2116F /* PastRuns.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27F634E1FA5BA0200C2116F /* PastRuns.storyboard */; };
 		B27F63511FA5BFA400C2116F /* PastRunTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F63501FA5BFA400C2116F /* PastRunTableViewCell.swift */; };
@@ -77,6 +82,32 @@
 		B28D7DD5237615D800817E45 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B28D7DD4237615D800817E45 /* Colors.xcassets */; };
 		B28F81BD1F93CE8C000BBA18 /* CheckpointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */; };
 		B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28F81BE1F93D888000BBA18 /* Checkpoint.swift */; };
+		B2A268C625700F4A00C79AC2 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A268C525700F4A00C79AC2 /* WidgetKit.framework */; };
+		B2A268C825700F4A00C79AC2 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A268C725700F4A00C79AC2 /* SwiftUI.framework */; };
+		B2A268CB25700F4A00C79AC2 /* RunStatisticWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A268CA25700F4A00C79AC2 /* RunStatisticWidget.swift */; };
+		B2A268CE25700F4B00C79AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2A268CD25700F4B00C79AC2 /* Assets.xcassets */; };
+		B2A268D025700F4B00C79AC2 /* RunStatisticWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B2A268CC25700F4A00C79AC2 /* RunStatisticWidget.intentdefinition */; };
+		B2A268D125700F4B00C79AC2 /* RunStatisticWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = B2A268CC25700F4A00C79AC2 /* RunStatisticWidget.intentdefinition */; };
+		B2A268D425700F4B00C79AC2 /* RunStatisticWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B2A268C425700F4A00C79AC2 /* RunStatisticWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B2A268DD2570110400C79AC2 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
+		B2A268E22570111B00C79AC2 /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */; };
+		B2A268E72570111F00C79AC2 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */; };
+		B2A268EC2570112200C79AC2 /* PaceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A91F88E6F7001B1BF1 /* PaceFormatter.swift */; };
+		B2A268F12570112400C79AC2 /* PaceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7AF1F8A3A9C001B1BF1 /* PaceCalculator.swift */; };
+		B2A268F62570112700C79AC2 /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7B11F8A5075001B1BF1 /* Units.swift */; };
+		B2A268FB2570114000C79AC2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7211FC0BDC8001AC4DF /* Settings.swift */; };
+		B2A269002570116300C79AC2 /* AudioTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F1C7231FC0CE16001AC4DF /* AudioTrigger.swift */; };
+		B2A269052570126000C79AC2 /* RunRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F2DDE6244B9B4400A44E7E /* RunRepository.swift */; };
+		B2A2690A2570128900C79AC2 /* RunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A931191FADCA77006FEACB /* RunProvider.swift */; };
+		B2A2690F2570130900C79AC2 /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
+		B2A269142570131200C79AC2 /* HealthKitRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27208A521402993009DCE7D /* HealthKitRunProvider.swift */; };
+		B2A269192570132200C79AC2 /* HealthKitRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57082141625E00BC2C0D /* HealthKitRun.swift */; };
+		B2A2691E2570132700C79AC2 /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
+		B2A269232570133300C79AC2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956751FA4934B002DC83E /* CoreDataStack.swift */; };
+		B2A269282570133E00C79AC2 /* ManagedRunObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261021FA6209100E69E9D /* ManagedRunObjectExtensions.swift */; };
+		B2A2692D2570138500C79AC2 /* Runometer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B2B054F81F80C55600292EB3 /* Runometer.xcdatamodeld */; };
+		B2A2693225732AE900C79AC2 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BE7B992148F52700902720 /* Statistics.swift */; };
+		B2A2693725732AF900C79AC2 /* RunStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618931214A982C008BA04A /* RunStatistic.swift */; };
 		B2A9311A1FADCA77006FEACB /* RunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A931191FADCA77006FEACB /* RunProvider.swift */; };
 		B2A9311C1FAF0553006FEACB /* MKMapViewExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A9311B1FAF0553006FEACB /* MKMapViewExtensionsTests.swift */; };
 		B2A9311E1FAF06C5006FEACB /* MKPolyLineExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A9311D1FAF06C5006FEACB /* MKPolyLineExtensions.swift */; };
@@ -123,6 +154,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		B2A268D225700F4B00C79AC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2B054E61F80C55600292EB3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B2A268C325700F4A00C79AC2;
+			remoteInfo = DistanceWidgetExtension;
+		};
 		B2B055061F80C55600292EB3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B2B054E61F80C55600292EB3 /* Project object */;
@@ -138,6 +176,20 @@
 			remoteInfo = Runometer;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2A268D525700F4B00C79AC2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B2A268D425700F4B00C79AC2 /* RunStatisticWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B2043EBD1FF26F8800220C14 /* RunsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunsMock.swift; sourceTree = "<group>"; };
@@ -201,6 +253,9 @@
 		B273D875244E132B00E373F8 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		B276ECF12015321B0036F327 /* AudioFeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackController.swift; sourceTree = "<group>"; };
 		B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		B27F18EC25747C510061D3B9 /* RunFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunFilter.swift; sourceTree = "<group>"; };
+		B27F18F325747D090061D3B9 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		B27F1909257D9FD30061D3B9 /* CoreDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProviderTests.swift; sourceTree = "<group>"; };
 		B27F634C1FA5B9E700C2116F /* PastRunsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunsViewController.swift; sourceTree = "<group>"; };
 		B27F634E1FA5BA0200C2116F /* PastRuns.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastRuns.storyboard; sourceTree = "<group>"; };
 		B27F63501FA5BFA400C2116F /* PastRunTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRunTableViewCell.swift; sourceTree = "<group>"; };
@@ -211,6 +266,13 @@
 		B28D7DD4237615D800817E45 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		B28F81BC1F93CE8C000BBA18 /* CheckpointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotation.swift; sourceTree = "<group>"; };
 		B28F81BE1F93D888000BBA18 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
+		B2A268C425700F4A00C79AC2 /* RunStatisticWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RunStatisticWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2A268C525700F4A00C79AC2 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		B2A268C725700F4A00C79AC2 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		B2A268CA25700F4A00C79AC2 /* RunStatisticWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticWidget.swift; sourceTree = "<group>"; };
+		B2A268CC25700F4A00C79AC2 /* RunStatisticWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = RunStatisticWidget.intentdefinition; sourceTree = "<group>"; };
+		B2A268CD25700F4B00C79AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B2A268CF25700F4B00C79AC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2A931191FADCA77006FEACB /* RunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProvider.swift; sourceTree = "<group>"; };
 		B2A9311B1FAF0553006FEACB /* MKMapViewExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapViewExtensionsTests.swift; sourceTree = "<group>"; };
 		B2A9311D1FAF06C5006FEACB /* MKPolyLineExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPolyLineExtensions.swift; sourceTree = "<group>"; };
@@ -263,6 +325,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B2A268C125700F4A00C79AC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2A268C825700F4A00C79AC2 /* SwiftUI.framework in Frameworks */,
+				B2A268C625700F4A00C79AC2 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2B054EB1F80C55600292EB3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +434,7 @@
 				B2F2DDE6244B9B4400A44E7E /* RunRepository.swift */,
 				B25D5702214151AF00BC2C0D /* Run.swift */,
 				B2A931191FADCA77006FEACB /* RunProvider.swift */,
+				B27F18EC25747C510061D3B9 /* RunFilter.swift */,
 				B25D570C2141835200BC2C0D /* RunPersister.swift */,
 				B25D5711214183BF00BC2C0D /* HealthKit */,
 				B25D5710214183A900BC2C0D /* CoreData */,
@@ -399,6 +471,7 @@
 				B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */,
 				B2729FDE244A3934007E4FCB /* UIViewExtensions.swift */,
 				B273D875244E132B00E373F8 /* StringExtensions.swift */,
+				B27F18F325747D090061D3B9 /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +517,8 @@
 			isa = PBXGroup;
 			children = (
 				B27208A321402922009DCE7D /* HealthKit.framework */,
+				B2A268C525700F4A00C79AC2 /* WidgetKit.framework */,
+				B2A268C725700F4A00C79AC2 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -474,12 +549,24 @@
 			path = "Run Details";
 			sourceTree = "<group>";
 		};
+		B2A268C925700F4A00C79AC2 /* RunStatisticWidget */ = {
+			isa = PBXGroup;
+			children = (
+				B2A268CA25700F4A00C79AC2 /* RunStatisticWidget.swift */,
+				B2A268CC25700F4A00C79AC2 /* RunStatisticWidget.intentdefinition */,
+				B2A268CD25700F4B00C79AC2 /* Assets.xcassets */,
+				B2A268CF25700F4B00C79AC2 /* Info.plist */,
+			);
+			path = RunStatisticWidget;
+			sourceTree = "<group>";
+		};
 		B2B054E51F80C55600292EB3 = {
 			isa = PBXGroup;
 			children = (
 				B2B054F01F80C55600292EB3 /* Runometer */,
 				B2B055081F80C55600292EB3 /* RunometerTests */,
 				B2B055131F80C55600292EB3 /* RunometerUITests */,
+				B2A268C925700F4A00C79AC2 /* RunStatisticWidget */,
 				B2B054EF1F80C55600292EB3 /* Products */,
 				B27208A221402922009DCE7D /* Frameworks */,
 			);
@@ -491,6 +578,7 @@
 				B2B054EE1F80C55600292EB3 /* Runometer.app */,
 				B2B055051F80C55600292EB3 /* RunometerTests.xctest */,
 				B2B055101F80C55600292EB3 /* RunometerUITests.xctest */,
+				B2A268C425700F4A00C79AC2 /* RunStatisticWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -527,6 +615,7 @@
 				B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */,
 				B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */,
 				B2534BB6214806D200EFEBFE /* CoreDataRunTests.swift */,
+				B27F1909257D9FD30061D3B9 /* CoreDataProviderTests.swift */,
 				B2C261061FA6299900E69E9D /* CoreDataHelper.swift */,
 				B25FE7AB1F8A33B0001B1BF1 /* PaceFormatterTests.swift */,
 				B25FE7B31F8A513D001B1BF1 /* DistanceFormatterTests.swift */,
@@ -601,6 +690,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B2A268C325700F4A00C79AC2 /* RunStatisticWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2A268D825700F4B00C79AC2 /* Build configuration list for PBXNativeTarget "RunStatisticWidgetExtension" */;
+			buildPhases = (
+				B2A268C025700F4A00C79AC2 /* Sources */,
+				B2A268C125700F4A00C79AC2 /* Frameworks */,
+				B2A268C225700F4A00C79AC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RunStatisticWidgetExtension;
+			productName = DistanceWidgetExtension;
+			productReference = B2A268C425700F4A00C79AC2 /* RunStatisticWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		B2B054ED1F80C55600292EB3 /* Runometer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2B055191F80C55600292EB3 /* Build configuration list for PBXNativeTarget "Runometer" */;
@@ -608,10 +714,12 @@
 				B2B054EA1F80C55600292EB3 /* Sources */,
 				B2B054EB1F80C55600292EB3 /* Frameworks */,
 				B2B054EC1F80C55600292EB3 /* Resources */,
+				B2A268D525700F4B00C79AC2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B2A268D325700F4B00C79AC2 /* PBXTargetDependency */,
 			);
 			name = Runometer;
 			productName = Runometer;
@@ -660,10 +768,14 @@
 		B2B054E61F80C55600292EB3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Svante Dahlberg";
 				TargetAttributes = {
+					B2A268C325700F4A00C79AC2 = {
+						CreatedOnToolsVersion = 12.1;
+						ProvisioningStyle = Automatic;
+					};
 					B2B054ED1F80C55600292EB3 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1210;
@@ -707,11 +819,20 @@
 				B2B054ED1F80C55600292EB3 /* Runometer */,
 				B2B055041F80C55600292EB3 /* RunometerTests */,
 				B2B0550F1F80C55600292EB3 /* RunometerUITests */,
+				B2A268C325700F4A00C79AC2 /* RunStatisticWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B2A268C225700F4A00C79AC2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2A268CE25700F4B00C79AC2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2B054EC1F80C55600292EB3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -747,6 +868,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B2A268C025700F4A00C79AC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B2A268F12570112400C79AC2 /* PaceCalculator.swift in Sources */,
+				B2A268F62570112700C79AC2 /* Units.swift in Sources */,
+				B2A268CB25700F4A00C79AC2 /* RunStatisticWidget.swift in Sources */,
+				B2A2690F2570130900C79AC2 /* CoreDataRunProvider.swift in Sources */,
+				B2A269282570133E00C79AC2 /* ManagedRunObjectExtensions.swift in Sources */,
+				B27F18F525747D090061D3B9 /* DateExtensions.swift in Sources */,
+				B2A2691E2570132700C79AC2 /* CoreDataRun.swift in Sources */,
+				B2A268E22570111B00C79AC2 /* DistanceFormatter.swift in Sources */,
+				B2A269142570131200C79AC2 /* HealthKitRunProvider.swift in Sources */,
+				B2A2690A2570128900C79AC2 /* RunProvider.swift in Sources */,
+				B2A268DD2570110400C79AC2 /* Run.swift in Sources */,
+				B2A268E72570111F00C79AC2 /* TimeFormatter.swift in Sources */,
+				B2A268FB2570114000C79AC2 /* Settings.swift in Sources */,
+				B2A269002570116300C79AC2 /* AudioTrigger.swift in Sources */,
+				B2A269232570133300C79AC2 /* CoreDataStack.swift in Sources */,
+				B2A2692D2570138500C79AC2 /* Runometer.xcdatamodeld in Sources */,
+				B2A2693725732AF900C79AC2 /* RunStatistic.swift in Sources */,
+				B2A269192570132200C79AC2 /* HealthKitRun.swift in Sources */,
+				B2A269052570126000C79AC2 /* RunRepository.swift in Sources */,
+				B2A268D025700F4B00C79AC2 /* RunStatisticWidget.intentdefinition in Sources */,
+				B2A2693225732AE900C79AC2 /* Statistics.swift in Sources */,
+				B2A268EC2570112200C79AC2 /* PaceFormatter.swift in Sources */,
+				B27F18EE25747C510061D3B9 /* RunFilter.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B2B054EA1F80C55600292EB3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -800,12 +951,15 @@
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
 				B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */,
+				B27F18F425747D090061D3B9 /* DateExtensions.swift in Sources */,
 				B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */,
 				B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */,
 				B2528DF11FF19BEE00FE3364 /* RunStatisticsTextProvider.swift in Sources */,
 				B272089E213E699F009DCE7D /* RunRatingProvider.swift in Sources */,
 				B27208A621402993009DCE7D /* HealthKitRunProvider.swift in Sources */,
 				B25D570D2141835200BC2C0D /* RunPersister.swift in Sources */,
+				B2A268D125700F4B00C79AC2 /* RunStatisticWidget.intentdefinition in Sources */,
+				B27F18ED25747C510061D3B9 /* RunFilter.swift in Sources */,
 				B2F1C7221FC0BDC8001AC4DF /* Settings.swift in Sources */,
 				B25D5703214151AF00BC2C0D /* Run.swift in Sources */,
 				B25D570B2141703200BC2C0D /* RunsExtensions.swift in Sources */,
@@ -846,6 +1000,7 @@
 				B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */,
 				B2562CEF2451029C0011B534 /* RunRepositoryTests.swift in Sources */,
 				B2528DF31FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift in Sources */,
+				B27F190A257D9FD30061D3B9 /* CoreDataProviderTests.swift in Sources */,
 				B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */,
 				B2534BB52147EA8100EFEBFE /* RunMock.swift in Sources */,
 				B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */,
@@ -872,6 +1027,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		B2A268D325700F4B00C79AC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B2A268C325700F4A00C79AC2 /* RunStatisticWidgetExtension */;
+			targetProxy = B2A268D225700F4B00C79AC2 /* PBXContainerItemProxy */;
+		};
 		B2B055071F80C55600292EB3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B2B054ED1F80C55600292EB3 /* Runometer */;
@@ -904,6 +1064,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B2A268D625700F4B00C79AC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FJG293K5T8;
+				INFOPLIST_FILE = RunStatisticWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker.RunStatisticWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B2A268D725700F4B00C79AC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FJG293K5T8;
+				INFOPLIST_FILE = RunStatisticWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker.RunStatisticWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B2B055171F80C55600292EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1020,8 +1225,10 @@
 		B2B0551A1F80C55600292EB3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runometer/Runometer.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FJG293K5T8;
@@ -1030,6 +1237,7 @@
 				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1038,8 +1246,10 @@
 		B2B0551B1F80C55600292EB3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Runometer/Runometer.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FJG293K5T8;
@@ -1048,6 +1258,7 @@
 				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1122,6 +1333,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B2A268D825700F4B00C79AC2 /* Build configuration list for PBXNativeTarget "RunStatisticWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2A268D625700F4B00C79AC2 /* Debug */,
+				B2A268D725700F4B00C79AC2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B2B054E91F80C55600292EB3 /* Build configuration list for PBXProject "Runometer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
