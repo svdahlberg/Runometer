@@ -10,7 +10,7 @@ import UIKit
 
 enum StatisticsBreakdownFilter {
     case year, month, day
-    
+
     var titleDateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()
         switch self {
@@ -20,7 +20,7 @@ enum StatisticsBreakdownFilter {
         }
         return dateFormatter
     }
-    
+
     var title: String {
         switch self {
         case .day: return "Day"

@@ -9,9 +9,9 @@
 import Foundation
 
 struct RunSection {
+
     let title: String
     let runs: [Run]
-    
     
     static func runSections(from runs: [Run], titleDateFormatter: DateFormatter) -> [RunSection] {
         return Dictionary(grouping: runs) {
