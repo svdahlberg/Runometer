@@ -219,6 +219,7 @@
 		B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedRunObjectTests.swift; sourceTree = "<group>"; };
 		B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSegmentExtensionsTests.swift; sourceTree = "<group>"; };
 		B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepositoryTests.swift; sourceTree = "<group>"; };
+		B2574E3C25852DF400025383 /* RunStatisticWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunStatisticWidgetExtension.entitlements; sourceTree = "<group>"; };
 		B25D5702214151AF00BC2C0D /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
 		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
@@ -563,6 +564,7 @@
 		B2B054E51F80C55600292EB3 = {
 			isa = PBXGroup;
 			children = (
+				B2574E3C25852DF400025383 /* RunStatisticWidgetExtension.entitlements */,
 				B2B054F01F80C55600292EB3 /* Runometer */,
 				B2B055081F80C55600292EB3 /* RunometerTests */,
 				B2B055131F80C55600292EB3 /* RunometerUITests */,
@@ -1070,6 +1072,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = RunStatisticWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FJG293K5T8;
@@ -1093,6 +1096,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = RunStatisticWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FJG293K5T8;
