@@ -38,8 +38,8 @@ class CoreDataProviderTests: XCTestCase {
         sut.runs(filter: filter) { filteredRuns in
             // Then
             XCTAssertEqual(filteredRuns.count, 2)
-            XCTAssertEqual(filteredRuns[0].startDate, runsMock[1].startDate)
-            XCTAssertEqual(filteredRuns[1].startDate, runsMock[2].startDate)
+            XCTAssertEqual(filteredRuns[0].startDate, runsMock[2].startDate)
+            XCTAssertEqual(filteredRuns[1].startDate, runsMock[1].startDate)
             expectation.fulfill()
         }
 
