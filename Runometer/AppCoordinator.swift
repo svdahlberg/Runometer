@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import WidgetKit
 
 class AppCoordinator {
 
@@ -29,11 +28,8 @@ class AppCoordinator {
 
         (navigationController as? RunometerNavigationController)?.updateStyle()
 
-        runObserver.observe { _ in
-            if #available(iOS 14.0, *) {
-                WidgetCenter.shared.reloadTimelines(ofKind: "RunStatisticWidget")
-            }
-        }
+        // The point of observing the runs here is to reload the widget timeline when something changes. I would like to put the widget timeline reload code here, but for some reason this completion block does not get called when the app is in the background, so the widget timeline is reloaded in HealthKitRunProvider's observe method.
+        runObserver.observe { _ in }
     }
 
 }

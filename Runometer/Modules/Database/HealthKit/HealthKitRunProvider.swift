@@ -7,6 +7,7 @@
 //
 
 import HealthKit
+import WidgetKit
 
 class HealthStoreManager {
     static let shared = HealthStoreManager()
@@ -63,8 +64,18 @@ struct HealthKitRunProvider: RunProviding {
 extension HealthKitRunProvider: RunObserving {
 
     func observe(_ completion: @escaping ([Run]) -> Void) {
+
+        healthStore.enableBackgroundDelivery(for: HKObjectType.workoutType(), frequency: .immediate) { (success, error) in
+            
+        }
         
         let observerQuery = HKObserverQuery(sampleType: HKObjectType.workoutType(), predicate: nil) { (query, completionHandler, error) in
+
+            // I would like to call this in the completion block in `AppCoordinator.swift`. But for some reason that does not get called when the app is in the background, so this code goes here for now.
+            if #available(iOS 14.0, *) {
+                WidgetCenter.shared.reloadTimelines(ofKind: "RunStatisticWidget")
+            }
+
             self.runs { allRuns in
                 completion(allRuns)
                 completionHandler()

@@ -34,6 +34,7 @@
 		B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */; };
 		B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */; };
 		B2562CEF2451029C0011B534 /* RunRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */; };
+		B2574E4125852F4600025383 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27208A321402922009DCE7D /* HealthKit.framework */; };
 		B25D5703214151AF00BC2C0D /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
 		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
 		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
@@ -330,6 +331,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2574E4125852F4600025383 /* HealthKit.framework in Frameworks */,
 				B2A268C825700F4A00C79AC2 /* SwiftUI.framework in Frameworks */,
 				B2A268C625700F4A00C79AC2 /* WidgetKit.framework in Frameworks */,
 			);
