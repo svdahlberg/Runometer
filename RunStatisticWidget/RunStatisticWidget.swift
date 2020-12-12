@@ -111,7 +111,7 @@ struct RunStatisticWidgetEntryView : View {
         VStack {
             Text("This \(entry.configuration.filter.displayName)")
                 .font(.subheadline)
-            HStack(alignment: .lastTextBaseline) {
+            HStack(alignment: .lastTextBaseline, spacing: 4) {
                 Text(entry.runStatistic.formattedValue ?? "")
                     .font(.system(size: 47))
                     .fontWeight(.heavy)
