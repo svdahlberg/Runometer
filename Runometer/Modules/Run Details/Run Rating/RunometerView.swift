@@ -111,7 +111,7 @@ import UIKit
         maskShape.lineWidth = fillArcWidth
         maskShape.strokeColor = UIColor.red.cgColor
         maskShape.fillColor = UIColor.clear.cgColor
-        maskShape.lineCap = kCALineCapRound
+        maskShape.lineCap = CAShapeLayerLineCap.round
         maskShape.path = fillPath.cgPath
         return maskShape
     }()
@@ -120,7 +120,7 @@ import UIKit
     
     private lazy var drawAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.fromValue = 0
         animation.toValue = 1
         animation.duration = 1

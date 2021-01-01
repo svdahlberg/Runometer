@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreGraphics
+import WidgetKit
 
 class Settings {
     
@@ -22,8 +23,8 @@ class Settings {
     
     private let userDefaults: UserDefaults
     
-    init(userDefaults: UserDefaults = UserDefaults.standard) {
-        self.userDefaults = userDefaults
+    init(userDefaults: UserDefaults? = UserDefaults(suiteName: "group.runometer")) {
+        self.userDefaults = userDefaults ?? .standard
     }
     
     // MARK: Units
@@ -35,7 +36,13 @@ class Settings {
             }
             return DistanceUnit.parse(distanceUnitSymbol: savedDistanceUnitSymbol) ?? .kilometers
         }
-        set { userDefaults.set(newValue.symbol, forKey: UserDefaultKey.distanceUnit.rawValue) }
+        set {
+            userDefaults.set(newValue.symbol, forKey: UserDefaultKey.distanceUnit.rawValue)
+
+            if #available(iOS 14.0, *) {
+                WidgetCenter.shared.reloadTimelines(ofKind: "RunStatisticWidget")
+            }
+        }
     }
     
     var speedUnit: SpeedUnit {

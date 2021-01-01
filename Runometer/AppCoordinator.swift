@@ -11,9 +11,11 @@ import UIKit
 class AppCoordinator {
 
     private let navigationController: UINavigationController
+    private let runObserver: RunObserving
 
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, runObserver: RunObserving = RunProvider()) {
         self.navigationController = navigationController
+        self.runObserver = runObserver
     }
 
     func start() {
@@ -25,6 +27,9 @@ class AppCoordinator {
         navigationController.pushViewController(tabBarController, animated: false)
 
         (navigationController as? RunometerNavigationController)?.updateStyle()
+
+        // The point of observing the runs here is to reload the widget timeline when something changes. I would like to put the widget timeline reload code here, but for some reason this completion block does not get called when the app is in the background, so the widget timeline is reloaded in HealthKitRunProvider's observe method.
+        runObserver.observe { _ in }
     }
 
 }
@@ -64,7 +69,7 @@ extension UIViewController {
     private func childViewControllers(of viewController: UIViewController, result: inout [UIViewController]) {
         result.append(viewController)
 
-        for viewController in viewController.childViewControllers {
+        for viewController in viewController.children {
             result.append(viewController)
             childViewControllers(of: viewController, result: &result)
         }

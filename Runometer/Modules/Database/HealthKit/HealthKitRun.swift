@@ -93,11 +93,11 @@ struct HealthKitRun: Run {
         
         for pause in pauseEvents {
             guard let pauseLocation = closestValue(in: locations, to: pause.dateInterval.start),
-            let pauseLocationIndex = locations.index(of: pauseLocation) else { continue }
+            let pauseLocationIndex = locations.firstIndex(of: pauseLocation) else { continue }
             let segment = Array(locations[index ..< Int(pauseLocationIndex.magnitude)])
             result.append(segment)
             guard let resumeLocation = closestValue(in: locations, to: pause.dateInterval.end),
-            let resumeLocationIndex = locations.index(of: resumeLocation) else { continue }
+            let resumeLocationIndex = locations.firstIndex(of: resumeLocation) else { continue }
             index = resumeLocationIndex + 1
         }
 

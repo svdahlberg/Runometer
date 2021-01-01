@@ -34,9 +34,12 @@
 		B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */; };
 		B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */; };
 		B2562CEF2451029C0011B534 /* RunRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */; };
+<<<<<<< HEAD
 		B2562CF1245381B00011B534 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CF0245381B00011B534 /* ChartView.swift */; };
 		B2562CF42453A2740011B534 /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
+=======
 		B2574E4125852F4600025383 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27208A321402922009DCE7D /* HealthKit.framework */; };
+>>>>>>> master
 		B25D5703214151AF00BC2C0D /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
 		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
 		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
@@ -132,7 +135,6 @@
 		B2B1B1961FC9D67000C579FE /* RunRatingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */; };
 		B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B1B1971FCA2B0E00C579FE /* RunProviderTests.swift */; };
 		B2BAAD5D20A45BA7000117FB /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BAAD5C20A45BA7000117FB /* SettingsTests.swift */; };
-		B2BE2DD5259FD0CD003B2193 /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
 		B2BE7B9A2148F52700902720 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BE7B992148F52700902720 /* Statistics.swift */; };
 		B2BE7B9C2148F8D600902720 /* StatisticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BE7B9B2148F8D600902720 /* StatisticsProvider.swift */; };
 		B2BE7B9E2148F96C00902720 /* RunStatisticCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BE7B9D2148F96C00902720 /* RunStatisticCollectionViewCell.swift */; };
@@ -224,8 +226,11 @@
 		B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedRunObjectTests.swift; sourceTree = "<group>"; };
 		B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSegmentExtensionsTests.swift; sourceTree = "<group>"; };
 		B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepositoryTests.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		B2562CF0245381B00011B534 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+=======
 		B2574E3C25852DF400025383 /* RunStatisticWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunStatisticWidgetExtension.entitlements; sourceTree = "<group>"; };
+>>>>>>> master
 		B25D5702214151AF00BC2C0D /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
 		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
@@ -899,7 +904,6 @@
 				B2A268FB2570114000C79AC2 /* Settings.swift in Sources */,
 				B2A269002570116300C79AC2 /* AudioTrigger.swift in Sources */,
 				B2A269232570133300C79AC2 /* CoreDataStack.swift in Sources */,
-				B2BE2DD5259FD0CD003B2193 /* RunMock.swift in Sources */,
 				B2A2692D2570138500C79AC2 /* Runometer.xcdatamodeld in Sources */,
 				B2A2693725732AF900C79AC2 /* RunStatistic.swift in Sources */,
 				B2A269192570132200C79AC2 /* HealthKitRun.swift in Sources */,

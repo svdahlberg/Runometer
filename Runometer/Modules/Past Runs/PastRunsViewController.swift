@@ -69,7 +69,7 @@ class PastRunsViewControlller: UIViewController {
 
 extension PastRunsViewControlller: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         guard let run = run(for: indexPath), run is CoreDataRun else {
             return .none
         }
@@ -77,7 +77,7 @@ extension PastRunsViewControlller: UITableViewDelegate {
         return .delete
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
             guard let run = run(for: indexPath) else { return }

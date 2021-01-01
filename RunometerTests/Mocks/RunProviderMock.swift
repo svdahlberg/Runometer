@@ -9,14 +9,22 @@
 import Foundation
 @testable import Runometer
 
-class RunProviderMock: RunProviding {
-    
+class RunProviderMock: RunProviding, RunObserving {
+
     var runsInvokeCount: Int = 0
     var runsCompletionArgument: [Run]?
     
-    func runs(completion: @escaping ([Run]) -> Void) {
+    func runs(filter: RunFilter?, completion: @escaping ([Run]) -> Void) {
         runsInvokeCount += 1
         completion(runsCompletionArgument ?? [])
     }
-    
+
+    var observeInvokeCount = 0
+    var observerCompletionArgument: [Run]?
+
+    func observe(_ completion: @escaping ([Run]) -> Void) {
+        observeInvokeCount += 1
+        completion(observerCompletionArgument ?? [])
+    }
+
 }

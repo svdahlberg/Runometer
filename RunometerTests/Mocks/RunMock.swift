@@ -9,6 +9,14 @@
 import Foundation
 import CoreLocation
 
+struct RunProviderMock: RunProviding {
+
+    func runs(filter: RunFilter? = nil, completion: @escaping ([Run]) -> Void) {
+        completion(RunMock.runsMock)
+    }
+
+}
+
 class RunMock: Run {
     
     var distance: Meters
@@ -30,5 +38,52 @@ class RunMock: Run {
         self.startDate = startDate
         self.endDate = endDate
     }
+
+    static var runsMock: [RunMock] {
+        [
+            RunMock(
+                distance: 10000,
+                duration: 3600,
+                startDate: Date(),
+                endDate: Date()
+            ),
+            RunMock(
+                distance: 12000,
+                duration: 4000,
+                startDate: Date.yesterday,
+                endDate: Date.yesterday
+            ),
+            RunMock(
+                distance: 10000,
+                duration: 3600,
+                startDate: Date.lastMonth,
+                endDate: Date.lastMonth
+            )
+        ]
+    }
     
+}
+
+extension Date {
+
+    static var yesterday: Date {
+        Date(timeIntervalSinceNow: -Double(Seconds.twentyFourHours))
+    }
+
+    static var lastWeek: Date {
+        Date(timeIntervalSinceNow: -Double(Seconds.twentyFourHours * 7))
+    }
+
+    static var lastMonth: Date {
+        Date(timeIntervalSinceNow: -Double(Seconds.twentyFourHours * 31))
+    }
+
+}
+
+extension Seconds {
+
+    static var oneHour: Seconds { 3600 }
+
+    static var twentyFourHours: Seconds { 86400 }
+
 }

@@ -9,11 +9,16 @@
 import Foundation
 
 struct RunSection {
-    
+
     let title: String
     let runs: [Run]
     
+<<<<<<< HEAD
+    
     static func runSections(from runs: [Run], filter: StatisticsBreakdownFilter, titleDateFormatter: DateFormatter? = nil) -> [RunSection] {
+=======
+    static func runSections(from runs: [Run], titleDateFormatter: DateFormatter) -> [RunSection] {
+>>>>>>> master
         return Dictionary(grouping: runs) {
             dateFormatter(for: filter).string(from: $0.endDate)
         }.map {
