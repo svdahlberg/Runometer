@@ -202,7 +202,14 @@ class RunStatisticDetailViewController: UIViewController {
 
         switch unitType {
         case .distance:
-            return { value in DistanceFormatter.format(distance: value) ?? "" }
+            return { value in
+                guard let formattedDistance = DistanceFormatter.format(distance: value),
+                      let unit = self.runStatistic?.unitSymbol else {
+                    return ""
+                }
+
+                return "\(formattedDistance) \(unit)"
+            }
         case .speed:
             return { value in PaceFormatter.format(pace: Seconds(value)) ?? "" }
         case .time:
