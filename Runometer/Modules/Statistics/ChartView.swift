@@ -57,6 +57,15 @@ struct ChartView: View {
             .frame(height: geometry.size.height + 54 + 32)
             .background(Color.white.opacity(0.1))
             .cornerRadius(10)
+            .gesture(
+                DragGesture()
+                    .onChanged{ _ in
+                        resetSelection()
+                    }
+            )
+            .onTapGesture {
+                resetSelection()
+            }
 
             if let selectedData = selectedData, let selectedBarPosition = selectedBarPosition {
                 ValueLabel(
@@ -66,6 +75,11 @@ struct ChartView: View {
                 )
             }
         }
+    }
+
+    private func resetSelection() {
+        selectedData = nil
+        selectedBarPosition = nil
     }
 
 }
@@ -155,16 +169,10 @@ private struct Bar: View {
     @Binding var selectedData: ChartData?
     @Binding var selectedBarPosition: (x: CGFloat, y: CGFloat)?
 
-    @State private var isHighlighted = false {
-        didSet {
-            selectedData = isHighlighted ? data : nil
-        }
-    }
-
-    @State private var scale: CGFloat = 1
-
     private let width: CGFloat = 25
-    private let higlightedScale: CGFloat = 1.02
+    private var isHighlighted: Bool { selectedData == data }
+    private var scale: CGFloat { isHighlighted ? 1.02 : 1 }
+    private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
     private var height: CGFloat {
         let heightPerUnit = maxHeight / CGFloat(maxDataValue)
@@ -175,25 +183,22 @@ private struct Bar: View {
         VStack(alignment: .center) {
             GeometryReader { geometry in
                 Capsule(style: .continuous)
-                    .foregroundColor(isHighlighted ? .red : Color(Colors.orange))
+                    .foregroundColor(color)
                     .scaleEffect(scale, anchor: .bottom)
                     .animation(.easeInOut)
-                    .gesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { value in
-                                isHighlighted = true
-                                scale = higlightedScale
-                                selectedBarPosition = (
-                                    x: geometry.frame(in: .global).midX - (width / 2),
-                                    y: maxHeight - height
-                                )
-                            }
-                            .onEnded { _ in
-                                isHighlighted = false
-                                scale = 1
-                                selectedBarPosition = nil
-                            }
-                    )
+                    .onTapGesture {
+                        guard selectedData != data else {
+                            selectedData = nil
+                            selectedBarPosition = nil
+                            return
+                        }
+
+                        selectedData = data
+                        selectedBarPosition = isHighlighted ? (
+                            x: geometry.frame(in: .global).midX - (width / 2),
+                            y: maxHeight - height
+                        ) : nil
+                    }
             }
             .frame(
                 width: width,
