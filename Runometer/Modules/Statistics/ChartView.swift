@@ -11,6 +11,7 @@ import SwiftUI
 struct ChartModel {
     let dataSections: [ChartDataSection]
     let valueFormatter: (Double) -> String
+    let pagingEnabled: Bool = true
 }
 
 struct ChartDataSection: Hashable, Identifiable {
@@ -25,49 +26,45 @@ struct ChartData: Hashable, Identifiable {
     let title: String
 }
 
+private class ChartViewModel: ObservableObject {
+
+    @Published var selectedData: ChartData?
+    @Published var selectedBarPosition: (x: CGFloat, y: CGFloat)?
+
+    func reset() {
+        selectedData = nil
+        selectedBarPosition = nil
+    }
+
+}
 
 struct ChartView: View {
 
     let chartModel: ChartModel
 
-    @State private var selectedData: ChartData?
-    @State private var selectedBarPosition: (x: CGFloat, y: CGFloat)?
+    @ObservedObject private var viewModel = ChartViewModel()
 
     var body: some View {
-
-        let allData = chartModel.dataSections.flatMap { $0.data }
-        let maxDataValue = allData.map { $0.value }.max() ?? 0
-
-        return GeometryReader { geometry in
-            ScrollView(.horizontal, showsIndicators: true) {
-                ScrollViewReader { value in
-                    BarChart(
-                        dataSections: self.chartModel.dataSections,
-                        maxHeight: geometry.size.height,
-                        maxDataValue: maxDataValue,
-                        selectedData: $selectedData,
-                        selectedBarPosition: $selectedBarPosition
-                    )
-                    .padding(16)
-                    .onAppear {
-                        value.scrollTo(self.chartModel.dataSections.last?.data.last?.id)
-                    }
-                }
-            }
+        GeometryReader { geometry in
+            BarChart(
+                dataSections: chartModel.dataSections,
+                pageWidth: geometry.size.width - 16,
+                maxHeight: geometry.size.height,
+                paged: chartModel.pagingEnabled,
+                viewModel: viewModel,
+                selectedSection: chartModel.dataSections.last?.title
+            )
             .frame(height: geometry.size.height + 54 + 32)
             .background(Color.white.opacity(0.1))
             .cornerRadius(10)
             .gesture(
                 DragGesture()
-                    .onChanged{ _ in
-                        resetSelection()
+                    .onChanged { _ in
+                        viewModel.reset()
                     }
             )
-            .onTapGesture {
-                resetSelection()
-            }
 
-            if let selectedData = selectedData, let selectedBarPosition = selectedBarPosition {
+            if let selectedData = viewModel.selectedData, let selectedBarPosition = viewModel.selectedBarPosition {
                 ValueLabel(
                     valueFormatter: chartModel.valueFormatter,
                     selectedData: selectedData,
@@ -75,11 +72,6 @@ struct ChartView: View {
                 )
             }
         }
-    }
-
-    private func resetSelection() {
-        selectedData = nil
-        selectedBarPosition = nil
     }
 
 }
@@ -91,40 +83,79 @@ private struct ValueLabel: View {
     let selectedBarPosition: (x: CGFloat, y: CGFloat)
 
     var body: some View {
-        Text(valueFormatter(selectedData.value))
-            .padding(.all, 10)
-            .transition(
-                AnyTransition.opacity
-                    .animation(.easeInOut(duration: 0.2))
-            )
-            .background(
-                Color.white
-                    .opacity(0.2)
-                    .cornerRadius(7)
-            )
-            .position(x: selectedBarPosition.x, y: selectedBarPosition.y - 20)
+        VStack {
+            Text(selectedData.title)
+            Text(valueFormatter(selectedData.value))
+        }
+        .padding(10)
+        .transition(
+            AnyTransition.opacity
+                .animation(.easeInOut(duration: 0.2))
+        )
+        .background(
+            Color.white
+                .opacity(0.2)
+                .cornerRadius(7)
+        )
+        .position(x: selectedBarPosition.x, y: selectedBarPosition.y - 20)
     }
 
 }
 
+
 private struct BarChart: View {
 
     let dataSections: [ChartDataSection]
+    let pageWidth: CGFloat
     let maxHeight: CGFloat
-    let maxDataValue: Double
-    @Binding var selectedData: ChartData?
-    @Binding var selectedBarPosition: (x: CGFloat, y: CGFloat)?
+    let paged: Bool
+    @ObservedObject var viewModel: ChartViewModel
+    @State var selectedSection: String?
+
+    private func maxDataValue() -> Double {
+        let allData = dataSections.flatMap { $0.data }
+        return allData.map { $0.value }.max() ?? 0
+    }
+
+    private func maxDataValue(for section: ChartDataSection) -> Double {
+        section.data.map { $0.value }.max() ?? 0
+    }
 
     var body: some View {
-        HStack(alignment: .bottom) { // TODO: make LazyHStack?
-            ForEach(self.dataSections) { section in
-                Section(
-                    section: section,
-                    maxHeight: self.maxHeight,
-                    maxDataValue: self.maxDataValue,
-                    selectedData: $selectedData,
-                    selectedBarPosition: $selectedBarPosition
-                )
+        if paged {
+            TabView(selection: $selectedSection) {
+                ForEach(dataSections) { section in
+                    Section(
+                        section: section,
+                        width: pageWidth,
+                        maxHeight: maxHeight,
+                        maxDataValue: maxDataValue(for: section),
+                        viewModel: viewModel
+                    )
+                    .tag(section.title)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+        } else {
+            ScrollView(.horizontal, showsIndicators: true) {
+                ScrollViewReader { value in
+                    HStack(alignment: .bottom) { // TODO: make LazyHStack?
+                        ForEach(dataSections) { section in
+                            Section(
+                                section: section,
+                                width: pageWidth,
+                                maxHeight: maxHeight,
+                                maxDataValue: maxDataValue(),
+                                viewModel: viewModel
+                            )
+                        }
+                    }
+                    .padding(16)
+                    .onAppear {
+                        value.scrollTo(self.dataSections.last?.data.last?.id)
+                    }
+                }
             }
         }
     }
@@ -134,21 +165,29 @@ private struct BarChart: View {
 private struct Section: View {
 
     let section: ChartDataSection
+    let width: CGFloat
     let maxHeight: CGFloat
     let maxDataValue: Double
-    @Binding var selectedData: ChartData?
-    @Binding var selectedBarPosition: (x: CGFloat, y: CGFloat)?
+    @ObservedObject var viewModel: ChartViewModel
+
+    private var barSpacing: CGFloat { 10 }
+
+    private var barWidth: CGFloat {
+        let numberOfBars = CGFloat(section.data.count)
+        let totalSpacing = barSpacing * numberOfBars - 1
+        return (width - totalSpacing) / numberOfBars
+    }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            HStack(alignment: .bottom) {
+            HStack(alignment: .bottom, spacing: barSpacing) {
                 ForEach(section.data) { data in
                     Bar(
                         data: data,
                         maxDataValue: self.maxDataValue,
+                        width: barWidth,
                         maxHeight: self.maxHeight,
-                        selectedData: $selectedData,
-                        selectedBarPosition: $selectedBarPosition
+                        viewModel: viewModel
                     )
                     .id(data.id)
                 }
@@ -159,18 +198,18 @@ private struct Section: View {
             }
         }
     }
+
 }
 
 private struct Bar: View {
 
     let data: ChartData
     let maxDataValue: Double
+    let width: CGFloat
     let maxHeight: CGFloat
-    @Binding var selectedData: ChartData?
-    @Binding var selectedBarPosition: (x: CGFloat, y: CGFloat)?
+    @ObservedObject var viewModel: ChartViewModel
 
-    private let width: CGFloat = 25
-    private var isHighlighted: Bool { selectedData == data }
+    private var isHighlighted: Bool { data == viewModel.selectedData }
     private var scale: CGFloat { isHighlighted ? 1.02 : 1 }
     private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
@@ -187,28 +226,28 @@ private struct Bar: View {
                     .scaleEffect(scale, anchor: .bottom)
                     .animation(.easeInOut)
                     .onTapGesture {
-                        guard selectedData != data else {
-                            selectedData = nil
-                            selectedBarPosition = nil
+                        guard !isHighlighted else {
+                            viewModel.reset()
                             return
                         }
 
-                        selectedData = data
-                        selectedBarPosition = isHighlighted ? (
+                        viewModel.selectedData = data
+                        viewModel.selectedBarPosition = (
                             x: geometry.frame(in: .global).midX - (width / 2),
                             y: maxHeight - height
-                        ) : nil
+                        )
                     }
             }
-            .frame(
-                width: width,
-                height: height,
-                alignment: .bottom
-            )
 
-            Text(data.title)
+            Text(String(data.title.first!))
                 .font(.subheadline)
+                .lineLimit(1)
         }
+        .frame(
+            width: width,
+            height: height,
+            alignment: .bottom
+        )
     }
 
 }
@@ -223,7 +262,7 @@ struct ChartView_Previews: PreviewProvider {
                         ChartDataSection(
                             title: "2019",
                             data: [
-                                ChartData(value: 10000, title: "Jan"),
+                                ChartData(value: 30000, title: "Jan"),
                                 ChartData(value: 13000, title: "Feb"),
                                 ChartData(value: 12000, title: "Mar"),
                                 ChartData(value: 13000, title: "Apr"),
@@ -246,7 +285,7 @@ struct ChartView_Previews: PreviewProvider {
                                 ChartData(value: 13000, title: "Apr"),
                                 ChartData(value: 10000, title: "May"),
                                 ChartData(value: 15000, title: "Jun"),
-                                ChartData(value: 22500, title: "Jul"),
+                                ChartData(value: 25500, title: "Jul"),
                                 ChartData(value: 3000, title: "Aug"),
                                 ChartData(value: 15000, title: "Sep"),
                                 ChartData(value: 10000, title: "Oct"),

@@ -186,12 +186,14 @@ class RunStatisticDetailViewController: UIViewController {
         guard let runStatistic = runStatistic else { return [] }
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
         return statistics.map {
-            ChartDataSection(title: $0.title, data: $0.runStatistics.map {
-                ChartData(
-                    value: $0.value,
-                    title: $0.title
-                )
-            }.reversed())
+            ChartDataSection(
+                title: $0.title,
+                data: $0.runStatistics.map {
+                    ChartData(
+                        value: $0.value,
+                        title: $0.title
+                    )
+                }.reversed())
         }.reversed()
     }
 
