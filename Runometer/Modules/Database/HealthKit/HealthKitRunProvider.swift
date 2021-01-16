@@ -37,7 +37,10 @@ struct HealthKitRunProvider: RunProviding {
         
         healthStore.requestAuthorization(toShare: nil, read: healthkitObjectTypes) { (success, error) in
 
-            let predicate = HKQuery.predicateForSamples(withStart: filter?.startDate, end: filter?.endDate, options: [])
+            let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+                HKQuery.predicateForSamples(withStart: filter?.startDate, end: filter?.endDate, options: []),
+                HKQuery.predicateForWorkouts(with: .running)
+            ])
 
             let query = HKSampleQuery(
                 sampleType: HKObjectType.workoutType(),
