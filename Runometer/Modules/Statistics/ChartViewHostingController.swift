@@ -19,7 +19,7 @@ class ChartViewHostingController: UIHostingController<ChartView> {
     }
 
     @objc required dynamic init?(coder aDecoder: NSCoder) {
-        let chartModel = ChartModel(dataSections: [], valueFormatter: { _ in "" })
+        let chartModel = ChartModel(dataSections: [], valueFormatter: { _ in "" }, pagingEnabled: true)
         super.init(coder: aDecoder, rootView: ChartView(chartModel: chartModel))
     }
     

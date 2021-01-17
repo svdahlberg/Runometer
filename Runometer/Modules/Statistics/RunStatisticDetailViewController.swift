@@ -178,7 +178,8 @@ class RunStatisticDetailViewController: UIViewController {
             tableView.reloadData()
             chartViewHostingController?.chartModel = ChartModel(
                 dataSections: self.chartData(),
-                valueFormatter: self.chartValueFormatter()
+                valueFormatter: self.chartValueFormatter(),
+                pagingEnabled: selectedFilter != .year
             )
         }
     }

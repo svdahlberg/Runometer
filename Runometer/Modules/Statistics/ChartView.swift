@@ -11,7 +11,7 @@ import SwiftUI
 struct ChartModel {
     let dataSections: [ChartDataSection]
     let valueFormatter: (Double) -> String
-    let pagingEnabled: Bool = true
+    let pagingEnabled: Bool
 }
 
 struct ChartDataSection: Hashable, Identifiable {
@@ -170,7 +170,8 @@ private struct Section: View {
     let maxDataValue: Double
     @ObservedObject var viewModel: ChartViewModel
 
-    private var barSpacing: CGFloat { 10 }
+    private let barSpacing: CGFloat = 10
+    private let maxBarWidth: CGFloat = 50
 
     private var barWidth: CGFloat {
         let numberOfBars = CGFloat(section.data.count)
@@ -185,7 +186,7 @@ private struct Section: View {
                     Bar(
                         data: data,
                         maxDataValue: self.maxDataValue,
-                        width: barWidth,
+                        width: min(barWidth, maxBarWidth),
                         maxHeight: self.maxHeight,
                         viewModel: viewModel
                     )
@@ -296,7 +297,8 @@ struct ChartView_Previews: PreviewProvider {
                     ],
                     valueFormatter: { value in
                         DistanceFormatter.format(distance: value)! + " km"
-                    }
+                    },
+                    pagingEnabled: true
                 )
             ).preferredColorScheme(.dark).padding(.horizontal).frame(height: 300)
         }
