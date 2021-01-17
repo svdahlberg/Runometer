@@ -71,16 +71,70 @@ struct StatisticsBreakdown {
     }
 
     func chartStatistics() -> [RunStatisticSection] {
-        let runSections = RunSection.runSections(from: runs, filter: filter, titleDateFormatter: chartTitleDateFormatter(for: filter))
-        return statistics(from: runSections)
+        let titleDateFormatter = chartTitleDateFormatter(for: filter)
+        let runSections = RunSection.runSections(from: runs, filter: filter, titleDateFormatter: titleDateFormatter)
+        return statistics(from: runSections, addStatisticsForZeroRuns: true, titleDateFormatter: titleDateFormatter)
     }
 
-    private func statistics(from runSections: [RunSection]) -> [RunStatisticSection] {
-        let statistics = runSections.compactMap { (runSection: RunSection) in
+    private func statistics(from runSections: [RunSection], addStatisticsForZeroRuns: Bool = false, titleDateFormatter: DateFormatter? = nil) -> [RunStatisticSection] {
+        var statistics = runSections.compactMap { (runSection: RunSection) in
             Statistics(runs: runSection.runs).statistic(of: type, with: runSection.title)
         }
 
+        if addStatisticsForZeroRuns {
+            switch filter {
+            case .year:
+                break
+            case .month:
+                statistics = self.runStatistics(per: .year, statistics).flatMap {
+                    paddedRunStatistics($0, titleDateFormatter: titleDateFormatter ?? chartTitleDateFormatter(for: filter))
+                }
+            case .day:
+                break
+            }
+        }
+
         return RunStatisticSection.sections(from: statistics, filter: filter)
+    }
+
+    private func runStatistics(per calendarComponent: Calendar.Component, _ runStatistics: [RunStatistic]) -> [[RunStatistic]] {
+        Dictionary(grouping: runStatistics) {
+            Calendar.current.component(calendarComponent, from: $0.date)
+        }.map {
+            $0.value
+        }
+    }
+
+    private func paddedRunStatistics(_ runStatistics: [RunStatistic], titleDateFormatter: DateFormatter) -> [RunStatistic] {
+        guard let firstRunStatistic = runStatistics.first else {
+            return []
+        }
+
+        let year = Calendar.current.component(.year, from: firstRunStatistic.date)
+        let unitType = firstRunStatistic.unitType
+        let type = firstRunStatistic.type
+
+        let allMonths = Array(1...12)
+        let monthsWithRuns = runStatistics.map {
+            Calendar.current.component(.month, from: $0.date)
+        }
+        let monthsWithoutRuns = Array(Set(allMonths).subtracting(Set(monthsWithRuns)))
+
+        let zeroRunStatistics: [RunStatistic] = monthsWithoutRuns.compactMap { month in
+            guard let date = Date.date(year: year, month: month) else {
+                return nil
+            }
+
+            return RunStatistic(
+                value: 0,
+                title: titleDateFormatter.string(from: date),
+                date: date,
+                unitType: unitType,
+                type: type
+            )
+        }
+
+        return (runStatistics + zeroRunStatistics).sorted { $0.date > $1.date }
     }
 
     private func listTitleDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter {
@@ -185,13 +239,28 @@ class RunStatisticDetailViewController: UIViewController {
     private func chartData() -> [ChartDataSection] {
         guard let runStatistic = runStatistic else { return [] }
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
+
+        func title(runStatistic: RunStatistic, filter: StatisticsBreakdownFilter) -> String {
+            switch filter {
+            case .year:
+                return runStatistic.title
+            case .month:
+                guard let firstCharacter = runStatistic.title.first else {
+                    return runStatistic.title
+                }
+                return String(firstCharacter)
+            case .day:
+                return runStatistic.title
+            }
+        }
+
         return statistics.map {
             ChartDataSection(
                 title: $0.title,
                 data: $0.runStatistics.map {
                     ChartData(
                         value: $0.value,
-                        title: $0.title
+                        title: title(runStatistic: $0, filter: selectedFilter)
                     )
                 }.reversed())
         }.reversed()

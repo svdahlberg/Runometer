@@ -28,7 +28,7 @@ struct HealthKitRunProvider: RunProviding {
             completion([])
             return
         }
-        
+
         let healthkitObjectTypes = Set([
             HKObjectType.workoutType(),
             HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning),

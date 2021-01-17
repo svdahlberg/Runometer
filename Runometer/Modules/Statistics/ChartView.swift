@@ -215,7 +215,7 @@ private struct Bar: View {
 
     private var height: CGFloat {
         let heightPerUnit = maxHeight / CGFloat(maxDataValue)
-        return CGFloat(data.value) * heightPerUnit
+        return CGFloat(max(data.value, 1)) * heightPerUnit
     }
 
     var body: some View {
@@ -239,7 +239,7 @@ private struct Bar: View {
                     }
             }
 
-            Text(String(data.title.first!))
+            Text(data.title)
                 .font(.subheadline)
                 .lineLimit(1)
         }

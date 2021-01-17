@@ -30,4 +30,12 @@ extension Date {
         return calendar.date(from: dateComponents)
     }
 
+    static func date(year: Int, month: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        dateComponents.day = 1
+        return Calendar.current.date(from: dateComponents)
+    }
+
 }
