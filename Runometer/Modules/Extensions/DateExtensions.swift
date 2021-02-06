@@ -38,4 +38,11 @@ extension Date {
         return Calendar.current.date(from: dateComponents)
     }
 
+    static func date(year: Int, weekOfYear: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.yearForWeekOfYear = year
+        dateComponents.weekOfYear = weekOfYear
+        return Calendar.current.date(from: dateComponents)
+    }
+
 }

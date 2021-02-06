@@ -57,12 +57,9 @@ struct ChartView: View {
             .frame(height: geometry.size.height + 54 + 32)
             .background(Color.white.opacity(0.1))
             .cornerRadius(10)
-            .gesture(
-                DragGesture()
-                    .onChanged { _ in
-                        viewModel.reset()
-                    }
-            )
+            .gesture(DragGesture().onChanged { _ in
+                viewModel.reset()
+            })
 
             if let selectedData = viewModel.selectedData, let selectedBarPosition = viewModel.selectedBarPosition {
                 ValueLabel(
@@ -121,13 +118,27 @@ private struct BarChart: View {
         section.data.map { $0.value }.max() ?? 0
     }
 
+    private let barSpacing: CGFloat = 5
+    private let maxBarWidth: CGFloat = 50
+
+    private func barWidth(for section: ChartDataSection) -> CGFloat {
+        let numberOfBars = CGFloat(section.data.count)
+        guard numberOfBars != 0 else {
+            return maxBarWidth
+        }
+        let totalSpacing = barSpacing * numberOfBars - 1
+        return min((pageWidth - totalSpacing) / numberOfBars, maxBarWidth)
+    }
+
+
     var body: some View {
         if paged {
             TabView(selection: $selectedSection) {
                 ForEach(dataSections) { section in
                     Section(
                         section: section,
-                        width: pageWidth,
+                        barWidth: barWidth(for: section),
+                        barSpacing: barSpacing,
                         maxHeight: maxHeight,
                         maxDataValue: maxDataValue(for: section),
                         viewModel: viewModel
@@ -144,7 +155,8 @@ private struct BarChart: View {
                         ForEach(dataSections) { section in
                             Section(
                                 section: section,
-                                width: pageWidth,
+                                barWidth: 20,
+                                barSpacing: barSpacing,
                                 maxHeight: maxHeight,
                                 maxDataValue: maxDataValue(),
                                 viewModel: viewModel
@@ -165,18 +177,14 @@ private struct BarChart: View {
 private struct Section: View {
 
     let section: ChartDataSection
-    let width: CGFloat
+    let barWidth: CGFloat
+    let barSpacing: CGFloat
     let maxHeight: CGFloat
     let maxDataValue: Double
     @ObservedObject var viewModel: ChartViewModel
 
-    private let barSpacing: CGFloat = 10
-    private let maxBarWidth: CGFloat = 50
-
-    private var barWidth: CGFloat {
-        let numberOfBars = CGFloat(section.data.count)
-        let totalSpacing = barSpacing * numberOfBars - 1
-        return (width - totalSpacing) / numberOfBars
+    private func title(for data: ChartData, in section: ChartDataSection) -> String {
+        section.data.count > 10 ? String(data.title.first ?? " ") : data.title
     }
 
     var body: some View {
@@ -184,10 +192,11 @@ private struct Section: View {
             HStack(alignment: .bottom, spacing: barSpacing) {
                 ForEach(section.data) { data in
                     Bar(
+                        title: title(for: data, in: section),
                         data: data,
-                        maxDataValue: self.maxDataValue,
-                        width: min(barWidth, maxBarWidth),
-                        maxHeight: self.maxHeight,
+                        maxDataValue: maxDataValue,
+                        width: barWidth,
+                        maxHeight: maxHeight,
                         viewModel: viewModel
                     )
                     .id(data.id)
@@ -204,6 +213,7 @@ private struct Section: View {
 
 private struct Bar: View {
 
+    let title: String
     let data: ChartData
     let maxDataValue: Double
     let width: CGFloat
@@ -215,7 +225,7 @@ private struct Bar: View {
     private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
     private var height: CGFloat {
-        let heightPerUnit = maxHeight / CGFloat(maxDataValue)
+        let heightPerUnit = maxHeight / max(CGFloat(maxDataValue), 1)
         return CGFloat(max(data.value, 1)) * heightPerUnit
     }
 
@@ -240,7 +250,7 @@ private struct Bar: View {
                     }
             }
 
-            Text(data.title)
+            Text(title)
                 .font(.subheadline)
                 .lineLimit(1)
         }
@@ -292,6 +302,64 @@ struct ChartView_Previews: PreviewProvider {
                                 ChartData(value: 10000, title: "Oct"),
                                 ChartData(value: 14000, title: "Nov"),
                                 ChartData(value: 13000, title: "Dec")
+                            ]
+                        ),
+                        ChartDataSection(
+                            title: "2021",
+                            data: [
+                                ChartData(value: 10000, title: "1"),
+                                ChartData(value: 13000, title: "2"),
+                                ChartData(value: 12000, title: "3"),
+                                ChartData(value: 13000, title: "4"),
+                                ChartData(value: 10000, title: "5"),
+                                ChartData(value: 15000, title: "6"),
+                                ChartData(value: 25500, title: "7"),
+                                ChartData(value: 3000, title: "8"),
+                                ChartData(value: 15000, title: "9"),
+                                ChartData(value: 10000, title: "10"),
+                                ChartData(value: 14000, title: "11"),
+                                ChartData(value: 13000, title: "12"),
+                                ChartData(value: 10000, title: "13"),
+                                ChartData(value: 13000, title: "14"),
+                                ChartData(value: 12000, title: "15"),
+                                ChartData(value: 13000, title: "16"),
+                                ChartData(value: 10000, title: "17"),
+                                ChartData(value: 15000, title: "18"),
+                                ChartData(value: 25500, title: "18"),
+                                ChartData(value: 3000, title: "19"),
+                                ChartData(value: 15000, title: "20"),
+                                ChartData(value: 10000, title: "21"),
+                                ChartData(value: 13000, title: "22"),
+                                ChartData(value: 12000, title: "23"),
+                                ChartData(value: 13000, title: "24"),
+                                ChartData(value: 10000, title: "25"),
+                                ChartData(value: 15000, title: "26"),
+                                ChartData(value: 25500, title: "27"),
+                                ChartData(value: 20000, title: "28"),
+                                ChartData(value: 15000, title: "29"),
+                                ChartData(value: 10000, title: "30"),
+                                ChartData(value: 10000, title: "31"),
+                                ChartData(value: 13000, title: "32"),
+                                ChartData(value: 12000, title: "33"),
+                                ChartData(value: 13000, title: "34"),
+                                ChartData(value: 10000, title: "35"),
+                                ChartData(value: 15000, title: "36"),
+                                ChartData(value: 25500, title: "37"),
+                                ChartData(value: 20000, title: "38"),
+                                ChartData(value: 15000, title: "39"),
+                                ChartData(value: 10000, title: "40"),
+                                ChartData(value: 10000, title: "41"),
+                                ChartData(value: 13000, title: "42"),
+                                ChartData(value: 12000, title: "43"),
+                                ChartData(value: 13000, title: "44"),
+                                ChartData(value: 10000, title: "45"),
+                                ChartData(value: 15000, title: "46"),
+                                ChartData(value: 25500, title: "47"),
+                                ChartData(value: 20000, title: "48"),
+                                ChartData(value: 15000, title: "49"),
+                                ChartData(value: 25500, title: "50"),
+                                ChartData(value: 20000, title: "51"),
+                                ChartData(value: 15000, title: "52")
                             ]
                         )
                     ],

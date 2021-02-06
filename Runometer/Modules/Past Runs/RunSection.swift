@@ -35,7 +35,7 @@ struct RunSection {
         switch filter {
         case .year: dateFormatter.dateFormat = "yyyy"
         case .month: dateFormatter.dateFormat = "MMMM yyyy"
-        case .day: dateFormatter.dateFormat = "MMMM d yyyy"
+        case .week: dateFormatter.dateFormat = "MMMM yyyy w"
         }
         return dateFormatter
     }

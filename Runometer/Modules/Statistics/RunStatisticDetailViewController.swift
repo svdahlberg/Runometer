@@ -8,12 +8,12 @@
 
 import UIKit
 
-enum StatisticsBreakdownFilter {
-    case year, month, day
+enum StatisticsBreakdownFilter: CaseIterable {
+    case week, month, year
     
     var title: String {
         switch self {
-        case .day: return "Day"
+        case .week: return "Week"
         case .month: return "Month"
         case .year: return "Year"
         }
@@ -25,9 +25,9 @@ struct RunStatisticSection {
     let title: String?
     let runStatistics: [RunStatistic]
 
-    static func sections(from runStatistics: [RunStatistic], filter: StatisticsBreakdownFilter, titleDateFormatter: DateFormatter? = nil) -> [RunStatisticSection] {
+    static func sections(from runStatistics: [RunStatistic], titleDateFormatter: DateFormatter? = nil, headerDateFormatter: DateFormatter?) -> [RunStatisticSection] {
         return Dictionary(grouping: runStatistics) {
-            headerDateFormatter(for: filter)?.string(from: $0.date)
+            headerDateFormatter?.string(from: $0.date)
         }.map {
             let title: String?
             if let titleDateFormatter = titleDateFormatter {
@@ -42,15 +42,6 @@ struct RunStatisticSection {
         }
     }
 
-    private static func headerDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter? {
-        let dateFormatter = DateFormatter()
-        switch filter {
-        case .year: return nil
-        case .month: dateFormatter.dateFormat = "yyyy"
-        case .day: dateFormatter.dateFormat = "MMMM yyyy"
-        }
-        return dateFormatter
-    }
 }
 
 struct StatisticsBreakdown {
@@ -67,16 +58,16 @@ struct StatisticsBreakdown {
     
     func listStatistics() -> [RunStatisticSection] {
         let runSections = RunSection.runSections(from: runs, filter: filter, titleDateFormatter: listTitleDateFormatter(for: filter))
-        return statistics(from: runSections)
+        return statistics(from: runSections, headerDateFormatter: listHeaderDateFormatter(for: filter))
     }
 
     func chartStatistics() -> [RunStatisticSection] {
         let titleDateFormatter = chartTitleDateFormatter(for: filter)
         let runSections = RunSection.runSections(from: runs, filter: filter, titleDateFormatter: titleDateFormatter)
-        return statistics(from: runSections, addStatisticsForZeroRuns: true, titleDateFormatter: titleDateFormatter)
+        return statistics(from: runSections, addStatisticsForZeroRuns: true, titleDateFormatter: titleDateFormatter, headerDateFormatter: chartHeaderDateFormatter(for: filter))
     }
 
-    private func statistics(from runSections: [RunSection], addStatisticsForZeroRuns: Bool = false, titleDateFormatter: DateFormatter? = nil) -> [RunStatisticSection] {
+    private func statistics(from runSections: [RunSection], addStatisticsForZeroRuns: Bool = false, titleDateFormatter: DateFormatter? = nil, headerDateFormatter: DateFormatter?) -> [RunStatisticSection] {
         var statistics = runSections.compactMap { (runSection: RunSection) in
             Statistics(runs: runSection.runs).statistic(of: type, with: runSection.title)
         }
@@ -86,15 +77,19 @@ struct StatisticsBreakdown {
             case .year:
                 break
             case .month:
-                statistics = self.runStatistics(per: .year, statistics).flatMap {
-                    paddedRunStatistics($0, titleDateFormatter: titleDateFormatter ?? chartTitleDateFormatter(for: filter))
-                }
-            case .day:
-                break
+                statistics = runStatistics(per: .year, statistics)
+                    .flatMap {
+                        paddedRunStatistics($0, titleDateFormatter: titleDateFormatter ?? chartTitleDateFormatter(for: filter))
+                    }
+            case .week:
+                statistics = runStatistics(per: .year, statistics)
+                    .flatMap {
+                        paddedRunStatistics($0, titleDateFormatter: titleDateFormatter ?? chartTitleDateFormatter(for: filter))
+                    }
             }
         }
 
-        return RunStatisticSection.sections(from: statistics, filter: filter)
+        return RunStatisticSection.sections(from: statistics, headerDateFormatter: headerDateFormatter)
     }
 
     private func runStatistics(per calendarComponent: Calendar.Component, _ runStatistics: [RunStatistic]) -> [[RunStatistic]] {
@@ -114,16 +109,48 @@ struct StatisticsBreakdown {
         let unitType = firstRunStatistic.unitType
         let type = firstRunStatistic.type
 
-        let allMonths = Array(1...12)
-        let monthsWithRuns = runStatistics.map {
-            Calendar.current.component(.month, from: $0.date)
-        }
-        let monthsWithoutRuns = Array(Set(allMonths).subtracting(Set(monthsWithRuns)))
+        let all: [Int] = {
+            switch filter {
+            case .month:
+                return Array(1...12)
+            case .week:
+                return Array(1...53)
+            case .year:
+                return []
+            }
+        }()
 
-        let zeroRunStatistics: [RunStatistic] = monthsWithoutRuns.compactMap { month in
-            guard let date = Date.date(year: year, month: month) else {
+        func dateComponent() -> Calendar.Component? {
+            switch filter {
+            case .month:
+                return .month
+            case .week:
+                return .weekOfYear
+            case .year:
                 return nil
             }
+        }
+
+        guard let dateComponent = dateComponent() else { return [] }
+
+        let withRuns = runStatistics.map {
+            Calendar.current.component(dateComponent, from: $0.date)
+        }
+        let withoutRuns = Array(Set(all).subtracting(Set(withRuns)))
+
+        let zeroRunStatistics: [RunStatistic] = withoutRuns.compactMap { dateComponent in
+            func date() -> Date? {
+                switch filter {
+                case .month:
+                    return Date.date(year: year, month: dateComponent)
+                case .week:
+                    return Date.date(year: year, weekOfYear: dateComponent)
+                case .year:
+                    return nil
+                }
+            }
+
+            guard let date = date() else { return nil }
 
             return RunStatistic(
                 value: 0,
@@ -142,7 +169,7 @@ struct StatisticsBreakdown {
         switch filter {
         case .year: dateFormatter.dateFormat = "yyyy"
         case .month: dateFormatter.dateFormat = "MMMM"
-        case .day: dateFormatter.dateFormat = "EEEE d"
+        case .week: dateFormatter.dateFormat = "'Week' w"
         }
         return dateFormatter
     }
@@ -151,8 +178,28 @@ struct StatisticsBreakdown {
         let dateFormatter = DateFormatter()
         switch filter {
         case .year: dateFormatter.dateFormat = "yyyy"
-        case .month: dateFormatter.dateFormat = "MMM"
-        case .day: dateFormatter.dateFormat = "EE d"
+        case .month: dateFormatter.dateFormat = "MMMM"
+        case .week: dateFormatter.dateFormat = "w"
+        }
+        return dateFormatter
+    }
+
+    private func listHeaderDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter? {
+        let dateFormatter = DateFormatter()
+        switch filter {
+        case .year: return nil
+        case .month: dateFormatter.dateFormat = "yyyy"
+        case .week: dateFormatter.dateFormat = "yyyy"
+        }
+        return dateFormatter
+    }
+
+    private func chartHeaderDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter? {
+        let dateFormatter = DateFormatter()
+        switch filter {
+        case .year: return nil
+        case .month: dateFormatter.dateFormat = "yyyy"
+        case .week: dateFormatter.dateFormat = "QQQ yyyy"
         }
         return dateFormatter
     }
@@ -176,11 +223,14 @@ class RunStatisticDetailViewController: UIViewController {
     private var runStatisticSections: [RunStatisticSection]? {
         didSet {
             tableView.reloadData()
-            chartViewHostingController?.chartModel = ChartModel(
-                dataSections: self.chartData(),
-                valueFormatter: self.chartValueFormatter(),
-                pagingEnabled: selectedFilter != .year
+            let chartModel = ChartModel(
+                dataSections: chartData(),
+                valueFormatter: chartValueFormatter(),
+                pagingEnabled: true//selectedFilter != .year
             )
+            chartViewHostingController?.chartModel = chartModel
+
+//            chartViewHostingController = ChartViewHostingController(rootView: ChartView(chartModel: chartModel, viewModel: ChartViewModel()))
         }
     }
 
@@ -241,27 +291,13 @@ class RunStatisticDetailViewController: UIViewController {
         guard let runStatistic = runStatistic else { return [] }
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
 
-        func title(runStatistic: RunStatistic, filter: StatisticsBreakdownFilter) -> String {
-            switch filter {
-            case .year:
-                return runStatistic.title
-            case .month:
-                guard let firstCharacter = runStatistic.title.first else {
-                    return runStatistic.title
-                }
-                return String(firstCharacter)
-            case .day:
-                return runStatistic.title
-            }
-        }
-
         return statistics.map {
             ChartDataSection(
                 title: $0.title,
                 data: $0.runStatistics.map {
                     ChartData(
                         value: $0.value,
-                        title: title(runStatistic: $0, filter: selectedFilter)
+                        title: $0.title
                     )
                 }.reversed())
         }.reversed()
@@ -295,7 +331,7 @@ class RunStatisticDetailViewController: UIViewController {
         presentingViewController?.dismiss(animated: true)
     }
     
-    private let filters: [StatisticsBreakdownFilter] = [.day, .month, .year]
+    private let filters = StatisticsBreakdownFilter.allCases
     
     private var selectedFilter: StatisticsBreakdownFilter {
         return filters[segmentedControl.selectedSegmentIndex]
