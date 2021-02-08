@@ -58,6 +58,7 @@
 		B2618932214A982D008BA04A /* RunStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618931214A982C008BA04A /* RunStatistic.swift */; };
 		B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */; };
 		B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */; };
+		B261AD6825CF4613004904F3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */; };
 		B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2632E842454DAB300E0645F /* ChartViewHostingController.swift */; };
 		B2720899213D47E1009DCE7D /* RunRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */; };
 		B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089A213D6380009DCE7D /* RunRatingsView.swift */; };
@@ -247,6 +248,7 @@
 		B2618931214A982C008BA04A /* RunStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatistic.swift; sourceTree = "<group>"; };
 		B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsDetailTransition.swift; sourceTree = "<group>"; };
 		B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticDetailViewController.swift; sourceTree = "<group>"; };
+		B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
 		B2632E842454DAB300E0645F /* ChartViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHostingController.swift; sourceTree = "<group>"; };
 		B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B272089A213D6380009DCE7D /* RunRatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingsView.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				B2DE408F244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift */,
 				B273D873244D27AC00E373F8 /* RunStatisticsFilterViewController.swift */,
 				B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */,
+				B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */,
 				B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */,
 				B2BE7B9D2148F96C00902720 /* RunStatisticCollectionViewCell.swift */,
 				B2BE7B992148F52700902720 /* Statistics.swift */,
@@ -939,6 +942,7 @@
 				B2DE4090244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift in Sources */,
 				B24B3A3023D3BDAA007851A3 /* AppCoordinator.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
+				B261AD6825CF4613004904F3 /* ChartTableViewCell.swift in Sources */,
 				B2562CF42453A2740011B534 /* RunMock.swift in Sources */,
 				B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */,
 				B28AF1D02448B134005C288E /* RunometerVisualEffectView.swift in Sources */,

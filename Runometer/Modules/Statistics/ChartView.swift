@@ -24,6 +24,13 @@ struct ChartData: Hashable, Identifiable {
     let id = UUID()
     let value: Double
     let title: String
+    let shortTitle: String
+
+    init(value: Double, title: String, shortTitle: String = "") {
+        self.value = value
+        self.title = title
+        self.shortTitle = shortTitle.isEmpty ? title : shortTitle
+    }
 }
 
 private class ChartViewModel: ObservableObject {
@@ -54,7 +61,7 @@ struct ChartView: View {
                 viewModel: viewModel,
                 selectedSection: chartModel.dataSections.last?.title
             )
-            .frame(height: geometry.size.height + 54 + 32)
+            .frame(height: geometry.size.height + 54)
             .background(Color.white.opacity(0.1))
             .cornerRadius(10)
             .gesture(DragGesture().onChanged { _ in
@@ -183,16 +190,12 @@ private struct Section: View {
     let maxDataValue: Double
     @ObservedObject var viewModel: ChartViewModel
 
-    private func title(for data: ChartData, in section: ChartDataSection) -> String {
-        section.data.count > 10 ? String(data.title.first ?? " ") : data.title
-    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(alignment: .bottom, spacing: barSpacing) {
                 ForEach(section.data) { data in
                     Bar(
-                        title: title(for: data, in: section),
+                        title: data.shortTitle,
                         data: data,
                         maxDataValue: maxDataValue,
                         width: barWidth,

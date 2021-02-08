@@ -89,7 +89,13 @@ struct StatisticsBreakdown {
             }
         }
 
-        return RunStatisticSection.sections(from: statistics, headerDateFormatter: headerDateFormatter)
+        return RunStatisticSection
+            .sections(from: statistics, headerDateFormatter: headerDateFormatter)
+            .filter {
+                !$0.runStatistics.allSatisfy {
+                    $0.value == 0
+                }
+            }
     }
 
     private func runStatistics(per calendarComponent: Calendar.Component, _ runStatistics: [RunStatistic]) -> [[RunStatistic]] {
@@ -179,7 +185,7 @@ struct StatisticsBreakdown {
         switch filter {
         case .year: dateFormatter.dateFormat = "yyyy"
         case .month: dateFormatter.dateFormat = "MMMM"
-        case .week: dateFormatter.dateFormat = "w"
+        case .week: dateFormatter.dateFormat = "'Week' w"
         }
         return dateFormatter
     }
@@ -207,6 +213,23 @@ struct StatisticsBreakdown {
 }
 
 class RunStatisticDetailViewController: UIViewController {
+
+    private enum Section {
+        case chart(ChartModel)
+        case list(RunStatisticSection)
+    }
+
+    private var sections: [Section] {
+        let listSections = runStatisticSections?.map { Section.list($0) } ?? []
+
+        return [
+            .chart(ChartModel(
+                dataSections: chartData(),
+                valueFormatter: chartValueFormatter(),
+                pagingEnabled: selectedFilter != .year
+            ))
+        ] + listSections
+    }
     
     @IBOutlet private weak var statisticsBackgroundView: UIView!
     @IBOutlet private weak var statisticView: RunStatisticView!
@@ -267,6 +290,8 @@ class RunStatisticDetailViewController: UIViewController {
         tableView.removeTrailingSeparators()
 
         updatePresentationState()
+
+        tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: "ChartTableViewCellReuseIdentifier")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -291,13 +316,25 @@ class RunStatisticDetailViewController: UIViewController {
         guard let runStatistic = runStatistic else { return [] }
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
 
+        func shortTitle(runStatistic: RunStatistic, filter: StatisticsBreakdownFilter) -> String {
+            switch filter {
+            case .week:
+                return runStatistic.title.filter { $0.isNumber }
+            case .month:
+                return String(runStatistic.title.first ?? " ")
+            case .year:
+                return runStatistic.title
+            }
+        }
+
         return statistics.map {
             ChartDataSection(
                 title: $0.title,
                 data: $0.runStatistics.map {
                     ChartData(
                         value: $0.value,
-                        title: $0.title
+                        title: $0.title,
+                        shortTitle: shortTitle(runStatistic: $0, filter: selectedFilter)
                     )
                 }.reversed())
         }.reversed()
@@ -369,34 +406,64 @@ class RunStatisticDetailViewController: UIViewController {
 extension RunStatisticDetailViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return runStatisticSections?.count ?? 0
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return runStatisticSections?[section].runStatistics.count ?? 0
+        switch sections[section] {
+        case .chart:
+            return 1
+        case .list(let runStatisticSection):
+            return runStatisticSection.runStatistics.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RunStatisticTableViewCellReuseIdentifier", for: indexPath)
-        if let runStatistic = runStatisticSections?[indexPath.section].runStatistics[indexPath.row], let value = runStatistic.formattedValue {
-            cell.textLabel?.text = runStatistic.title
-            cell.detailTextLabel?.text = value + " " + runStatistic.unitSymbol
+        switch sections[indexPath.section] {
+        case .chart(let chartModel):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartTableViewCellReuseIdentifier", for: indexPath) as? ChartTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.chartModel = chartModel
+            return cell
+        case .list(let section):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RunStatisticTableViewCellReuseIdentifier", for: indexPath)
+            let runStatistic = section.runStatistics[indexPath.row]
+            if let value = runStatistic.formattedValue {
+                cell.textLabel?.text = runStatistic.title
+                cell.detailTextLabel?.text = value + " " + runStatistic.unitSymbol
+            }
+            return cell
         }
-        return cell
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        runStatisticSections?[section].title
+        switch sections[section] {
+        case .chart:
+            return nil
+        case .list(let section):
+            return section.title
+        }
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = runStatisticSections?[section].title else { return nil }
-        return PastRunsTableViewSectionHeaderView(title: title)
+        switch sections[section] {
+        case .chart:
+            return nil
+        case .list(let section):
+            guard let title = section.title else { return nil }
+            return PastRunsTableViewSectionHeaderView(title: title)
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        guard runStatisticSections?[section].title != nil else { return 0 }
-        return UITableView.automaticDimension
+        switch sections[section] {
+        case .chart:
+            return 0
+        case .list(let section):
+            guard section.title != nil else { return 0 }
+            return UITableView.automaticDimension
+        }
     }
 
 }
