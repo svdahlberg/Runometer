@@ -237,7 +237,6 @@ class RunStatisticDetailViewController: UIViewController {
     @IBOutlet private weak var chartContainerView: UIView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var closeButtonContainerView: UIVisualEffectView!
-    @IBOutlet private weak var toggleViewButton: UIButton!
     private var chartViewHostingController: ChartViewHostingController?
 
     var runStatistic: RunStatistic?
@@ -246,35 +245,6 @@ class RunStatisticDetailViewController: UIViewController {
     private var runStatisticSections: [RunStatisticSection]? {
         didSet {
             tableView.reloadData()
-            let chartModel = ChartModel(
-                dataSections: chartData(),
-                valueFormatter: chartValueFormatter(),
-                pagingEnabled: true//selectedFilter != .year
-            )
-            chartViewHostingController?.chartModel = chartModel
-
-//            chartViewHostingController = ChartViewHostingController(rootView: ChartView(chartModel: chartModel, viewModel: ChartViewModel()))
-        }
-    }
-
-    enum PresentationState {
-        case list, chart
-
-        mutating func toggle() {
-            self = self == .list ? .chart : .list
-        }
-
-        var buttonTitle: String {
-            switch self {
-            case .chart: return "List"
-            case .list: return "Chart"
-            }
-        }
-    }
-
-    private var presentationState: PresentationState = .chart {
-        didSet {
-            updatePresentationState()
         }
     }
     
@@ -286,10 +256,7 @@ class RunStatisticDetailViewController: UIViewController {
         
         segmentedControl.alpha = 0
         closeButtonContainerView.alpha = 0
-        toggleViewButton.alpha = 0
         tableView.removeTrailingSeparators()
-
-        updatePresentationState()
 
         tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: "ChartTableViewCellReuseIdentifier")
     }
@@ -299,7 +266,6 @@ class RunStatisticDetailViewController: UIViewController {
         UIView.animate(withDuration: 0.15) {
             self.segmentedControl.alpha = 1
             self.closeButtonContainerView.alpha = 1
-            self.toggleViewButton.alpha = 1
         }
     }
 
@@ -382,23 +348,6 @@ class RunStatisticDetailViewController: UIViewController {
     
     @IBAction private func didChangeSegmentedControlValue(_ sender: Any) {
         loadStatisticsBreakdown()
-    }
-
-    @IBAction private func didPressToggleViewButton(_ sender: UIButton) {
-        presentationState.toggle()
-    }
-
-    private func updatePresentationState() {
-        toggleViewButton.setTitle(presentationState.buttonTitle, for: .normal)
-
-        switch presentationState {
-        case .chart:
-            tableView.isHidden = true
-            chartContainerView.isHidden = false
-        case .list:
-            tableView.isHidden = false
-            chartContainerView.isHidden = true
-        }
     }
 
 }
