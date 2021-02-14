@@ -64,7 +64,7 @@ struct ChartView: View {
                 selectedSection: chartModel.dataSections.last?.title
             )
             .frame(height: geometry.size.height + 54)
-            .background(Color.white.opacity(0.1))
+            .background(Color(Colors.secondaryBackground))
             .cornerRadius(10)
             .gesture(DragGesture().onChanged { _ in
                 viewModel.reset()
@@ -99,7 +99,7 @@ private struct ValueLabel: View {
                 .animation(.easeInOut(duration: 0.2))
         )
         .background(
-            Color.white
+            Color(.lightGray)
                 .opacity(0.2)
                 .cornerRadius(7)
         )
