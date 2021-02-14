@@ -59,7 +59,6 @@
 		B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */; };
 		B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */; };
 		B261AD6825CF4613004904F3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */; };
-		B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2632E842454DAB300E0645F /* ChartViewHostingController.swift */; };
 		B2720899213D47E1009DCE7D /* RunRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */; };
 		B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089A213D6380009DCE7D /* RunRatingsView.swift */; };
 		B272089E213E699F009DCE7D /* RunRatingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089D213E699F009DCE7D /* RunRatingProvider.swift */; };
@@ -249,7 +248,6 @@
 		B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsDetailTransition.swift; sourceTree = "<group>"; };
 		B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticDetailViewController.swift; sourceTree = "<group>"; };
 		B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
-		B2632E842454DAB300E0645F /* ChartViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHostingController.swift; sourceTree = "<group>"; };
 		B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B272089A213D6380009DCE7D /* RunRatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingsView.swift; sourceTree = "<group>"; };
 		B272089D213E699F009DCE7D /* RunRatingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingProvider.swift; sourceTree = "<group>"; };
@@ -387,7 +385,6 @@
 				B2534BAA2146A4E300EFEBFE /* Statistics.storyboard */,
 				B2534BAC2146A4F300EFEBFE /* StatisticsViewController.swift */,
 				B2562CF0245381B00011B534 /* ChartView.swift */,
-				B2632E842454DAB300E0645F /* ChartViewHostingController.swift */,
 				B273D871244D273B00E373F8 /* StatisticsViewModel.swift */,
 				B2DE408F244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift */,
 				B273D873244D27AC00E373F8 /* RunStatisticsFilterViewController.swift */,
@@ -967,7 +964,6 @@
 				B2B055231F80D6A200292EB3 /* RunViewController.swift in Sources */,
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,
 				B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */,
-				B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
 				B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */,
