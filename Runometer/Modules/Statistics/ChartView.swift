@@ -37,6 +37,8 @@ private class ChartViewModel: ObservableObject {
 
     @Published var selectedData: ChartData?
     @Published var selectedBarPosition: (x: CGFloat, y: CGFloat)?
+    @Published var maxDataValue: Double?
+    var canChangeMaxDataValue = true
 
     func reset() {
         selectedData = nil
@@ -56,7 +58,7 @@ struct ChartView: View {
             BarChart(
                 dataSections: chartModel.dataSections,
                 pageWidth: geometry.size.width - 16,
-                maxHeight: geometry.size.height,
+                maxHeight: geometry.size.height - 32,
                 paged: chartModel.pagingEnabled,
                 viewModel: viewModel,
                 selectedSection: chartModel.dataSections.last?.title
@@ -137,7 +139,6 @@ private struct BarChart: View {
         return min((pageWidth - totalSpacing) / numberOfBars, maxBarWidth)
     }
 
-
     var body: some View {
         if paged {
             TabView(selection: $selectedSection) {
@@ -158,11 +159,11 @@ private struct BarChart: View {
         } else {
             ScrollView(.horizontal, showsIndicators: true) {
                 ScrollViewReader { value in
-                    HStack(alignment: .bottom) { // TODO: make LazyHStack?
+                    HStack(alignment: .bottom) {
                         ForEach(dataSections) { section in
                             Section(
                                 section: section,
-                                barWidth: 20,
+                                barWidth: 35,
                                 barSpacing: barSpacing,
                                 maxHeight: maxHeight,
                                 maxDataValue: maxDataValue(),
@@ -210,6 +211,15 @@ private struct Section: View {
                     .font(.title2)
             }
         }
+        .onAppear {
+            if viewModel.maxDataValue != maxDataValue, viewModel.canChangeMaxDataValue {
+                viewModel.canChangeMaxDataValue = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    viewModel.maxDataValue = maxDataValue
+                    viewModel.canChangeMaxDataValue = true
+                }
+            }
+        }
     }
 
 }
@@ -228,13 +238,18 @@ private struct Bar: View {
     private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
     private var height: CGFloat {
+        guard let maxDataValue = viewModel.maxDataValue else {
+            return 0
+        }
+
         let heightPerUnit = maxHeight / max(CGFloat(maxDataValue), 1)
-        return CGFloat(max(data.value, 1)) * heightPerUnit
+        return min(CGFloat(max(data.value, 1)) * heightPerUnit, maxHeight)
     }
 
     var body: some View {
-        VStack(alignment: .center) {
-            GeometryReader { geometry in
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
                 Capsule(style: .continuous)
                     .foregroundColor(color)
                     .scaleEffect(scale, anchor: .bottom)
@@ -251,16 +266,18 @@ private struct Bar: View {
                             y: maxHeight - height
                         )
                     }
-            }
+                    .frame(
+                        width: width,
+                        height: height
+                    )
 
-            Text(title)
-                .font(.subheadline)
-                .lineLimit(1)
+                Text(title)
+                    .font(.subheadline)
+                    .lineLimit(1)
+            }
         }
         .frame(
-            width: width,
-            height: height,
-            alignment: .bottom
+            width: width
         )
     }
 
@@ -300,71 +317,71 @@ struct ChartView_Previews: PreviewProvider {
                                 ChartData(value: 10000, title: "May"),
                                 ChartData(value: 15000, title: "Jun"),
                                 ChartData(value: 25500, title: "Jul"),
-                                ChartData(value: 3000, title: "Aug"),
+                                ChartData(value: 50000, title: "Aug"),
                                 ChartData(value: 15000, title: "Sep"),
                                 ChartData(value: 10000, title: "Oct"),
                                 ChartData(value: 14000, title: "Nov"),
                                 ChartData(value: 13000, title: "Dec")
                             ]
                         ),
-                        ChartDataSection(
-                            title: "2021",
-                            data: [
-                                ChartData(value: 10000, title: "1"),
-                                ChartData(value: 13000, title: "2"),
-                                ChartData(value: 12000, title: "3"),
-                                ChartData(value: 13000, title: "4"),
-                                ChartData(value: 10000, title: "5"),
-                                ChartData(value: 15000, title: "6"),
-                                ChartData(value: 25500, title: "7"),
-                                ChartData(value: 3000, title: "8"),
-                                ChartData(value: 15000, title: "9"),
-                                ChartData(value: 10000, title: "10"),
-                                ChartData(value: 14000, title: "11"),
-                                ChartData(value: 13000, title: "12"),
-                                ChartData(value: 10000, title: "13"),
-                                ChartData(value: 13000, title: "14"),
-                                ChartData(value: 12000, title: "15"),
-                                ChartData(value: 13000, title: "16"),
-                                ChartData(value: 10000, title: "17"),
-                                ChartData(value: 15000, title: "18"),
-                                ChartData(value: 25500, title: "18"),
-                                ChartData(value: 3000, title: "19"),
-                                ChartData(value: 15000, title: "20"),
-                                ChartData(value: 10000, title: "21"),
-                                ChartData(value: 13000, title: "22"),
-                                ChartData(value: 12000, title: "23"),
-                                ChartData(value: 13000, title: "24"),
-                                ChartData(value: 10000, title: "25"),
-                                ChartData(value: 15000, title: "26"),
-                                ChartData(value: 25500, title: "27"),
-                                ChartData(value: 20000, title: "28"),
-                                ChartData(value: 15000, title: "29"),
-                                ChartData(value: 10000, title: "30"),
-                                ChartData(value: 10000, title: "31"),
-                                ChartData(value: 13000, title: "32"),
-                                ChartData(value: 12000, title: "33"),
-                                ChartData(value: 13000, title: "34"),
-                                ChartData(value: 10000, title: "35"),
-                                ChartData(value: 15000, title: "36"),
-                                ChartData(value: 25500, title: "37"),
-                                ChartData(value: 20000, title: "38"),
-                                ChartData(value: 15000, title: "39"),
-                                ChartData(value: 10000, title: "40"),
-                                ChartData(value: 10000, title: "41"),
-                                ChartData(value: 13000, title: "42"),
-                                ChartData(value: 12000, title: "43"),
-                                ChartData(value: 13000, title: "44"),
-                                ChartData(value: 10000, title: "45"),
-                                ChartData(value: 15000, title: "46"),
-                                ChartData(value: 25500, title: "47"),
-                                ChartData(value: 20000, title: "48"),
-                                ChartData(value: 15000, title: "49"),
-                                ChartData(value: 25500, title: "50"),
-                                ChartData(value: 20000, title: "51"),
-                                ChartData(value: 15000, title: "52")
-                            ]
-                        )
+//                        ChartDataSection(
+//                            title: "2021",
+//                            data: [
+//                                ChartData(value: 10000, title: "1"),
+//                                ChartData(value: 13000, title: "2"),
+//                                ChartData(value: 12000, title: "3"),
+//                                ChartData(value: 13000, title: "4"),
+//                                ChartData(value: 10000, title: "5"),
+//                                ChartData(value: 15000, title: "6"),
+//                                ChartData(value: 25500, title: "7"),
+//                                ChartData(value: 3000, title: "8"),
+//                                ChartData(value: 15000, title: "9"),
+//                                ChartData(value: 10000, title: "10"),
+//                                ChartData(value: 14000, title: "11"),
+//                                ChartData(value: 13000, title: "12"),
+//                                ChartData(value: 10000, title: "13"),
+//                                ChartData(value: 13000, title: "14"),
+//                                ChartData(value: 12000, title: "15"),
+//                                ChartData(value: 13000, title: "16"),
+//                                ChartData(value: 10000, title: "17"),
+//                                ChartData(value: 15000, title: "18"),
+//                                ChartData(value: 25500, title: "18"),
+//                                ChartData(value: 3000, title: "19"),
+//                                ChartData(value: 15000, title: "20"),
+//                                ChartData(value: 10000, title: "21"),
+//                                ChartData(value: 13000, title: "22"),
+//                                ChartData(value: 12000, title: "23"),
+//                                ChartData(value: 13000, title: "24"),
+//                                ChartData(value: 10000, title: "25"),
+//                                ChartData(value: 15000, title: "26"),
+//                                ChartData(value: 25500, title: "27"),
+//                                ChartData(value: 20000, title: "28"),
+//                                ChartData(value: 15000, title: "29"),
+//                                ChartData(value: 10000, title: "30"),
+//                                ChartData(value: 10000, title: "31"),
+//                                ChartData(value: 13000, title: "32"),
+//                                ChartData(value: 12000, title: "33"),
+//                                ChartData(value: 13000, title: "34"),
+//                                ChartData(value: 10000, title: "35"),
+//                                ChartData(value: 15000, title: "36"),
+//                                ChartData(value: 25500, title: "37"),
+//                                ChartData(value: 20000, title: "38"),
+//                                ChartData(value: 15000, title: "39"),
+//                                ChartData(value: 10000, title: "40"),
+//                                ChartData(value: 10000, title: "41"),
+//                                ChartData(value: 13000, title: "42"),
+//                                ChartData(value: 12000, title: "43"),
+//                                ChartData(value: 13000, title: "44"),
+//                                ChartData(value: 10000, title: "45"),
+//                                ChartData(value: 15000, title: "46"),
+//                                ChartData(value: 25500, title: "47"),
+//                                ChartData(value: 20000, title: "48"),
+//                                ChartData(value: 15000, title: "49"),
+//                                ChartData(value: 25500, title: "50"),
+//                                ChartData(value: 20000, title: "51"),
+//                                ChartData(value: 15000, title: "52")
+//                            ]
+//                        )
                     ],
                     valueFormatter: { value in
                         DistanceFormatter.format(distance: value)! + " km"
