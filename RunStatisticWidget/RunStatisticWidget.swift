@@ -144,7 +144,7 @@ struct RunStatisticWidget_Previews: PreviewProvider {
         RunStatisticWidgetEntryView(
             entry: RunStatisticEntry(
                 date: Date(),
-                runStatistic: Statistics(runs: RunMock.runsMock).totalDistance(),
+                runStatistic: Statistics(runs: RunMock.runs).totalDistance(),
                 configuration: ConfigurationIntent()
             )
         )

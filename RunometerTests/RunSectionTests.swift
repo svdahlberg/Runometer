@@ -48,7 +48,7 @@ class RunSectionTests: XCTestCase {
         dateFormatter.dateFormat = "MM"
         
         // When
-        let runSections = RunSection.runSections(from: runsMock, titleDateFormatter: dateFormatter)
+        let runSections = RunSection.runSections(from: runsMock, filter: .month, titleDateFormatter: dateFormatter)
         
         // Then
         XCTAssertEqual(runSections.count, 2)
@@ -60,7 +60,7 @@ class RunSectionTests: XCTestCase {
         dateFormatter.dateFormat = "MM"
         
         // When
-        let runSections = RunSection.runSections(from: runsMock, titleDateFormatter: dateFormatter)
+        let runSections = RunSection.runSections(from: runsMock, filter: .month, titleDateFormatter: dateFormatter)
         
         // Then
         XCTAssertEqual(runSections[0].runs[0].distance, runsMock[2].distance)

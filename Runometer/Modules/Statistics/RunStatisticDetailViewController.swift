@@ -237,7 +237,6 @@ class RunStatisticDetailViewController: UIViewController {
     @IBOutlet private weak var chartContainerView: UIView!
     @IBOutlet private weak var segmentedControl: UISegmentedControl!
     @IBOutlet private weak var closeButtonContainerView: UIVisualEffectView!
-    private var chartViewHostingController: ChartViewHostingController?
 
     var runStatistic: RunStatistic?
     var runs: [Run] = []
@@ -267,10 +266,6 @@ class RunStatisticDetailViewController: UIViewController {
             self.segmentedControl.alpha = 1
             self.closeButtonContainerView.alpha = 1
         }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.chartViewHostingController = segue.destination as? ChartViewHostingController
     }
 
     private func loadStatisticsBreakdown() {
