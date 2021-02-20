@@ -215,6 +215,7 @@ struct StatisticsBreakdown {
 class RunStatisticDetailViewController: UIViewController {
 
     private enum Section {
+        @available(iOS 14.0, *)
         case chart(ChartModel)
         case list(RunStatisticSection)
     }
@@ -222,13 +223,17 @@ class RunStatisticDetailViewController: UIViewController {
     private var sections: [Section] {
         let listSections = runStatisticSections?.map { Section.list($0) } ?? []
 
-        return [
-            .chart(ChartModel(
-                dataSections: chartData(),
-                valueFormatter: chartValueFormatter(),
-                pagingEnabled: selectedFilter != .year
-            ))
-        ] + listSections
+        if #available(iOS 14.0, *) {
+            return [
+                .chart(ChartModel(
+                    dataSections: chartData(),
+                    valueFormatter: chartValueFormatter(),
+                    pagingEnabled: selectedFilter != .year
+                ))
+            ] + listSections
+        } else {
+            return listSections
+        }
     }
     
     @IBOutlet private weak var statisticsBackgroundView: UIView!
@@ -257,7 +262,9 @@ class RunStatisticDetailViewController: UIViewController {
         closeButtonContainerView.alpha = 0
         tableView.removeTrailingSeparators()
 
-        tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: "ChartTableViewCellReuseIdentifier")
+        if #available(iOS 14.0, *) {
+            tableView.register(ChartTableViewCell.self, forCellReuseIdentifier: "ChartTableViewCellReuseIdentifier")
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -273,6 +280,7 @@ class RunStatisticDetailViewController: UIViewController {
         runStatisticSections = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).listStatistics()
     }
 
+    @available(iOS 14.0, *)
     private func chartData() -> [ChartDataSection] {
         guard let runStatistic = runStatistic else { return [] }
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
@@ -365,11 +373,15 @@ extension RunStatisticDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section] {
         case .chart(let chartModel):
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartTableViewCellReuseIdentifier", for: indexPath) as? ChartTableViewCell else {
+            if #available(iOS 14.0, *) {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChartTableViewCellReuseIdentifier", for: indexPath) as? ChartTableViewCell else {
+                    return UITableViewCell()
+                }
+                cell.chartModel = chartModel
+                return cell
+            } else {
                 return UITableViewCell()
             }
-            cell.chartModel = chartModel
-            return cell
         case .list(let section):
             let cell = tableView.dequeueReusableCell(withIdentifier: "RunStatisticTableViewCellReuseIdentifier", for: indexPath)
             let runStatistic = section.runStatistics[indexPath.row]
