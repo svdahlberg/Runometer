@@ -24,7 +24,7 @@ class ChartTableViewCell: UITableViewCell {
             } else {
                 let chartHostingController = UIHostingController<ChartView>(rootView: ChartView(chartModel: chartModel))
                 contentView.addSubview(chartHostingController.view)
-                chartHostingController.view.pinToSuperview(leading: 16, top: 50, trailing: -16, bottom: -80)
+                chartHostingController.view.pinToSuperview(leading: 16, top: 30, trailing: -16, bottom: -80)
                 chartHostingController.view.heightAnchor.constraint(equalToConstant: 250).isActive = true
 
                 self.chartHostingController = chartHostingController

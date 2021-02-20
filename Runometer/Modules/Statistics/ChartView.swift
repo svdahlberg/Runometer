@@ -58,7 +58,7 @@ struct ChartView: View {
             BarChart(
                 dataSections: chartModel.dataSections,
                 pageWidth: geometry.size.width - 16,
-                maxHeight: geometry.size.height - 32,
+                maxHeight: geometry.size.height,
                 paged: chartModel.pagingEnabled,
                 viewModel: viewModel,
                 selectedSection: chartModel.dataSections.last?.title
@@ -103,7 +103,7 @@ private struct ValueLabel: View {
                 .opacity(0.2)
                 .cornerRadius(7)
         )
-        .position(x: selectedBarPosition.x, y: selectedBarPosition.y - 20)
+        .position(x: selectedBarPosition.x, y: selectedBarPosition.y)
     }
 
 }
@@ -191,6 +191,8 @@ private struct Section: View {
     let maxDataValue: Double
     @ObservedObject var viewModel: ChartViewModel
 
+    private let padding = EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10)
+
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             HStack(alignment: .bottom, spacing: barSpacing) {
@@ -200,7 +202,7 @@ private struct Section: View {
                         data: data,
                         maxDataValue: maxDataValue,
                         width: barWidth,
-                        maxHeight: maxHeight,
+                        maxHeight: maxHeight - (padding.top + padding.bottom + 20),
                         viewModel: viewModel
                     )
                     .id(data.id)
@@ -211,6 +213,7 @@ private struct Section: View {
                     .font(.title2)
             }
         }
+        .padding(padding)
         .onAppear {
             if viewModel.maxDataValue != maxDataValue, viewModel.canChangeMaxDataValue {
                 viewModel.canChangeMaxDataValue = false
