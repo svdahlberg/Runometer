@@ -13,7 +13,7 @@ import Intents
 struct Provider: IntentTimelineProvider {
 
     func placeholder(in context: Context) -> RunStatisticEntry {
-        let runStatistic = RunStatistic(value: 0, title: "", unitType: .distance, type: .totalDistance)
+        let runStatistic = RunStatistic(value: 0, title: "", date: Date(), unitType: .distance, type: .totalDistance)
         return RunStatisticEntry(date: Date(), runStatistic: runStatistic, configuration: ConfigurationIntent())
     }
 
@@ -23,15 +23,13 @@ struct Provider: IntentTimelineProvider {
         let filter = configuration.filter.toRunFilter()
 
         RunRepository().runs(filter: filter) { runs in
-            if let runStatistic = Statistics(runs: runs).statistic(of: runStatisticType) {
-                completion(
-                    RunStatisticEntry(
-                        date: Date(),
-                        runStatistic: runStatistic,
-                        configuration: configuration
-                    )
+            completion(
+                RunStatisticEntry(
+                    date: Date(),
+                    runStatistic: Statistics(runs: runs).statistic(of: runStatisticType),
+                    configuration: configuration
                 )
-            }
+            )
         }
     }
 
@@ -143,7 +141,13 @@ struct RunStatisticWidget: Widget {
 
 struct RunStatisticWidget_Previews: PreviewProvider {
     static var previews: some View {
-        RunStatisticWidgetEntryView(entry: RunStatisticEntry(date: Date(), runStatistic: Statistics(runs: RunMock.runsMock).totalDistance(), configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        RunStatisticWidgetEntryView(
+            entry: RunStatisticEntry(
+                date: Date(),
+                runStatistic: Statistics(runs: RunMock.runs).totalDistance(),
+                configuration: ConfigurationIntent()
+            )
+        )
+        .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

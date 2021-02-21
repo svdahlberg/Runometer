@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2043EBD1FF26F8800220C14 /* RunsMock.swift */; };
 		B204BCA7200A70EA0003E3FE /* AudioFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */; };
 		B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */; };
 		B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A02030608A007153D2 /* RoundCornersButton.swift */; };
@@ -28,12 +29,17 @@
 		B2534BAF2146AB9E00EFEBFE /* RunStatisticView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2534BAE2146AB9E00EFEBFE /* RunStatisticView.xib */; };
 		B2534BB12146ABB500EFEBFE /* RunStatisticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB02146ABB500EFEBFE /* RunStatisticView.swift */; };
 		B2534BB32147E73300EFEBFE /* RunProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB22147E73300EFEBFE /* RunProviderMock.swift */; };
+		B2534BB52147EA8100EFEBFE /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
 		B2534BB7214806D200EFEBFE /* CoreDataRunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB6214806D200EFEBFE /* CoreDataRunTests.swift */; };
 		B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */; };
 		B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */; };
 		B2562CEF2451029C0011B534 /* RunRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */; };
+<<<<<<< HEAD
 		B2562CF1245381B00011B534 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CF0245381B00011B534 /* ChartView.swift */; };
+		B2562CF42453A2740011B534 /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
+=======
 		B2574E4125852F4600025383 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27208A321402922009DCE7D /* HealthKit.framework */; };
+>>>>>>> master
 		B25D5703214151AF00BC2C0D /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5702214151AF00BC2C0D /* Run.swift */; };
 		B25D5705214151D800BC2C0D /* CoreDataRun.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D5704214151D800BC2C0D /* CoreDataRun.swift */; };
 		B25D57072141521E00BC2C0D /* CoreDataRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */; };
@@ -55,9 +61,7 @@
 		B2618932214A982D008BA04A /* RunStatistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618931214A982C008BA04A /* RunStatistic.swift */; };
 		B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */; };
 		B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */; };
-		B261AD6825CF4613004904F3 /* ChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */; };
-		B261ADA525D9AB29004904F3 /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
-		B261ADAA25D9AB62004904F3 /* RunMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2534BB42147EA8100EFEBFE /* RunMock.swift */; };
+		B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2632E842454DAB300E0645F /* ChartViewHostingController.swift */; };
 		B2720899213D47E1009DCE7D /* RunRatingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */; };
 		B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089A213D6380009DCE7D /* RunRatingsView.swift */; };
 		B272089E213E699F009DCE7D /* RunRatingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B272089D213E699F009DCE7D /* RunRatingProvider.swift */; };
@@ -195,6 +199,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B2043EBD1FF26F8800220C14 /* RunsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunsMock.swift; sourceTree = "<group>"; };
 		B204BCA6200A70EA0003E3FE /* AudioFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedback.swift; sourceTree = "<group>"; };
 		B204BCA8200A71540003E3FE /* AudioFeedbackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackTests.swift; sourceTree = "<group>"; };
 		B21967A02030608A007153D2 /* RoundCornersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
@@ -221,8 +226,11 @@
 		B2534BB821480BB700EFEBFE /* ManagedRunObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedRunObjectTests.swift; sourceTree = "<group>"; };
 		B2534BBA21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSegmentExtensionsTests.swift; sourceTree = "<group>"; };
 		B2562CEE2451029C0011B534 /* RunRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepositoryTests.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		B2562CF0245381B00011B534 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+=======
 		B2574E3C25852DF400025383 /* RunStatisticWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunStatisticWidgetExtension.entitlements; sourceTree = "<group>"; };
+>>>>>>> master
 		B25D5702214151AF00BC2C0D /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		B25D5704214151D800BC2C0D /* CoreDataRun.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRun.swift; sourceTree = "<group>"; };
 		B25D57062141521E00BC2C0D /* CoreDataRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunProvider.swift; sourceTree = "<group>"; };
@@ -244,7 +252,7 @@
 		B2618931214A982C008BA04A /* RunStatistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatistic.swift; sourceTree = "<group>"; };
 		B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticsDetailTransition.swift; sourceTree = "<group>"; };
 		B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunStatisticDetailViewController.swift; sourceTree = "<group>"; };
-		B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableViewCell.swift; sourceTree = "<group>"; };
+		B2632E842454DAB300E0645F /* ChartViewHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewHostingController.swift; sourceTree = "<group>"; };
 		B2720898213D47E1009DCE7D /* RunRatingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingCollectionViewCell.swift; sourceTree = "<group>"; };
 		B272089A213D6380009DCE7D /* RunRatingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingsView.swift; sourceTree = "<group>"; };
 		B272089D213E699F009DCE7D /* RunRatingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRatingProvider.swift; sourceTree = "<group>"; };
@@ -382,11 +390,11 @@
 				B2534BAA2146A4E300EFEBFE /* Statistics.storyboard */,
 				B2534BAC2146A4F300EFEBFE /* StatisticsViewController.swift */,
 				B2562CF0245381B00011B534 /* ChartView.swift */,
+				B2632E842454DAB300E0645F /* ChartViewHostingController.swift */,
 				B273D871244D273B00E373F8 /* StatisticsViewModel.swift */,
 				B2DE408F244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift */,
 				B273D873244D27AC00E373F8 /* RunStatisticsFilterViewController.swift */,
 				B2618935214A9FE2008BA04A /* RunStatisticDetailViewController.swift */,
-				B261AD6625CF4613004904F3 /* ChartTableViewCell.swift */,
 				B2618933214A9CC3008BA04A /* RunStatisticsDetailTransition.swift */,
 				B2BE7B9D2148F96C00902720 /* RunStatisticCollectionViewCell.swift */,
 				B2BE7B992148F52700902720 /* Statistics.swift */,
@@ -441,7 +449,6 @@
 			children = (
 				B2F2DDE6244B9B4400A44E7E /* RunRepository.swift */,
 				B25D5702214151AF00BC2C0D /* Run.swift */,
-				B2534BB42147EA8100EFEBFE /* RunMock.swift */,
 				B2A931191FADCA77006FEACB /* RunProvider.swift */,
 				B27F18EC25747C510061D3B9 /* RunFilter.swift */,
 				B25D570C2141835200BC2C0D /* RunPersister.swift */,
@@ -690,6 +697,8 @@
 				B2F1C72C1FC17EE5001AC4DF /* SettingsMock.swift */,
 				B2528DF41FF2470B00FE3364 /* DistancesMock.swift */,
 				B2528DF61FF2477200FE3364 /* DurationsMock.swift */,
+				B2043EBD1FF26F8800220C14 /* RunsMock.swift */,
+				B2534BB42147EA8100EFEBFE /* RunMock.swift */,
 				B2534BB22147E73300EFEBFE /* RunProviderMock.swift */,
 			);
 			path = Mocks;
@@ -895,7 +904,6 @@
 				B2A268FB2570114000C79AC2 /* Settings.swift in Sources */,
 				B2A269002570116300C79AC2 /* AudioTrigger.swift in Sources */,
 				B2A269232570133300C79AC2 /* CoreDataStack.swift in Sources */,
-				B261ADA525D9AB29004904F3 /* RunMock.swift in Sources */,
 				B2A2692D2570138500C79AC2 /* Runometer.xcdatamodeld in Sources */,
 				B2A2693725732AF900C79AC2 /* RunStatistic.swift in Sources */,
 				B2A269192570132200C79AC2 /* HealthKitRun.swift in Sources */,
@@ -935,7 +943,7 @@
 				B2DE4090244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift in Sources */,
 				B24B3A3023D3BDAA007851A3 /* AppCoordinator.swift in Sources */,
 				B2F1C7371FC1A544001AC4DF /* DoubleExtensions.swift in Sources */,
-				B261AD6825CF4613004904F3 /* ChartTableViewCell.swift in Sources */,
+				B2562CF42453A2740011B534 /* RunMock.swift in Sources */,
 				B2618936214A9FE2008BA04A /* RunStatisticDetailViewController.swift in Sources */,
 				B28AF1D02448B134005C288E /* RunometerVisualEffectView.swift in Sources */,
 				B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */,
@@ -959,11 +967,11 @@
 				B2B055231F80D6A200292EB3 /* RunViewController.swift in Sources */,
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,
 				B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */,
+				B2632E852454DAB300E0645F /* ChartViewHostingController.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
 				B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */,
 				B27F18F425747D090061D3B9 /* DateExtensions.swift in Sources */,
-				B261ADAA25D9AB62004904F3 /* RunMock.swift in Sources */,
 				B28F81BF1F93D888000BBA18 /* Checkpoint.swift in Sources */,
 				B2F1C71E1FC0AED2001AC4DF /* SettingsTableViewController.swift in Sources */,
 				B2528DF11FF19BEE00FE3364 /* RunStatisticsTextProvider.swift in Sources */,
@@ -1014,6 +1022,7 @@
 				B2528DF31FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift in Sources */,
 				B27F190A257D9FD30061D3B9 /* CoreDataProviderTests.swift in Sources */,
 				B2B1B1981FCA2B0E00C579FE /* RunProviderTests.swift in Sources */,
+				B2534BB52147EA8100EFEBFE /* RunMock.swift in Sources */,
 				B25FE7B61F8A514B001B1BF1 /* TimeFormatterTests.swift in Sources */,
 				B229CC9F2250BC54002D4BE6 /* RunSectionTests.swift in Sources */,
 				B2A931201FAF06F7006FEACB /* MKPolylineExtensionTests.swift in Sources */,
@@ -1023,6 +1032,7 @@
 				B2534BBB21480C3800EFEBFE /* LocationSegmentExtensionsTests.swift in Sources */,
 				B25FE7B41F8A513D001B1BF1 /* DistanceFormatterTests.swift in Sources */,
 				B2BAAD5D20A45BA7000117FB /* SettingsTests.swift in Sources */,
+				B2043EBE1FF26F8800220C14 /* RunsMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1083,12 +1093,12 @@
 				CODE_SIGN_ENTITLEMENTS = RunStatisticWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = FJG293K5T8;
 				INFOPLIST_FILE = RunStatisticWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker.RunStatisticWidget;
@@ -1109,12 +1119,12 @@
 				CODE_SIGN_ENTITLEMENTS = RunStatisticWidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = FJG293K5T8;
 				INFOPLIST_FILE = RunStatisticWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.3;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker.RunStatisticWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1176,7 +1186,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1230,7 +1240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -1246,12 +1256,12 @@
 				CODE_SIGN_ENTITLEMENTS = Runometer/Runometer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = FJG293K5T8;
 				INFOPLIST_FILE = Runometer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1268,12 +1278,12 @@
 				CODE_SIGN_ENTITLEMENTS = Runometer/Runometer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = FJG293K5T8;
 				INFOPLIST_FILE = Runometer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.3.1;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.svantedahlberg.runtracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

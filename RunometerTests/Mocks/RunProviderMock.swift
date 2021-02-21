@@ -12,7 +12,7 @@ import Foundation
 class RunProviderMock: RunProviding, RunObserving {
 
     var runsInvokeCount: Int = 0
-    var runsCompletionArgument: [Run]?
+    var runsCompletionArgument: [Run]? = RunMock.runs
     
     func runs(filter: RunFilter?, completion: @escaping ([Run]) -> Void) {
         runsInvokeCount += 1
