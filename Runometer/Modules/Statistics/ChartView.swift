@@ -249,7 +249,7 @@ private struct Bar: View {
     private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
     private var height: CGFloat {
-        guard let maxDataValue = viewModel.maxDataValue else {
+        guard let maxDataValue = viewModel.maxDataValue, data.value > 0 else {
             return 0
         }
 
