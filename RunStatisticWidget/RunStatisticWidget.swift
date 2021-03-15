@@ -14,7 +14,12 @@ struct Provider: IntentTimelineProvider {
 
     func placeholder(in context: Context) -> RunStatisticEntry {
         let runStatistic = RunStatistic(value: 0, title: "", date: Date(), unitType: .distance, type: .totalDistance)
-        return RunStatisticEntry(date: Date(), runStatistic: runStatistic, configuration: ConfigurationIntent())
+        return RunStatisticEntry(
+            date: Date(),
+            runStatistic: runStatistic,
+            runs: [],
+            configuration: ConfigurationIntent()
+        )
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (RunStatisticEntry) -> ()) {
@@ -27,6 +32,7 @@ struct Provider: IntentTimelineProvider {
                 RunStatisticEntry(
                     date: Date(),
                     runStatistic: Statistics(runs: runs).statistic(of: runStatisticType),
+                    runs: runs,
                     configuration: configuration
                 )
             )
@@ -45,6 +51,7 @@ struct Provider: IntentTimelineProvider {
 struct RunStatisticEntry: TimelineEntry {
     let date: Date
     let runStatistic: RunStatistic
+    let runs: [Run]
     let configuration: ConfigurationIntent
 }
 
@@ -75,6 +82,19 @@ extension Filter {
             return RunFilter(startDate: nil, endDate: nil)
         }
     }
+
+    func toStatisticsFilter() -> StatisticsBreakdownFilter {
+        switch self {
+        case .week:
+            return .week
+        case .month:
+            return .month
+        case .year:
+            return .year
+        case .unknown:
+            return .month
+        }
+    }
 }
 
 extension RunStatisticIntentType {
@@ -103,6 +123,26 @@ extension RunStatisticIntentType {
 
 struct RunStatisticWidgetEntryView : View {
 
+    @Environment(\.widgetFamily) var family
+
+    var entry: RunStatisticEntry
+
+    var body: some View {
+        VStack {
+            switch family {
+            case .systemSmall:
+                SmallWidget(entry: entry)
+            case .systemLarge:
+                LargeWidget(entry: entry)
+            default:
+                SmallWidget(entry: entry)
+            }
+        }
+    }
+}
+
+struct SmallWidget: View {
+
     var entry: RunStatisticEntry
 
     var body: some View {
@@ -125,15 +165,104 @@ struct RunStatisticWidgetEntryView : View {
     }
 }
 
+struct LargeWidget: View {
+
+    var entry: RunStatisticEntry
+
+    private var dataModel: NonInteractiveBarChartDataModel {
+
+        let data = StatisticsBreakdown(
+            runs: entry.runs,
+            type: entry.runStatistic.type,
+            filter: entry.configuration.filter.toStatisticsFilter()
+        )
+        .statistics()
+        .map { (runStatistic: RunStatistic) in
+            NonInteractiveBarChartData(
+                title: "\(runStatistic.title.first!)",
+                value: runStatistic.value
+            )
+        }
+
+        return NonInteractiveBarChartDataModel(
+            title: entry.runStatistic.title,
+            data: data
+        )
+    }
+
+    var body: some View {
+        NonInteractiveBarChart(dataModel: dataModel)
+            .padding(
+                EdgeInsets(
+                    top: 20,
+                    leading: 20,
+                    bottom: 20,
+                    trailing: 20
+                )
+            )
+    }
+}
+
+struct NonInteractiveBarChartDataModel {
+    let title: String
+    let data: [NonInteractiveBarChartData]
+}
+
+struct NonInteractiveBarChartData: Identifiable {
+    let id = UUID()
+    let title: String
+    let value: Double
+}
+
+struct NonInteractiveBarChart: View {
+
+    let dataModel: NonInteractiveBarChartDataModel
+
+    private var maxDataValue: Double {
+        dataModel.data
+            .map { $0.value }
+            .max() ?? 0
+    }
+
+    private func height(data: NonInteractiveBarChartData, maxHeight: CGFloat) -> CGFloat {
+        let heightPerUnit = maxHeight / max(CGFloat(maxDataValue), 1)
+        return min(CGFloat(max(data.value, 0)) * heightPerUnit, maxHeight)
+    }
+
+    var body: some View {
+        VStack {
+            Text(dataModel.title)
+            HStack {
+                ForEach(dataModel.data) { data in
+                    VStack {
+                        GeometryReader { geometry in
+                            VStack {
+                                Spacer()
+                                Capsule()
+                                    .foregroundColor(.orange)
+                                    .frame(height: height(data: data, maxHeight: geometry.size.height))
+                            }
+                        }
+                        Text(data.title)
+                    }
+                }
+            }
+        }
+    }
+}
+
 @main
 struct RunStatisticWidget: Widget {
     let kind: String = "RunStatisticWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
-            RunStatisticWidgetEntryView(entry: entry)
-        }
-        .supportedFamilies([.systemSmall])
+        IntentConfiguration(
+            kind: kind,
+            intent: ConfigurationIntent.self,
+            provider: Provider()) { entry in
+                RunStatisticWidgetEntryView(entry: entry)
+            }
+        .supportedFamilies([.systemSmall, .systemLarge])
         .configurationDisplayName("Runometer Widget")
         .description("Track your runs from the home screen!")
     }
@@ -145,9 +274,10 @@ struct RunStatisticWidget_Previews: PreviewProvider {
             entry: RunStatisticEntry(
                 date: Date(),
                 runStatistic: Statistics(runs: RunMock.runs).totalDistance(),
+                runs: RunMock.runs,
                 configuration: ConfigurationIntent()
             )
         )
-        .previewContext(WidgetPreviewContext(family: .systemSmall))
+        .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }

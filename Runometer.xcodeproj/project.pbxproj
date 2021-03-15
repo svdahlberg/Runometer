@@ -68,6 +68,8 @@
 		B273D872244D273B00E373F8 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273D871244D273B00E373F8 /* StatisticsViewModel.swift */; };
 		B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273D873244D27AC00E373F8 /* RunStatisticsFilterViewController.swift */; };
 		B273D876244E132B00E373F8 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B273D875244E132B00E373F8 /* StringExtensions.swift */; };
+		B2759F1F25E2D47B00420496 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2562CF0245381B00011B534 /* ChartView.swift */; };
+		B2759F2425E2D4B500420496 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A220307211007153D2 /* Colors.swift */; };
 		B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B276ECF12015321B0036F327 /* AudioFeedbackController.swift */; };
 		B279EC9A2448CFA6009827B0 /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279EC992448CFA6009827B0 /* UITableViewExtensions.swift */; };
 		B27F18ED25747C510061D3B9 /* RunFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27F18EC25747C510061D3B9 /* RunFilter.swift */; };
@@ -139,6 +141,8 @@
 		B2C261031FA6209100E69E9D /* ManagedRunObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261021FA6209100E69E9D /* ManagedRunObjectExtensions.swift */; };
 		B2C261051FA6275C00E69E9D /* RunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261041FA6275C00E69E9D /* RunTests.swift */; };
 		B2C261071FA6299900E69E9D /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C261061FA6299900E69E9D /* CoreDataHelper.swift */; };
+		B2D24FD425E2DFFC00EAE28B /* RunSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A82039B05D007153D2 /* RunSection.swift */; };
+		B2D24FD925E2EA7E00EAE28B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B28D7DD4237615D800817E45 /* Colors.xcassets */; };
 		B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DCA0C0202B916500AB29E7 /* MapViewController.swift */; };
 		B2DE4090244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DE408F244D04C4006299F0 /* RunStatisticFilterCollectionViewCell.swift */; };
 		B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EF80BF20A850A200457800 /* PastRunsTableViewSectionHeaderView.swift */; };
@@ -838,6 +842,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2A268CE25700F4B00C79AC2 /* Assets.xcassets in Resources */,
+				B2D24FD925E2EA7E00EAE28B /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -901,8 +906,11 @@
 				B2A269192570132200C79AC2 /* HealthKitRun.swift in Sources */,
 				B2A269052570126000C79AC2 /* RunRepository.swift in Sources */,
 				B2A268D025700F4B00C79AC2 /* RunStatisticWidget.intentdefinition in Sources */,
+				B2759F2425E2D4B500420496 /* Colors.swift in Sources */,
+				B2D24FD425E2DFFC00EAE28B /* RunSection.swift in Sources */,
 				B2A2693225732AE900C79AC2 /* Statistics.swift in Sources */,
 				B2A268EC2570112200C79AC2 /* PaceFormatter.swift in Sources */,
+				B2759F1F25E2D47B00420496 /* ChartView.swift in Sources */,
 				B27F18EE25747C510061D3B9 /* RunFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
