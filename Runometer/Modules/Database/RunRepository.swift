@@ -18,9 +18,9 @@ class RunRepository {
     private let runProvider: RunProviding
     private let settings: Settings
 
-    init(runProvider: RunProviding = RunProvider(), settings: Settings = Settings()) {
-        self.runProvider = runProvider
-        self.settings = settings
+    init(container: DependencyContainer = DependencyManager.shared.container) {
+        self.runProvider = container.resolve(RunProviding.self) ?? RunProvider()
+        self.settings = container.resolve(Settings.self) ?? Settings()
     }
 
     func allRuns(_ completion: @escaping (_ runs: [Run]) -> Void) {

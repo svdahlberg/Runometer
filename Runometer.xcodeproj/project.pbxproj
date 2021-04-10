@@ -43,6 +43,14 @@
 		B25D570F2141838800BC2C0D /* CoreDataRunPersister.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D570E2141838800BC2C0D /* CoreDataRunPersister.swift */; };
 		B25D57132142AA4300BC2C0D /* LocationSegmentsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25D57122142AA4300BC2C0D /* LocationSegmentsExtensions.swift */; };
 		B25DB237201E27170089144E /* AudioFeedbackControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25DB236201E27170089144E /* AudioFeedbackControllerTests.swift */; };
+		B25F2A53261A5AEF00833AA1 /* RunometerNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A52261A5AEF00833AA1 /* RunometerNavigationController.swift */; };
+		B25F2A59261A5B0F00833AA1 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A58261A5B0F00833AA1 /* UIViewControllerExtensions.swift */; };
+		B25F2A63262204F700833AA1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A62262204F700833AA1 /* DependencyContainer.swift */; };
+		B25F2A6D2622093E00833AA1 /* DependencyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A6C2622093E00833AA1 /* DependencyContainerTests.swift */; };
+		B25F2A7626220FE500833AA1 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A62262204F700833AA1 /* DependencyContainer.swift */; };
+		B25F2A7C2622223900833AA1 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A7B2622223900833AA1 /* DependencyManager.swift */; };
+		B25F2A82262222EA00833AA1 /* MockRunProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A81262222EA00833AA1 /* MockRunProvider.swift */; };
+		B25F2A872622230400833AA1 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25F2A7B2622223900833AA1 /* DependencyManager.swift */; };
 		B25FE7A21F88BCAC001B1BF1 /* HUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */; };
 		B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */; };
 		B25FE7A81F88E661001B1BF1 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */; };
@@ -232,6 +240,12 @@
 		B25D570E2141838800BC2C0D /* CoreDataRunPersister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRunPersister.swift; sourceTree = "<group>"; };
 		B25D57122142AA4300BC2C0D /* LocationSegmentsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSegmentsExtensions.swift; sourceTree = "<group>"; };
 		B25DB236201E27170089144E /* AudioFeedbackControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeedbackControllerTests.swift; sourceTree = "<group>"; };
+		B25F2A52261A5AEF00833AA1 /* RunometerNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunometerNavigationController.swift; sourceTree = "<group>"; };
+		B25F2A58261A5B0F00833AA1 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		B25F2A62262204F700833AA1 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		B25F2A6C2622093E00833AA1 /* DependencyContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainerTests.swift; sourceTree = "<group>"; };
+		B25F2A7B2622223900833AA1 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		B25F2A81262222EA00833AA1 /* MockRunProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRunProvider.swift; sourceTree = "<group>"; };
 		B25FE7A11F88BCAC001B1BF1 /* HUDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDView.swift; sourceTree = "<group>"; };
 		B25FE7A51F88D934001B1BF1 /* DistanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
 		B25FE7A71F88E661001B1BF1 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
@@ -443,6 +457,7 @@
 				B25D5702214151AF00BC2C0D /* Run.swift */,
 				B2534BB42147EA8100EFEBFE /* RunMock.swift */,
 				B2A931191FADCA77006FEACB /* RunProvider.swift */,
+				B25F2A81262222EA00833AA1 /* MockRunProvider.swift */,
 				B27F18EC25747C510061D3B9 /* RunFilter.swift */,
 				B25D570C2141835200BC2C0D /* RunPersister.swift */,
 				B25D5711214183BF00BC2C0D /* HealthKit */,
@@ -474,6 +489,7 @@
 		B2720895213D22EF009DCE7D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B25F2A58261A5B0F00833AA1 /* UIViewControllerExtensions.swift */,
 				B2F1C7361FC1A544001AC4DF /* DoubleExtensions.swift */,
 				B25D570A2141703200BC2C0D /* RunsExtensions.swift */,
 				B25D57122142AA4300BC2C0D /* LocationSegmentsExtensions.swift */,
@@ -600,6 +616,9 @@
 				B2B054F11F80C55600292EB3 /* AppDelegate.swift */,
 				B2B054F51F80C55600292EB3 /* Main.storyboard */,
 				B24B3A2F23D3BDAA007851A3 /* AppCoordinator.swift */,
+				B25F2A52261A5AEF00833AA1 /* RunometerNavigationController.swift */,
+				B25F2A7B2622223900833AA1 /* DependencyManager.swift */,
+				B25F2A62262204F700833AA1 /* DependencyContainer.swift */,
 				B25FE79B1F815E66001B1BF1 /* Modules */,
 				B2B054FB1F80C55600292EB3 /* Assets.xcassets */,
 				B2B054FD1F80C55600292EB3 /* LaunchScreen.storyboard */,
@@ -613,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				B2F1C7291FC0E6D0001AC4DF /* Mocks */,
+				B25F2A6C2622093E00833AA1 /* DependencyContainerTests.swift */,
 				B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */,
 				B2B1B1971FCA2B0E00C579FE /* RunProviderTests.swift */,
 				B2B1B1951FC9D67000C579FE /* RunRatingTests.swift */,
@@ -891,6 +911,7 @@
 				B2A269142570131200C79AC2 /* HealthKitRunProvider.swift in Sources */,
 				B2A2690A2570128900C79AC2 /* RunProvider.swift in Sources */,
 				B2A268DD2570110400C79AC2 /* Run.swift in Sources */,
+				B25F2A7626220FE500833AA1 /* DependencyContainer.swift in Sources */,
 				B2A268E72570111F00C79AC2 /* TimeFormatter.swift in Sources */,
 				B2A268FB2570114000C79AC2 /* Settings.swift in Sources */,
 				B2A269002570116300C79AC2 /* AudioTrigger.swift in Sources */,
@@ -903,6 +924,7 @@
 				B2A268D025700F4B00C79AC2 /* RunStatisticWidget.intentdefinition in Sources */,
 				B2A2693225732AE900C79AC2 /* Statistics.swift in Sources */,
 				B2A268EC2570112200C79AC2 /* PaceFormatter.swift in Sources */,
+				B25F2A872622230400833AA1 /* DependencyManager.swift in Sources */,
 				B27F18EE25747C510061D3B9 /* RunFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -940,6 +962,7 @@
 				B28AF1D02448B134005C288E /* RunometerVisualEffectView.swift in Sources */,
 				B2618934214A9CC3008BA04A /* RunStatisticsDetailTransition.swift in Sources */,
 				B2618932214A982D008BA04A /* RunStatistic.swift in Sources */,
+				B25F2A7C2622223900833AA1 /* DependencyManager.swift in Sources */,
 				B2F1C7311FC18846001AC4DF /* AudioIntervalSelectionTableViewController.swift in Sources */,
 				B27F634D1FA5B9E700C2116F /* PastRunsViewController.swift in Sources */,
 				B272089B213D6380009DCE7D /* RunRatingsView.swift in Sources */,
@@ -952,13 +975,16 @@
 				B273D872244D273B00E373F8 /* StatisticsViewModel.swift in Sources */,
 				B25FE7B21F8A5075001B1BF1 /* Units.swift in Sources */,
 				B2562CF1245381B00011B534 /* ChartView.swift in Sources */,
+				B25F2A82262222EA00833AA1 /* MockRunProvider.swift in Sources */,
 				B25FE7AA1F88E6F7001B1BF1 /* PaceFormatter.swift in Sources */,
 				B2534BAD2146A4F300EFEBFE /* StatisticsViewController.swift in Sources */,
+				B25F2A53261A5AEF00833AA1 /* RunometerNavigationController.swift in Sources */,
 				B279EC9A2448CFA6009827B0 /* UITableViewExtensions.swift in Sources */,
 				B21967A92039B05D007153D2 /* RunSection.swift in Sources */,
 				B2B055231F80D6A200292EB3 /* RunViewController.swift in Sources */,
 				B276ECF22015321B0036F327 /* AudioFeedbackController.swift in Sources */,
 				B2DCA0C1202B916500AB29E7 /* MapViewController.swift in Sources */,
+				B25F2A59261A5B0F00833AA1 /* UIViewControllerExtensions.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
 				B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */,
@@ -975,6 +1001,7 @@
 				B2F1C7221FC0BDC8001AC4DF /* Settings.swift in Sources */,
 				B25D5703214151AF00BC2C0D /* Run.swift in Sources */,
 				B25D570B2141703200BC2C0D /* RunsExtensions.swift in Sources */,
+				B25F2A63262204F700833AA1 /* DependencyContainer.swift in Sources */,
 				B25FE7A61F88D934001B1BF1 /* DistanceFormatter.swift in Sources */,
 				B21967A320307211007153D2 /* Colors.swift in Sources */,
 				B2F1C7241FC0CE16001AC4DF /* AudioTrigger.swift in Sources */,
@@ -1010,6 +1037,7 @@
 				B25FE7AC1F8A33B0001B1BF1 /* PaceFormatterTests.swift in Sources */,
 				B2534BB921480BB700EFEBFE /* ManagedRunObjectTests.swift in Sources */,
 				B204BCA9200A71540003E3FE /* AudioFeedbackTests.swift in Sources */,
+				B25F2A6D2622093E00833AA1 /* DependencyContainerTests.swift in Sources */,
 				B2562CEF2451029C0011B534 /* RunRepositoryTests.swift in Sources */,
 				B2528DF31FF19DC800FE3364 /* RunStatisticsTextProviderTests.swift in Sources */,
 				B27F190A257D9FD30061D3B9 /* CoreDataProviderTests.swift in Sources */,
