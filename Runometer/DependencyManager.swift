@@ -20,6 +20,10 @@ class DependencyManager {
 
     func registerDependencies() {
 
+        #if MOCK
+        container.register(RunProviding.self, resolver: { MockRunProvider() })
+        #else
         container.register(RunProviding.self, resolver: { RunProvider() })
+        #endif
     }
 }
