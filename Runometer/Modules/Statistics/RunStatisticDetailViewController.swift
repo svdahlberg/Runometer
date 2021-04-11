@@ -363,8 +363,8 @@ extension RunStatisticDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch sections[section] {
-        case .chart:
-            return 1
+        case .chart(let chartModel):
+            return chartModel.dataSections.isEmpty ? 0 : 1
         case .list(let runStatisticSection):
             return runStatisticSection.runStatistics.count
         }
