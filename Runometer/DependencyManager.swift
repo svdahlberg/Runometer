@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import DependencyContainer
 
 class DependencyManager {
 

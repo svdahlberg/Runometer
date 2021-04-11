@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import Runometer
+import DependencyContainer
 
 class RunRepositoryTests: XCTestCase {
 
