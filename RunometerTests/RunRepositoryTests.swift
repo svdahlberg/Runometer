@@ -8,45 +8,52 @@
 
 import XCTest
 @testable import Runometer
+import DependencyContainer
 
 class RunRepositoryTests: XCTestCase {
 
     var sut: RunRepository!
-    var runProviderMock: RunProviderMock!
-    var settingsMock: SettingsMock!
+    var container: DependencyContainer!
 
     override func setUp() {
         super.setUp()
-        runProviderMock = RunProviderMock()
-        settingsMock = SettingsMock(distanceUnit: .kilometers, audioFeedbackDistance: true, audioFeedbackTime: true, audioFeedbackAveragePace: true, audioTrigger: .distance, audioTimingInterval: 1)
-        sut = RunRepository(
-            runProvider: runProviderMock,
-            settings: settingsMock
-        )
-    }
 
-    override func tearDown() {
-        runProviderMock = nil
-        settingsMock = nil
-        sut = nil
-        super.tearDown()
+        container = DependencyContainer()
+
+        container.register(RunProviding.self, resolver: {
+            let runProviderMock = RunProviderMock()
+            let runs = [
+                RunMock(distance: 1500),
+                RunMock(distance: 10000),
+                RunMock(distance: 3400),
+                RunMock(distance: 21043),
+                RunMock(distance: 1401),
+                RunMock(distance: 6903),
+                RunMock(distance: 5993),
+                RunMock(distance: 6005),
+                RunMock(distance: 5899),
+                RunMock(distance: 10043)
+            ]
+            runProviderMock.runsCompletionArgument = runs
+            return runProviderMock
+        })
+
+        container.register(Settings.self, resolver: {
+            SettingsMock(
+                distanceUnit: .kilometers,
+                audioFeedbackDistance: true,
+                audioFeedbackTime: true,
+                audioFeedbackAveragePace: true,
+                audioTrigger: .distance,
+                audioTimingInterval: 1
+            )
+        })
+
+        sut = RunRepository(container: container)
     }
 
     func testRunsGroupedBySililarDistance_shouldReturnRunsGroupedBySililarDistance() {
         // Given
-        let runs = [
-            RunMock(distance: 1500),
-            RunMock(distance: 10000),
-            RunMock(distance: 3400),
-            RunMock(distance: 21043),
-            RunMock(distance: 1401),
-            RunMock(distance: 6903),
-            RunMock(distance: 5993),
-            RunMock(distance: 6005),
-            RunMock(distance: 5899),
-            RunMock(distance: 10043)
-        ]
-        runProviderMock.runsCompletionArgument = runs
         let expectaion = self.expectation(description: "should return grouped runs")
 
         // When

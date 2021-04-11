@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DependencyContainer",
+        "repositoryURL": "git@github.com:svdahlberg/dependency-container.git",
+        "state": {
+          "branch": "main",
+          "revision": "cc11ac4a5cbb939abeaea507cf1d16e1eceb4035",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

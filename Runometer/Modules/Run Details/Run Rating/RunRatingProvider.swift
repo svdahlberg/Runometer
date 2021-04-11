@@ -11,15 +11,15 @@ import Foundation
 struct RunRatingsProvider {
     
     private let run: Run
-    private let runProvider: RunProvider
+    private let runRepository: RunRepository
     
-    init(run: Run, runProvider: RunProvider = RunProvider()) {
+    init(run: Run, runRepository: RunRepository = RunRepository()) {
         self.run = run
-        self.runProvider = runProvider
+        self.runRepository = runRepository
     }
     
     func runRatings(_ completion: @escaping ([RunRating]) -> Void) {
-        runProvider.runs { allRuns in
+        runRepository.allRuns { allRuns in
             let runRatingProvider = RunRatingProvider(run: self.run, allRuns: allRuns)
             let runRatings = [
                 runRatingProvider.allTimeDistanceRating(),
