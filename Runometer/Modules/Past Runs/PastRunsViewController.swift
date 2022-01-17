@@ -49,20 +49,15 @@ class PastRunsViewControlller: UIViewController {
     }
     
     @objc private func loadRuns() {
-        RunProvider().runs { [weak self] (runs: [Run]) in
-            self?.runs = runs
-            self?.activityIndicatorView.stopAnimating()
+        RunRepository().allRuns { runs in
+            self.runs = runs
+            self.activityIndicatorView.stopAnimating()
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let runDetailsViewController = segue.destination as? RunDetailsViewController {
-            if let run = sender as? CoreDataRun {
-                runDetailsViewController.run = run
-            }
-            if let run = sender as? HealthKitRun {
-                runDetailsViewController.run = run
-            }
+            runDetailsViewController.run = sender as? Run
         }
     }
 }
