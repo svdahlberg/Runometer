@@ -215,7 +215,6 @@ struct StatisticsBreakdown {
 class RunStatisticDetailViewController: UIViewController {
 
     private enum Section {
-        @available(iOS 14.0, *)
         case chart(ChartModel)
         case list(RunStatisticSection)
     }
@@ -223,17 +222,13 @@ class RunStatisticDetailViewController: UIViewController {
     private var sections: [Section] {
         let listSections = runStatisticSections?.map { Section.list($0) } ?? []
 
-        if #available(iOS 14.0, *) {
-            return [
-                .chart(ChartModel(
-                    dataSections: chartData(),
-                    valueFormatter: chartValueFormatter(),
-                    pagingEnabled: selectedFilter != .year
-                ))
-            ] + listSections
-        } else {
-            return listSections
-        }
+        return [
+            .chart(ChartModel(
+                dataSections: chartData(),
+                valueFormatter: chartValueFormatter(),
+                pagingEnabled: selectedFilter != .year
+            ))
+        ] + listSections
     }
     
     @IBOutlet private weak var statisticsBackgroundView: UIView!
@@ -280,7 +275,6 @@ class RunStatisticDetailViewController: UIViewController {
         runStatisticSections = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).listStatistics()
     }
 
-    @available(iOS 14.0, *)
     private func chartData() -> [ChartDataSection] {
         guard let runStatistic = runStatistic else { return [] }
         let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()

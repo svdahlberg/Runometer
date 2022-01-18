@@ -8,21 +8,18 @@
 
 import SwiftUI
 
-@available(iOS 14.0, *)
 struct ChartModel {
     let dataSections: [ChartDataSection]
     let valueFormatter: (Double) -> String
     let pagingEnabled: Bool
 }
 
-@available(iOS 14.0, *)
 struct ChartDataSection: Hashable, Identifiable {
     let id = UUID()
     let title: String?
     let data: [ChartData]
 }
 
-@available(iOS 14.0, *)
 struct ChartData: Hashable, Identifiable {
     let id = UUID()
     let value: Double
@@ -36,7 +33,6 @@ struct ChartData: Hashable, Identifiable {
     }
 }
 
-@available(iOS 14.0, *)
 private class ChartViewModel: ObservableObject {
 
     @Published var selectedData: ChartData?
@@ -51,7 +47,6 @@ private class ChartViewModel: ObservableObject {
 
 }
 
-@available(iOS 14.0, *)
 struct ChartView: View {
 
     let chartModel: ChartModel
@@ -87,7 +82,6 @@ struct ChartView: View {
 
 }
 
-@available(iOS 14.0, *)
 private struct ValueLabel: View {
 
     let valueFormatter: (Double) -> String
@@ -114,7 +108,6 @@ private struct ValueLabel: View {
 
 }
 
-@available(iOS 14.0, *)
 private struct BarChart: View {
 
     let dataSections: [ChartDataSection]
@@ -188,7 +181,6 @@ private struct BarChart: View {
 
 }
 
-@available(iOS 14.0, *)
 private struct Section: View {
 
     let section: ChartDataSection
@@ -234,7 +226,6 @@ private struct Section: View {
 
 }
 
-@available(iOS 14.0, *)
 private struct Bar: View {
 
     let title: String
@@ -294,7 +285,6 @@ private struct Bar: View {
 
 }
 
-@available(iOS 14.0, *)
 struct ChartView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

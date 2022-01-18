@@ -9,7 +9,6 @@
 import UIKit
 import SwiftUI
 
-@available(iOS 14.0, *)
 class ChartTableViewCell: UITableViewCell {
 
     private var chartHostingController: UIHostingController<ChartView>?
