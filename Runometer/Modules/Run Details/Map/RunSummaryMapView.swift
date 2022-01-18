@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-protocol RunSummaryMapViewDelegate: class {
+protocol RunSummaryMapViewDelegate: AnyObject {
     func runSummaryMapViewDidGetPressed(_ runSummaryMapView: RunSummaryMapView)
 }
 

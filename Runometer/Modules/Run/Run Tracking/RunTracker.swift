@@ -17,7 +17,7 @@ struct RunTrackerConfiguration {
     static let distanceBetweenCheckpoints: Meters = Settings().distanceUnit.meters
 }
 
-protocol RunTrackerDelegate: class {
+protocol RunTrackerDelegate: AnyObject {
     func runTracker(_ runTracker: RunTracker, willAdd locations: [CLLocation])
     func runTracker(_ runTracker: RunTracker, didUpdate distance: Meters)
     func runTracker(_ runTracker: RunTracker, didUpdate time: Seconds)

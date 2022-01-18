@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RunStatisticsDetailTransitionViewController: class {
+protocol RunStatisticsDetailTransitionViewController: AnyObject {
     func runStatisticsView() -> RunStatisticView
     func backgroundView() -> UIView
 }
