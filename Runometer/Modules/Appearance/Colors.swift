@@ -16,5 +16,6 @@ struct Colors {
     static let yellow = UIColor(named: "Yellow")!
     static let background = UIColor(named: "Background")!
     static let secondaryBackground = UIColor(named: "SecondaryBackground")!
+    static let tertiaryBackground = UIColor(named: "TertiaryBackground")!
     
 }

@@ -105,10 +105,9 @@ extension PastRunsViewControlller: UITableViewDataSource {
         cell.run = run(for: indexPath)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let title = tableViewSection(for: section)?.title else { return nil }
-        return PastRunsTableViewSectionHeaderView(title: title)
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableViewSection(for: section)?.title
     }
 
 }
