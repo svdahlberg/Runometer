@@ -64,7 +64,7 @@ struct ChartView: View {
                 selectedSection: chartModel.dataSections.last?.title
             )
             .frame(height: geometry.size.height + 54)
-            .background(Color(Colors.secondaryBackground))
+            .background(Color(Colors.tertiaryBackground))
             .cornerRadius(10)
             .gesture(DragGesture().onChanged { _ in
                 viewModel.reset()

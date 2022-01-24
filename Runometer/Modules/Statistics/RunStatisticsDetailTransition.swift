@@ -15,8 +15,8 @@ protocol RunStatisticsDetailTransitionViewController: AnyObject {
 
 class RunStatisticsDetailTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
-    let duration = 0.5
-    
+    let duration = 0.6
+
     private let statisticsCell: RunStatisticCollectionViewCell
     private lazy var statisticsView: RunStatisticView = statisticsCell.runStatisticView
     private lazy var backgroundView: UIView = statisticsCell.backgroundColorView

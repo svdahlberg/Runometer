@@ -429,7 +429,7 @@ extension RunStatisticDetailViewController: RunStatisticsDetailTransitionViewCon
     }
     
     func backgroundView() -> UIView {
-        return statisticsBackgroundView
+        return view
     }
     
 }
