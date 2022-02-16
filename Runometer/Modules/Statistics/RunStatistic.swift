@@ -29,8 +29,10 @@ struct UnitTypeConverter {
     }
 }
 
-struct RunStatistic {
-    
+struct RunStatistic: Identifiable {
+
+    let id = UUID()
+
     let value: Double
     let title: String
     let date: Date

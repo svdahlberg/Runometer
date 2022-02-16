@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xX5-MF-dmw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ouq-ab-Cxw">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -11,6 +11,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Statistics-->
+        <scene sceneID="FDY-8z-EbA">
+            <objects>
+                <hostingController title="Statistics" id="ikk-nt-yd9" customClass="StatisticsHostingViewController" customModule="Runometer" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MgU-Nm-ILb"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CFe-Z6-rIK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="-539"/>
+        </scene>
         <!--Statistics-->
         <scene sceneID="7ZP-Lf-S50">
             <objects>
@@ -377,18 +387,39 @@
             </objects>
             <point key="canvasLocation" x="821.60000000000002" y="889.65517241379314"/>
         </scene>
+        <!--Statistics-->
+        <scene sceneID="Y8i-hI-165">
+            <objects>
+                <navigationController title="Statistics" automaticallyAdjustsScrollViewInsets="NO" id="Ouq-ab-Cxw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Statistics" image="statistics" selectedImage="statistics" id="LIR-cO-T21"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="2GQ-zS-dVC">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ikk-nt-yd9" kind="relationship" relationship="rootViewController" id="kKm-Xs-KS1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WPh-YA-Nqv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-116" y="-539"/>
+        </scene>
     </scenes>
+    <color key="tintColor" name="Orange"/>
     <resources>
         <image name="close" width="16.666666030883789" height="16.666666030883789"/>
         <image name="statistics" width="80" height="80"/>
         <namedColor name="Background">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.10999999195337296" green="0.10999999195337296" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange">
             <color red="1" green="0.60392156862745094" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryBackground">
-            <color red="0.10999999195337296" green="0.10999999195337296" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

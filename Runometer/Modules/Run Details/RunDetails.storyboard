@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="13f-Fg-SR4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="13f-Fg-SR4">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -44,7 +44,7 @@
                                                 <rect key="frame" x="0.0" y="50" width="375" height="330"/>
                                                 <subviews>
                                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="EQH-93-miG">
-                                                        <rect key="frame" x="168" y="293" width="39" height="37"/>
+                                                        <rect key="frame" x="130" y="293" width="115.5" height="37"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="37" id="r4w-xo-SI2"/>
                                                         </constraints>
@@ -80,7 +80,7 @@
                                                                             </constraints>
                                                                             <userDefinedRuntimeAttributes>
                                                                                 <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                                                                    <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                                    <color key="value" systemColor="labelColor"/>
                                                                                 </userDefinedRuntimeAttribute>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
@@ -234,7 +234,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GJS-aG-Wjk">
                                                 <rect key="frame" x="0.0" y="698" width="375" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-yW-PSU">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GS5-yW-PSU">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                         <state key="normal" title="Splits">
                                                             <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -283,6 +283,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="5rR-T1-xef"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="mvj-3Q-fTO" firstAttribute="top" secondItem="82a-xm-hrS" secondAttribute="top" id="0Xr-Cq-1MM"/>
@@ -291,7 +292,6 @@
                             <constraint firstItem="mvj-3Q-fTO" firstAttribute="leading" secondItem="5rR-T1-xef" secondAttribute="leading" id="sEg-Js-nwf"/>
                             <constraint firstItem="mvj-3Q-fTO" firstAttribute="bottom" secondItem="5rR-T1-xef" secondAttribute="bottom" id="wCa-Lb-4Gr"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="5rR-T1-xef"/>
                     </view>
                     <navigationItem key="navigationItem" title="Run Details" largeTitleDisplayMode="never" id="XFc-Fk-OyL"/>
                     <connections>
@@ -323,13 +323,13 @@
                                 </connections>
                             </mapView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="2wT-Zm-HMg"/>
                         <constraints>
                             <constraint firstItem="bht-eW-AAk" firstAttribute="trailing" secondItem="2wT-Zm-HMg" secondAttribute="trailing" id="Cuc-Ts-KbQ"/>
                             <constraint firstItem="bht-eW-AAk" firstAttribute="leading" secondItem="2wT-Zm-HMg" secondAttribute="leading" id="URP-Kp-Brm"/>
                             <constraint firstItem="bht-eW-AAk" firstAttribute="top" secondItem="aH3-Q0-yuc" secondAttribute="top" id="fu3-44-RxE"/>
                             <constraint firstItem="bht-eW-AAk" firstAttribute="bottom" secondItem="aH3-Q0-yuc" secondAttribute="bottom" id="nxt-xG-9UO"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="2wT-Zm-HMg"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="bht-eW-AAk" id="wXr-lh-Dni"/>
@@ -352,21 +352,21 @@
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="splitTimeTableViewCellReuseIdentifier" textLabel="tXz-HF-olL" detailTextLabel="r2K-FP-MM7" style="IBUITableViewCellStyleValue1" id="9FP-BV-Thr">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="375" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9FP-BV-Thr" id="FJG-Ho-zKQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tXz-HF-olL">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="16" y="12" width="33" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r2K-FP-MM7">
-                                                    <rect key="frame" x="316" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="315" y="12" width="44" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -383,6 +383,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Soj-oi-tlH"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="68W-YH-cOL" firstAttribute="bottom" secondItem="Soj-oi-tlH" secondAttribute="bottom" id="6EN-k8-5ew"/>
@@ -390,7 +391,6 @@
                             <constraint firstItem="68W-YH-cOL" firstAttribute="top" secondItem="CeP-o0-Fvb" secondAttribute="top" id="aKP-kk-x35"/>
                             <constraint firstItem="68W-YH-cOL" firstAttribute="trailing" secondItem="Soj-oi-tlH" secondAttribute="trailing" id="cRC-pe-09B"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Soj-oi-tlH"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="68W-YH-cOL" id="LRB-S1-Rgl"/>
@@ -422,10 +422,13 @@
     </scenes>
     <resources>
         <namedColor name="Background">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10999999195337296" green="0.10999999195337296" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryBackground">
-            <color red="0.10999999940395355" green="0.10999999940395355" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

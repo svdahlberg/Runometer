@@ -8,7 +8,10 @@
 
 import UIKit
 
-enum StatisticsBreakdownFilter: CaseIterable {
+enum StatisticsBreakdownFilter: CaseIterable, Identifiable {
+
+    var id: Self { self }
+
     case week, month, year
     
     var title: String {

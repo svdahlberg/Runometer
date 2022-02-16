@@ -9,7 +9,10 @@
 import Foundation
 import DependencyContainer
 
-struct RunGroup {
+struct RunGroup: Identifiable {
+
+    let id = UUID()
+    
     let name: String
     let runs: [Run]
 }

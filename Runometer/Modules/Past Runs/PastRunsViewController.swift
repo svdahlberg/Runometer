@@ -11,9 +11,10 @@ import UIKit
 class PastRunsViewControlller: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
-    
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
-    
+
+    var runRepository = RunRepository()
+
     private var runs: [Run]? {
         didSet {
             refreshControl.endRefreshing()
@@ -49,7 +50,7 @@ class PastRunsViewControlller: UIViewController {
     }
     
     @objc private func loadRuns() {
-        RunRepository().allRuns { runs in
+        runRepository.allRuns { runs in
             self.runs = runs
             self.activityIndicatorView.stopAnimating()
         }

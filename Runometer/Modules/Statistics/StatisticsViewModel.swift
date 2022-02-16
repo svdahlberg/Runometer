@@ -8,15 +8,13 @@
 
 import Foundation
 
-class StatisticsViewModel {
+class StatisticsViewModel: ObservableObject {
 
     private let runRepository: RunRepository
 
-    var didLoadStatistics: (() -> Void)? {
-        didSet { loadStatistics() }
-    }
+    var didLoadStatistics: (() -> Void)?
 
-    private(set) var runStatistics: [RunStatistic] = [] {
+    @Published private(set) var runStatistics: [RunStatistic] = [] {
         didSet { didLoadStatistics?() }
     }
 
@@ -39,8 +37,11 @@ class StatisticsViewModel {
         }
     }
 
+    var selectedStatistic: RunStatistic?
+
     init(runRepository: RunRepository = RunRepository()) {
         self.runRepository = runRepository
+        loadStatistics()
     }
 
     func loadStatistics() {
