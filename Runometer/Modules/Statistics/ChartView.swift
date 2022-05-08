@@ -308,26 +308,28 @@ private struct Bar: View {
         GeometryReader { geometry in
             VStack {
                 Spacer()
-                Capsule(style: .continuous)
-                    .foregroundColor(color)
-                    .scaleEffect(scale, anchor: .bottom)
-                    .animation(.easeInOut)
-                    .onTapGesture {
-                        guard !isHighlighted else {
-                            viewModel.resetSelection()
-                            return
-                        }
+                Button {
+                    guard !isHighlighted else {
+                        viewModel.resetSelection()
+                        return
+                    }
 
+                    withAnimation {
                         viewModel.selectedData = data
                         viewModel.selectedBarPosition = (
                             x: geometry.frame(in: .global).midX - (width / 2),
                             y: maxHeight - height
                         )
                     }
-                    .frame(
-                        width: width,
-                        height: height
-                    )
+                } label: {
+                    Capsule(style: .continuous)
+                        .foregroundColor(color)
+                        .scaleEffect(scale, anchor: .bottom)
+                        .frame(
+                            width: width,
+                            height: height
+                        )
+                }
             }
         }
         .frame(
