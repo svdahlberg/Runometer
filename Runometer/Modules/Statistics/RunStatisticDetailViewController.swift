@@ -255,7 +255,7 @@ struct StatisticsBreakdown {
         case .year: dateFormatter.dateFormat = "yyyy"
         case .quarter: dateFormatter.dateFormat = "QQQ yyyy"
         case .month: dateFormatter.dateFormat = "MMMM yyyy"
-        case .week: dateFormatter.dateFormat = "w yyyy" // TODO: Should contain the date range of the week, e.g. Feb 1-7, 2022
+        case .week: dateFormatter.dateFormat = "'Week' w yyyy" // TODO: Should contain the date range of the week, e.g. Feb 1-7, 2022
         }
         return dateFormatter
     }

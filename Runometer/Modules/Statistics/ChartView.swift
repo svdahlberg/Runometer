@@ -43,18 +43,44 @@ private class ChartViewModel: ObservableObject {
     @Published var selectedData: ChartData?
     @Published var selectedBarPosition: (x: CGFloat, y: CGFloat)?
     @Published var maxDataValue: Double?
-    @Published var selectedSection: Int
-
-    var canChangeMaxDataValue = true
+    @Published var selectedSection: Int {
+        didSet {
+            withAnimation {
+                resetSelection()
+                setMaxDataValue()
+            }
+        }
+    }
 
     init(chartModel: ChartModel) {
         self.chartModel = chartModel
         selectedSection = chartModel.dataSections.count - 1
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            withAnimation {
+                self.setMaxDataValue()
+            }
+        }
+
     }
 
     func resetSelection() {
         selectedData = nil
         selectedBarPosition = nil
+    }
+
+    private func setMaxDataValue() {
+        let section = sections[selectedSection]
+        maxDataValue = pagingEnabled ? getMaxDataValue(for: section) : getMaxDataValue()
+    }
+
+    private func getMaxDataValue() -> Double {
+        let allData = sections.flatMap { $0.data }
+        return allData.map { $0.value }.max() ?? 0
+    }
+
+    private func getMaxDataValue(for section: ChartDataSection) -> Double {
+        section.data.map { $0.value }.max() ?? 0
     }
 
 }
@@ -78,7 +104,9 @@ struct ChartView: View {
             .background(Color(Colors.tertiaryBackground))
             .cornerRadius(10)
             .gesture(DragGesture().onChanged { _ in
-                viewModel.resetSelection()
+                withAnimation {
+                    viewModel.resetSelection()
+                }
             })
 
             if let selectedData = viewModel.selectedData, let selectedBarPosition = viewModel.selectedBarPosition {
@@ -139,7 +167,6 @@ private struct BarChart: View {
                         barWidth: barWidth(for: section),
                         barSpacing: barSpacing,
                         maxHeight: maxHeight,
-                        maxDataValue: maxDataValue(for: section),
                         viewModel: viewModel
                     )
                     .tag(sectionIndex)
@@ -157,7 +184,6 @@ private struct BarChart: View {
                                 barWidth: 35,
                                 barSpacing: barSpacing,
                                 maxHeight: maxHeight,
-                                maxDataValue: maxDataValue(),
                                 viewModel: viewModel
                             )
                         }
@@ -169,15 +195,6 @@ private struct BarChart: View {
                 }
             }
         }
-    }
-
-    private func maxDataValue() -> Double {
-        let allData = viewModel.sections.flatMap { $0.data }
-        return allData.map { $0.value }.max() ?? 0
-    }
-
-    private func maxDataValue(for section: ChartDataSection) -> Double {
-        section.data.map { $0.value }.max() ?? 0
     }
 
     private let barSpacing: CGFloat = 5
@@ -200,7 +217,7 @@ private struct Section: View {
     let barWidth: CGFloat
     let barSpacing: CGFloat
     let maxHeight: CGFloat
-    let maxDataValue: Double
+//    let maxDataValue: Double
     @ObservedObject var viewModel: ChartViewModel
 
     private let padding = EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10)
@@ -212,7 +229,6 @@ private struct Section: View {
                     Bar(
                         title: data.shortTitle,
                         data: data,
-                        maxDataValue: maxDataValue,
                         width: barWidth,
                         maxHeight: maxHeight - (padding.top + padding.bottom + 20),
                         viewModel: viewModel
@@ -238,15 +254,6 @@ private struct Section: View {
             }
         }
         .padding(padding)
-        .onAppear {
-//            if viewModel.maxDataValue != maxDataValue, viewModel.canChangeMaxDataValue {
-//                viewModel.canChangeMaxDataValue = false
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-//                    viewModel.maxDataValue = maxDataValue
-//                    viewModel.canChangeMaxDataValue = true
-//                }
-//            }
-        }
     }
 
     struct BarLabel: Identifiable {
@@ -286,7 +293,6 @@ private struct Bar: View {
 
     let title: String
     let data: ChartData
-    let maxDataValue: Double
     let width: CGFloat
     let maxHeight: CGFloat
     @ObservedObject var viewModel: ChartViewModel
@@ -296,9 +302,9 @@ private struct Bar: View {
     private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
     private var height: CGFloat {
-//        guard let maxDataValue = viewModel.maxDataValue, data.value > 0 else {
-//            return 0
-//        }
+        guard let maxDataValue = viewModel.maxDataValue, data.value > 0 else {
+            return 0
+        }
 
         let heightPerUnit = maxHeight / max(CGFloat(maxDataValue), 1)
         return min(CGFloat(max(data.value, 1)) * heightPerUnit, maxHeight)
