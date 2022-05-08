@@ -30,10 +30,18 @@ extension Date {
         return calendar.date(from: dateComponents)
     }
 
-    static func date(year: Int, month: Int) -> Date? {
+    static func date(year: Int, month: Int, day: Int = 1) -> Date? {
         var dateComponents = DateComponents()
         dateComponents.year = year
         dateComponents.month = month
+        dateComponents.day = day
+        return Calendar.current.date(from: dateComponents)
+    }
+
+    static func date(year: Int, day: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.day = day
         dateComponents.day = 1
         return Calendar.current.date(from: dateComponents)
     }
@@ -42,6 +50,15 @@ extension Date {
         var dateComponents = DateComponents()
         dateComponents.yearForWeekOfYear = year
         dateComponents.weekOfYear = weekOfYear
+        return Calendar.current.date(from: dateComponents)
+    }
+
+    static func date(year: Int, month: Int,weekOfYear: Int, weekday: Int) -> Date? {
+        var dateComponents = DateComponents()
+        dateComponents.yearForWeekOfYear = year
+        dateComponents.month = month
+        dateComponents.weekOfYear = weekOfYear
+        dateComponents.weekday = weekday
         return Calendar.current.date(from: dateComponents)
     }
 

@@ -30,7 +30,7 @@ class PastRunsViewControlller: UIViewController {
     
     private var tableViewSections: [RunSection]? {
         guard let runs = runs else { return nil }
-        return RunSection.runSections(from: runs, filter: .month)
+        return RunSection.runSections(from: runs, filter: .year)
     }
     
     private func tableViewSection(for section: Int) -> RunSection? {

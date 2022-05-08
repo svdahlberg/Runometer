@@ -15,6 +15,7 @@
 		B21967A12030608A007153D2 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A02030608A007153D2 /* RoundCornersButton.swift */; };
 		B21967A320307211007153D2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A220307211007153D2 /* Colors.swift */; };
 		B21967A92039B05D007153D2 /* RunSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21967A82039B05D007153D2 /* RunSection.swift */; };
+		B2280C3227D52A24002E1E44 /* StatisticDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2280C3127D52A24002E1E44 /* StatisticDetailViewModel.swift */; };
 		B229CC9F2250BC54002D4BE6 /* RunSectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B229CC9E2250BC54002D4BE6 /* RunSectionTests.swift */; };
 		B241D7261F8A94CB0067A91D /* RunTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */; };
 		B24956741F9C7BF8002DC83E /* CheckpointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */; };
@@ -215,6 +216,7 @@
 		B21967A02030608A007153D2 /* RoundCornersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
 		B21967A220307211007153D2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B21967A82039B05D007153D2 /* RunSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSection.swift; sourceTree = "<group>"; };
+		B2280C3127D52A24002E1E44 /* StatisticDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticDetailViewModel.swift; sourceTree = "<group>"; };
 		B229CC9E2250BC54002D4BE6 /* RunSectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunSectionTests.swift; sourceTree = "<group>"; };
 		B241D7251F8A94CB0067A91D /* RunTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTrackerTests.swift; sourceTree = "<group>"; };
 		B24956731F9C7BF8002DC83E /* CheckpointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckpointAnnotationView.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				B200CB2827A5A0A2008217C4 /* StatisticsView.swift */,
 				B200CB2C27AD7B4E008217C4 /* TestTransition.swift */,
 				B24B849D279E4ECD000F3F21 /* StatisticDetailView.swift */,
+				B2280C3127D52A24002E1E44 /* StatisticDetailViewModel.swift */,
 				B200CB2A27A6274F008217C4 /* StatisticsHostingViewController.swift */,
 			);
 			path = Statistics;
@@ -1008,6 +1011,7 @@
 				B25F2A59261A5B0F00833AA1 /* UIViewControllerExtensions.swift in Sources */,
 				B2A931221FAF0CD2006FEACB /* MKCoordinateRegionExtensions.swift in Sources */,
 				B2EF80C020A850A200457800 /* PastRunsTableViewSectionHeaderView.swift in Sources */,
+				B2280C3227D52A24002E1E44 /* StatisticDetailViewModel.swift in Sources */,
 				B200CB2D27AD7B4E008217C4 /* TestTransition.swift in Sources */,
 				B273D874244D27AC00E373F8 /* RunStatisticsFilterViewController.swift in Sources */,
 				B27F18F425747D090061D3B9 /* DateExtensions.swift in Sources */,

@@ -10,76 +10,6 @@ import SwiftUI
 import CoreLocation
 import DependencyContainer
 
-class StatisticDetailViewModel: ObservableObject {
-
-    let runStatistic: RunStatistic
-    let runs: [Run]
-
-    @Published var selectedFilter: StatisticsBreakdownFilter = .month
-
-    var chartModel: ChartModel {
-        ChartModel(
-            dataSections: chartData(),
-            valueFormatter: chartValueFormatter(),
-            pagingEnabled: selectedFilter != .year
-        )
-    }
-
-    init(runStatistic: RunStatistic, runs: [Run]) {
-        self.runStatistic = runStatistic
-        self.runs = runs
-    }
-
-    private func chartData() -> [ChartDataSection] {
-        let statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
-
-        func shortTitle(runStatistic: RunStatistic, filter: StatisticsBreakdownFilter) -> String {
-            switch filter {
-            case .week:
-                return runStatistic.title.filter { $0.isNumber }
-            case .month:
-                return String(runStatistic.title.first ?? " ")
-            case .year:
-                return runStatistic.title
-            }
-        }
-
-        return statistics.map {
-            ChartDataSection(
-                title: $0.title,
-                data: $0.runStatistics.map {
-                    ChartData(
-                        value: $0.value,
-                        title: $0.title,
-                        shortTitle: shortTitle(runStatistic: $0, filter: selectedFilter)
-                    )
-                }.reversed())
-        }.reversed()
-    }
-
-    private func chartValueFormatter() -> (Double) -> String {
-        let unitType = runStatistic.type.unitType
-
-        switch unitType {
-        case .distance:
-            return { value in
-                guard let formattedDistance = DistanceFormatter.format(distance: value) else {
-                    return ""
-                }
-
-                let unit = self.runStatistic.unitSymbol
-                return "\(formattedDistance) \(unit)"
-            }
-        case .speed:
-            return { value in PaceFormatter.format(pace: Seconds(value)) ?? "" }
-        case .time:
-            return { value in TimeFormatter.format(time: Seconds(value)) ?? "" }
-        case .count:
-            return { value in String(Int(value)) }
-        }
-    }
-}
-
 struct StatisticDetailView: View {
 
     @ObservedObject var viewModel: StatisticDetailViewModel
@@ -116,7 +46,7 @@ struct StatisticDetailView: View {
 
                     VStack(spacing: 40) {
                         Picker("Filter", selection: $viewModel.selectedFilter) {
-                            ForEach(StatisticsBreakdownFilter.allCases) { filter in
+                            ForEach([StatisticsBreakdownFilter.week, StatisticsBreakdownFilter.month, StatisticsBreakdownFilter.year]) { filter in
                                 Text(filter.title)
                             }
                         }
@@ -164,8 +94,7 @@ struct StatisticDetailView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding()
         }
-        .navigationTitle(runStatistic.title)
-//        .navigationBarHidden(true)
+        .navigationTitle(runStatistic.title) // For the run list view back button
 
 
         .onAppear {

@@ -35,12 +35,24 @@ struct ChartData: Hashable, Identifiable {
 
 private class ChartViewModel: ObservableObject {
 
+    private let chartModel: ChartModel
+    var sections: [ChartDataSection] { chartModel.dataSections }
+    var valueFormatter: (Double) -> String { chartModel.valueFormatter }
+    var pagingEnabled: Bool { chartModel.pagingEnabled }
+
     @Published var selectedData: ChartData?
     @Published var selectedBarPosition: (x: CGFloat, y: CGFloat)?
     @Published var maxDataValue: Double?
+    @Published var selectedSection: Int
+
     var canChangeMaxDataValue = true
 
-    func reset() {
+    init(chartModel: ChartModel) {
+        self.chartModel = chartModel
+        selectedSection = chartModel.dataSections.count - 1
+    }
+
+    func resetSelection() {
         selectedData = nil
         selectedBarPosition = nil
     }
@@ -49,30 +61,29 @@ private class ChartViewModel: ObservableObject {
 
 struct ChartView: View {
 
-    let chartModel: ChartModel
+    @ObservedObject private var viewModel: ChartViewModel
 
-    @ObservedObject private var viewModel = ChartViewModel()
+    init(chartModel: ChartModel) {
+        viewModel = ChartViewModel(chartModel: chartModel)
+    }
 
     var body: some View {
         GeometryReader { geometry in
             BarChart(
-                dataSections: chartModel.dataSections,
                 pageWidth: geometry.size.width - 16,
                 maxHeight: geometry.size.height,
-                paged: chartModel.pagingEnabled,
-                viewModel: viewModel,
-                selectedSection: chartModel.dataSections.last?.title
+                viewModel: viewModel
             )
             .frame(height: geometry.size.height + 54)
             .background(Color(Colors.tertiaryBackground))
             .cornerRadius(10)
             .gesture(DragGesture().onChanged { _ in
-                viewModel.reset()
+                viewModel.resetSelection()
             })
 
             if let selectedData = viewModel.selectedData, let selectedBarPosition = viewModel.selectedBarPosition {
                 ValueLabel(
-                    valueFormatter: chartModel.valueFormatter,
+                    valueFormatter: viewModel.valueFormatter,
                     selectedData: selectedData,
                     selectedBarPosition: selectedBarPosition
                 )
@@ -110,15 +121,58 @@ private struct ValueLabel: View {
 
 private struct BarChart: View {
 
-    let dataSections: [ChartDataSection]
     let pageWidth: CGFloat
     let maxHeight: CGFloat
-    let paged: Bool
     @ObservedObject var viewModel: ChartViewModel
-    @State var selectedSection: String?
+
+    var body: some View {
+        if viewModel.pagingEnabled {
+
+            TabView(selection: $viewModel.selectedSection) {
+
+                ForEach(viewModel.sections.indices, id: \.self) { sectionIndex in
+
+                    let section = viewModel.sections[sectionIndex]
+
+                    Section(
+                        section: section,
+                        barWidth: barWidth(for: section),
+                        barSpacing: barSpacing,
+                        maxHeight: maxHeight,
+                        maxDataValue: maxDataValue(for: section),
+                        viewModel: viewModel
+                    )
+                    .tag(sectionIndex)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+
+        } else {
+            ScrollView(.horizontal, showsIndicators: true) {
+                ScrollViewReader { value in
+                    HStack(alignment: .bottom) {
+                        ForEach(viewModel.sections) { section in
+                            Section(
+                                section: section,
+                                barWidth: 35,
+                                barSpacing: barSpacing,
+                                maxHeight: maxHeight,
+                                maxDataValue: maxDataValue(),
+                                viewModel: viewModel
+                            )
+                        }
+                    }
+                    .padding(16)
+                    .onAppear {
+                        value.scrollTo(self.viewModel.sections.last?.data.last?.id)
+                    }
+                }
+            }
+        }
+    }
 
     private func maxDataValue() -> Double {
-        let allData = dataSections.flatMap { $0.data }
+        let allData = viewModel.sections.flatMap { $0.data }
         return allData.map { $0.value }.max() ?? 0
     }
 
@@ -136,47 +190,6 @@ private struct BarChart: View {
         }
         let totalSpacing = barSpacing * numberOfBars - 1
         return min((pageWidth - totalSpacing) / numberOfBars, maxBarWidth)
-    }
-
-    var body: some View {
-        if paged {
-            TabView(selection: $selectedSection) {
-                ForEach(dataSections) { section in
-                    Section(
-                        section: section,
-                        barWidth: barWidth(for: section),
-                        barSpacing: barSpacing,
-                        maxHeight: maxHeight,
-                        maxDataValue: maxDataValue(for: section),
-                        viewModel: viewModel
-                    )
-                    .tag(section.title)
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-
-        } else {
-            ScrollView(.horizontal, showsIndicators: true) {
-                ScrollViewReader { value in
-                    HStack(alignment: .bottom) {
-                        ForEach(dataSections) { section in
-                            Section(
-                                section: section,
-                                barWidth: 35,
-                                barSpacing: barSpacing,
-                                maxHeight: maxHeight,
-                                maxDataValue: maxDataValue(),
-                                viewModel: viewModel
-                            )
-                        }
-                    }
-                    .padding(16)
-                    .onAppear {
-                        value.scrollTo(self.dataSections.last?.data.last?.id)
-                    }
-                }
-            }
-        }
     }
 
 }
@@ -207,6 +220,18 @@ private struct Section: View {
                     .id(data.id)
                 }
             }
+
+            ZStack {
+                ForEach(barLabels()) { barLabel in
+                    Text(barLabel.label)
+                        .id(UUID()) // Without this it crashes when switching page
+                        .font(.subheadline)
+                        .position(x: barLabel.xPosition, y: 10)
+
+                }
+            }
+            .frame(height: 20)
+
             if let title = section.title {
                 Text(title)
                     .font(.title2)
@@ -214,13 +239,44 @@ private struct Section: View {
         }
         .padding(padding)
         .onAppear {
-            if viewModel.maxDataValue != maxDataValue, viewModel.canChangeMaxDataValue {
-                viewModel.canChangeMaxDataValue = false
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                    viewModel.maxDataValue = maxDataValue
-                    viewModel.canChangeMaxDataValue = true
-                }
+//            if viewModel.maxDataValue != maxDataValue, viewModel.canChangeMaxDataValue {
+//                viewModel.canChangeMaxDataValue = false
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+//                    viewModel.maxDataValue = maxDataValue
+//                    viewModel.canChangeMaxDataValue = true
+//                }
+//            }
+        }
+    }
+
+    struct BarLabel: Identifiable {
+        let id = UUID()
+        let label: String
+        let xPosition: CGFloat
+    }
+
+    private func barLabels() -> [BarLabel] {
+
+        return section.data.enumerated().compactMap { (index, data) in
+
+            let xPosition = (barWidth / 2) + (CGFloat(index) * barWidth) + (CGFloat(index) * barSpacing)
+
+            if section.data.count < 28 {
+                return BarLabel(label: data.shortTitle, xPosition: xPosition)
             }
+
+            let isLastBar = index == section.data.endIndex - 1
+
+            guard index == 0 || isLastBar || (index + 1) % 5 == 0 else {
+                return nil
+            }
+
+            let isShowingLabelForPreviousBar = index % 5 == 0
+            if isShowingLabelForPreviousBar, isLastBar {
+                return nil
+            }
+
+            return BarLabel(label: data.shortTitle, xPosition: xPosition)
         }
     }
 
@@ -240,9 +296,9 @@ private struct Bar: View {
     private var color: Color { isHighlighted ? .red : Color(Colors.orange) }
 
     private var height: CGFloat {
-        guard let maxDataValue = viewModel.maxDataValue, data.value > 0 else {
-            return 0
-        }
+//        guard let maxDataValue = viewModel.maxDataValue, data.value > 0 else {
+//            return 0
+//        }
 
         let heightPerUnit = maxHeight / max(CGFloat(maxDataValue), 1)
         return min(CGFloat(max(data.value, 1)) * heightPerUnit, maxHeight)
@@ -258,7 +314,7 @@ private struct Bar: View {
                     .animation(.easeInOut)
                     .onTapGesture {
                         guard !isHighlighted else {
-                            viewModel.reset()
+                            viewModel.resetSelection()
                             return
                         }
 
@@ -272,10 +328,6 @@ private struct Bar: View {
                         width: width,
                         height: height
                     )
-
-                Text(title)
-                    .font(.subheadline)
-                    .lineLimit(1)
             }
         }
         .frame(
@@ -325,41 +377,41 @@ struct ChartView_Previews: PreviewProvider {
                                 ChartData(value: 13000, title: "Dec")
                             ]
                         ),
-//                        ChartDataSection(
-//                            title: "2021",
-//                            data: [
-//                                ChartData(value: 10000, title: "1"),
-//                                ChartData(value: 13000, title: "2"),
-//                                ChartData(value: 12000, title: "3"),
-//                                ChartData(value: 13000, title: "4"),
-//                                ChartData(value: 10000, title: "5"),
-//                                ChartData(value: 15000, title: "6"),
-//                                ChartData(value: 25500, title: "7"),
-//                                ChartData(value: 3000, title: "8"),
-//                                ChartData(value: 15000, title: "9"),
-//                                ChartData(value: 10000, title: "10"),
-//                                ChartData(value: 14000, title: "11"),
-//                                ChartData(value: 13000, title: "12"),
-//                                ChartData(value: 10000, title: "13"),
-//                                ChartData(value: 13000, title: "14"),
-//                                ChartData(value: 12000, title: "15"),
-//                                ChartData(value: 13000, title: "16"),
-//                                ChartData(value: 10000, title: "17"),
-//                                ChartData(value: 15000, title: "18"),
-//                                ChartData(value: 25500, title: "18"),
-//                                ChartData(value: 3000, title: "19"),
-//                                ChartData(value: 15000, title: "20"),
-//                                ChartData(value: 10000, title: "21"),
-//                                ChartData(value: 13000, title: "22"),
-//                                ChartData(value: 12000, title: "23"),
-//                                ChartData(value: 13000, title: "24"),
-//                                ChartData(value: 10000, title: "25"),
-//                                ChartData(value: 15000, title: "26"),
-//                                ChartData(value: 25500, title: "27"),
-//                                ChartData(value: 20000, title: "28"),
-//                                ChartData(value: 15000, title: "29"),
-//                                ChartData(value: 10000, title: "30"),
-//                                ChartData(value: 10000, title: "31"),
+                        ChartDataSection(
+                            title: "2021",
+                            data: [
+                                ChartData(value: 10000, title: "1"),
+                                ChartData(value: 13000, title: "2"),
+                                ChartData(value: 12000, title: "3"),
+                                ChartData(value: 13000, title: "4"),
+                                ChartData(value: 10000, title: "5"),
+                                ChartData(value: 15000, title: "6"),
+                                ChartData(value: 25500, title: "7"),
+                                ChartData(value: 3000, title: "8"),
+                                ChartData(value: 15000, title: "9"),
+                                ChartData(value: 10000, title: "10"),
+                                ChartData(value: 14000, title: "11"),
+                                ChartData(value: 13000, title: "12"),
+                                ChartData(value: 10000, title: "13"),
+                                ChartData(value: 13000, title: "14"),
+                                ChartData(value: 12000, title: "15"),
+                                ChartData(value: 13000, title: "16"),
+                                ChartData(value: 10000, title: "17"),
+                                ChartData(value: 15000, title: "18"),
+                                ChartData(value: 25500, title: "18"),
+                                ChartData(value: 3000, title: "19"),
+                                ChartData(value: 15000, title: "20"),
+                                ChartData(value: 10000, title: "21"),
+                                ChartData(value: 13000, title: "22"),
+                                ChartData(value: 12000, title: "23"),
+                                ChartData(value: 13000, title: "24"),
+                                ChartData(value: 10000, title: "25"),
+                                ChartData(value: 15000, title: "26"),
+                                ChartData(value: 25500, title: "27"),
+                                ChartData(value: 20000, title: "28"),
+                                ChartData(value: 15000, title: "29"),
+                                ChartData(value: 10000, title: "30"),
+                                ChartData(value: 10000, title: "31"),
 //                                ChartData(value: 13000, title: "32"),
 //                                ChartData(value: 12000, title: "33"),
 //                                ChartData(value: 13000, title: "34"),
@@ -381,8 +433,8 @@ struct ChartView_Previews: PreviewProvider {
 //                                ChartData(value: 25500, title: "50"),
 //                                ChartData(value: 20000, title: "51"),
 //                                ChartData(value: 15000, title: "52")
-//                            ]
-//                        )
+                            ]
+                        )
                     ],
                     valueFormatter: { value in
                         DistanceFormatter.format(distance: value)! + " km"

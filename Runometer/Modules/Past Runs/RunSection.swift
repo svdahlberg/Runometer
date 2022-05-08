@@ -30,12 +30,16 @@ struct RunSection {
         }
     }
 
+    /// This date format is what decides what run goes in what section.
+    /// Runs that return the same date will end up in the same section.
+    /// It is not used to display a date, only for grouping runs by date.
     private static func dateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter {
         let dateFormatter = DateFormatter()
         switch filter {
-        case .year: dateFormatter.dateFormat = "yyyy"
-        case .month: dateFormatter.dateFormat = "MMMM yyyy"
-        case .week: dateFormatter.dateFormat = "MMMM yyyy w"
+        case .year: dateFormatter.dateFormat = "MMMM yyyy"
+        case .quarter: dateFormatter.dateFormat = "MMMM yyyy w"
+        case .month: dateFormatter.dateFormat = "MMMM yyyy d"
+        case .week: dateFormatter.dateFormat = "MMMM yyyy w E"
         }
         return dateFormatter
     }
