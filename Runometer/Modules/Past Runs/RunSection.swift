@@ -36,6 +36,7 @@ struct RunSection {
     private static func dateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter {
         let dateFormatter = DateFormatter()
         switch filter {
+        case .allTime: dateFormatter.dateFormat = "yyyy"
         case .year: dateFormatter.dateFormat = "MMMM yyyy"
         case .quarter: dateFormatter.dateFormat = "MMMM yyyy w"
         case .month: dateFormatter.dateFormat = "MMMM yyyy d"

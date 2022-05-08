@@ -12,7 +12,7 @@ enum StatisticsBreakdownFilter: CaseIterable, Identifiable {
 
     var id: Self { self }
 
-    case week, month, quarter, year
+    case week, month, quarter, year, allTime
     
     var title: String {
         switch self {
@@ -20,6 +20,7 @@ enum StatisticsBreakdownFilter: CaseIterable, Identifiable {
         case .month: return "Month"
         case .quarter: return "Quarter"
         case .year: return "Year"
+        case .allTime: return "All Time"
         }
     }
 }
@@ -78,6 +79,8 @@ struct StatisticsBreakdown {
 
         if addStatisticsForZeroRuns {
             switch filter {
+            case .allTime:
+                break
             case .year:
                 statistics = runStatistics(per: .year, statistics)
                     .flatMap {
@@ -153,6 +156,8 @@ struct StatisticsBreakdown {
                 return Array(1...53)
             case .year:
                 return Array(1...12)
+            case .allTime:
+                return []
             }
         }()
 
@@ -166,6 +171,8 @@ struct StatisticsBreakdown {
                 return .weekOfYear
             case .year:
                 return .month
+            case .allTime:
+                return nil
             }
         }
 
@@ -187,6 +194,8 @@ struct StatisticsBreakdown {
                     return Date.date(year: year, weekOfYear: dateComponent)
                 case .year:
                     return Date.date(year: year, month: dateComponent)
+                case .allTime:
+                    return nil
                 }
             }
 
@@ -207,7 +216,7 @@ struct StatisticsBreakdown {
     private func listTitleDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter {
         let dateFormatter = DateFormatter()
         switch filter {
-        case .year: dateFormatter.dateFormat = "yyyy"
+        case .year, .allTime: dateFormatter.dateFormat = "yyyy"
         case .quarter: dateFormatter.dateFormat = "'Week' w"
         case .month: dateFormatter.dateFormat = "MMMM"
         case .week: dateFormatter.dateFormat = "'Week' w"
@@ -218,6 +227,7 @@ struct StatisticsBreakdown {
     private func chartTitleDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter {
         let dateFormatter = DateFormatter()
         switch filter {
+        case .allTime: dateFormatter.dateFormat = "yyyy"
         case .year: dateFormatter.dateFormat = "MMMM"
         case .quarter: dateFormatter.dateFormat = "'Week' w"
         case .month: dateFormatter.dateFormat = "MMMM d"
@@ -229,6 +239,7 @@ struct StatisticsBreakdown {
     private func listHeaderDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter? {
         let dateFormatter = DateFormatter()
         switch filter {
+        case .allTime: return nil
         case .year: dateFormatter.dateFormat = "yyyy"
         case .quarter: dateFormatter.dateFormat = "yyyy"
         case .month: dateFormatter.dateFormat = "yyyy"
@@ -240,6 +251,7 @@ struct StatisticsBreakdown {
     private func chartHeaderDateFormatter(for filter: StatisticsBreakdownFilter) -> DateFormatter? {
         let dateFormatter = DateFormatter()
         switch filter {
+        case .allTime: return nil
         case .year: dateFormatter.dateFormat = "yyyy"
         case .quarter: dateFormatter.dateFormat = "QQQ yyyy"
         case .month: dateFormatter.dateFormat = "MMMM yyyy"
@@ -327,6 +339,8 @@ class RunStatisticDetailViewController: UIViewController {
                 return runStatistic.title.filter { $0.isNumber }
             case .year:
                 return String(runStatistic.title.first ?? " ")
+            case .allTime:
+                return runStatistic.title
             }
         }
 

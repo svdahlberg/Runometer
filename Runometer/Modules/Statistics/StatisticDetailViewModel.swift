@@ -31,7 +31,7 @@ class StatisticDetailViewModel: ObservableObject {
         ChartModel(
             dataSections: chartData(),
             valueFormatter: chartValueFormatter(),
-            pagingEnabled: true//selectedFilter != .year
+            pagingEnabled: selectedFilter != .allTime
         )
     }
 
@@ -41,12 +41,14 @@ class StatisticDetailViewModel: ObservableObject {
 
     private func chartData() -> [ChartDataSection] {
 
-        let numberOfSections = weekData.count
-
         var statistics = StatisticsBreakdown(runs: runs, type: runStatistic.type, filter: selectedFilter).chartStatistics()
 
-        for _ in (0...(numberOfSections - statistics.count)) {
-            statistics.append(RunStatisticSection(title: "", runStatistics: []))
+        // The TabView in the chart will not select the last page when switching filter with the segmented control if the number of pages in the TabView is less than the previous one. We add empty sections here just to make all charts have the same number of sections.
+        if selectedFilter != .allTime {
+            let numberOfSections = weekData.count // The week data will have the most number of sections.
+            for _ in (0...(numberOfSections - statistics.count)) {
+                statistics.append(RunStatisticSection(title: "", runStatistics: []))
+            }
         }
 
         func shortTitle(runStatistic: RunStatistic, filter: StatisticsBreakdownFilter) -> String {
@@ -59,6 +61,8 @@ class StatisticDetailViewModel: ObservableObject {
                 return runStatistic.title.filter { $0.isNumber }
             case .year:
                 return String(runStatistic.title.first ?? " ")
+            case .allTime:
+                return runStatistic.title
             }
         }
 

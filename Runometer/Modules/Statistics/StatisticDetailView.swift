@@ -46,7 +46,7 @@ struct StatisticDetailView: View {
 
                     VStack(spacing: 40) {
                         Picker("Filter", selection: $viewModel.selectedFilter) {
-                            ForEach([StatisticsBreakdownFilter.week, StatisticsBreakdownFilter.month, StatisticsBreakdownFilter.year]) { filter in
+                            ForEach([StatisticsBreakdownFilter.week, StatisticsBreakdownFilter.month, StatisticsBreakdownFilter.year, StatisticsBreakdownFilter.allTime]) { filter in
                                 Text(filter.title)
                             }
                         }
